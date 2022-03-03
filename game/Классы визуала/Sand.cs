@@ -23,7 +23,7 @@ namespace game
             part_color = Sprites.generate_texture(yellow_brush_list);
             this.x = in_x; this.y = in_y;
         }
-        public new void draw_block(PaintEventArgs e)
+        public void Draw_block(PaintEventArgs e)
         {
 
             Sprites.draw_sprite(x, y, part_color, e);

@@ -17,7 +17,7 @@ namespace game
 
         static public List<SolidBrush> blue_brush_list = new List<SolidBrush>() { first_blue_brush, second_blue_brush, third_blue_brush };
 
-        List<SolidBrush> part_color;
+        private readonly List<SolidBrush> part_color;
             
         public Water(int in_x, int in_y)
             {
@@ -25,7 +25,7 @@ namespace game
                 part_color = Sprites.generate_texture(blue_brush_list);
                 this.x = in_x; this.y = in_y;
             }
-            public new void draw_block(PaintEventArgs e)
+            public void Draw_block(PaintEventArgs e)
             {
 
                 Sprites.draw_sprite(x, y, part_color, e);

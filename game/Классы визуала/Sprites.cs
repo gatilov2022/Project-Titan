@@ -12,7 +12,7 @@ namespace game
     public class Sprites
     {
         static Random rand = new Random();
-        protected const int size = 24; // Менять на значения кратные 8
+        static protected int size = 24; // Менять на значения кратные 8
         public int x, y;
         static int pixel_count = 16; // Менять на значения 4 в степени n (4, 16, 64, 256 и т.д)
         static int pixel_size = Convert.ToInt32(Math.Sqrt(pixel_count));

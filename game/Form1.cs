@@ -68,7 +68,8 @@ namespace game
 
         private void paint_vis(object sender, PaintEventArgs e)
         {
-            //map.draw_map(e);
+
+            Map.draw_map(e);
 
 
             Factory a = new Factory(mouse_X, mouse_Y);
@@ -76,7 +77,7 @@ namespace game
             this.Font = new Font("Times New Roman", 30,
             FontStyle.Bold, GraphicsUnit.Pixel);
 
-            a.draw_building(e);
+            a.Draw_building(e);
         }
     }
 }

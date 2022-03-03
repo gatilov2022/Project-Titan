@@ -10,8 +10,6 @@ namespace game
 {
     public class Building : Sprites
     {
-        
-            int x, y;
 
             static Size rec_size = new Size(Sprites.size, Sprites.size);
 
@@ -24,7 +22,7 @@ namespace game
             {
                 x = X; y = Y;
             }
-            public void draw_building(PaintEventArgs e)
+            public void Draw_building(PaintEventArgs e)
             {
 
                 Graphics g = e.Graphics;
