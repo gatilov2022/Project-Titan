@@ -12,7 +12,7 @@ namespace game
     public class Sprites
     {
         static Random rand = new Random();
-        protected const int size = 24; // Менять на значения кратные 8
+        protected const int size = 32; // Менять на значения кратные 8
         public int x, y;
         static int pixel_count = 16; // Менять на значения 4 в степени n (4, 16, 64, 256 и т.д)
         static int pixel_size = Convert.ToInt32(Math.Sqrt(pixel_count));
@@ -32,9 +32,8 @@ namespace game
         }
 
 
-        static protected List<SolidBrush> generate_texture(List<SolidBrush> brush_list)
+        static protected List<SolidBrush> Generate_texture(List<SolidBrush> brush_list)
         {
-
             List<SolidBrush> texture = new List<SolidBrush>();
             int n = brush_list.Count - 1;
 

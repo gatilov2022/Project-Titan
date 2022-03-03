@@ -47,22 +47,22 @@ namespace game
             {
                 foreach (Water obj in water_list)
                 {
-                    obj.draw_block(e);
+                    obj.Draw_block(e);
                 }
 
                 foreach (Sand obj in sand_list)
                 {
-                    obj.draw_block(e);
+                    obj.Draw_block(e);
                 }
 
                 foreach (Grass obj in grass_list)
                 {
-                    obj.draw_block(e);
+                    obj.Draw_block(e);
                 }
 
                 foreach (Ore obj in ore_list)
                 {
-                    obj.draw_block(e);
+                    obj.Draw_block(e);
                 }
             
         }
