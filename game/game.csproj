@@ -130,5 +130,11 @@
   <ItemGroup>
     <None Include="Sprites_City\Drill\Drill_Electro_2lvl.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Musics\mus#1.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Musics\mus#2.mp3" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

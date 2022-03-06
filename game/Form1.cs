@@ -15,6 +15,7 @@ namespace game
     {
         Random rand = new Random();
         int mouse_X, mouse_Y;
+        bool[] build_who = new bool[] {false, false,false,false,false,false,false};
         
         //List<Sprites> list = new List<Sprites>();
 
@@ -56,6 +57,7 @@ namespace game
 
         private void Timer1_Tick(object sender, EventArgs e)
         {
+
             //Invalidate();
         }
 
@@ -64,6 +66,20 @@ namespace game
             mouse_X = e.X;
             mouse_Y = e.Y;
             Invalidate();
+        }
+
+        private void but_MouseMove(object sender, MouseEventArgs e)
+        {
+            (sender as Button).FlatAppearance.BorderColor = Color.Yellow;
+        }
+
+        private void but_MouseLeave(object sender, EventArgs e)
+        {
+            (sender as Button).FlatAppearance.BorderColor = Color.Red;
+        }
+
+        private void base_but_MouseEnter(object sender, EventArgs e)
+        {
         }
 
         private void paint_vis(object sender, PaintEventArgs e)

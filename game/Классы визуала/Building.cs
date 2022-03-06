@@ -22,12 +22,12 @@ namespace game
             Bitmap bit;
             Rectangle rec = new Rectangle(x - Sprites.size / 2, y - Sprites.size / 2, Sprites.size, Sprites.size);
 
-           // bit = global::game.Properties.Resources.Factory_1lvl;
+            bit = global::game.Properties.Resources.Factory_1lvl;
            // bit = global::game.Properties.Resources.Base;
            // bit = global::game.Properties.Resources.Drill_Burner_1lvl;
            // bit = global::game.Properties.Resources.Home_Defult;
            // bit = global::game.Properties.Resources.Pump_1lvl;
-           bit = global::game.Properties.Resources.Steam_Eng_1lvl;
+           // bit = global::game.Properties.Resources.Steam_Eng_1lvl;
            // bit = global::game.Properties.Resources.Warehouse;
 
             g.DrawImage(bit,rec);
