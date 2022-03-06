@@ -10,9 +10,7 @@ namespace game
 {
     public class Building : Sprites
     {
-        protected List<RectangleF> rect_size = new List<RectangleF>();
-        protected List<SolidBrush> rect_color = new List<SolidBrush>();
-
+        Random random = new Random();
 
         public Building(int X, int Y)
         {
@@ -20,12 +18,19 @@ namespace game
         }
         public void Draw_building(PaintEventArgs e)
         {
-
             Graphics g = e.Graphics;
-            for (int i = 0; i < rect_size.Count; i++)
-            {
-                g.FillRectangle(rect_color[i], rect_size[i]);
-            }
+            Bitmap bit;
+            Rectangle rec = new Rectangle(x - Sprites.size / 2, y - Sprites.size / 2, Sprites.size, Sprites.size);
+
+           // bit = global::game.Properties.Resources.Factory_1lvl;
+           // bit = global::game.Properties.Resources.Base;
+           // bit = global::game.Properties.Resources.Drill_Burner_1lvl;
+           // bit = global::game.Properties.Resources.Home_Defult;
+           // bit = global::game.Properties.Resources.Pump_1lvl;
+           bit = global::game.Properties.Resources.Steam_Eng_1lvl;
+           // bit = global::game.Properties.Resources.Warehouse;
+
+            g.DrawImage(bit,rec);
         }
     }
 }

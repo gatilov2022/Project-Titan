@@ -73,6 +73,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -86,6 +87,48 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Sprites_City\Base\Base.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Sprites_City\Drill\Drill_Burner_1lvl.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Sprites_City\Factory\Factory_1lvl.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Sprites_City\House\Home_Defult.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Sprites_City\Pump\Pump_1lvl.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Sprites_City\Steam engine\Steam_Eng_1lvl.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Sprites_City\Warehouse\Warehouse.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Sprites_City\Steam engine\Steam_Eng_2lvl.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Sprites_City\Pump\Pubp_2lvl.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Sprites_City\Factory\Factory_2lvl.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Sprites_City\Factory\Factory_3lvl.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Sprites_City\Drill\Drill_Burner_2lvl.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Sprites_City\Drill\Drill_Electro_1lvl.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Sprites_City\Drill\Drill_Electro_2lvl.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
