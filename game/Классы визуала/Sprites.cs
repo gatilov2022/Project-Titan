@@ -32,6 +32,11 @@ namespace game
             }
         }
 
+        public int what_siz()
+        {
+            return size;
+        }
+
 
         static protected List<SolidBrush> Generate_texture(List<SolidBrush> brush_list)
         {

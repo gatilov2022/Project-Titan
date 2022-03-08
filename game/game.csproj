@@ -55,7 +55,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Классы визуала\Building.cs" />
-    <Compile Include="Классы визуала\Factory.cs" />
     <Compile Include="Классы визуала\Grass.cs" />
     <Compile Include="Классы визуала\Map.cs" />
     <Compile Include="Классы визуала\Ore.cs" />
