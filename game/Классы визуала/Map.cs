@@ -18,7 +18,7 @@ namespace game
         static List<Water> water_list = new List<Water>();
         static List<Ore> ore_list = new List<Ore>();
         static private Graphics grap_map = null;
-        static private Bitmap bitmap = new Bitmap(800, 800);
+        static private Bitmap bitmap = new Bitmap(1980, 1080);
 
         // Добавление всех типов в соответствующие списки
         static public void Add(Water obj)
@@ -48,32 +48,32 @@ namespace game
         {
             if (grap_map == null)
             {
+                Graphics g = Graphics.FromImage(bitmap);
                 foreach (Water obj in water_list)
                 {
-                    obj.Draw_block(e);
+                    obj.Draw_block(g);
                 }
 
                 foreach (Sand obj in sand_list)
                 {
-                    obj.Draw_block(e);
+                    obj.Draw_block(g);
                 }
 
                 foreach (Grass obj in grass_list)
                 {
-                    obj.Draw_block(e);
+                    obj.Draw_block(g);
                 }
 
                 foreach (Ore obj in ore_list)
                 {
-                    obj.Draw_block(e);
+                    obj.Draw_block(g);
                 }
-                grap_map = e.Graphics;
-                Graphics g = Graphics.FromImage(bitmap);
-                g = grap_map;
+                grap_map = g;
+                
             }
             else
             {
-                e.Graphics.DrawImageUnscaled(bitmap, 0, 0);
+                e.Graphics.DrawImage(bitmap, 0, 0);
             }
 
         }

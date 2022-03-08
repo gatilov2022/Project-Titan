@@ -23,10 +23,9 @@ namespace game
             part_color = Sprites.Generate_texture(blue_brush_list);
             this.x = in_x; this.y = in_y;
         }
-        public void Draw_block(PaintEventArgs e)
+        public void Draw_block(Graphics g)
         {
-
-            Sprites.draw_sprite(x, y, part_color, e);
+            Sprites.draw_sprite(x, y, part_color, g);
 
         }
     }

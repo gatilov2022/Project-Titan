@@ -18,9 +18,8 @@ namespace game
         static int pixel_count = 16; // Менять на значения 4 в степени n (4, 16, 64, 256 и т.д)
         static int pixel_size = Convert.ToInt32(Math.Sqrt(pixel_count));
 
-        static protected void draw_sprite(int x, int y, List<SolidBrush> texture, PaintEventArgs e) // Отрисовка
+        static protected void draw_sprite(int x, int y, List<SolidBrush> texture, Graphics g) // Отрисовка
         {
-            Graphics g = e.Graphics;
 
             for (int i = 0; i < pixel_count; i++)
             {
