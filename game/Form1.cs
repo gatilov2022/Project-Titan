@@ -34,23 +34,7 @@ namespace game
 
                 for (int z = 0; z < 60; z++)
                 {
-                    rand_num = rand.Next(0, 100);
-                    if (rand_num <= 6)
-                    {
-                        Map.Add(new Ore(i, z));
-                    }
-                    else if (rand_num <= 8)
-                    {
-                        Map.Add(new Water(i, z));
-                    }
-                    else if (rand_num <= 12)
-                    {
-                        Map.Add(new Sand(i, z));
-                    }
-                    else
-                    {
-                        Map.Add(new Grass(i, z));
-                    }
+                    
 
                 }
             }

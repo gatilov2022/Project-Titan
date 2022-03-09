@@ -29,7 +29,7 @@ namespace game
 
         public void Draw_block(Graphics g)
         {
-            Sprites.draw_sprite(x, y, part_color, g);
+            Sprites.Draw_sprite(x, y, part_color, g);
 
         }
     }

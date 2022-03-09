@@ -12,13 +12,13 @@ namespace game
     public class Sprites
     {
         static Random rand = new Random();
-        protected const int size = 32; // Менять на значения кратные 8
+        protected const int size = 119; // Значение должно быть кратно корню из pixel_count.
 
         public int x, y;
-        static int pixel_count = 16; // Менять на значения 4 в степени n (4, 16, 64, 256 и т.д)
+        static int pixel_count = 49; // Значение должно быть равно некоторому числу в квадрате.
         static int pixel_size = Convert.ToInt32(Math.Sqrt(pixel_count));
 
-        static protected void draw_sprite(int x, int y, List<SolidBrush> texture, Graphics g) // Отрисовка
+        static protected void Draw_sprite(int x, int y, List<SolidBrush> texture, Graphics g) // Отрисовка
         {
 
             for (int i = 0; i < pixel_count; i++)
