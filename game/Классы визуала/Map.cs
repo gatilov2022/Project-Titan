@@ -12,14 +12,29 @@ namespace game
     {
         // Класс карта. Хранит в себе все объекты на карте, а так же отвечает за их отрисовку
 
+        // Список чанков
+        static List<Bitmap> chunk_images = new List<Bitmap>();
+
         // Списки под объекты
         static List<Grass> grass_list = new List<Grass>();
         static List<Sand> sand_list = new List<Sand>();
         static List<Water> water_list = new List<Water>();
         static List<Ore> ore_list = new List<Ore>();
-        static private Graphics grap_map = null;
+        static bool chek1 = false;
         static private Bitmap bitmap = new Bitmap(1980, 1080);
 
+        static int Map_Size = 16;
+
+        static public void GenerateMap()
+        {
+            for (int i = 0; i < Map_Size;)
+            {
+                for (int j = 0; j < Map_Size; j++)
+                {
+                    Map.chunk_images.Add(ChunkGenerator.GenerateChunk(i, j));
+                }
+            }
+        }
         // Добавление всех типов в соответствующие списки
         static public void Add(Water obj)
         {
@@ -46,8 +61,9 @@ namespace game
         // Отрисовка всех объектов из всех списков
         static public void draw_map(PaintEventArgs e)
         {
-            if (grap_map == null)
+            if (!chek1)
             {
+                chek1 = true;
                 Graphics g = Graphics.FromImage(bitmap);
                 foreach (Water obj in water_list)
                 {
@@ -68,7 +84,6 @@ namespace game
                 {
                     obj.Draw_block(g);
                 }
-                grap_map = g;
                 
             }
             else
