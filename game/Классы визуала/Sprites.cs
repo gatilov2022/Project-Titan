@@ -12,7 +12,7 @@ namespace game
     public class Sprites
     {
         static Random rand = new Random();
-        protected const int size = 119; // Значение должно быть кратно корню из pixel_count.
+        public const int size = 21; // Значение должно быть кратно корню из pixel_count.
 
         public int x, y;
         static int pixel_count = 49; // Значение должно быть равно некоторому числу в квадрате.
