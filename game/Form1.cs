@@ -27,17 +27,7 @@ namespace game
 
             buttons = new Button[] {factory_but ,pump_but ,drill_but ,base_but ,wareh_but ,house_but ,steam_but};
 
-            int rand_num;
-            // Генерация карты
-            for (int i = 0; i < 60; i++)
-            {
-
-                for (int z = 0; z < 60; z++)
-                {
-                    
-
-                }
-            }
+            Map.GenerateMap();    
         }
 
         private void Timer1_Tick(object sender, EventArgs e)

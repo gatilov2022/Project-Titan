@@ -27,13 +27,14 @@ namespace game
 
         static public void GenerateMap()
         {
-            for (int i = 0; i < Map_Size;)
+            for (int i = 0; i < Map_Size; i++)
             {
                 for (int j = 0; j < Map_Size; j++)
                 {
                     Map.chunk_images.Add(ChunkGenerator.GenerateChunk(i, j));
                 }
             }
+            chunk_images[0].Save("LastChunk.jpg");
         }
         // Добавление всех типов в соответствующие списки
         static public void Add(Water obj)
@@ -61,35 +62,45 @@ namespace game
         // Отрисовка всех объектов из всех списков
         static public void draw_map(PaintEventArgs e)
         {
-            if (!chek1)
+            //if (!chek1)
+            //{
+            //    chek1 = true;
+            //    Graphics g = Graphics.FromImage(bitmap);
+            //    foreach (Water obj in water_list)
+            //    {
+            //        obj.Draw_block(g);
+            //    }
+
+            //    foreach (Sand obj in sand_list)
+            //    {
+            //        obj.Draw_block(g);
+            //    }
+
+            //    foreach (Grass obj in grass_list)
+            //    {
+            //        obj.Draw_block(g);
+            //    }
+
+            //    foreach (Ore obj in ore_list)
+            //    {
+            //        obj.Draw_block(g);
+            //    }
+
+            //}
+            //else
+            //{
+            //    e.Graphics.DrawImage(bitmap, 0, 0);
+            //}
+            int loc_x, loc_y;
+
+            Graphics g = e.Graphics;
+            for (int i = 0; i < chunk_images.Count; i++)
             {
-                chek1 = true;
-                Graphics g = Graphics.FromImage(bitmap);
-                foreach (Water obj in water_list)
-                {
-                    obj.Draw_block(g);
-                }
-
-                foreach (Sand obj in sand_list)
-                {
-                    obj.Draw_block(g);
-                }
-
-                foreach (Grass obj in grass_list)
-                {
-                    obj.Draw_block(g);
-                }
-
-                foreach (Ore obj in ore_list)
-                {
-                    obj.Draw_block(g);
-                }
-                
+                loc_x = i / 16 * ChunkGenerator.ChunkSize * Sprites.size;
+                loc_y = i % 16 * ChunkGenerator.ChunkSize * Sprites.size;
+                g.DrawImage(chunk_images[i], loc_x, loc_y); 
             }
-            else
-            {
-                e.Graphics.DrawImage(bitmap, 0, 0);
-            }
+            g.DrawImage(chunk_images[0], 0, 0);
 
         }
     }
