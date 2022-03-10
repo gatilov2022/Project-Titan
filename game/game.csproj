@@ -63,7 +63,7 @@
     <Compile Include="Классы визуала\Sprites.cs" />
     <Compile Include="Классы визуала\Water.cs" />
     <Compile Include="Классы генераторы\BlockGenerator.cs" />
-    <Compile Include="Классы генераторы\ChunkGenerator.cs" />
+    <Compile Include="Классы визуала\Chunk.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
       <SubType>Designer</SubType>

@@ -17,6 +17,9 @@ namespace game
         private int mouse_X, mouse_Y,lastX = 0, lastY =0;
         private Button[] buttons;
         private Sprites sprites = new Sprites();
+        private Point DragStartCoord, DragDeltaCoord = new Point(0,0);
+
+        private bool dragStarted = false;
 
         public Form1()
         {
@@ -27,16 +30,42 @@ namespace game
 
             buttons = new Button[] {factory_but ,pump_but ,drill_but ,base_but ,wareh_but ,house_but ,steam_but};
 
+            this.MouseWheel += new MouseEventHandler(From1_MouseWheel);
+
             Map.GenerateMap();    
         }
+
+        
 
         private void Timer1_Tick(object sender, EventArgs e)
         {
 
         }
+        
+        private void From1_MouseWheel(object sender, MouseEventArgs e)
+        {
+            if (e.Delta < 0 && Sprites.size > 22)
+            {
+                Sprites.size -= 7;
+            }
+            else if (e.Delta > 0 && Sprites.size < 119)
+            {
+                Sprites.size += 7;
+            }
+            Invalidate();
+
+        }
 
         private void Form1_MouseMove(object sender, MouseEventArgs e)
         {
+            if (dragStarted)
+            {
+                DragDeltaCoord.X += DragStartCoord.X - e.X;
+                DragDeltaCoord.Y += DragStartCoord.Y - e.Y;
+                DragStartCoord.X = e.X;
+                DragStartCoord.Y = e.Y;
+            }
+
             int i = sprites.what_siz();
 
             if(e.X / i != lastX/i || e.Y / i != lastY / i)
@@ -56,6 +85,18 @@ namespace game
             {
                 but.FlatAppearance.BorderColor = Color.Yellow;
             }
+        }
+
+        private void Form1_MouseUp(object sender, MouseEventArgs e)
+        {
+            dragStarted = false;
+        }
+
+        private void Form1_MouseDown(object sender, MouseEventArgs e)
+        {
+            dragStarted = true;
+            DragStartCoord.X = e.X; 
+            DragStartCoord.Y = e.Y;
         }
 
         private void but_MouseLeave(object sender, EventArgs e)
@@ -82,13 +123,17 @@ namespace game
 
         private void paint_vis(object sender, PaintEventArgs e)
         {
-            Map.draw_map(e);
 
+            Map.draw_map(e, DragDeltaCoord);
+            
             Building a = new Building(mouse_X, mouse_Y);
             this.Font = new Font("Times New Roman", 30,
             FontStyle.Bold, GraphicsUnit.Pixel);
 
-            a.Draw_building(e,buttons);
+            Point p = Map.GetChunk();
+            e.Graphics.DrawString(p.X.ToString() + " " + p.Y.ToString(), new Font("Arial", 12, FontStyle.Bold, GraphicsUnit.Point), Brushes.Red, p.X, p.Y);
+
+            a.Draw_building(e,buttons, DragDeltaCoord);
         }
     }
 }

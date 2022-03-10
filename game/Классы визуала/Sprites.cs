@@ -12,7 +12,8 @@ namespace game
     public class Sprites
     {
         static Random rand = new Random();
-        public const int size = 21; // Значение должно быть кратно корню из pixel_count.
+        public static int size = 21; // Значение должно быть кратно корню из pixel_count.
+        public const int MaxSpriteSize = 84;
 
         public int x, y;
         static int pixel_count = 49; // Значение должно быть равно некоторому числу в квадрате.
@@ -20,6 +21,7 @@ namespace game
 
         static protected void Draw_sprite(int x, int y, List<SolidBrush> texture, Graphics g) // Отрисовка
         {
+            
 
             for (int i = 0; i < pixel_count; i++)
             {
@@ -37,6 +39,7 @@ namespace game
         }
 
 
+
         static protected List<SolidBrush> Generate_texture(List<SolidBrush> brush_list)
         {
             List<SolidBrush> texture = new List<SolidBrush>();
@@ -48,6 +51,5 @@ namespace game
             }
             return texture;
         }
-
     }
 }

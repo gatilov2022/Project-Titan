@@ -13,13 +13,9 @@ namespace game
         // Класс карта. Хранит в себе все объекты на карте, а так же отвечает за их отрисовку
 
         // Список чанков
-        static List<Bitmap> chunk_images = new List<Bitmap>();
+        static List<Chunk> Chunks = new List<Chunk>();
 
-        // Списки под объекты
-        static List<Grass> grass_list = new List<Grass>();
-        static List<Sand> sand_list = new List<Sand>();
-        static List<Water> water_list = new List<Water>();
-        static List<Ore> ore_list = new List<Ore>();
+        
         static bool chek1 = false;
         static private Bitmap bitmap = new Bitmap(1980, 1080);
 
@@ -31,36 +27,25 @@ namespace game
             {
                 for (int j = 0; j < Map_Size; j++)
                 {
-                    Map.chunk_images.Add(ChunkGenerator.GenerateChunk(i, j));
+                    Chunk NewChunk = new Chunk(i, j);
+                    Chunks.Add(NewChunk);
                 }
             }
-            chunk_images[0].Save("LastChunk.jpg");
         }
         // Добавление всех типов в соответствующие списки
-        static public void Add(Water obj)
+        
+        static public Point GetChunk()
         {
-            water_list.Add(obj);
+            int loc_x = 17 % 16 * Sprites.size * Chunk.ChunkSize;
+            int loc_y = 17 / 16 * Sprites.size * Chunk.ChunkSize;
+            Point point = new Point(loc_x, loc_y);
+            return point;
         }
 
-        static public void Add(Sand obj)
-        {
-            sand_list.Add(obj);
-        }
-
-        static public void Add(Grass obj)
-        {
-            grass_list.Add(obj);
-        }
-
-        static public void Add(Ore obj)
-        {
-            ore_list.Add(obj);
-        }
-
-
+        
 
         // Отрисовка всех объектов из всех списков
-        static public void draw_map(PaintEventArgs e)
+        static public void draw_map(PaintEventArgs e, Point DragDelta)
         {
             //if (!chek1)
             //{
@@ -94,13 +79,20 @@ namespace game
             int loc_x, loc_y;
 
             Graphics g = e.Graphics;
-            for (int i = 0; i < chunk_images.Count; i++)
+            Bitmap ReadyToDrawImage;
+
+            
+
+            for (int i = 0; i < Chunks.Count; i++)
             {
-                loc_x = i / 16 * ChunkGenerator.ChunkSize * Sprites.size;
-                loc_y = i % 16 * ChunkGenerator.ChunkSize * Sprites.size;
-                g.DrawImage(chunk_images[i], loc_x, loc_y); 
+                loc_x = i % 16 * Sprites.size * Chunk.ChunkSize;
+                loc_y = i / 16 * Sprites.size * Chunk.ChunkSize;
+
+                ReadyToDrawImage = Chunks[i].GetImage();
+
+                g.DrawImage(ReadyToDrawImage, DragDelta.X + loc_x, DragDelta.Y + loc_y, Sprites.size * Chunk.ChunkSize, Sprites.size * Chunk.ChunkSize);
+                //g.DrawRectangle(new Pen(Color.Red), loc_x, loc_y, Sprites.size * Chunk.ChunkSize, Sprites.size * Chunk.ChunkSize);
             }
-            g.DrawImage(chunk_images[0], 0, 0);
 
         }
     }
