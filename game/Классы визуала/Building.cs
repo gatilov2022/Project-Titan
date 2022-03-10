@@ -21,10 +21,10 @@ namespace game
         {
             x = X; y = Y;
         }
-        public void Draw_building(PaintEventArgs e, Button[] buts)
+        public void Draw_building(PaintEventArgs e, Button[] buts, Point DragDelta)
         {
             Graphics g = e.Graphics;
-            Rectangle rec = new Rectangle(x - Sprites.size / 2, y - Sprites.size / 2, Sprites.size, Sprites.size);
+            Rectangle rec = new Rectangle(DragDelta.X + x - Sprites.size / 2, DragDelta.Y + y - Sprites.size / 2, Sprites.size, Sprites.size);
 
             for(int m = 0; m < buts.Length; m++)
             {

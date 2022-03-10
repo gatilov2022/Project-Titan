@@ -31,6 +31,7 @@ namespace game
         {
             Sprites.Draw_sprite(x, y, part_color, g);
 
+
         }
     }
 }
