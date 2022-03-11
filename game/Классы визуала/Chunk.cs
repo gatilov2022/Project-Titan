@@ -10,8 +10,6 @@ namespace game
      
     internal class Chunk
     {
-        // Создаёт пустое изображение
-        Bitmap chunk_image = new Bitmap(ImageXSize, ImageYSize);
 
         // Координаты x и y чанка
         int chunk_x, chunk_y;
@@ -28,6 +26,9 @@ namespace game
         // Задаёт размер изображения чанка
         static int ImageXSize = Sprites.size * ChunkSize; 
         static int ImageYSize = Sprites.size * ChunkSize;
+
+        // Создаёт пустое изображение
+        Bitmap chunk_image = new Bitmap(ImageXSize, ImageYSize);
 
         // Генератор случайных чисел для генерации блоков в чанке
         static Random rand = new Random(); 
@@ -99,8 +100,6 @@ namespace game
                         block.Draw_block(g);
                         this.Add(block);
                     }
-
-
                 }
             }
             return chunk_image;
@@ -110,12 +109,6 @@ namespace game
         {
             return chunk_image;
         }
-
-        public Point GetCoordinates()
-        {
-            return new Point(chunk_x, chunk_y);
-        }
-
 
         void Add(Water obj)
         {
@@ -136,6 +129,5 @@ namespace game
         {
             ore_list.Add(obj);
         }
-
     }
 }

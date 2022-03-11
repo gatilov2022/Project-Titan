@@ -21,11 +21,12 @@ namespace game
         {
             x = X - 1; y = Y - 1;
         }
+
         public void Draw_building(PaintEventArgs e, Button[] buts, Point DragDelta)
         {
             Graphics g = e.Graphics;
             float f = Sprites.size / 2;
-            RectangleF recf = new RectangleF( x - f, y - f, Sprites.size, Sprites.size);
+            RectangleF recf = new RectangleF(x - f, y - f, Sprites.size, Sprites.size);
             for(int m = 0; m < buts.Length; m++)
             {
                 if(buts[m].FlatAppearance.BorderColor == Color.Blue)

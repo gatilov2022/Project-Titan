@@ -120,14 +120,12 @@ namespace game
         private void paint_vis(object sender, PaintEventArgs e)
         {
 
-            Map.draw_map(e, DragDeltaCoord);
+            Map.Draw_map(e, DragDeltaCoord);
             
             Building a = new Building(mouse_X, mouse_Y);
             this.Font = new Font("Times New Roman", 30,
             FontStyle.Bold, GraphicsUnit.Pixel);
 
-            Point p = Map.GetChunk();
-            e.Graphics.DrawString(p.X.ToString() + " " + p.Y.ToString(), new Font("Arial", 12, FontStyle.Bold, GraphicsUnit.Point), Brushes.Red, p.X, p.Y);
 
             a.Draw_building(e,buttons, DragDeltaCoord);
         }

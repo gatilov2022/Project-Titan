@@ -21,8 +21,6 @@ namespace game
 
         static protected void Draw_sprite(int x, int y, List<SolidBrush> texture, Graphics g) // Отрисовка
         {
-            
-
             for (int i = 0; i < pixel_count; i++)
             {
                 g.FillRectangle(texture[i],
@@ -33,21 +31,13 @@ namespace game
             }
         }
 
-        public int what_siz()
-        {
-            return size;
-        }
-
-
-
         static protected List<SolidBrush> Generate_texture(List<SolidBrush> brush_list)
         {
             List<SolidBrush> texture = new List<SolidBrush>();
-            int n = brush_list.Count - 1;
 
             for (int i = 0; i < pixel_count; i++)
             {
-                texture.Add(brush_list[rand.Next(0, n)]);
+                texture.Add(brush_list[rand.Next(0, brush_list.Count - 1)]);
             }
             return texture;
         }
