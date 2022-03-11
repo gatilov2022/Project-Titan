@@ -13,7 +13,6 @@ namespace game
 {
     public partial class Form1 : Form
     {
-        private Random rand = new Random();
         private int mouse_X, mouse_Y,lastX = 0, lastY =0;
         private Button[] buttons;
         private Sprites sprites = new Sprites();
@@ -59,8 +58,6 @@ namespace game
                 DragDeltaCoord.Y -= DragStartCoord.Y - e.Y;
                 DragStartCoord.X = e.X;
                 DragStartCoord.Y = e.Y;
-
-                pictureBox1.Invalidate();
                 Invalidate();
             }
 
@@ -89,17 +86,6 @@ namespace game
         private void Form1_MouseUp(object sender, MouseEventArgs e)
         {
             dragStarted = false;
-        }
-
-        private void pictureBox1_Paint(object sender, PaintEventArgs e)
-        {
-            Graphics g = e.Graphics;
-            float w = (float)this.Width / pictureBox1.Width, h = (float)this.Height / pictureBox1.Height;
-
-            float XX = 0 - DragDeltaCoord.X / w, YY = 0 - DragDeltaCoord.Y / h;
-
-            w = pictureBox1.Width / w; h = pictureBox1.Height / h;
-            g.DrawRectangle(new Pen(Color.Red, 2),XX,YY, w, h);
         }
 
         private void Form1_MouseDown(object sender, MouseEventArgs e)
@@ -144,9 +130,6 @@ namespace game
             e.Graphics.DrawString(p.X.ToString() + " " + p.Y.ToString(), new Font("Arial", 12, FontStyle.Bold, GraphicsUnit.Point), Brushes.Red, p.X, p.Y);
 
             a.Draw_building(e,buttons, DragDeltaCoord);
-
-            if (pictureBox1.BackgroundImage == null) pictureBox1.BackgroundImage = Image.FromFile("mini_map.png");
-
         }
     }
 }
