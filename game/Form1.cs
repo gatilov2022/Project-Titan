@@ -44,13 +44,18 @@ namespace game
         
         private void From1_MouseWheel(object sender, MouseEventArgs e)
         {
-            if (e.Delta < 0 && Sprites.size > 22)
+            if (e.Delta < 0 && Sprites.size > 8)
             {
+                DragDeltaCoord.X = ((DragDeltaCoord.X - e.X) / Sprites.size) * (Sprites.size - 7) + e.X;
+                DragDeltaCoord.Y = ((DragDeltaCoord.Y - e.Y) / Sprites.size) * (Sprites.size - 7) + e.Y;
                 Sprites.size -= 7;
             }
             else if (e.Delta > 0 && Sprites.size < 119)
             {
+                DragDeltaCoord.X = ((DragDeltaCoord.X - e.X)/ Sprites.size) * (Sprites.size + 7) + e.X ;
+                DragDeltaCoord.Y = ((DragDeltaCoord.Y - e.Y)/ Sprites.size) * (Sprites.size + 7) + e.Y ;
                 Sprites.size += 7;
+                
             }
             Invalidate();
 
@@ -60,11 +65,16 @@ namespace game
         {
             if (dragStarted)
             {
-                DragDeltaCoord.X += DragStartCoord.X - e.X;
-                DragDeltaCoord.Y += DragStartCoord.Y - e.Y;
+                DragDeltaCoord.X -= 2 * (DragStartCoord.X - e.X);
+                DragDeltaCoord.Y -= 2 * (DragStartCoord.Y - e.Y);
                 DragStartCoord.X = e.X;
                 DragStartCoord.Y = e.Y;
+                Invalidate();
             }
+
+            Graphics DrawMouse = this.CreateGraphics();
+            //DrawMouse.FillRectangle(new SolidBrush(Color.Black), e.X, e.Y + 20, 80, 25);
+            //DrawMouse.DrawString((e.X).ToString() + " " + (e.Y).ToString(), new Font("Arial", 12, FontStyle.Bold, GraphicsUnit.Point), Brushes.Red, e.X, e.Y + 20);
 
             int i = sprites.what_siz();
 
@@ -131,7 +141,7 @@ namespace game
             FontStyle.Bold, GraphicsUnit.Pixel);
 
             Point p = Map.GetChunk();
-            e.Graphics.DrawString(p.X.ToString() + " " + p.Y.ToString(), new Font("Arial", 12, FontStyle.Bold, GraphicsUnit.Point), Brushes.Red, p.X, p.Y);
+            e.Graphics.DrawString((DragDeltaCoord.X + p.X).ToString() + " " + (DragDeltaCoord.Y + p.Y).ToString(), new Font("Arial", 12, FontStyle.Bold, GraphicsUnit.Point), Brushes.Red, 130, 130);
 
             a.Draw_building(e,buttons, DragDeltaCoord);
         }

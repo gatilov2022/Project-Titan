@@ -36,8 +36,8 @@ namespace game
         
         static public Point GetChunk()
         {
-            int loc_x = 17 % 16 * Sprites.size * Chunk.ChunkSize;
-            int loc_y = 17 / 16 * Sprites.size * Chunk.ChunkSize;
+            int loc_x = 255 % 16 * Sprites.size * Chunk.ChunkSize;
+            int loc_y = 255 / 16 * Sprites.size * Chunk.ChunkSize;
             Point point = new Point(loc_x, loc_y);
             return point;
         }
@@ -47,35 +47,6 @@ namespace game
         // Отрисовка всех объектов из всех списков
         static public void draw_map(PaintEventArgs e, Point DragDelta)
         {
-            //if (!chek1)
-            //{
-            //    chek1 = true;
-            //    Graphics g = Graphics.FromImage(bitmap);
-            //    foreach (Water obj in water_list)
-            //    {
-            //        obj.Draw_block(g);
-            //    }
-
-            //    foreach (Sand obj in sand_list)
-            //    {
-            //        obj.Draw_block(g);
-            //    }
-
-            //    foreach (Grass obj in grass_list)
-            //    {
-            //        obj.Draw_block(g);
-            //    }
-
-            //    foreach (Ore obj in ore_list)
-            //    {
-            //        obj.Draw_block(g);
-            //    }
-
-            //}
-            //else
-            //{
-            //    e.Graphics.DrawImage(bitmap, 0, 0);
-            //}
             int loc_x, loc_y;
 
             Graphics g = e.Graphics;

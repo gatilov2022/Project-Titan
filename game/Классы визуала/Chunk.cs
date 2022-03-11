@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace game
 {
-     
+    // Класс, хранящий в себе блоки. 
     internal class Chunk
     {
         // Создаёт пустое изображение
@@ -43,24 +43,20 @@ namespace game
         // Генератор чанка
         Bitmap GenerateChunk()  
         {
-            // Присваивает графику для рисования на изображении, присовенного данному чанку
+            // Присваивает графику для рисования на изображении, присовенном данному чанку
             Graphics g = Graphics.FromImage(chunk_image);
 
             // Случайное число, для создания случайного блока в чанке
             int rand_num;
-
-            // Координаты x и y для блоков на этом чанке
-            int coordinate_x, coordinate_y;
+            int OverallChances;
+            int OreChance = 6, WaterChance = 2, SandChance = 4;
 
             // Циклы генерации блоков рамерностью ChunkSize на ChunkSize
-            for (int i = 0; i < ChunkSize; i++)
-            {
-                for (int j = 0; j < ChunkSize; j++)
+            for (int coordinate_y = 0; coordinate_y < ChunkSize; coordinate_y++)
+            { 
+                for (int  coordinate_x = 0;  coordinate_x < ChunkSize;  coordinate_x++)
                 {
-                    // Переопределение координат x и y для блока
-                    coordinate_x = i;
-                    coordinate_y = j;
-
+                    OverallChances = 0;
                     // Выбор слуачйного числа из генератора
                     rand_num = rand.Next(0, 100);
 
@@ -69,7 +65,8 @@ namespace game
                     // Вода - 2%
                     // Песок - 4%
                     // Земля - 88%
-                    if (rand_num <= 6)
+                    
+                    if (rand_num <= OreChance)
                     {
                         // Создание объекта типа руда с координатами x и y в чанке
                         Ore block = new Ore(coordinate_x, coordinate_y);
@@ -80,27 +77,35 @@ namespace game
 
                         // Сохранение объекта
                         this.Add(block);
-                    }
-                    else if (rand_num <= 8)
+                    } 
+                    else 
                     {
-                        Water block = new Water(coordinate_x, coordinate_y);
-                        block.Draw_block(g);
-                        this.Add(block);
-                    }
-                    else if (rand_num <= 12)
-                    {
-                        Sand block = new Sand(coordinate_x, coordinate_y);
-                        block.Draw_block(g);
-                        this.Add(block);
-                    }
-                    else
-                    {
-                        Grass block = new Grass(coordinate_x, coordinate_y);
-                        block.Draw_block(g);
-                        this.Add(block);
-                    }
+                        OverallChances += OreChance;
 
+                        if (rand_num <= OverallChances + WaterChance)
+                        {
+                            Water block = new Water(coordinate_x, coordinate_y);
+                            block.Draw_block(g);
+                            this.Add(block);
+                        }
+                        else 
+                        {
+                            OverallChances += WaterChance;
+                            if (rand_num <= OverallChances + SandChance)
+                            { 
+                            Sand block = new Sand(coordinate_x, coordinate_y);
+                            block.Draw_block(g);
+                            this.Add(block);
+                            }
+                            else
+                            {
 
+                                Grass block = new Grass(coordinate_x, coordinate_y);
+                                block.Draw_block(g);
+                                this.Add(block);
+                            }
+                        }
+                    }
                 }
             }
             return chunk_image;
