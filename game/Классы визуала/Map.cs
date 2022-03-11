@@ -15,10 +15,11 @@ namespace game
         // Список чанков
         static List<Chunk> Chunks = new List<Chunk>();
 
+
         
         static bool chek1 = false;
         static private Bitmap bitmap = new Bitmap(1980, 1080);
-
+        static bool chek2 = false;
         static int Map_Size = 16;
 
         static public void GenerateMap()
@@ -80,7 +81,14 @@ namespace game
 
             Graphics g = e.Graphics;
             Bitmap ReadyToDrawImage;
+            Graphics g2 = e.Graphics;
+            Bitmap mini_map = null;
 
+            if (!chek2)
+            {
+                mini_map = new Bitmap(16 * Sprites.size * Chunk.ChunkSize, 16 * Sprites.size * Chunk.ChunkSize);
+                g2 = Graphics.FromImage(mini_map);
+            }
             
 
             for (int i = 0; i < Chunks.Count; i++)
@@ -91,9 +99,17 @@ namespace game
                 ReadyToDrawImage = Chunks[i].GetImage();
 
                 g.DrawImage(ReadyToDrawImage, DragDelta.X + loc_x, DragDelta.Y + loc_y, Sprites.size * Chunk.ChunkSize, Sprites.size * Chunk.ChunkSize);
+                if (!chek2)
+                {
+                    g2.DrawImage(ReadyToDrawImage, DragDelta.X + loc_x, DragDelta.Y + loc_y, Sprites.size * Chunk.ChunkSize, Sprites.size * Chunk.ChunkSize);
+                }
                 //g.DrawRectangle(new Pen(Color.Red), loc_x, loc_y, Sprites.size * Chunk.ChunkSize, Sprites.size * Chunk.ChunkSize);
             }
-
+            if (!chek2)
+            {
+                chek2 = true;
+                mini_map.Save("mini_map.png");
+            }
         }
     }
 }

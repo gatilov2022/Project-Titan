@@ -19,19 +19,19 @@ namespace game
 
         public Building(int X, int Y)
         {
-            x = X; y = Y;
+            x = X - 1; y = Y - 1;
         }
         public void Draw_building(PaintEventArgs e, Button[] buts, Point DragDelta)
         {
             Graphics g = e.Graphics;
-            Rectangle rec = new Rectangle(DragDelta.X + x - Sprites.size / 2, DragDelta.Y + y - Sprites.size / 2, Sprites.size, Sprites.size);
-
+            float f = Sprites.size / 2;
+            RectangleF recf = new RectangleF( x - f, y - f, Sprites.size, Sprites.size);
             for(int m = 0; m < buts.Length; m++)
             {
                 if(buts[m].FlatAppearance.BorderColor == Color.Blue)
                 {
-                    g.DrawImage(bitmaps[m], rec);
-                    g.FillRectangle(new SolidBrush(Color.FromArgb(60, Color.Green)), rec);
+                    g.DrawImage(bitmaps[m], recf);
+                    g.FillRectangle(new SolidBrush(Color.FromArgb(60, Color.Green)), recf);
                     break;
                 }
             }

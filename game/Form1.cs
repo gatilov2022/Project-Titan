@@ -18,6 +18,7 @@ namespace game
         private Button[] buttons;
         private Sprites sprites = new Sprites();
         private Point DragStartCoord, DragDeltaCoord = new Point(0,0);
+        private Point minimap = new Point(0,0);
 
         private bool dragStarted = false;
 
@@ -25,22 +26,16 @@ namespace game
         {
             Graphics g = this.CreateGraphics();
             InitializeComponent();
-            timer1.Start();
-            timer1.Tick += Timer1_Tick;
 
             buttons = new Button[] {factory_but ,pump_but ,drill_but ,base_but ,wareh_but ,house_but ,steam_but};
 
             this.MouseWheel += new MouseEventHandler(From1_MouseWheel);
 
-            Map.GenerateMap();    
+            Map.GenerateMap();
         }
 
         
 
-        private void Timer1_Tick(object sender, EventArgs e)
-        {
-
-        }
         
         private void From1_MouseWheel(object sender, MouseEventArgs e)
         {
@@ -60,17 +55,21 @@ namespace game
         {
             if (dragStarted)
             {
-                DragDeltaCoord.X += DragStartCoord.X - e.X;
-                DragDeltaCoord.Y += DragStartCoord.Y - e.Y;
+                DragDeltaCoord.X -= DragStartCoord.X - e.X;
+                DragDeltaCoord.Y -= DragStartCoord.Y - e.Y;
                 DragStartCoord.X = e.X;
                 DragStartCoord.Y = e.Y;
+
+                pictureBox1.Invalidate();
+                Invalidate();
             }
 
-            int i = sprites.what_siz();
+            int i = Sprites.size;
 
             if(e.X / i != lastX/i || e.Y / i != lastY / i)
             {
-                lastY = e.Y; lastX = e.X;
+                lastY = e.Y;
+                lastX = e.X;
                 mouse_X = lastX - lastX % i + i/2;
                 mouse_Y = lastY - lastY % i + i/2;
                 Invalidate();
@@ -90,6 +89,17 @@ namespace game
         private void Form1_MouseUp(object sender, MouseEventArgs e)
         {
             dragStarted = false;
+        }
+
+        private void pictureBox1_Paint(object sender, PaintEventArgs e)
+        {
+            Graphics g = e.Graphics;
+            float w = (float)this.Width / pictureBox1.Width, h = (float)this.Height / pictureBox1.Height;
+
+            float XX = 0 - DragDeltaCoord.X / w, YY = 0 - DragDeltaCoord.Y / h;
+
+            w = pictureBox1.Width / w; h = pictureBox1.Height / h;
+            g.DrawRectangle(new Pen(Color.Red, 2),XX,YY, w, h);
         }
 
         private void Form1_MouseDown(object sender, MouseEventArgs e)
@@ -134,6 +144,9 @@ namespace game
             e.Graphics.DrawString(p.X.ToString() + " " + p.Y.ToString(), new Font("Arial", 12, FontStyle.Bold, GraphicsUnit.Point), Brushes.Red, p.X, p.Y);
 
             a.Draw_building(e,buttons, DragDeltaCoord);
+
+            if (pictureBox1.BackgroundImage == null) pictureBox1.BackgroundImage = Image.FromFile("mini_map.png");
+
         }
     }
 }
