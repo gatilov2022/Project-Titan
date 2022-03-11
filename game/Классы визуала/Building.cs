@@ -19,12 +19,12 @@ namespace game
 
         public Building(int X, int Y)
         {
-            x = X; y = Y;
+            x = X - 1; y = Y - 1;
         }
         public void Draw_building(PaintEventArgs e, Button[] buts, Point DragDelta)
         {
             Graphics g = e.Graphics;
-            Rectangle rec = new Rectangle(DragDelta.X + x - Sprites.size / 2, DragDelta.Y + y - Sprites.size / 2, Sprites.size, Sprites.size);
+            Rectangle rec = new Rectangle(DragDelta.X % Sprites.size + x - Sprites.size / 2, DragDelta.Y % Sprites.size + y - Sprites.size / 2, Sprites.size, Sprites.size);
 
             for(int m = 0; m < buts.Length; m++)
             {

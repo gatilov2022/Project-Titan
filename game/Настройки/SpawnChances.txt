@@ -1,0 +1,3 @@
+Ore - 6
+Water - 2
+Sand - 4
