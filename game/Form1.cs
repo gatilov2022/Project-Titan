@@ -39,23 +39,33 @@ namespace game
 
         private void Timer1_Tick(object sender, EventArgs e)
         {
-
+            if (ScrlDown || ScrlUp) Invalidate();
         }
         
+        private bool ScrlDown = false, ScrlUp = false;
+        private int ScrlLeft;
+        private int ScrlToX, ScrlToY;
+
         private void From1_MouseWheel(object sender, MouseEventArgs e)
         {
-            if (e.Delta < 0 && Sprites.size > 8)
-            {
-                DragDeltaCoord.X = ((DragDeltaCoord.X - e.X) / Sprites.size) * (Sprites.size - 7) + e.X;
-                DragDeltaCoord.Y = ((DragDeltaCoord.Y - e.Y) / Sprites.size) * (Sprites.size - 7) + e.Y;
-                Sprites.size -= 7;
-            }
-            else if (e.Delta > 0 && Sprites.size < 119)
-            {
-                DragDeltaCoord.X = ((DragDeltaCoord.X - e.X)/ Sprites.size) * (Sprites.size + 7) + e.X ;
-                DragDeltaCoord.Y = ((DragDeltaCoord.Y - e.Y)/ Sprites.size) * (Sprites.size + 7) + e.Y ;
-                Sprites.size += 7;
-                
+            if (!ScrlDown && !ScrlUp) {
+                ScrlToX = e.X; ScrlToY = e.Y;
+                if (e.Delta < 0 && Sprites.size > 8)
+                {
+                    //DragDeltaCoord.X = ((DragDeltaCoord.X - e.X) / Sprites.size) * (Sprites.size - 7) + e.X;
+                    //DragDeltaCoord.Y = ((DragDeltaCoord.Y - e.Y) / Sprites.size) * (Sprites.size - 7) + e.Y;
+                    ScrlDown = true;
+                    ScrlLeft = 7;
+                    //Sprites.size -= 7;
+                }
+                else if (e.Delta > 0 && Sprites.size < 119)
+                {
+                    //DragDeltaCoord.X = ((DragDeltaCoord.X - e.X)/ Sprites.size) * (Sprites.size + 7) + e.X ;
+                    //DragDeltaCoord.Y = ((DragDeltaCoord.Y - e.Y)/ Sprites.size) * (Sprites.size + 7) + e.Y ;
+                    ScrlUp = true;
+                    ScrlLeft = 7;
+                    //Sprites.size += 7;
+                }
             }
             Invalidate();
 
@@ -64,11 +74,15 @@ namespace game
         private void Form1_MouseMove(object sender, MouseEventArgs e)
         {
             if (dragStarted)
-            {
-                DragDeltaCoord.X -= 2 * (DragStartCoord.X - e.X);
-                DragDeltaCoord.Y -= 2 * (DragStartCoord.Y - e.Y);
-                DragStartCoord.X = e.X;
+            {   
+                //if  (DragDeltaCoord.X <= 0 & (DragDeltaCoord.X >= this.Width - Map.GetMapSize() * Sprites.size * Chunk.ChunkSize) )
+                DragDeltaCoord.X -= (DragStartCoord.X - e.X);
+            
+                //if (DragDeltaCoord.Y <= -1 && DragDeltaCoord.Y <= Map.GetMapSize() * Sprites.size * Chunk.ChunkSize)
+                DragDeltaCoord.Y -= (DragStartCoord.Y - e.Y);
+                    
                 DragStartCoord.Y = e.Y;
+                DragStartCoord.X = e.X;
                 Invalidate();
             }
 
@@ -133,6 +147,26 @@ namespace game
 
         private void paint_vis(object sender, PaintEventArgs e)
         {
+            if (ScrlLeft > 0)
+            {
+                if (ScrlDown)
+                {
+                    Sprites.size--;
+                    ScrlLeft--;
+                    DragDeltaCoord.X = ((DragDeltaCoord.X - ScrlToX / 7) / Sprites.size) * (Sprites.size - 1) + ScrlToX;
+                    DragDeltaCoord.Y = ((DragDeltaCoord.Y - ScrlToY / 7) / Sprites.size) * (Sprites.size - 1) + ScrlToY;
+                }
+                else if (ScrlUp)
+                {
+                    Sprites.size++;
+                    ScrlLeft--;
+                    DragDeltaCoord.X = ((DragDeltaCoord.X - ScrlToX) / Sprites.size) * (Sprites.size + 1) + ScrlToX;
+                    DragDeltaCoord.Y = ((DragDeltaCoord.Y - ScrlToX) / Sprites.size) * (Sprites.size + 1) + ScrlToY;
+                }
+            }
+            else if (ScrlUp) ScrlUp=false;
+            else if (ScrlDown) ScrlDown=false;
+            
 
             Map.draw_map(e, DragDeltaCoord);
             
@@ -141,7 +175,7 @@ namespace game
             FontStyle.Bold, GraphicsUnit.Pixel);
 
             Point p = Map.GetChunk();
-            e.Graphics.DrawString((DragDeltaCoord.X + p.X).ToString() + " " + (DragDeltaCoord.Y + p.Y).ToString(), new Font("Arial", 12, FontStyle.Bold, GraphicsUnit.Point), Brushes.Red, 130, 130);
+            //e.Graphics.DrawString((DragDeltaCoord.X + p.X).ToString() + " " + (DragDeltaCoord.Y + p.Y).ToString(), new Font("Arial", 12, FontStyle.Bold, GraphicsUnit.Point), Brushes.Red, 130, 130);
 
             a.Draw_building(e,buttons, DragDeltaCoord);
         }

@@ -43,6 +43,7 @@
             // 
             // timer1
             // 
+            this.timer1.Interval = 167;
             this.timer1.Tick += new System.EventHandler(this.Timer1_Tick);
             // 
             // factory_but
