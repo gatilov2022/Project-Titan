@@ -42,7 +42,10 @@ namespace game
             return point;
         }
 
-        
+        public static int GetMapSize()
+        {
+            return Map_Size;
+        }
 
         // Отрисовка всех объектов из всех списков
         static public void draw_map(PaintEventArgs e, Point DragDelta)
@@ -62,6 +65,7 @@ namespace game
                 ReadyToDrawImage = Chunks[i].GetImage();
 
                 g.DrawImage(ReadyToDrawImage, DragDelta.X + loc_x, DragDelta.Y + loc_y, Sprites.size * Chunk.ChunkSize, Sprites.size * Chunk.ChunkSize);
+                g.DrawRectangle(new Pen(Color.Gray , 4), DragDelta.X + loc_x - 2 , DragDelta.Y + loc_y - 2, Sprites.size * Chunk.ChunkSize + 4, Sprites.size * Chunk.ChunkSize + 4);
                 //g.DrawRectangle(new Pen(Color.Red), loc_x, loc_y, Sprites.size * Chunk.ChunkSize, Sprites.size * Chunk.ChunkSize);
             }
 
