@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Drawing;
 
-namespace game
+namespace game.Классы_визуала
 {
     // Класс, хранящий в себе блоки. 
     internal class Chunk
@@ -22,12 +19,16 @@ namespace game
         List<Water> water_list = new List<Water>();
         List<Ore> ore_list = new List<Ore>();
 
+        
+
         // Задаёт размер чанка в блоках
-        public static int ChunkSize = 16; 
+        public static int ChunkSize = 16;
 
         // Задаёт размер изображения чанка
-        static int ImageXSize = Sprites.size * ChunkSize; 
-        static int ImageYSize = Sprites.size * ChunkSize;
+        static private int SpritesSize = new Sprites().GetSpritesSize();
+
+        static private int ImageXSize = SpritesSize * ChunkSize; 
+        static private int ImageYSize = SpritesSize * ChunkSize;
 
         // Генератор случайных чисел для генерации блоков в чанке
         static Random rand = new Random(); 
