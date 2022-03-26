@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace game
+namespace game.Классы_визуала
 {
     internal class Map
     {
@@ -15,11 +11,7 @@ namespace game
         // Список чанков
         static List<Chunk> Chunks = new List<Chunk>();
 
-        
-        static bool chek1 = false;
-        static private Bitmap bitmap = new Bitmap(1980, 1080);
-
-        static int Map_Size = 16;
+        static int Map_Size = 24;
 
         static public void GenerateMap()
         {
@@ -32,16 +24,6 @@ namespace game
                 }
             }
         }
-        // Добавление всех типов в соответствующие списки
-        
-        static public Point GetChunk()
-        {
-            int loc_x = 255 % 16 * Sprites.size * Chunk.ChunkSize;
-            int loc_y = 255 / 16 * Sprites.size * Chunk.ChunkSize;
-            Point point = new Point(loc_x, loc_y);
-            return point;
-        }
-
         public static int GetMapSize()
         {
             return Map_Size;
@@ -54,19 +36,18 @@ namespace game
 
             Graphics g = e.Graphics;
             Bitmap ReadyToDrawImage;
-
-            
+            int SpritesSize = new Sprites().GetSpritesSize();
 
             for (int i = 0; i < Chunks.Count; i++)
             {
-                loc_x = i % 16 * Sprites.size * Chunk.ChunkSize;
-                loc_y = i / 16 * Sprites.size * Chunk.ChunkSize;
+                loc_x = i % Map_Size * SpritesSize * Chunk.ChunkSize;
+                loc_y = i / Map_Size * SpritesSize * Chunk.ChunkSize;
 
                 ReadyToDrawImage = Chunks[i].GetImage();
 
-                g.DrawImage(ReadyToDrawImage, DragDelta.X + loc_x, DragDelta.Y + loc_y, Sprites.size * Chunk.ChunkSize, Sprites.size * Chunk.ChunkSize);
-                g.DrawRectangle(new Pen(Color.Gray , 4), DragDelta.X + loc_x - 2 , DragDelta.Y + loc_y - 2, Sprites.size * Chunk.ChunkSize + 4, Sprites.size * Chunk.ChunkSize + 4);
-                //g.DrawRectangle(new Pen(Color.Red), loc_x, loc_y, Sprites.size * Chunk.ChunkSize, Sprites.size * Chunk.ChunkSize);
+                g.DrawImage(ReadyToDrawImage, DragDelta.X + loc_x, DragDelta.Y + loc_y, SpritesSize * Chunk.ChunkSize, SpritesSize * Chunk.ChunkSize);
+                g.DrawRectangle(new Pen(Color.Gray , 4), DragDelta.X + loc_x - 2 , DragDelta.Y + loc_y - 2, SpritesSize * Chunk.ChunkSize + 4, SpritesSize * Chunk.ChunkSize + 4);
+                //g.DrawRectangle(new Pen(Color.Red), loc_x, loc_y, SpritesSize * Chunk.ChunkSize, SpritesSize * Chunk.ChunkSize);
             }
 
         }
