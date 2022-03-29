@@ -14,14 +14,14 @@ namespace game.Классы_визуала
 
         public Building(int X, int Y)
         {
-            x = X - 1; y = Y - 1;
+            x = X ; y = Y;
         }
         public void Draw_building(PaintEventArgs e, Button[] buts, Point DragDelta)
         {
             int SpritesSize = new Sprites().GetSpritesSize();
 
             Graphics g = e.Graphics;
-            Rectangle rec = new Rectangle(DragDelta.X % SpritesSize + x - SpritesSize / 2, DragDelta.Y % SpritesSize + y - SpritesSize / 2, SpritesSize, SpritesSize);
+            Rectangle rec = new Rectangle(DragDelta.X % SpritesSize + x, DragDelta.Y % SpritesSize + y, SpritesSize + 1, SpritesSize + 1);
 
             for(int m = 0; m < buts.Length; m++)
             {
