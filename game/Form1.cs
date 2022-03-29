@@ -26,6 +26,8 @@ namespace game
 
         private bool dragStarted = false;
 
+        Map_Build buildingClass;
+
         public Form1()
         {
             Graphics g = this.CreateGraphics();
@@ -36,6 +38,7 @@ namespace game
 
             SpritesSize = sprites.GetSpritesSize();
 
+            buildingClass = new Map_Build();
             this.MouseWheel += new MouseEventHandler(From1_MouseWheel);
 
             FillScrollList();
@@ -124,11 +127,20 @@ namespace game
             if(e.X / i != lastX/i || e.Y / i != lastY / i)
             {
                 lastY = e.Y; lastX = e.X;
-                mouse_X = lastX - lastX % i + i/2;
-                mouse_Y = lastY - lastY % i + i/2;
+                mouse_X = lastX - lastX % i;
+                mouse_Y = lastY - lastY % i;
                 Invalidate();
             }
             
+        }
+
+        private void Form1_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                buildingClass.Add_build(new Point(mouse_X, mouse_Y), buttons, DragDeltaCoord);
+                Invalidate();
+            }
         }
 
         private void but_MouseMove(object sender, MouseEventArgs e)
@@ -142,14 +154,18 @@ namespace game
 
         private void Form1_MouseUp(object sender, MouseEventArgs e)
         {
+            if (e.Button == MouseButtons.Left)
             dragStarted = false;
         }
 
         private void Form1_MouseDown(object sender, MouseEventArgs e)
         {
-            dragStarted = true;
-            DragStartCoord.X = e.X; 
-            DragStartCoord.Y = e.Y;
+            if (e.Button == MouseButtons.Left)
+            {
+                dragStarted = true;
+                DragStartCoord.X = e.X;
+                DragStartCoord.Y = e.Y;
+            }
         }
 
         private void but_MouseLeave(object sender, EventArgs e)
@@ -213,6 +229,8 @@ namespace game
             Building a = new Building(mouse_X, mouse_Y);
 
             a.Draw_building(e,buttons, DragDeltaCoord);
+
+            buildingClass.Grah_build(e, DragDeltaCoord);
         }
     }
 }

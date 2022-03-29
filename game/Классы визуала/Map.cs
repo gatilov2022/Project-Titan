@@ -11,7 +11,7 @@ namespace game.Классы_визуала
         // Список чанков
         static List<Chunk> Chunks = new List<Chunk>();
 
-        static int Map_Size = 24;
+        static int Map_Size = 8;
 
         static public void GenerateMap()
         {
