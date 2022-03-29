@@ -18,6 +18,9 @@ namespace game.Классы_визуала
 
         private List<Bitmap> tiles = new List<Bitmap>();
         private List<Point> points = new List<Point>();
+        //Исправить
+        private List<Point> fr1 = new List<Point>();
+        private List<Point> fr2 = new List<Point>();
 
         public void Add_build(Point p, Button[] buts, Point Drag)
         {
@@ -32,6 +35,9 @@ namespace game.Классы_визуала
 
                     fromWhatBlockX = ((p.X - Drag.X ) % (size * Chunk.ChunkSize)) / size;
                     fromWhatBlockY = ((p.Y - Drag.Y ) % (size * Chunk.ChunkSize)) / size;
+
+                    fr2.Add(new Point(fromWhatBlockX, fromWhatBlockY));
+                    fr1.Add(new Point(fromWhatChunkX, fromWhatChunkY));
 
                     points.Add(p);
                     tiles.Add(bitmaps[m]);
@@ -50,13 +56,11 @@ namespace game.Классы_визуала
             Graphics g = e.Graphics;
             for (int i = 0; i < tiles.Count; i++)
             {
-                int xWithDrag = (fromWhatBlockX + fromWhatChunkX * Chunk.ChunkSize) * size + Drag.X,
-                yWithDrag = (fromWhatBlockY + fromWhatChunkY * Chunk.ChunkSize) * size + Drag.Y;
+                int xWithDrag = (fr2[i].X + fr1[i].X * Chunk.ChunkSize) * size + Drag.X,
+                yWithDrag = (fr2[i].Y + fr1[i].Y * Chunk.ChunkSize) * size + Drag.Y;
 
                 Rectangle rec = new Rectangle(xWithDrag, yWithDrag, size, size);
                 g.DrawImage(tiles[i], rec);
-
-                g.DrawString("X: " + xWithDrag + " Y: " + yWithDrag + "\n X: " + points[i].X + " Y: " + points[i].Y, fontSample, brushSample, xWithDrag + size, yWithDrag + size);
             }
         }
     }
