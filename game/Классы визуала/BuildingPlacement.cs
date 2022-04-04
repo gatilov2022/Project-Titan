@@ -13,50 +13,44 @@ namespace game.Классы_визуала
             Properties.Resources.Steam_Eng_1lvl
         };
 
-        int fromWhatChunkX, fromWhatBlockX;
-        int fromWhatChunkY, fromWhatBlockY;
-
-        private List<Bitmap> tiles = new List<Bitmap>();
-        private List<Point> points = new List<Point>();
+        private readonly List<Bitmap> tiles = new List<Bitmap>();
+        private readonly List<Point> onMapCoord = new List<Point>();
 
         public void Add_build(Point p, Button[] buts, Point Drag)
         {
-            int size = new Sprites().GetSpritesSize();
+            var blockSize = new Sprites().GetSpritesSize();
+            var chunkSize = Chunk.GetChunkSize();
 
-            for (int m = 0; m < buts.Length; m++)
+
+            for (var m = 0; m < buts.Length; m++)
             {
-                if (buts[m].FlatAppearance.BorderColor == Color.Blue)
-                {
-                    fromWhatChunkX = (p.X - Drag.X) / (size * Chunk.ChunkSize);
-                    fromWhatChunkY = (p.Y - Drag.Y) / (size * Chunk.ChunkSize);
+                if (buts[m].FlatAppearance.BorderColor != Color.Blue) continue;
+                //whatChunk.Add(new Point((p.X - Drag.X) / (size * Chunk.ChunkSize), (p.Y - Drag.Y) / (size * Chunk.ChunkSize)));
+                //whatBlock.Add(new Point((p.X - Drag.X) % (size * Chunk.ChunkSize) / size, (p.Y - Drag.Y) % (size * Chunk.ChunkSize) / size));
+                
+                onMapCoord.Add(new Point((p.X - Drag.X) / blockSize, (p.Y - Drag.Y) / blockSize));
 
-                    fromWhatBlockX = ((p.X - Drag.X ) % (size * Chunk.ChunkSize)) / size;
-                    fromWhatBlockY = ((p.Y - Drag.Y ) % (size * Chunk.ChunkSize)) / size;
-
-                    points.Add(p);
-                    tiles.Add(bitmaps[m]);
-                    break;
-                }
+                tiles.Add(bitmaps[m]);
+                break;
             }
         }
 
 
-        Font fontSample = new Font("Arial", 12);
-        SolidBrush brushSample = new SolidBrush(Color.DarkBlue);
+        //Font fontSample = new Font("Arial", 12);
+        //SolidBrush brushSample = new SolidBrush(Color.DarkBlue);
         public void Grah_build(PaintEventArgs e, Point Drag)
         {
-            int size = new Sprites().GetSpritesSize();
+            var blockSize = new Sprites().GetSpritesSize(); 
+            var chunkSize = Chunk.GetChunkSize();
+            var mapSize = Map.GetMapSize();
 
-            Graphics g = e.Graphics;
-            for (int i = 0; i < tiles.Count; i++)
+            var g = e.Graphics;
+            for (var i = 0; i < tiles.Count; i++)
             {
-                int xWithDrag = (fromWhatBlockX + fromWhatChunkX * Chunk.ChunkSize) * size + Drag.X,
-                yWithDrag = (fromWhatBlockY + fromWhatChunkY * Chunk.ChunkSize) * size + Drag.Y;
-
-                Rectangle rec = new Rectangle(xWithDrag, yWithDrag, size, size);
+                int actualX = onMapCoord[i].X * blockSize + Drag.X, actualY = onMapCoord[i].Y * blockSize + Drag.Y;
+                Rectangle rec = new Rectangle(actualX, actualY, blockSize, blockSize);
                 g.DrawImage(tiles[i], rec);
-
-                g.DrawString("X: " + xWithDrag + " Y: " + yWithDrag + "\n X: " + points[i].X + " Y: " + points[i].Y, fontSample, brushSample, xWithDrag + size, yWithDrag + size);
+                //g.DrawString("X: " + actualX + " Y: " + actualY + "\n X: " + points[i].X + " Y: " + points[i].Y, fontSample, brushSample, actualX + blockSize, actualY + blockSize);
             }
         }
     }

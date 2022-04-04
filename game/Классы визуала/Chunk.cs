@@ -10,9 +10,6 @@ namespace game.Классы_визуала
         // Создаёт пустое изображение
         Bitmap chunk_image = new Bitmap(ImageXSize, ImageYSize);
 
-        // Координаты x и y чанка
-        int chunk_x, chunk_y;
-
         // Списки под объекты
         List<Grass> grass_list = new List<Grass>();
         List<Sand> sand_list = new List<Sand>();
@@ -22,7 +19,7 @@ namespace game.Классы_визуала
         
 
         // Задаёт размер чанка в блоках
-        public static int ChunkSize = 16;
+        private static int ChunkSize = 16;
 
         // Задаёт размер изображения чанка
         static private int SpritesSize = new Sprites().GetSpritesSize();
@@ -34,10 +31,8 @@ namespace game.Классы_визуала
         static Random rand = new Random(); 
 
 
-        public Chunk(int in_x, int in_y)
+        public Chunk()
         {
-            chunk_x = in_x;
-            chunk_y = in_y;
             GenerateChunk();
         }
 
@@ -117,11 +112,10 @@ namespace game.Классы_визуала
             return chunk_image;
         }
 
-        public Point GetCoordinates()
+        public static int GetChunkSize()
         {
-            return new Point(chunk_x, chunk_y);
+            return ChunkSize;
         }
-
 
         void Add(Water obj)
         {
