@@ -19,6 +19,7 @@ namespace game.Классы_визуала
         private List<Bitmap> tiles = new List<Bitmap>();
         private List<Point> points = new List<Point>();
         //Исправить
+        //
         private List<Point> fr1 = new List<Point>();
         private List<Point> fr2 = new List<Point>();
 
