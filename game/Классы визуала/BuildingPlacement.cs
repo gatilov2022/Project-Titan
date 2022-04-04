@@ -50,8 +50,7 @@ namespace game.Классы_визуала
                 int actualX = onMapCoord[i].X * blockSize + Drag.X, actualY = onMapCoord[i].Y * blockSize + Drag.Y;
                 Rectangle rec = new Rectangle(actualX, actualY, blockSize, blockSize);
                 g.DrawImage(tiles[i], rec);
-
-                g.DrawString("X: " + xWithDrag + " Y: " + yWithDrag + "\n X: " + points[i].X + " Y: " + points[i].Y, fontSample, brushSample, xWithDrag + size, yWithDrag + size);
+                //g.DrawString("X: " + actualX + " Y: " + actualY + "\n X: " + points[i].X + " Y: " + points[i].Y, fontSample, brushSample, actualX + blockSize, actualY + blockSize);
             }
         }
     }
