@@ -1,13 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Threading;
 using game.Классы_визуала;
 
 namespace game
@@ -15,14 +9,16 @@ namespace game
     public partial class Form1 : Form
     {
         private Random rand = new Random();
-        private int mouse_X, mouse_Y,lastX = 0, lastY =0;
+        private int mouseX, mouseY,
+            lastX = 0, lastY =0;
+
         private Button[] buttons;
         private Sprites sprites = new Sprites();
-        private Point DragStartCoord, DragDeltaCoord = new Point(0,0);
+        private Point dragStartCoord, dragDeltaCoord = new Point(0,0);
 
         private int MaxMultipler = 10, MinMultipler = 4;
 
-        private int SpritesSize;
+        private int spritesSize;
 
         private bool dragStarted = false;
 
@@ -36,7 +32,7 @@ namespace game
             timer1.Tick += Timer1_Tick;
             buttons = new Button[] {factory_but ,pump_but ,drill_but ,base_but ,wareh_but ,house_but ,steam_but};
 
-            SpritesSize = sprites.GetSpritesSize();
+            spritesSize = sprites.GetSpritesSize();
 
             buildingClass = new Map_Build();
             this.MouseWheel += new MouseEventHandler(From1_MouseWheel);
@@ -70,35 +66,31 @@ namespace game
             }
         }
         
-
         private void Timer1_Tick(object sender, EventArgs e)
         {
-            if (ScrlDown || ScrlUp) Invalidate();
+            
         }
         
-        private bool ScrlDown = false, ScrlUp = false;
-        private int ScrlIterator;
-        private int ScrlToX, ScrlToY;
-
+        private int scrlToX, scrlToY;
+        bool scrlDown = false, scrlUp = false;
         private int PixelsDelta;
-
         private List<int> ScrlList = new List<int> () {};
 
         private void From1_MouseWheel(object sender, MouseEventArgs e)
         {
-            if (!ScrlDown && !ScrlUp) {
-                ScrlToX = e.X; ScrlToY = e.Y;
-                
-                if (e.Delta < 0 && SpritesSize > 8)
-                {
-                    ScrlIterator = ScrlList.Count() - 1;
-                    ScrlDown = true;
-                }
-                else if (e.Delta > 0 && SpritesSize < 119)
-                {
-                    ScrlUp = true;
-                    ScrlIterator = 0;
-                }
+
+            scrlToX = e.X;
+            scrlToY = e.Y;
+
+            if (e.Delta < 0 && spritesSize > 8)
+            {
+                scrlDown = true;
+
+            }
+            else if (e.Delta > 0 && spritesSize < 119)
+            {
+                scrlUp = true;
+
             }
             Invalidate();
         }
@@ -107,42 +99,35 @@ namespace game
         {
             if (dragStarted)
             {   
-                //if  (DragDeltaCoord.X <= 0 & (DragDeltaCoord.X >= this.Width - Map.GetMapSize() * Sprites.size * Chunk.ChunkSize) )
-                DragDeltaCoord.X -= (DragStartCoord.X - e.X);
+                //if  (dragDeltaCoord.X <= 0 & (dragDeltaCoord.X >= this.Width - Map.GetMapSize() * Sprites.size * Chunk.ChunkSize) )
+                dragDeltaCoord.X -= (dragStartCoord.X - e.X);
             
-                //if (DragDeltaCoord.Y <= -1 && DragDeltaCoord.Y <= Map.GetMapSize() * Sprites.size * Chunk.ChunkSize)
-                DragDeltaCoord.Y -= (DragStartCoord.Y - e.Y);
+                //if (dragDeltaCoord.Y <= -1 && dragDeltaCoord.Y <= Map.GetMapSize() * Sprites.size * Chunk.ChunkSize)
+                dragDeltaCoord.Y -= (dragStartCoord.Y - e.Y);
                     
-                DragStartCoord.Y = e.Y;
-                DragStartCoord.X = e.X;
+                dragStartCoord.Y = e.Y;
+                dragStartCoord.X = e.X;
                 Invalidate();
             }
 
-            Graphics DrawMouse = this.CreateGraphics();
+            //Graphics DrawMouse = this.CreateGraphics();
             //DrawMouse.FillRectangle(new SolidBrush(Color.Black), e.X, e.Y + 20, 80, 25);
             //DrawMouse.DrawString((e.X).ToString() + " " + (e.Y).ToString(), new Font("Arial", 12, FontStyle.Bold, GraphicsUnit.Point), Brushes.Red, e.X, e.Y + 20);
 
-            int i = sprites.GetSpritesSize();
+            var blockSize = sprites.GetSpritesSize();
 
-            if(e.X / i != lastX/i || e.Y / i != lastY / i)
-            {
-                lastY = e.Y; lastX = e.X;
-                mouse_X = lastX - lastX % i;
-                mouse_Y = lastY - lastY % i;
-                Invalidate();
-            }
-            
-        }
+            var currentXBlock = (e.X - dragDeltaCoord.X % blockSize) / blockSize;
+            var currentYBlock = (e.Y - dragDeltaCoord.Y % blockSize) / blockSize;
 
-        private void Form1_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Right)
+            if (currentXBlock != lastX || currentYBlock != lastY)
             {
-                buildingClass.Add_build(new Point(mouse_X, mouse_Y), buttons, DragDeltaCoord);
+                lastY = currentYBlock; lastX = currentXBlock;
+                mouseX = currentXBlock * blockSize;
+                mouseY = currentYBlock * blockSize;
                 Invalidate();
             }
         }
-
+        
         private void but_MouseMove(object sender, MouseEventArgs e)
         {
             Button but = sender as Button;
@@ -156,6 +141,11 @@ namespace game
         {
             if (e.Button == MouseButtons.Left)
             dragStarted = false;
+            else if (e.Button == MouseButtons.Right)
+            {
+                buildingClass.Add_build(new Point(mouseX, mouseY), buttons, dragDeltaCoord);
+                Invalidate();
+            }
         }
 
         private void Form1_MouseDown(object sender, MouseEventArgs e)
@@ -163,8 +153,8 @@ namespace game
             if (e.Button == MouseButtons.Left)
             {
                 dragStarted = true;
-                DragStartCoord.X = e.X;
-                DragStartCoord.Y = e.Y;
+                dragStartCoord.X = e.X;
+                dragStartCoord.Y = e.Y;
             }
         }
 
@@ -190,47 +180,47 @@ namespace game
             Invalidate();
         }
 
-        private void SmoothZoom()
+        private void Zoom()
         {
-            int SizeChange = ScrlList[ScrlIterator];
-            SpritesSize = sprites.GetSpritesSize();
+            const int sizeChange = 14;
+            spritesSize = sprites.GetSpritesSize();
 
-            if (ScrlDown && ScrlIterator != 0)
+            if (scrlDown)
             {
-                DragDeltaCoord.X = ((DragDeltaCoord.X - ScrlToX) / SpritesSize) * (SpritesSize - SizeChange) + ScrlToX;
-                DragDeltaCoord.Y = ((DragDeltaCoord.Y - ScrlToY) / SpritesSize) * (SpritesSize - SizeChange) + ScrlToY;
-                ScrlIterator--;
-                sprites.DecrizeSize(SizeChange);
+                dragDeltaCoord.X = ((dragDeltaCoord.X - scrlToX) / spritesSize) * (spritesSize - sizeChange) + scrlToX;
+                dragDeltaCoord.Y = ((dragDeltaCoord.Y - scrlToY) / spritesSize) * (spritesSize - sizeChange) + scrlToY;
+                sprites.DecrizeSize(sizeChange);
+                scrlDown = false;
             }
 
-            else if (ScrlUp && ScrlIterator != ScrlList.Count() - 1)
+            else if (scrlUp)
             {
-                DragDeltaCoord.X = ((DragDeltaCoord.X - ScrlToX) / SpritesSize) * (SpritesSize + SizeChange) + ScrlToX;
-                DragDeltaCoord.Y = ((DragDeltaCoord.Y - ScrlToY) / SpritesSize) * (SpritesSize + SizeChange) + ScrlToY;
-                sprites.IncrizeSize(SizeChange);
-                ScrlIterator++;
+                dragDeltaCoord.X = ((dragDeltaCoord.X - scrlToX) / spritesSize) * (spritesSize + sizeChange) + scrlToX;
+                dragDeltaCoord.Y = ((dragDeltaCoord.Y - scrlToY) / spritesSize) * (spritesSize + sizeChange) + scrlToY;
+                sprites.IncrizeSize(sizeChange);
+                scrlUp = false;
             }
-            else if (ScrlUp) ScrlUp = false;
-            else if (ScrlDown) ScrlDown = false;
+            //else if (scrlUp) scrlUp = false;
+            //else if (scrlDown) scrlDown = false;
         }
 
         private void paint_vis(object sender, PaintEventArgs e)
         {
            
-            if (ScrlDown || ScrlUp)
+            if (scrlDown || scrlUp)
             {
-                SmoothZoom();
+                Zoom();
             }
             Font f = new Font("Arial", 12, FontStyle.Bold, GraphicsUnit.Point);
             
 
-            Map.draw_map(e, DragDeltaCoord);
-            e.Graphics.DrawString("SpritesSize: " + sprites.GetSpritesSize().ToString() + "\n Sprites max/min sizes: " + sprites.GetSpritesMaxSize().ToString() + " ," + sprites.GetSpritesMinSize().ToString(), f, new SolidBrush(Color.Red), 200, 200);
-            Building a = new Building(mouse_X, mouse_Y);
+            Map.draw_map(e, dragDeltaCoord);
+            e.Graphics.DrawString("spritesSize: " + sprites.GetSpritesSize().ToString() + "\n Sprites max/min sizes: " + sprites.GetSpritesMaxSize().ToString() + " ," + sprites.GetSpritesMinSize().ToString(), f, new SolidBrush(Color.Red), 200, 200);
+            Building a = new Building(mouseX, mouseY);
 
-            a.Draw_building(e,buttons, DragDeltaCoord);
+            a.Draw_building(e,buttons, dragDeltaCoord);
 
-            buildingClass.Grah_build(e, DragDeltaCoord);
+            buildingClass.Grah_build(e, dragDeltaCoord);
         }
     }
 }
