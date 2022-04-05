@@ -5,24 +5,22 @@ namespace game.Классы_визуала
 {
     internal class Sand : Sprites
     {
-        static SolidBrush first_yellow_brush = new SolidBrush(Color.FromArgb(255, 210, 203, 149));
-        static SolidBrush second_yellow_brush = new SolidBrush(Color.FromArgb(255, 175, 168, 114));
-        static SolidBrush third_yellow_brush = new SolidBrush(Color.FromArgb(255, 220, 207, 164));
-        static SolidBrush fourth_yellow_brush = new SolidBrush(Color.FromArgb(255, 254, 254, 211));
+        private static readonly SolidBrush FirstYellowBrush = new SolidBrush(Color.FromArgb(255, 210, 203, 149));
+        private static readonly SolidBrush SecondYellowBrush = new SolidBrush(Color.FromArgb(255, 175, 168, 114));
+        private static readonly SolidBrush ThirdYellowBrush = new SolidBrush(Color.FromArgb(255, 220, 207, 164));
+        private static readonly SolidBrush FourthYellowBrush = new SolidBrush(Color.FromArgb(255, 254, 254, 211));
 
-        static public List<SolidBrush> yellow_brush_list = new List<SolidBrush>() { first_yellow_brush, second_yellow_brush, third_yellow_brush, fourth_yellow_brush };
-        List<SolidBrush> part_color = new List<SolidBrush>();
+        public static List<SolidBrush> YellowBrushList = new List<SolidBrush>() { FirstYellowBrush, SecondYellowBrush, ThirdYellowBrush, FourthYellowBrush };
+        private readonly List<SolidBrush> _partColor;
         
-        public Sand(int in_x, int in_y)
+        public Sand(int inX, int inY)
         {
-            part_color = Sprites.Generate_texture(yellow_brush_list);
-            this.x = in_x; this.y = in_y;
+            _partColor = Sprites.Generate_texture(YellowBrushList);
+            this.X = inX; this.Y = inY;
         }
         public void Draw_block(Graphics g)
         {
-
-            Sprites.Draw_sprite(x, y, part_color, g);
-
+            Sprites.Draw_sprite(X, Y, _partColor, g);
         }
     }
 }

@@ -6,33 +6,33 @@ namespace game.Классы_визуала
 {
     public class Sprites
     {
-        private static Random rand = new Random();
-        private static int Size = 28; // Значение должно быть кратно корню из pixel_count.
-        static private int MaxSpriteSize;
-        static private int MinSpriteSize;
+        private static readonly Random Rand = new Random();
+        private static int _size = 28; // Значение должно быть кратно корню из pixel_count.
+        private static int _maxSpriteSize;
+        private static int _minSpriteSize;
 
-        protected int x, y;
-        static private int PixelCount = 49; // Значение должно быть равно некоторому числу в квадрате.
-        static private int PixelSize = Convert.ToInt32(Math.Sqrt(PixelCount));
+        protected int X, Y;
+        private static readonly int PixelCount = 49; // Значение должно быть равно некоторому числу в квадрате.
+        private static readonly int PixelSize = Convert.ToInt32(Math.Sqrt(PixelCount));
 
-        public void SetSpritesMinSize(int MinSize)
+        public void SetSpritesMinSize(int minSize)
         {
-            MinSpriteSize = MinSize;
+            _minSpriteSize = minSize;
         }
 
         public int GetSpritesMinSize()
         {
-            return MinSpriteSize;
+            return _minSpriteSize;
         }
 
-        public void SetSpritesMaxSize(int MaxSize)
+        public void SetSpritesMaxSize(int maxSize)
         {
-            MaxSpriteSize = MaxSize;
+            _maxSpriteSize = maxSize;
         }
 
         public int GetSpritesMaxSize()
         {
-            return MaxSpriteSize;
+            return _maxSpriteSize;
         }
 
 
@@ -43,51 +43,50 @@ namespace game.Классы_визуала
 
         public int GetSpritesSize()
         {
-            return Size;
+            return _size;
         }
 
-        public void IncrizeSize(int Value)
+        public void IncreaseSize(int value)
         {
-            if (Size + Value <= MaxSpriteSize)
+            if (_size + value <= _maxSpriteSize)
             {
-                Size += Value;
+                _size += value;
             }
         }
 
-        public void DecrizeSize(int Value)
+        public void DecreaseSize(int value)
         {
-            if (Size - Value >= MinSpriteSize)
+            if (_size - value >= _minSpriteSize)
             {
-                Size -= Value;
+                _size -= value;
             }
         }
 
-        public Point GetCoord()
+        public Point GetCoordinates()
         {
-            return new Point(x, y);
+            return new Point(X, Y);
         }
-        static protected void Draw_sprite(int x, int y, List<SolidBrush> texture, Graphics g) // Отрисовка
-        {
-            
 
-            for (int i = 0; i < PixelCount; i++)
+        protected static void Draw_sprite(int x, int y, List<SolidBrush> texture, Graphics g) // Отрисовка
+        {
+            for (var i = 0; i < PixelCount; i++)
             {
                 g.FillRectangle(texture[i],
-                    x * Sprites.Size + i / PixelSize * Sprites.Size / PixelSize,
-                    y * Sprites.Size + i % PixelSize * Sprites.Size / PixelSize,
-                    Sprites.Size / PixelSize,
-                    Sprites.Size / PixelSize);
+                    x * Sprites._size + i / PixelSize * Sprites._size / PixelSize,
+                    y * Sprites._size + i % PixelSize * Sprites._size / PixelSize,
+                    Sprites._size / PixelSize,
+                    Sprites._size / PixelSize);
             }
         }
 
-        static protected List<SolidBrush> Generate_texture(List<SolidBrush> brush_list)
+        protected static List<SolidBrush> Generate_texture(List<SolidBrush> brush_list)
         {
-            List<SolidBrush> texture = new List<SolidBrush>();
-            int n = brush_list.Count - 1;
+            var texture = new List<SolidBrush>();
+            var n = brush_list.Count - 1;
 
-            for (int i = 0; i < PixelCount; i++)
+            for (var i = 0; i < PixelCount; i++)
             {
-                texture.Add(brush_list[rand.Next(0, n)]);
+                texture.Add(brush_list[Rand.Next(0, n)]);
             }
             return texture;
         }

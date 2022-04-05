@@ -8,27 +8,27 @@ namespace game.Классы_визуала
     internal class Chunk
     {
         // Создаёт пустое изображение
-        Bitmap chunk_image = new Bitmap(ImageXSize, ImageYSize);
+        private readonly Bitmap _chunkImage = new Bitmap(ImageXSize, ImageYSize);
 
         // Списки под объекты
-        List<Grass> grass_list = new List<Grass>();
-        List<Sand> sand_list = new List<Sand>();
-        List<Water> water_list = new List<Water>();
-        List<Ore> ore_list = new List<Ore>();
+        private readonly List<Grass> _grassList = new List<Grass>();
+        private readonly List<Sand> _sandList = new List<Sand>();
+        private readonly List<Water> _waterList = new List<Water>();
+        private readonly List<Ore> _oreList = new List<Ore>();
 
         
 
         // Задаёт размер чанка в блоках
-        private static int ChunkSize = 16;
+        private const int ChunkSize = 16;
 
         // Задаёт размер изображения чанка
-        static private int SpritesSize = new Sprites().GetSpritesSize();
+        private static readonly int SpritesSize = new Sprites().GetSpritesSize();
 
-        static private int ImageXSize = SpritesSize * ChunkSize; 
-        static private int ImageYSize = SpritesSize * ChunkSize;
+        private static readonly int ImageXSize = SpritesSize * ChunkSize; 
+        private static readonly int ImageYSize = SpritesSize * ChunkSize;
 
         // Генератор случайных чисел для генерации блоков в чанке
-        static Random rand = new Random(); 
+        private static readonly Random Rand = new Random(); 
 
 
         public Chunk()
@@ -37,24 +37,22 @@ namespace game.Классы_визуала
         }
 
         // Генератор чанка
-        Bitmap GenerateChunk()  
+        private Bitmap GenerateChunk()  
         {
             // Присваивает графику для рисования на изображении, присовенном данному чанку
-            Graphics g = Graphics.FromImage(chunk_image);
+            Graphics g = Graphics.FromImage(_chunkImage);
 
             // Случайное число, для создания случайного блока в чанке
-            int rand_num;
-            int OverallChances;
-            int OreChance = 6, WaterChance = 2, SandChance = 4;
+            const int oreChance = 6, waterChance = 2, sandChance = 4;
 
             // Циклы генерации блоков рамерностью ChunkSize на ChunkSize
-            for (int coordinate_y = 0; coordinate_y < ChunkSize; coordinate_y++)
+            for (var coordinateY = 0; coordinateY < ChunkSize; coordinateY++)
             { 
-                for (int  coordinate_x = 0;  coordinate_x < ChunkSize;  coordinate_x++)
+                for (var  coordinateX = 0;  coordinateX < ChunkSize;  coordinateX++)
                 {
-                    OverallChances = 0;
+                    var overallChances = 0;
                     // Выбор слуачйного числа из генератора
-                    rand_num = rand.Next(0, 100);
+                    var randNum = Rand.Next(0, 100);
 
                     // Определение блока исходя из сгенерированного числа
                     // Руда - 6%
@@ -62,10 +60,10 @@ namespace game.Классы_визуала
                     // Песок - 4%
                     // Земля - 88%
                     
-                    if (rand_num <= OreChance)
+                    if (randNum <= oreChance)
                     {
                         // Создание объекта типа руда с координатами x и y в чанке
-                        Ore block = new Ore(coordinate_x, coordinate_y);
+                        Ore block = new Ore(coordinateX, coordinateY);
 
                         //Отрисовка этого блока в ранее созданной картинке
                         block.Draw_block(g);
@@ -76,27 +74,27 @@ namespace game.Классы_визуала
                     } 
                     else 
                     {
-                        OverallChances += OreChance;
+                        overallChances += oreChance;
 
-                        if (rand_num <= OverallChances + WaterChance)
+                        if (randNum <= overallChances + waterChance)
                         {
-                            Water block = new Water(coordinate_x, coordinate_y);
+                            Water block = new Water(coordinateX, coordinateY);
                             block.Draw_block(g);
                             this.Add(block);
                         }
                         else 
                         {
-                            OverallChances += WaterChance;
-                            if (rand_num <= OverallChances + SandChance)
+                            overallChances += waterChance;
+                            if (randNum <= overallChances + sandChance)
                             { 
-                            Sand block = new Sand(coordinate_x, coordinate_y);
+                            Sand block = new Sand(coordinateX, coordinateY);
                             block.Draw_block(g);
                             this.Add(block);
                             }
                             else
                             {
 
-                                Grass block = new Grass(coordinate_x, coordinate_y);
+                                Grass block = new Grass(coordinateX, coordinateY);
                                 block.Draw_block(g);
                                 this.Add(block);
                             }
@@ -104,12 +102,12 @@ namespace game.Классы_визуала
                     }
                 }
             }
-            return chunk_image;
+            return _chunkImage;
         }
 
         public Bitmap GetImage()
         {
-            return chunk_image;
+            return _chunkImage;
         }
 
         public static int GetChunkSize()
@@ -117,24 +115,24 @@ namespace game.Классы_визуала
             return ChunkSize;
         }
 
-        void Add(Water obj)
+        private void Add(Water obj)
         {
-            water_list.Add(obj);
+            _waterList.Add(obj);
         }
 
-        void Add(Sand obj)
+        private void Add(Sand obj)
         {
-            sand_list.Add(obj);
+            _sandList.Add(obj);
         }
 
-        void Add(Grass obj)
+        private void Add(Grass obj)
         {
-            grass_list.Add(obj);
+            _grassList.Add(obj);
         }
 
-        void Add(Ore obj)
+        private void Add(Ore obj)
         {
-            ore_list.Add(obj);
+            _oreList.Add(obj);
         }
 
     }

@@ -9,9 +9,9 @@ namespace game.Классы_визуала
         // Класс карта. Хранит в себе все объекты на карте, а так же отвечает за их отрисовку
 
         // Список чанков
-        static List<Chunk> chunks = new List<Chunk>();
+        private static List<Chunk> chunks = new List<Chunk>();
 
-        static int mapSize = 8;
+        private static int mapSize = 12;
 
         public static void GenerateMap()
         {

@@ -5,22 +5,22 @@ namespace game.Классы_визуала
 {
     internal class Water : Sprites
     {
-        static SolidBrush first_blue_brush = new SolidBrush(Color.FromArgb(255, 20, 20, 180));
-        static SolidBrush second_blue_brush = new SolidBrush(Color.FromArgb(255, 30, 30, 180));
-        static SolidBrush third_blue_brush = new SolidBrush(Color.FromArgb(255, 25, 25, 180));
+        private static readonly SolidBrush FirstBlueBrush = new SolidBrush(Color.FromArgb(255, 20, 20, 180));
+        private static readonly SolidBrush SecondBlueBrush = new SolidBrush(Color.FromArgb(255, 30, 30, 180));
+        private static readonly SolidBrush ThirdBlueBrush = new SolidBrush(Color.FromArgb(255, 25, 25, 180));
 
-        static List<SolidBrush> blue_brush_list = new List<SolidBrush>() { first_blue_brush, second_blue_brush, third_blue_brush };
-        private readonly List<SolidBrush> part_color;
+        static readonly List<SolidBrush> BlueBrushList = new List<SolidBrush>() { FirstBlueBrush, SecondBlueBrush, ThirdBlueBrush };
+        private readonly List<SolidBrush> _partColor;
 
-        public Water(int in_x, int in_y)
+        public Water(int inX, int inY)
         {
 
-            part_color = Sprites.Generate_texture(blue_brush_list);
-            this.x = in_x; this.y = in_y;
+            _partColor = Sprites.Generate_texture(BlueBrushList);
+            this.X = inX; this.Y = inY;
         }
         public void Draw_block(Graphics g)
         {
-            Sprites.Draw_sprite(x, y, part_color, g);
+            Sprites.Draw_sprite(X, Y, _partColor, g);
 
         }
     }

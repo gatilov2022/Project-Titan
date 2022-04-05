@@ -5,26 +5,24 @@ namespace game.Классы_визуала
 {
     internal class Ore : Sprites
     {
+        private static readonly SolidBrush FirstOreBrush = new SolidBrush(Color.FromArgb(255, 128, 128, 128));
+        private static readonly SolidBrush SecondOreBrush = new SolidBrush(Color.FromArgb(255, 189, 154, 129));
+        private static readonly SolidBrush ThirdOreBrush = new SolidBrush(Color.FromArgb(255, 128, 128, 128));
+        private static readonly SolidBrush FourthOreBrush = new SolidBrush(Color.FromArgb(255, 116, 116, 128));
+        private static readonly SolidBrush FifthOreBrush = new SolidBrush(Color.FromArgb(255, 142, 142, 128));
 
-        static readonly SolidBrush first_ore_brush = new SolidBrush(Color.FromArgb(255, 128, 128, 128));
-        static readonly SolidBrush second_ore_brush = new SolidBrush(Color.FromArgb(255, 189, 154, 129));
-        static readonly SolidBrush third_ore_brush = new SolidBrush(Color.FromArgb(255, 128, 128, 128));
-        static readonly SolidBrush fourth_ore_brush = new SolidBrush(Color.FromArgb(255, 116, 116, 128));
-        static readonly SolidBrush fifth_ore_brush = new SolidBrush(Color.FromArgb(255, 142, 142, 128));
+        public static List<SolidBrush> OreBrushList = new List<SolidBrush>() { FirstOreBrush, SecondOreBrush, ThirdOreBrush, FourthOreBrush, FifthOreBrush };
+        private readonly List<SolidBrush> _partColor;
 
-        static public List<SolidBrush> ore_brush_list = new List<SolidBrush>() { first_ore_brush, second_ore_brush, third_ore_brush, fourth_ore_brush, fifth_ore_brush };
-        readonly List<SolidBrush> part_color = new List<SolidBrush>();
-
-        public Ore(int in_x, int in_y)
+        public Ore(int inX, int inY)
         {
-            part_color = Sprites.Generate_texture(ore_brush_list);
-
-            this.x = in_x; this.y = in_y;
+            _partColor = Sprites.Generate_texture(OreBrushList);
+            this.X = inX; this.Y = inY;
         }
 
         public void Draw_block(Graphics g)
         {
-            Sprites.Draw_sprite(x, y, part_color, g);
+            Sprites.Draw_sprite(X, Y, _partColor, g);
         }
     }
 }

@@ -12,17 +12,15 @@ namespace game
         private int mouseX, mouseY,
             lastX = 0, lastY =0;
 
-        private Button[] buttons;
-        private Sprites sprites = new Sprites();
-        private Point dragStartCoord, dragDeltaCoord = new Point(0,0);
+        private readonly Button[] _buttons;
+        private readonly Sprites _sprites = new Sprites();
+        private Point _dragStartCoordinates, _dragDeltaCoordinates = new Point(0,0);
 
-        private int MaxMultipler = 10, MinMultipler = 4;
-
+        private const double MaxMultiplier = 4;
+        private const double MinMultiplier = 0.5;
         private int spritesSize;
-
         private bool dragStarted = false;
-
-        Map_Build buildingClass;
+        private readonly Map_Build _buildingClass;
 
         public Form1()
         {
@@ -30,24 +28,24 @@ namespace game
             InitializeComponent();
             timer1.Start();
             timer1.Tick += Timer1_Tick;
-            buttons = new Button[] {factory_but ,pump_but ,drill_but ,base_but ,wareh_but ,house_but ,steam_but};
+            _buttons = new Button[] {factory_but ,pump_but ,drill_but ,base_but ,wareh_but ,house_but ,steam_but};
 
-            spritesSize = sprites.GetSpritesSize();
+            spritesSize = _sprites.GetSpritesSize();
 
-            buildingClass = new Map_Build();
+            _buildingClass = new Map_Build();
             this.MouseWheel += new MouseEventHandler(From1_MouseWheel);
 
             FillScrollList();
-
-            sprites.SetSpritesMinSize(Convert.ToInt32(Math.Sqrt(sprites.GetPixelCount())) * MinMultipler);
-            sprites.SetSpritesMaxSize(Convert.ToInt32(Math.Sqrt(sprites.GetPixelCount())) * MaxMultipler);
+            
+            _sprites.SetSpritesMinSize((int)(Convert.ToInt32(Math.Sqrt(_sprites.GetPixelCount())) * MinMultiplier * 2));
+            _sprites.SetSpritesMaxSize((int)(Convert.ToInt32(Math.Sqrt(_sprites.GetPixelCount())) * MaxMultiplier * 2));
 
             Map.GenerateMap();    
         }
 
         private void FillScrollList()
         {
-            PixelsDelta = Convert.ToInt32(Math.Sqrt(sprites.GetPixelCount())) * 2;
+            PixelsDelta = Convert.ToInt32(Math.Sqrt(_sprites.GetPixelCount())) * 2;
             int i = 1;
             while (PixelsDelta > 0)
             {
@@ -81,13 +79,15 @@ namespace game
 
             scrlToX = e.X;
             scrlToY = e.Y;
+            spritesSize = _sprites.GetSpritesSize();
+            //int min = sprites.GetSpritesMaxSize(), max = sprites.GetSpritesMinSize();
 
-            if (e.Delta < 0 && spritesSize > 8)
+            if (e.Delta < 0 && spritesSize - 14 >= _sprites.GetSpritesMinSize())
             {
                 scrlDown = true;
 
             }
-            else if (e.Delta > 0 && spritesSize < 119)
+            else if (e.Delta > 0 && spritesSize + 14 <= _sprites.GetSpritesMaxSize())
             {
                 scrlUp = true;
 
@@ -98,15 +98,19 @@ namespace game
         private void Form1_MouseMove(object sender, MouseEventArgs e)
         {
             if (dragStarted)
-            {   
-                //if  (dragDeltaCoord.X <= 0 & (dragDeltaCoord.X >= this.Width - Map.GetMapSize() * Sprites.size * Chunk.ChunkSize) )
-                dragDeltaCoord.X -= (dragStartCoord.X - e.X);
-            
-                //if (dragDeltaCoord.Y <= -1 && dragDeltaCoord.Y <= Map.GetMapSize() * Sprites.size * Chunk.ChunkSize)
-                dragDeltaCoord.Y -= (dragStartCoord.Y - e.Y);
-                    
-                dragStartCoord.Y = e.Y;
-                dragStartCoord.X = e.X;
+            {
+                var xDelta = _dragStartCoordinates.X - e.X;
+                var yDelta = _dragStartCoordinates.Y - e.Y;
+                if (-_dragDeltaCoordinates.X + xDelta >= 1 && -_dragDeltaCoordinates.X + xDelta + Form1.ActiveForm.Width <= Map.GetMapSize() * Chunk.GetChunkSize() * spritesSize - 1)
+                {
+                    _dragDeltaCoordinates.X -= (_dragStartCoordinates.X - e.X);
+                    _dragStartCoordinates.X = e.X;
+                }
+                if (-_dragDeltaCoordinates.Y + yDelta >= 1 && -_dragDeltaCoordinates.Y + yDelta + Form1.ActiveForm.Height <= Map.GetMapSize() * Chunk.GetChunkSize() * spritesSize - 1) 
+                {
+                    _dragDeltaCoordinates.Y -= (_dragStartCoordinates.Y - e.Y);
+                    _dragStartCoordinates.Y = e.Y;
+                }
                 Invalidate();
             }
 
@@ -114,10 +118,10 @@ namespace game
             //DrawMouse.FillRectangle(new SolidBrush(Color.Black), e.X, e.Y + 20, 80, 25);
             //DrawMouse.DrawString((e.X).ToString() + " " + (e.Y).ToString(), new Font("Arial", 12, FontStyle.Bold, GraphicsUnit.Point), Brushes.Red, e.X, e.Y + 20);
 
-            var blockSize = sprites.GetSpritesSize();
+            var blockSize = _sprites.GetSpritesSize();
 
-            var currentXBlock = (e.X - dragDeltaCoord.X % blockSize) / blockSize;
-            var currentYBlock = (e.Y - dragDeltaCoord.Y % blockSize) / blockSize;
+            var currentXBlock = (e.X - _dragDeltaCoordinates.X % blockSize) / blockSize;
+            var currentYBlock = (e.Y - _dragDeltaCoordinates.Y % blockSize) / blockSize;
 
             if (currentXBlock != lastX || currentYBlock != lastY)
             {
@@ -139,12 +143,15 @@ namespace game
 
         private void Form1_MouseUp(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
-            dragStarted = false;
-            else if (e.Button == MouseButtons.Right)
+            switch (e.Button)
             {
-                buildingClass.Add_build(new Point(mouseX, mouseY), buttons, dragDeltaCoord);
-                Invalidate();
+                case MouseButtons.Left:
+                    dragStarted = false;
+                    break;
+                case MouseButtons.Right:
+                    _buildingClass.Add_build(new Point(mouseX, mouseY), _buttons, _dragDeltaCoordinates);
+                    Invalidate();
+                    break;
             }
         }
 
@@ -153,8 +160,8 @@ namespace game
             if (e.Button == MouseButtons.Left)
             {
                 dragStarted = true;
-                dragStartCoord.X = e.X;
-                dragStartCoord.Y = e.Y;
+                _dragStartCoordinates.X = e.X;
+                _dragStartCoordinates.Y = e.Y;
             }
         }
 
@@ -173,7 +180,7 @@ namespace game
             Button but = sender as Button;
             if (but.FlatAppearance.BorderColor != Color.Blue)
             {
-                foreach (Button b in buttons) { b.FlatAppearance.BorderColor = Color.Red; }
+                foreach (Button b in _buttons) { b.FlatAppearance.BorderColor = Color.Red; }
                 but.FlatAppearance.BorderColor = Color.Blue;
             }
             else but.FlatAppearance.BorderColor = Color.Yellow;
@@ -183,21 +190,21 @@ namespace game
         private void Zoom()
         {
             const int sizeChange = 14;
-            spritesSize = sprites.GetSpritesSize();
+            spritesSize = _sprites.GetSpritesSize();
 
             if (scrlDown)
             {
-                dragDeltaCoord.X = ((dragDeltaCoord.X - scrlToX) / spritesSize) * (spritesSize - sizeChange) + scrlToX;
-                dragDeltaCoord.Y = ((dragDeltaCoord.Y - scrlToY) / spritesSize) * (spritesSize - sizeChange) + scrlToY;
-                sprites.DecrizeSize(sizeChange);
+                _dragDeltaCoordinates.X = ((_dragDeltaCoordinates.X - scrlToX) / spritesSize) * (spritesSize - sizeChange) + scrlToX;
+                _dragDeltaCoordinates.Y = ((_dragDeltaCoordinates.Y - scrlToY) / spritesSize) * (spritesSize - sizeChange) + scrlToY;
+                _sprites.DecreaseSize(sizeChange);
                 scrlDown = false;
             }
 
             else if (scrlUp)
             {
-                dragDeltaCoord.X = ((dragDeltaCoord.X - scrlToX) / spritesSize) * (spritesSize + sizeChange) + scrlToX;
-                dragDeltaCoord.Y = ((dragDeltaCoord.Y - scrlToY) / spritesSize) * (spritesSize + sizeChange) + scrlToY;
-                sprites.IncrizeSize(sizeChange);
+                _dragDeltaCoordinates.X = ((_dragDeltaCoordinates.X - scrlToX) / spritesSize) * (spritesSize + sizeChange) + scrlToX;
+                _dragDeltaCoordinates.Y = ((_dragDeltaCoordinates.Y - scrlToY) / spritesSize) * (spritesSize + sizeChange) + scrlToY;
+                _sprites.IncreaseSize(sizeChange);
                 scrlUp = false;
             }
             //else if (scrlUp) scrlUp = false;
@@ -214,13 +221,13 @@ namespace game
             Font f = new Font("Arial", 12, FontStyle.Bold, GraphicsUnit.Point);
             
 
-            Map.draw_map(e, dragDeltaCoord);
-            e.Graphics.DrawString("spritesSize: " + sprites.GetSpritesSize().ToString() + "\n Sprites max/min sizes: " + sprites.GetSpritesMaxSize().ToString() + " ," + sprites.GetSpritesMinSize().ToString(), f, new SolidBrush(Color.Red), 200, 200);
+            Map.draw_map(e, _dragDeltaCoordinates);
+            e.Graphics.DrawString("spritesSize: " + _sprites.GetSpritesSize() + "\n Sprites max/min sizes: " + _sprites.GetSpritesMaxSize() + " ," + _sprites.GetSpritesMinSize(), f, new SolidBrush(Color.Red), 200, 200);
             Building a = new Building(mouseX, mouseY);
 
-            a.Draw_building(e,buttons, dragDeltaCoord);
+            a.Draw_building(e,_buttons, _dragDeltaCoordinates);
 
-            buildingClass.Grah_build(e, dragDeltaCoord);
+            _buildingClass.Grah_build(e, _dragDeltaCoordinates);
         }
     }
 }

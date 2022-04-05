@@ -5,22 +5,19 @@ namespace game.Классы_визуала
 {
     internal class Grass : Sprites
     {
+        private static readonly List<SolidBrush> GreenBrushList = new List<SolidBrush>() { new SolidBrush(Color.ForestGreen), new SolidBrush(Color.Green), new SolidBrush(Color.DarkGreen), new SolidBrush(Color.DarkOliveGreen) };
 
-        static public List<SolidBrush> green_brush_list = new List<SolidBrush>() { new SolidBrush(Color.ForestGreen), new SolidBrush(Color.Green), new SolidBrush(Color.DarkGreen), new SolidBrush(Color.DarkOliveGreen) };
+        private readonly List<SolidBrush> _partColor;
 
-        readonly List<SolidBrush> part_color = new List<SolidBrush>();
-
-        public Grass(int in_x, int in_y)
+        public Grass(int inX, int inY)
         {
-            part_color = Sprites.Generate_texture(green_brush_list);
-            this.x = in_x; this.y = in_y;
+            _partColor = Sprites.Generate_texture(GreenBrushList);
+            this.X = inX; this.Y = inY;
         }
 
         public void Draw_block(Graphics g)
         {
-
-            Sprites.Draw_sprite(x, y, part_color, g);
-
+            Sprites.Draw_sprite(X, Y, _partColor, g);
         }
     }
 }
