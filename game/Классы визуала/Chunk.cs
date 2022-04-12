@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 
 namespace game.Классы_визуала
 {
@@ -11,10 +12,12 @@ namespace game.Классы_визуала
         private readonly Bitmap _chunkImage = new Bitmap(ImageXSize, ImageYSize);
 
         // Списки под объекты
-        private readonly List<Grass> _grassList = new List<Grass>();
-        private readonly List<Sand> _sandList = new List<Sand>();
-        private readonly List<Water> _waterList = new List<Water>();
-        private readonly List<Ore> _oreList = new List<Ore>();
+        private readonly Dictionary<string, List<object>> blocksInChunk = new Dictionary<string, List<object>>();
+
+        //private readonly List<Grass> _grassList = new List<Grass>();
+        //private readonly List<Sand> _sandList = new List<Sand>();
+        //private readonly List<Water> _waterList = new List<Water>();
+        //private readonly List<Ore> _oreList = new List<Ore>();
 
         
 
@@ -115,25 +118,30 @@ namespace game.Классы_визуала
             return ChunkSize;
         }
 
-        private void Add(Water obj)
+        private void Add(Object obj)
         {
-            _waterList.Add(obj);
+            if (!blocksInChunk.ContainsKey(obj.GetType().ToString()))
+                blocksInChunk.Add(obj.GetType().ToString(), new List<object>() {obj});
+            else
+            {
+                blocksInChunk[obj.GetType().ToString()].Add(obj);
+            }
         }
 
-        private void Add(Sand obj)
-        {
-            _sandList.Add(obj);
-        }
+        //private void Add(Sand obj)
+        //{
+        //    _sandList.Add(obj);
+        //}
 
-        private void Add(Grass obj)
-        {
-            _grassList.Add(obj);
-        }
+        //private void Add(Grass obj)
+        //{
+        //    _grassList.Add(obj);
+        //}
 
-        private void Add(Ore obj)
-        {
-            _oreList.Add(obj);
-        }
+        //private void Add(Ore obj)
+        //{
+        //    _oreList.Add(obj);
+        //}
 
     }
 }
