@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
 using game.World_map.Block;
 
 namespace game.World_map
@@ -14,13 +13,6 @@ namespace game.World_map
 
         // Списки под объекты
         private readonly Dictionary<string, List<object>> blocksInChunk = new Dictionary<string, List<object>>();
-
-        //private readonly List<Grass> _grassList = new List<Grass>();
-        //private readonly List<Sand> _sandList = new List<Sand>();
-        //private readonly List<Water> _waterList = new List<Water>();
-        //private readonly List<Ore> _oreList = new List<Ore>();
-
-        
 
         // Задаёт размер чанка в блоках
         private const int ChunkSize = 16;
@@ -44,7 +36,7 @@ namespace game.World_map
         private Bitmap GenerateChunk()  
         {
             // Присваивает графику для рисования на изображении, присовенном данному чанку
-            Graphics g = Graphics.FromImage(_chunkImage);
+            var g = Graphics.FromImage(_chunkImage);
 
             // Случайное число, для создания случайного блока в чанке
             const int oreChance = 6, waterChance = 2, sandChance = 4;
@@ -67,11 +59,10 @@ namespace game.World_map
                     if (randNum <= oreChance)
                     {
                         // Создание объекта типа руда с координатами x и y в чанке
-                        Ore block = new Ore(coordinateX, coordinateY);
+                        var block = new Ore(coordinateX, coordinateY);
 
                         //Отрисовка этого блока в ранее созданной картинке
                         block.Draw_block(g);
-                        
 
                         // Сохранение объекта
                         this.Add(block);
@@ -82,23 +73,23 @@ namespace game.World_map
 
                         if (randNum <= overallChances + waterChance)
                         {
-                            Water block = new Water(coordinateX, coordinateY);
+                            var block = new Water(coordinateX, coordinateY);
                             block.Draw_block(g);
                             this.Add(block);
                         }
                         else 
                         {
                             overallChances += waterChance;
+
                             if (randNum <= overallChances + sandChance)
-                            { 
-                            Sand block = new Sand(coordinateX, coordinateY);
-                            block.Draw_block(g);
-                            this.Add(block);
+                            {
+                                var block = new Sand(coordinateX, coordinateY);
+                                block.Draw_block(g);
+                                this.Add(block);
                             }
                             else
                             {
-
-                                Grass block = new Grass(coordinateX, coordinateY);
+                                var block = new Grass(coordinateX, coordinateY);
                                 block.Draw_block(g);
                                 this.Add(block);
                             }
@@ -124,25 +115,7 @@ namespace game.World_map
             if (!blocksInChunk.ContainsKey(obj.GetType().ToString()))
                 blocksInChunk.Add(obj.GetType().ToString(), new List<object>() {obj});
             else
-            {
                 blocksInChunk[obj.GetType().ToString()].Add(obj);
-            }
         }
-
-        //private void Add(Sand obj)
-        //{
-        //    _sandList.Add(obj);
-        //}
-
-        //private void Add(Grass obj)
-        //{
-        //    _grassList.Add(obj);
-        //}
-
-        //private void Add(Ore obj)
-        //{
-        //    _oreList.Add(obj);
-        //}
-
     }
 }

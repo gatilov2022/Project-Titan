@@ -19,10 +19,10 @@ namespace game.Player
         }
         public void Draw_building(PaintEventArgs e, Button[] buts, Point DragDelta)
         {
-            int SpritesSize = new Sprites().GetSpritesSize();
+            var SpritesSize = new Sprites().GetSpritesSize();
 
-            Graphics g = e.Graphics;
-            Rectangle rec = new Rectangle(DragDelta.X % SpritesSize + X, DragDelta.Y % SpritesSize + Y, SpritesSize + 1, SpritesSize + 1);
+            var g = e.Graphics;
+            var rec = new Rectangle(DragDelta.X % SpritesSize + X, DragDelta.Y % SpritesSize + Y, SpritesSize + 1, SpritesSize + 1);
 
             for (int m = 0; m < buts.Length; m++)
             {

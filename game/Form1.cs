@@ -9,7 +9,6 @@ namespace game
 {
     public partial class Form1 : Form
     {
-        private Random rand = new Random();
         private int mouseX, mouseY,
             lastX = 0, lastY =0;
 
@@ -25,7 +24,6 @@ namespace game
 
         public Form1()
         {
-            Graphics g = this.CreateGraphics();
             InitializeComponent();
             timer1.Start();
             timer1.Tick += Timer1_Tick;
@@ -84,15 +82,10 @@ namespace game
             //int min = sprites.GetSpritesMaxSize(), max = sprites.GetSpritesMinSize();
 
             if (e.Delta < 0 && spritesSize - 14 >= _sprites.GetSpritesMinSize())
-            {
                 scrlDown = true;
-
-            }
             else if (e.Delta > 0 && spritesSize + 14 <= _sprites.GetSpritesMaxSize())
-            {
                 scrlUp = true;
 
-            }
             Invalidate();
         }
 
@@ -135,7 +128,7 @@ namespace game
         
         private void but_MouseMove(object sender, MouseEventArgs e)
         {
-            Button but = sender as Button;
+            var but = sender as Button;
             if (but.FlatAppearance.BorderColor != Color.Blue)
             {
                 but.FlatAppearance.BorderColor = Color.Yellow;
@@ -168,7 +161,7 @@ namespace game
 
         private void but_MouseLeave(object sender, EventArgs e)
         {
-            Button but = sender as Button;
+            var but = sender as Button;
             if (but.FlatAppearance.BorderColor != Color.Blue)
             {
                 but.FlatAppearance.BorderColor = Color.Red;
@@ -178,7 +171,7 @@ namespace game
         private void but_MouseClick(object sender, EventArgs e)
         {
             //События для кнопок, при нажатии которых, рамка Flat будет синей(Blue). При повторном клике, рамка меняет цвет на жёлтый(Yellow).
-            Button but = sender as Button;
+            var but = sender as Button;
             if (but.FlatAppearance.BorderColor != Color.Blue)
             {
                 foreach (Button b in _buttons) { b.FlatAppearance.BorderColor = Color.Red; }
@@ -222,7 +215,7 @@ namespace game
             Font f = new Font("Arial", 12, FontStyle.Bold, GraphicsUnit.Point);
             
 
-            Map.draw_map(e, _dragDeltaCoordinates);
+            Map.Draw_map(e, _dragDeltaCoordinates);
             e.Graphics.DrawString("spritesSize: " + _sprites.GetSpritesSize() + "\n Sprites max/min sizes: " + _sprites.GetSpritesMaxSize() + " ," + _sprites.GetSpritesMinSize(), f, new SolidBrush(Color.Red), 200, 200);
             Building a = new Building(mouseX, mouseY);
 

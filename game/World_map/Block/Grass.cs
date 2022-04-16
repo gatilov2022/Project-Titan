@@ -5,7 +5,12 @@ namespace game.World_map.Block
 {
     internal class Grass : Sprites
     {
-        private static readonly List<SolidBrush> GreenBrushList = new List<SolidBrush>() { new SolidBrush(Color.ForestGreen), new SolidBrush(Color.Green), new SolidBrush(Color.DarkGreen), new SolidBrush(Color.DarkOliveGreen) };
+        private static readonly List<SolidBrush> GreenBrushList = new List<SolidBrush>() { 
+            new SolidBrush(Color.ForestGreen),
+            new SolidBrush(Color.Green),
+            new SolidBrush(Color.DarkGreen), 
+            new SolidBrush(Color.DarkOliveGreen) 
+        };
 
         private readonly List<SolidBrush> _partColor;
 

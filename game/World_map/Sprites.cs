@@ -49,17 +49,13 @@ namespace game.World_map
         public void IncreaseSize(int value)
         {
             if (_size + value <= _maxSpriteSize)
-            {
                 _size += value;
-            }
         }
 
         public void DecreaseSize(int value)
         {
             if (_size - value >= _minSpriteSize)
-            {
                 _size -= value;
-            }
         }
 
         public Point GetCoordinates()
@@ -70,13 +66,11 @@ namespace game.World_map
         protected static void Draw_sprite(int x, int y, List<SolidBrush> texture, Graphics g) // Отрисовка
         {
             for (var i = 0; i < PixelCount; i++)
-            {
                 g.FillRectangle(texture[i],
                     x * Sprites._size + i / PixelSize * Sprites._size / PixelSize,
                     y * Sprites._size + i % PixelSize * Sprites._size / PixelSize,
                     Sprites._size / PixelSize,
                     Sprites._size / PixelSize);
-            }
         }
 
         protected static List<SolidBrush> Generate_texture(List<SolidBrush> brush_list)
@@ -85,9 +79,8 @@ namespace game.World_map
             var n = brush_list.Count - 1;
 
             for (var i = 0; i < PixelCount; i++)
-            {
                 texture.Add(brush_list[Rand.Next(0, n)]);
-            }
+
             return texture;
         }
     }

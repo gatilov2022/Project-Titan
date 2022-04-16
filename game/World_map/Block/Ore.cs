@@ -5,13 +5,14 @@ namespace game.World_map.Block
 {
     internal class Ore : Sprites
     {
-        private static readonly SolidBrush FirstOreBrush = new SolidBrush(Color.FromArgb(255, 128, 128, 128));
-        private static readonly SolidBrush SecondOreBrush = new SolidBrush(Color.FromArgb(255, 189, 154, 129));
-        private static readonly SolidBrush ThirdOreBrush = new SolidBrush(Color.FromArgb(255, 128, 128, 128));
-        private static readonly SolidBrush FourthOreBrush = new SolidBrush(Color.FromArgb(255, 116, 116, 128));
-        private static readonly SolidBrush FifthOreBrush = new SolidBrush(Color.FromArgb(255, 142, 142, 128));
-
-        public static List<SolidBrush> OreBrushList = new List<SolidBrush>() { FirstOreBrush, SecondOreBrush, ThirdOreBrush, FourthOreBrush, FifthOreBrush };
+        public static List<SolidBrush> OreBrushList = new List<SolidBrush>() 
+        { 
+            new SolidBrush(Color.FromArgb(255, 128, 128, 128)),
+            new SolidBrush(Color.FromArgb(255, 189, 154, 129)),
+            new SolidBrush(Color.FromArgb(255, 128, 128, 128)),
+            new SolidBrush(Color.FromArgb(255, 116, 116, 128)),
+            new SolidBrush(Color.FromArgb(255, 142, 142, 128))
+        };
         private readonly List<SolidBrush> _partColor;
 
         public Ore(int inX, int inY)

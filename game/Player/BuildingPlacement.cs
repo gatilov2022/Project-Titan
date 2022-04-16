@@ -20,39 +20,27 @@ namespace game.Player
         public void Add_build(Point p, Button[] buts, Point Drag)
         {
             var blockSize = new Sprites().GetSpritesSize();
-            var chunkSize = Chunk.GetChunkSize();
 
 
             for (var m = 0; m < buts.Length; m++)
             {
                 if (buts[m].FlatAppearance.BorderColor != Color.Blue) continue;
-                //whatChunk.Add(new Point((p.X - Drag.X) / (size * Chunk.ChunkSize), (p.Y - Drag.Y) / (size * Chunk.ChunkSize)));
-                //whatBlock.Add(new Point((p.X - Drag.X) % (size * Chunk.ChunkSize) / size, (p.Y - Drag.Y) % (size * Chunk.ChunkSize) / size));
                 
                 onMapCoord.Add(new Point((p.X - Drag.X) / blockSize, (p.Y - Drag.Y) / blockSize));
-
                 tiles.Add(bitmaps[m]);
                 break;
             }
         }
-
-
-        //Font fontSample = new Font("Arial", 12);
-        //SolidBrush brushSample = new SolidBrush(Color.DarkBlue);
         public void Grah_build(PaintEventArgs e, Point Drag)
         {
             var blockSize = new Sprites().GetSpritesSize(); 
-            var chunkSize = Chunk.GetChunkSize();
-            var mapSize = Map.GetMapSize();
-
             var g = e.Graphics;
+
             for (var i = 0; i < tiles.Count; i++)
             {
                 int actualX = onMapCoord[i].X * blockSize + Drag.X, actualY = onMapCoord[i].Y * blockSize + Drag.Y;
-                Rectangle rec = new Rectangle(actualX, actualY, blockSize + 1, blockSize + 1);
+                var rec = new Rectangle(actualX, actualY, blockSize + 1, blockSize + 1);
                 g.DrawImage(tiles[i], rec);
-
-                //g.DrawString("X: " + xWithDrag + " Y: " + yWithDrag + "\n X: " + points[i].X + " Y: " + points[i].Y, fontSample, brushSample, xWithDrag + size, yWithDrag + size);
             }
         }
     }
