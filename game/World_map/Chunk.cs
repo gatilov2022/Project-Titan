@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using game.World_map.Block;
 
-namespace game.Классы_визуала
+namespace game.World_map
 {
     // Класс, хранящий в себе блоки. 
     internal class Chunk

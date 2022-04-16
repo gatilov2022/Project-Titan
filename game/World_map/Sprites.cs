@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 
-namespace game.Классы_визуала
+namespace game.World_map
 {
     public class Sprites
     {

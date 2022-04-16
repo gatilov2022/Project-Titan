@@ -1,15 +1,16 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
+using game.World_map;
 
-namespace game.Классы_визуала
+namespace game.Player
 {
     public class Building : Sprites
     {
         Bitmap[] bitmaps = new Bitmap[] {
-            global::game.Properties.Resources.Factory_1lvl, global::game.Properties.Resources.Pump_1lvl,
-            global::game.Properties.Resources.Drill_Burner_1lvl, global::game.Properties.Resources.Base,
-            global::game.Properties.Resources.Warehouse, global::game.Properties.Resources.Home_Defult,
-            global::game.Properties.Resources.Steam_Eng_1lvl
+            Properties.Resources.Factory_1lvl, Properties.Resources.Pump_1lvl,
+            Properties.Resources.Drill_Burner_1lvl, Properties.Resources.Base,
+            Properties.Resources.Warehouse, Properties.Resources.Home_Defult,
+            Properties.Resources.Steam_Eng_1lvl
         };
 
         public Building(int X, int Y)

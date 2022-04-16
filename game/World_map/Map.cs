@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using game.World_map.Block;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace game.Классы_визуала
+namespace game.World_map
 {
     internal class Map
     {

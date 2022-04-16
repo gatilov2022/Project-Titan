@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using game.Классы_визуала;
+using game.Player;
+using game.World_map;
 
 namespace game
 {

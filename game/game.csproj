@@ -55,16 +55,15 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Классы визуала\Building.cs" />
-    <Compile Include="Классы визуала\BuildingPlacement.cs" />
-    <Compile Include="Классы визуала\Grass.cs" />
-    <Compile Include="Классы визуала\Map.cs" />
-    <Compile Include="Классы визуала\Ore.cs" />
-    <Compile Include="Классы визуала\Sand.cs" />
-    <Compile Include="Классы визуала\Sprites.cs" />
-    <Compile Include="Классы визуала\Water.cs" />
-    <Compile Include="Классы генераторы\BlockGenerator.cs" />
-    <Compile Include="Классы визуала\Chunk.cs" />
+    <Compile Include="Player\Building.cs" />
+    <Compile Include="Player\BuildingPlacement.cs" />
+    <Compile Include="World_map\Block\Grass.cs" />
+    <Compile Include="World_map\Map.cs" />
+    <Compile Include="World_map\Block\Ore.cs" />
+    <Compile Include="World_map\Block\Sand.cs" />
+    <Compile Include="World_map\Sprites.cs" />
+    <Compile Include="World_map\Block\Water.cs" />
+    <Compile Include="World_map\Chunk.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
       <SubType>Designer</SubType>

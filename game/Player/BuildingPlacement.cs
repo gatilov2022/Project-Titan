@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using game.World_map;
 
-namespace game.Классы_визуала
+namespace game.Player
 {
     internal class Map_Build
     {
@@ -48,7 +49,7 @@ namespace game.Классы_визуала
             for (var i = 0; i < tiles.Count; i++)
             {
                 int actualX = onMapCoord[i].X * blockSize + Drag.X, actualY = onMapCoord[i].Y * blockSize + Drag.Y;
-                Rectangle rec = new Rectangle(actualX, actualY, blockSize, blockSize);
+                Rectangle rec = new Rectangle(actualX, actualY, blockSize + 1, blockSize + 1);
                 g.DrawImage(tiles[i], rec);
 
                 //g.DrawString("X: " + xWithDrag + " Y: " + yWithDrag + "\n X: " + points[i].X + " Y: " + points[i].Y, fontSample, brushSample, xWithDrag + size, yWithDrag + size);
