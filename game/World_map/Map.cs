@@ -36,8 +36,8 @@ namespace game.World_map
                 loc_x = i % mapSize * SpritesSize * Chunk.GetChunkSize();
                 loc_y = i / mapSize * SpritesSize * Chunk.GetChunkSize();
 
-                g.DrawImage(chunks[i].GetImage(), DragDelta.X + loc_x, DragDelta.Y + loc_y, SpritesSize * Chunk.GetChunkSize(), SpritesSize * Chunk.GetChunkSize());
-                g.DrawRectangle(new Pen(Color.Gray , 4), DragDelta.X + loc_x - 2 , DragDelta.Y + loc_y - 2, SpritesSize * Chunk.GetChunkSize() + 4, SpritesSize * Chunk.GetChunkSize() + 4);                
+                g.DrawImage(chunks[i].GetImage(), DragDelta.X + loc_x, DragDelta.Y + loc_y, SpritesSize * Chunk.GetChunkSize() + 1, SpritesSize * Chunk.GetChunkSize() + 1);
+                //g.DrawRectangle(new Pen(Color.Gray , 4), DragDelta.X + loc_x - 2 , DragDelta.Y + loc_y - 2, SpritesSize * Chunk.GetChunkSize() + 4, SpritesSize * Chunk.GetChunkSize() + 4);                
             }
         }
     }

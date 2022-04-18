@@ -28,7 +28,6 @@ namespace game.Player
                 
                 onMapCoord.Add(new Point((p.X - Drag.X) / blockSize, (p.Y - Drag.Y) / blockSize));
                 tiles.Add(bitmaps[m]);
-                break;
             }
         }
         public void Grah_build(PaintEventArgs e, Point Drag)

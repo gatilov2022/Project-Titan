@@ -35,7 +35,6 @@ namespace game.World_map
             return _maxSpriteSize;
         }
 
-
         public int GetPixelCount()
         {
             return PixelCount;
@@ -76,10 +75,9 @@ namespace game.World_map
         protected static List<SolidBrush> Generate_texture(List<SolidBrush> brush_list)
         {
             var texture = new List<SolidBrush>();
-            var n = brush_list.Count - 1;
 
             for (var i = 0; i < PixelCount; i++)
-                texture.Add(brush_list[Rand.Next(0, n)]);
+                texture.Add(brush_list[Rand.Next(brush_list.Count)]);
 
             return texture;
         }

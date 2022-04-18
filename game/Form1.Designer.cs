@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.factory_but = new System.Windows.Forms.Button();
             this.base_but = new System.Windows.Forms.Button();
@@ -49,7 +48,7 @@
             // factory_but
             // 
             this.factory_but.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.factory_but.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("factory_but.BackgroundImage")));
+            this.factory_but.BackgroundImage = global::game.Properties.Resources.Factory_1lvl;
             this.factory_but.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.factory_but.FlatAppearance.BorderColor = System.Drawing.Color.Red;
             this.factory_but.FlatAppearance.BorderSize = 2;
@@ -67,7 +66,7 @@
             // base_but
             // 
             this.base_but.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.base_but.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("base_but.BackgroundImage")));
+            this.base_but.BackgroundImage = global::game.Properties.Resources.Base;
             this.base_but.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.base_but.FlatAppearance.BorderColor = System.Drawing.Color.Red;
             this.base_but.FlatAppearance.BorderSize = 2;
@@ -85,7 +84,7 @@
             // house_but
             // 
             this.house_but.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.house_but.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("house_but.BackgroundImage")));
+            this.house_but.BackgroundImage = global::game.Properties.Resources.Home_Defult;
             this.house_but.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.house_but.FlatAppearance.BorderColor = System.Drawing.Color.Red;
             this.house_but.FlatAppearance.BorderSize = 2;
@@ -103,7 +102,7 @@
             // pump_but
             // 
             this.pump_but.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pump_but.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pump_but.BackgroundImage")));
+            this.pump_but.BackgroundImage = global::game.Properties.Resources.Pump_1lvl;
             this.pump_but.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pump_but.FlatAppearance.BorderColor = System.Drawing.Color.Red;
             this.pump_but.FlatAppearance.BorderSize = 2;
@@ -122,7 +121,7 @@
             // wareh_but
             // 
             this.wareh_but.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.wareh_but.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("wareh_but.BackgroundImage")));
+            this.wareh_but.BackgroundImage = global::game.Properties.Resources.Warehouse;
             this.wareh_but.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.wareh_but.FlatAppearance.BorderColor = System.Drawing.Color.Red;
             this.wareh_but.FlatAppearance.BorderSize = 2;
@@ -140,7 +139,7 @@
             // steam_but
             // 
             this.steam_but.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.steam_but.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("steam_but.BackgroundImage")));
+            this.steam_but.BackgroundImage = global::game.Properties.Resources.Steam_Eng_1lvl;
             this.steam_but.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.steam_but.FlatAppearance.BorderColor = System.Drawing.Color.Red;
             this.steam_but.FlatAppearance.BorderSize = 2;
@@ -158,7 +157,7 @@
             // drill_but
             // 
             this.drill_but.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.drill_but.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("drill_but.BackgroundImage")));
+            this.drill_but.BackgroundImage = global::game.Properties.Resources.Drill_Burner_1lvl;
             this.drill_but.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.drill_but.FlatAppearance.BorderColor = System.Drawing.Color.Red;
             this.drill_but.FlatAppearance.BorderSize = 2;

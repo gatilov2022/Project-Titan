@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using game.Player;
 using game.World_map;
+using game.Town;
 
 namespace game
 {
@@ -21,13 +22,19 @@ namespace game
         private int spritesSize;
         private bool dragStarted = false;
         private readonly Map_Build _buildingClass;
+        private Buildings _buildings;
+        private Status _status;
+        private Bitmap test;
 
         public Form1()
         {
             InitializeComponent();
             timer1.Start();
             timer1.Tick += Timer1_Tick;
+
+            _status = new Status();
             _buttons = new Button[] {factory_but ,pump_but ,drill_but ,base_but ,wareh_but ,house_but ,steam_but};
+            _buildings = new Buildings();
 
             spritesSize = _sprites.GetSpritesSize();
 
@@ -65,7 +72,7 @@ namespace game
         
         private void Timer1_Tick(object sender, EventArgs e)
         {
-            
+            _buildings.Tick_Add(_status);
         }
         
         private int scrlToX, scrlToY;
@@ -144,6 +151,7 @@ namespace game
                     break;
                 case MouseButtons.Right:
                     _buildingClass.Add_build(new Point(mouseX, mouseY), _buttons, _dragDeltaCoordinates);
+                    _buildings.Add_Resources(_buttons);
                     Invalidate();
                     break;
             }

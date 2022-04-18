@@ -29,6 +29,7 @@ namespace game.Player
                 if (buts[m].FlatAppearance.BorderColor == Color.Blue)
                 {
                     g.DrawImage(bitmaps[m], rec);
+                    
                     g.FillRectangle(new SolidBrush(Color.FromArgb(60, Color.Green)), rec);
                     break;
                 }
