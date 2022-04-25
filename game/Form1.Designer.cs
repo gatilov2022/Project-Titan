@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.factory_but = new System.Windows.Forms.Button();
             this.base_but = new System.Windows.Forms.Button();
             this.house_but = new System.Windows.Forms.Button();
@@ -38,12 +37,8 @@
             this.steam_but = new System.Windows.Forms.Button();
             this.drill_but = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
-            // 
-            // timer1
-            // 
-            this.timer1.Interval = 16;
-            this.timer1.Tick += new System.EventHandler(this.Timer1_Tick);
             // 
             // factory_but
             // 
@@ -181,6 +176,11 @@
             this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.toolTip1.ToolTipTitle = "Здание";
             // 
+            // timer1
+            // 
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.Timer1_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -215,6 +215,7 @@
         private System.Windows.Forms.Button steam_but;
         private System.Windows.Forms.Button drill_but;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 

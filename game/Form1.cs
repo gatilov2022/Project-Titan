@@ -115,7 +115,6 @@ namespace game
                 Invalidate();
             }
 
-            int i = sprites.what_siz();
 
             var blockSize = _sprites.GetSpritesSize();
 
