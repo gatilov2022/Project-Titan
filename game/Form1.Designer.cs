@@ -207,8 +207,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button factory_but;
         private System.Windows.Forms.Button base_but;
         private System.Windows.Forms.Button house_but;

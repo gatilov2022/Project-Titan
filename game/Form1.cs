@@ -115,9 +115,7 @@ namespace game
                 Invalidate();
             }
 
-            //Graphics DrawMouse = this.CreateGraphics();
-            //DrawMouse.FillRectangle(new SolidBrush(Color.Black), e.X, e.Y + 20, 80, 25);
-            //DrawMouse.DrawString((e.X).ToString() + " " + (e.Y).ToString(), new Font("Arial", 12, FontStyle.Bold, GraphicsUnit.Point), Brushes.Red, e.X, e.Y + 20);
+            int i = sprites.what_siz();
 
             var blockSize = _sprites.GetSpritesSize();
 
