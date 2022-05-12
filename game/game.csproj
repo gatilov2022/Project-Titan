@@ -141,5 +141,9 @@
   <ItemGroup>
     <None Include="Musics\mus#2.mp3" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Musics\build.wav" />
+    <None Include="Musics\build_hummer.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Media;
 using game.Player;
 using game.World_map;
 using game.Town;
@@ -12,7 +13,8 @@ namespace game
     {
         private int mouseX, mouseY,
             lastX = 0, lastY =0;
-
+        Random random = new Random();
+        SoundPlayer sp;
         private readonly Button[] _buttons;
         private readonly Sprites _sprites = new Sprites();
         private Point _dragStartCoordinates, _dragDeltaCoordinates = new Point(0,0);
@@ -149,6 +151,11 @@ namespace game
                 case MouseButtons.Right:
                     _buildingClass.Add_build(new Point(mouseX, mouseY), _buttons, _dragDeltaCoordinates);
                     _buildings.Add_Resources(_buttons);
+                    if (random.Next(2) == 1)
+                        sp = new SoundPlayer(Properties.Resources.build);
+                    else
+                        sp = new SoundPlayer(Properties.Resources.build_hummer);
+                    sp.Play();
                     Invalidate();
                     break;
             }
