@@ -143,6 +143,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Musics\build.wav" />
+    <None Include="World_map\fon.jpg" />
     <None Include="Musics\build_hummer.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

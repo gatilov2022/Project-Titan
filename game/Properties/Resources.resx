@@ -118,17 +118,20 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Pump_1lvl" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Town\Sprites_City\Pump\Pump_1lvl.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Warehouse" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Town\Sprites_City\Warehouse\Warehouse.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Factory_1lvl" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Town\Sprites_City\Factory\Factory_1lvl.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Home_Defult" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Town\Sprites_City\House\Home_Defult.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="build" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Musics\build.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="Warehouse" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Town\Sprites_City\Warehouse\Warehouse.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Pump_1lvl" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Town\Sprites_City\Pump\Pump_1lvl.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Base" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Town\Sprites_City\Base\Base.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="mus_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Musics\mus#2.mp3;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -142,11 +145,11 @@
   <data name="Steam_Eng_1lvl" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Town\Sprites_City\Steam engine\Steam_Eng_1lvl.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Base" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Town\Sprites_City\Base\Base.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Home_Defult" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Town\Sprites_City\House\Home_Defult.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="build" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Musics\build.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="fon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\World_map\fon.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="build_hummer" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Musics\build_hummer.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

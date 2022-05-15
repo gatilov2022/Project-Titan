@@ -6,7 +6,7 @@ namespace game.Player
 {
     public class Building : Sprites
     {
-        Bitmap[] bitmaps = new Bitmap[] {
+        private Bitmap[] bitmaps = new Bitmap[] {
             Properties.Resources.Factory_1lvl, Properties.Resources.Pump_1lvl,
             Properties.Resources.Drill_Burner_1lvl, Properties.Resources.Base,
             Properties.Resources.Warehouse, Properties.Resources.Home_Defult,
@@ -24,13 +24,18 @@ namespace game.Player
             var g = e.Graphics;
             var rec = new Rectangle(DragDelta.X % SpritesSize + X, DragDelta.Y % SpritesSize + Y, SpritesSize + 1, SpritesSize + 1);
 
+            var loc_x = DragDelta.X;
+            var loc_y = DragDelta.Y;
+
             for (int m = 0; m < buts.Length; m++)
             {
                 if (buts[m].FlatAppearance.BorderColor == Color.Blue)
                 {
                     g.DrawImage(bitmaps[m], rec);
-                    
-                    g.FillRectangle(new SolidBrush(Color.FromArgb(60, Color.Green)), rec);
+                    if(loc_x>rec.X || loc_y>rec.Y)
+                        g.FillRectangle(new SolidBrush(Color.FromArgb(60, Color.Red)), rec);
+                    else
+                        g.FillRectangle(new SolidBrush(Color.FromArgb(60, Color.Green)), rec);
                     break;
                 }
             }

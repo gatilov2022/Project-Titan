@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace game.Town
@@ -17,10 +13,8 @@ namespace game.Town
 
         public Buildings()
         {
-            tick_sand = 0;
-            tick_ore = 0;
-            tick_water = 0;
-            tick_energy = 0;
+            tick_sand = 0;tick_ore = 0;
+            tick_water = 0;tick_energy = 0;
         }
 
         public void Tick_Add(Player.Status status)

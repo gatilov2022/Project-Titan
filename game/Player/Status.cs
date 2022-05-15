@@ -15,10 +15,8 @@ namespace game.Player
 
         public Status()
         {
-            sand = 0;
-            water = 0;
-            ore = 0;
-            energy = 0;
+            sand = 1000;water = 1000;
+            ore = 1000;energy = 1000;
         }
 
         public void Add_Sand(int sand)

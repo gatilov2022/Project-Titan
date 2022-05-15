@@ -7,7 +7,7 @@ namespace game.Player
 {
     internal class Map_Build
     {
-        readonly Bitmap[] bitmaps = new Bitmap[] {
+        private readonly Bitmap[] bitmaps = new Bitmap[] {
             Properties.Resources.Factory_1lvl, Properties.Resources.Pump_1lvl,
             Properties.Resources.Drill_Burner_1lvl, Properties.Resources.Base,
             Properties.Resources.Warehouse, Properties.Resources.Home_Defult,
@@ -20,7 +20,6 @@ namespace game.Player
         public void Add_build(Point p, Button[] buts, Point Drag)
         {
             var blockSize = new Sprites().GetSpritesSize();
-
 
             for (var m = 0; m < buts.Length; m++)
             {
