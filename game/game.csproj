@@ -143,6 +143,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Musics\build.wav" />
+    <Content Include="Town\Sprites_Resources\top_info.png" />
     <None Include="World_map\fon.jpg" />
     <None Include="Musics\build_hummer.wav" />
   </ItemGroup>

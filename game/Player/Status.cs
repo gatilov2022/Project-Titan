@@ -35,5 +35,22 @@ namespace game.Player
         {
             this.energy += energy;
         }
+
+        public int Get_Sand()
+        {
+            return sand;
+        }
+        public int Get_Water()
+        {
+            return water;
+        }
+        public int Get_Ore()
+        {
+            return ore;
+        }
+        public int Get_Energy()
+        {
+            return energy;
+        }
     }
 }

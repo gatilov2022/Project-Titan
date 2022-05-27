@@ -6,36 +6,27 @@ namespace game.Player
 {
     public class Building : Sprites
     {
-        private Bitmap[] bitmaps = new Bitmap[] {
+        static private Bitmap[] bitmaps = new Bitmap[] {
             Properties.Resources.Factory_1lvl, Properties.Resources.Pump_1lvl,
             Properties.Resources.Drill_Burner_1lvl, Properties.Resources.Base,
             Properties.Resources.Warehouse, Properties.Resources.Home_Defult,
             Properties.Resources.Steam_Eng_1lvl
         };
-
-        public Building(int X, int Y)
-        {
-            base.X = X; base.Y = Y;
-        }
-        public void Draw_building(PaintEventArgs e, Button[] buts, Point DragDelta)
+        static public void Draw_building(Graphics graphicsForm, Button[] buts, Point DragDelta, int X, int Y)
         {
             var SpritesSize = new Sprites().GetSpritesSize();
 
-            var g = e.Graphics;
             var rec = new Rectangle(DragDelta.X % SpritesSize + X, DragDelta.Y % SpritesSize + Y, SpritesSize + 1, SpritesSize + 1);
-
-            var loc_x = DragDelta.X;
-            var loc_y = DragDelta.Y;
 
             for (int m = 0; m < buts.Length; m++)
             {
                 if (buts[m].FlatAppearance.BorderColor == Color.Blue)
                 {
-                    g.DrawImage(bitmaps[m], rec);
-                    if(loc_x>rec.X || loc_y>rec.Y)
-                        g.FillRectangle(new SolidBrush(Color.FromArgb(60, Color.Red)), rec);
+                    graphicsForm.DrawImage(bitmaps[m], rec);
+                    if(DragDelta.X > rec.X || DragDelta.Y > rec.Y)
+                        graphicsForm.FillRectangle(new SolidBrush(Color.FromArgb(60, Color.Red)), rec);
                     else
-                        g.FillRectangle(new SolidBrush(Color.FromArgb(60, Color.Green)), rec);
+                        graphicsForm.FillRectangle(new SolidBrush(Color.FromArgb(60, Color.Green)), rec);
                     break;
                 }
             }

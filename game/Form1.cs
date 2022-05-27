@@ -135,7 +135,7 @@ namespace game
             switch (e.Button)
             {
                 case MouseButtons.Left:
-                    dragStarted = false;
+                    dragStarted = false; 
                     break;
                 case MouseButtons.Right:
                     _buildingClass.Add_build(new Point(mouseX, mouseY), _buttons, _dragDeltaCoordinates);
@@ -183,7 +183,6 @@ namespace game
         private void Zoom()
         {
             spritesSize = _sprites.GetSpritesSize();
-
             var mapSizeInPixels = Map.GetMapSize() * Chunk.GetChunkSize() * spritesSize;
 
             if (scrlDown)
@@ -230,22 +229,32 @@ namespace game
             else if (-_dragDeltaCoordinates.X > mapSizeInPixels) _dragDeltaCoordinates.X = -mapSizeInPixels;
 
         }
-
         private void paint_vis(object sender, PaintEventArgs e)
         {
             if (scrlDown || scrlUp)
                 Zoom();
-
+            Graphics graphicsForm = e.Graphics;
             Font f = new Font("Arial", 12, FontStyle.Bold, GraphicsUnit.Point);
             
-            Map.Draw_map(e, _dragDeltaCoordinates);
+            Map.Draw_map(graphicsForm, _dragDeltaCoordinates,this.Size, _status);
             e.Graphics.DrawString("spritesSize: " + _sprites.GetSpritesSize() + "\n Sprites max/min sizes: " + _sprites.GetSpritesMaxSize() + " ," + _sprites.GetSpritesMinSize() + "\nDrags: X - "
                 + _dragDeltaCoordinates.X + ", Y - " + _dragDeltaCoordinates.Y, f, new SolidBrush(Color.Red), 200, 200);
-            Building a = new Building(mouseX, mouseY);
+            
+            Building.Draw_building(graphicsForm, _buttons, _dragDeltaCoordinates, mouseX, mouseY);
+            Create_Top(graphicsForm, this.Size);
+            _buildingClass.Grah_build(graphicsForm, _dragDeltaCoordinates);
+        }
 
-            a.Draw_building(e,_buttons, _dragDeltaCoordinates);
-
-            _buildingClass.Grah_build(e, _dragDeltaCoordinates);
+        private void Create_Top(Graphics graphicsForm, Size sizeForm)
+        {
+            Font font = new Font("Arial", 6, FontStyle.Bold);
+            SolidBrush brush = new SolidBrush(Color.White);
+            var Start_Top_X = sizeForm.Width / 2 - Properties.Resources.top_info.Width / 2;
+            graphicsForm.DrawImage(Properties.Resources.top_info, new Point(Start_Top_X, 0));
+            graphicsForm.DrawString(_status.Get_Water().ToString(), font, brush, Start_Top_X + 45, 9);
+            graphicsForm.DrawString(_status.Get_Sand().ToString(), font, brush, Start_Top_X + 97, 9);
+            graphicsForm.DrawString(_status.Get_Ore().ToString(), font, brush, Start_Top_X + 207, 9);
+            graphicsForm.DrawString(_status.Get_Energy().ToString(), font, brush, Start_Top_X + 157, 9);
         }
     }
 }

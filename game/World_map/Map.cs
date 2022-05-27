@@ -23,20 +23,16 @@ namespace game.World_map
         {
             return mapSize;
         }
-
         // Отрисовка всех объектов из всех списков
-        static public void Draw_map(PaintEventArgs e, Point DragDelta)
+        static public void Draw_map(Graphics graphicsForm, Point DragDelta, Size sizeForm, Player.Status _status)
         {
             int loc_x, loc_y;
-            var g = e.Graphics;
             var SpritesSize = new Sprites().GetSpritesSize();
-
             for (int i = 0; i < chunks.Count; i++)
             {
                 loc_x = i % mapSize * SpritesSize * Chunk.GetChunkSize();
                 loc_y = i / mapSize * SpritesSize * Chunk.GetChunkSize();
-
-                g.DrawImage(chunks[i].GetImage(), DragDelta.X + loc_x, DragDelta.Y + loc_y, SpritesSize * Chunk.GetChunkSize() + 1, SpritesSize * Chunk.GetChunkSize() + 1);
+                graphicsForm.DrawImage(chunks[i].GetImage(), DragDelta.X + loc_x, DragDelta.Y + loc_y, SpritesSize * Chunk.GetChunkSize() + 1, SpritesSize * Chunk.GetChunkSize() + 1);
                 //g.DrawRectangle(new Pen(Color.Gray , 4), DragDelta.X + loc_x - 2 , DragDelta.Y + loc_y - 2, SpritesSize * Chunk.GetChunkSize() + 4, SpritesSize * Chunk.GetChunkSize() + 4);                
             }
         }

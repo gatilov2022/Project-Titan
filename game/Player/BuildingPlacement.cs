@@ -29,16 +29,15 @@ namespace game.Player
                 tiles.Add(bitmaps[m]);
             }
         }
-        public void Grah_build(PaintEventArgs e, Point Drag)
+        public void Grah_build(Graphics graphicsForm, Point Drag)
         {
             var blockSize = new Sprites().GetSpritesSize(); 
-            var g = e.Graphics;
 
             for (var i = 0; i < tiles.Count; i++)
             {
                 int actualX = onMapCoord[i].X * blockSize + Drag.X, actualY = onMapCoord[i].Y * blockSize + Drag.Y;
                 var rec = new Rectangle(actualX, actualY, blockSize + 1, blockSize + 1);
-                g.DrawImage(tiles[i], rec);
+                graphicsForm.DrawImage(tiles[i], rec);
             }
         }
     }
