@@ -242,8 +242,8 @@ namespace game
                 + _dragDeltaCoordinates.X + ", Y - " + _dragDeltaCoordinates.Y, f, new SolidBrush(Color.Red), 200, 200);
             
             Building.Draw_building(graphicsForm, _buttons, _dragDeltaCoordinates, mouseX, mouseY);
-            Create_Top(graphicsForm, this.Size);
             _buildingClass.Grah_build(graphicsForm, _dragDeltaCoordinates);
+            Create_Top(graphicsForm, this.Size);
         }
 
         private void Create_Top(Graphics graphicsForm, Size sizeForm)
@@ -256,6 +256,9 @@ namespace game
             graphicsForm.DrawString(_status.Get_Sand().ToString(), font, brush, Start_Top_X + 97, 9);
             graphicsForm.DrawString(_status.Get_Ore().ToString(), font, brush, Start_Top_X + 207, 9);
             graphicsForm.DrawString(_status.Get_Energy().ToString(), font, brush, Start_Top_X + 157, 9);
+
+            var Start_bottom_X = sizeForm.Width / 2 - 420 / 2;
+            graphicsForm.DrawImage(Properties.Resources.botton_button, Start_bottom_X, sizeForm.Height- 90, 420,60);
         }
     }
 }

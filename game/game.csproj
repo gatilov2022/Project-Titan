@@ -164,6 +164,7 @@
     <None Include="Town\Sprites_Resources\exit_Down.jpg" />
     <None Include="Town\Sprites_Resources\exit_no_active.jpg" />
     <None Include="Town\Sprites_Resources\fon_menu.jpg" />
+    <None Include="Town\Sprites_Resources\botton_button.png" />
     <Content Include="Town\Sprites_Resources\top_info.png" />
     <None Include="World_map\fon.jpg" />
     <None Include="Musics\build_hummer.wav" />

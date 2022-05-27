@@ -70,6 +70,11 @@ namespace game.World_map
                     y * Sprites._size + i % PixelSize * Sprites._size / PixelSize,
                     Sprites._size / PixelSize,
                     Sprites._size / PixelSize);
+            g.DrawRectangle(new Pen(new SolidBrush(Color.Gray)),new Rectangle(
+                    x * Sprites._size ,
+                    y * Sprites._size ,
+                    Sprites._size,
+                    Sprites._size));
         }
 
         protected static List<SolidBrush> Generate_texture(List<SolidBrush> brush_list)

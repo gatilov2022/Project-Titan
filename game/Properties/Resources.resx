@@ -181,6 +181,9 @@
   <data name="Warehouse" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Town\Sprites_City\Warehouse\Warehouse.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="botton_button" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Town\Sprites_Resources\botton_button.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="exit_active" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Town\Sprites_Resources\exit_active.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

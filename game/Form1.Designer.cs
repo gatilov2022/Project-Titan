@@ -42,13 +42,13 @@
             // 
             // factory_but
             // 
-            this.factory_but.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.factory_but.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.factory_but.BackgroundImage = global::game.Properties.Resources.Factory_1lvl;
             this.factory_but.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.factory_but.FlatAppearance.BorderColor = System.Drawing.Color.Red;
             this.factory_but.FlatAppearance.BorderSize = 2;
             this.factory_but.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.factory_but.Location = new System.Drawing.Point(657, 41);
+            this.factory_but.Location = new System.Drawing.Point(227, 413);
             this.factory_but.Name = "factory_but";
             this.factory_but.Size = new System.Drawing.Size(32, 32);
             this.factory_but.TabIndex = 0;
@@ -60,13 +60,13 @@
             // 
             // base_but
             // 
-            this.base_but.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.base_but.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.base_but.BackgroundImage = global::game.Properties.Resources.Base;
             this.base_but.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.base_but.FlatAppearance.BorderColor = System.Drawing.Color.Red;
             this.base_but.FlatAppearance.BorderSize = 2;
             this.base_but.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.base_but.Location = new System.Drawing.Point(657, 93);
+            this.base_but.Location = new System.Drawing.Point(391, 413);
             this.base_but.Name = "base_but";
             this.base_but.Size = new System.Drawing.Size(32, 32);
             this.base_but.TabIndex = 4;
@@ -78,13 +78,13 @@
             // 
             // house_but
             // 
-            this.house_but.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.house_but.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.house_but.BackgroundImage = global::game.Properties.Resources.Home_Defult;
             this.house_but.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.house_but.FlatAppearance.BorderColor = System.Drawing.Color.Red;
             this.house_but.FlatAppearance.BorderSize = 2;
             this.house_but.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.house_but.Location = new System.Drawing.Point(657, 147);
+            this.house_but.Location = new System.Drawing.Point(334, 413);
             this.house_but.Name = "house_but";
             this.house_but.Size = new System.Drawing.Size(32, 32);
             this.house_but.TabIndex = 5;
@@ -96,14 +96,14 @@
             // 
             // pump_but
             // 
-            this.pump_but.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pump_but.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.pump_but.BackgroundImage = global::game.Properties.Resources.Pump_1lvl;
             this.pump_but.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pump_but.FlatAppearance.BorderColor = System.Drawing.Color.Red;
             this.pump_but.FlatAppearance.BorderSize = 2;
             this.pump_but.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.pump_but.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.pump_but.Location = new System.Drawing.Point(709, 41);
+            this.pump_but.Location = new System.Drawing.Point(281, 413);
             this.pump_but.Name = "pump_but";
             this.pump_but.Size = new System.Drawing.Size(32, 32);
             this.pump_but.TabIndex = 6;
@@ -115,13 +115,13 @@
             // 
             // wareh_but
             // 
-            this.wareh_but.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.wareh_but.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.wareh_but.BackgroundImage = global::game.Properties.Resources.Warehouse;
             this.wareh_but.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.wareh_but.FlatAppearance.BorderColor = System.Drawing.Color.Red;
             this.wareh_but.FlatAppearance.BorderSize = 2;
             this.wareh_but.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.wareh_but.Location = new System.Drawing.Point(709, 93);
+            this.wareh_but.Location = new System.Drawing.Point(499, 413);
             this.wareh_but.Name = "wareh_but";
             this.wareh_but.Size = new System.Drawing.Size(32, 32);
             this.wareh_but.TabIndex = 7;
@@ -133,13 +133,13 @@
             // 
             // steam_but
             // 
-            this.steam_but.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.steam_but.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.steam_but.BackgroundImage = global::game.Properties.Resources.Steam_Eng_1lvl;
             this.steam_but.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.steam_but.FlatAppearance.BorderColor = System.Drawing.Color.Red;
             this.steam_but.FlatAppearance.BorderSize = 2;
             this.steam_but.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.steam_but.Location = new System.Drawing.Point(709, 147);
+            this.steam_but.Location = new System.Drawing.Point(447, 413);
             this.steam_but.Name = "steam_but";
             this.steam_but.Size = new System.Drawing.Size(32, 32);
             this.steam_but.TabIndex = 8;
@@ -151,13 +151,13 @@
             // 
             // drill_but
             // 
-            this.drill_but.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.drill_but.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.drill_but.BackgroundImage = global::game.Properties.Resources.Drill_Burner_1lvl;
             this.drill_but.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.drill_but.FlatAppearance.BorderColor = System.Drawing.Color.Red;
             this.drill_but.FlatAppearance.BorderSize = 2;
             this.drill_but.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.drill_but.Location = new System.Drawing.Point(756, 41);
+            this.drill_but.Location = new System.Drawing.Point(552, 413);
             this.drill_but.Name = "drill_but";
             this.drill_but.Size = new System.Drawing.Size(32, 32);
             this.drill_but.TabIndex = 9;
