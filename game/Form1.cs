@@ -46,7 +46,12 @@ namespace game
 
             Map.GenerateMap();    
         }
-        
+
+        private void Form1_Resize(object sender, EventArgs e)
+        {
+            Zoom();
+        }
+
         private void Timer1_Tick(object sender, EventArgs e)
         {
             _buildings.Tick_Add(_status);
@@ -184,38 +189,17 @@ namespace game
         {
             spritesSize = _sprites.GetSpritesSize();
 
-            var mapSizeInPixels = Map.GetMapSize() * Chunk.GetChunkSize() * spritesSize;
-
             if (scrlDown)
             {
-                _dragDeltaCoordinates.X = (_dragDeltaCoordinates.X - scrlToX) / spritesSize * (spritesSize - sizeChange) + scrlToX;
-                _dragDeltaCoordinates.Y = (_dragDeltaCoordinates.Y - scrlToY) / spritesSize * (spritesSize - sizeChange) + scrlToY;
-
-                if (-_dragDeltaCoordinates.X + this.Width > mapSizeInPixels)
-
-                    _dragDeltaCoordinates.X = -mapSizeInPixels;
-
-                else if (-_dragDeltaCoordinates.X < 0) 
-                    
-                    _dragDeltaCoordinates.X = 0;
-
-
-                if (-_dragDeltaCoordinates.Y + this.Height > mapSizeInPixels)
-
-                    _dragDeltaCoordinates.Y = -mapSizeInPixels;
-
-                else if (-_dragDeltaCoordinates.Y < 0)
-
-                    _dragDeltaCoordinates.Y = 0;
-
                 _sprites.DecreaseSize(sizeChange);
 
+                _dragDeltaCoordinates.X = (_dragDeltaCoordinates.X - scrlToX) / spritesSize * (spritesSize - sizeChange) + scrlToX;
+                _dragDeltaCoordinates.Y = (_dragDeltaCoordinates.Y - scrlToY) / spritesSize * (spritesSize - sizeChange) + scrlToY;
+                
                 scrlDown = false;
-
             }
 
             else if (scrlUp)
-
             {
                 _dragDeltaCoordinates.X = ((_dragDeltaCoordinates.X - scrlToX) / spritesSize) * (spritesSize + sizeChange) + scrlToX;
                 _dragDeltaCoordinates.Y = ((_dragDeltaCoordinates.Y - scrlToY) / spritesSize) * (spritesSize + sizeChange) + scrlToY;
@@ -223,11 +207,27 @@ namespace game
                 _sprites.IncreaseSize(sizeChange);
 
                 scrlUp = false;
-
             }
 
-            if (-_dragDeltaCoordinates.X < 0) _dragDeltaCoordinates.X = 0;
-            else if (-_dragDeltaCoordinates.X > mapSizeInPixels) _dragDeltaCoordinates.X = -mapSizeInPixels;
+            spritesSize = _sprites.GetSpritesSize();
+            var mapSizeInPixels = Map.GetMapSize() * Chunk.GetChunkSize() * spritesSize;
+
+            if (-_dragDeltaCoordinates.X + this.Width > mapSizeInPixels)
+
+                _dragDeltaCoordinates.X = -(mapSizeInPixels - this.Width);
+
+            else if (-_dragDeltaCoordinates.X < 0) 
+
+                _dragDeltaCoordinates.X = 0;
+
+
+            if (-_dragDeltaCoordinates.Y + this.Height > mapSizeInPixels)
+
+                _dragDeltaCoordinates.Y = -(mapSizeInPixels - this.Height);
+
+            else if (-_dragDeltaCoordinates.Y < 0)
+
+                _dragDeltaCoordinates.Y = 0;
 
         }
 
@@ -236,11 +236,11 @@ namespace game
             if (scrlDown || scrlUp)
                 Zoom();
 
-            Font f = new Font("Arial", 12, FontStyle.Bold, GraphicsUnit.Point);
+            Font f = new Font("Times New Roman", 25, FontStyle.Bold, GraphicsUnit.Point);
             
             Map.Draw_map(e, _dragDeltaCoordinates);
             e.Graphics.DrawString("spritesSize: " + _sprites.GetSpritesSize() + "\n Sprites max/min sizes: " + _sprites.GetSpritesMaxSize() + " ," + _sprites.GetSpritesMinSize() + "\nDrags: X - "
-                + _dragDeltaCoordinates.X + ", Y - " + _dragDeltaCoordinates.Y, f, new SolidBrush(Color.Red), 200, 200);
+                + _dragDeltaCoordinates.X + ", Y - " + _dragDeltaCoordinates.Y + $"\nMapSize in pixels: { Map.GetMapSize() * Chunk.GetChunkSize() * spritesSize}", f, new SolidBrush(Color.Black), 200, 200);
             Building a = new Building(mouseX, mouseY);
 
             a.Draw_building(e,_buttons, _dragDeltaCoordinates);
