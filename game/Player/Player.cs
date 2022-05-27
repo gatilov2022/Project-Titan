@@ -7,23 +7,27 @@ using System.Threading.Tasks;
 
 namespace game.Player
 {
-    
-        class Resources
+    internal class Player
+    {
+        protected Dictionary<string, int> playerResources = new Dictionary<string, int>()
         {
-            protected int Iron, Sand, Glass, Energy;
-
-            protected void GetResource() {}
-
+            {"IronOre", 0}, {"Iron", 0}, {"Sand", 0}, {"Glass", 0}, {"Energy", 0}, {"Steam", 0}
         };
 
-
-
-    internal class Player : Resources
-    {
-        public int GetAmountOfRecources()
+        public int GetAmountOfResources(string resource)
         {
-            return 3;
+            return playerResources[resource];
             //return GetResource()
+        }
+
+        public void DecreaseAmountOfResources(string resource, int amount)
+        {
+            playerResources[resource] -= amount;
+        }
+
+        public void IncreaseAmountOfResources(string resource, int amount)
+        {
+            playerResources[resource] += amount;
         }
     }
 }
