@@ -50,6 +50,7 @@ namespace game
         private void Timer1_Tick(object sender, EventArgs e)
         {
             _buildings.Tick_Add(_status);
+            Invalidate();
         }
         
 

@@ -101,9 +101,89 @@ namespace game.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Drill_Burner_2lvl {
+            get {
+                object obj = ResourceManager.GetObject("Drill_Burner_2lvl", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Drill_Electro_1lvl {
+            get {
+                object obj = ResourceManager.GetObject("Drill_Electro_1lvl", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Drill_Electro_2lvl {
+            get {
+                object obj = ResourceManager.GetObject("Drill_Electro_2lvl", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap exit_active {
+            get {
+                object obj = ResourceManager.GetObject("exit_active", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap exit_Down {
+            get {
+                object obj = ResourceManager.GetObject("exit_Down", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap exit_no_active {
+            get {
+                object obj = ResourceManager.GetObject("exit_no_active", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Factory_1lvl {
             get {
                 object obj = ResourceManager.GetObject("Factory_1lvl", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Factory_2lvl {
+            get {
+                object obj = ResourceManager.GetObject("Factory_2lvl", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Factory_3lvl {
+            get {
+                object obj = ResourceManager.GetObject("Factory_3lvl", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -121,9 +201,29 @@ namespace game.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap fon_menu {
+            get {
+                object obj = ResourceManager.GetObject("fon_menu", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Home_Defult {
             get {
                 object obj = ResourceManager.GetObject("Home_Defult", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Menu {
+            get {
+                object obj = ResourceManager.GetObject("Menu", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -151,6 +251,16 @@ namespace game.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Pubp_2lvl {
+            get {
+                object obj = ResourceManager.GetObject("Pubp_2lvl", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Pump_1lvl {
             get {
                 object obj = ResourceManager.GetObject("Pump_1lvl", resourceCulture);
@@ -161,9 +271,49 @@ namespace game.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap start_active {
+            get {
+                object obj = ResourceManager.GetObject("start_active", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap start_Down {
+            get {
+                object obj = ResourceManager.GetObject("start_Down", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap start_no_active {
+            get {
+                object obj = ResourceManager.GetObject("start_no_active", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Steam_Eng_1lvl {
             get {
                 object obj = ResourceManager.GetObject("Steam_Eng_1lvl", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Steam_Eng_2lvl {
+            get {
+                object obj = ResourceManager.GetObject("Steam_Eng_2lvl", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

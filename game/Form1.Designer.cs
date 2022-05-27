@@ -198,7 +198,7 @@
             this.DoubleBuffered = true;
             this.MinimumSize = new System.Drawing.Size(816, 489);
             this.Name = "Form1";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.paint_vis);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
