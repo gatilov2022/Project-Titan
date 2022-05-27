@@ -24,13 +24,14 @@ namespace game
         private readonly Map_Build _buildingClass;
         private readonly Buildings _buildings;
         private readonly Status _status;
+        private readonly StartMenu _startMenu;
 
-
-        public Form1()
+        public Form1(StartMenu startMenu)
         {
             InitializeComponent();
             timer1.Start();
 
+            _startMenu = startMenu;
             _status = new Status();
             _buttons = new Button[] {factory_but ,pump_but ,drill_but ,base_but ,wareh_but ,house_but ,steam_but};
             _buildings = new Buildings();
@@ -52,7 +53,11 @@ namespace game
             _buildings.Tick_Add(_status);
             Invalidate();
         }
-        
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            _startMenu.Show();
+        }
 
         private void From1_MouseWheel(object sender, MouseEventArgs e)
         {

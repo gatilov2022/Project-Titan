@@ -43,7 +43,7 @@ namespace game
 
         private void button1_Click(object sender, EventArgs e)
         {
-            form1 = new Form1();
+            form1 = new Form1(this);
             form1.Show();
             this.Hide();
         }
