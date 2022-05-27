@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.factory_but = new System.Windows.Forms.Button();
             this.base_but = new System.Windows.Forms.Button();
             this.house_but = new System.Windows.Forms.Button();
@@ -48,7 +49,7 @@
             this.factory_but.FlatAppearance.BorderColor = System.Drawing.Color.Red;
             this.factory_but.FlatAppearance.BorderSize = 2;
             this.factory_but.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.factory_but.Location = new System.Drawing.Point(227, 413);
+            this.factory_but.Location = new System.Drawing.Point(238, 413);
             this.factory_but.Name = "factory_but";
             this.factory_but.Size = new System.Drawing.Size(32, 32);
             this.factory_but.TabIndex = 0;
@@ -66,7 +67,7 @@
             this.base_but.FlatAppearance.BorderColor = System.Drawing.Color.Red;
             this.base_but.FlatAppearance.BorderSize = 2;
             this.base_but.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.base_but.Location = new System.Drawing.Point(391, 413);
+            this.base_but.Location = new System.Drawing.Point(402, 413);
             this.base_but.Name = "base_but";
             this.base_but.Size = new System.Drawing.Size(32, 32);
             this.base_but.TabIndex = 4;
@@ -84,7 +85,7 @@
             this.house_but.FlatAppearance.BorderColor = System.Drawing.Color.Red;
             this.house_but.FlatAppearance.BorderSize = 2;
             this.house_but.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.house_but.Location = new System.Drawing.Point(334, 413);
+            this.house_but.Location = new System.Drawing.Point(345, 413);
             this.house_but.Name = "house_but";
             this.house_but.Size = new System.Drawing.Size(32, 32);
             this.house_but.TabIndex = 5;
@@ -103,7 +104,7 @@
             this.pump_but.FlatAppearance.BorderSize = 2;
             this.pump_but.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.pump_but.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.pump_but.Location = new System.Drawing.Point(281, 413);
+            this.pump_but.Location = new System.Drawing.Point(292, 413);
             this.pump_but.Name = "pump_but";
             this.pump_but.Size = new System.Drawing.Size(32, 32);
             this.pump_but.TabIndex = 6;
@@ -121,7 +122,7 @@
             this.wareh_but.FlatAppearance.BorderColor = System.Drawing.Color.Red;
             this.wareh_but.FlatAppearance.BorderSize = 2;
             this.wareh_but.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.wareh_but.Location = new System.Drawing.Point(499, 413);
+            this.wareh_but.Location = new System.Drawing.Point(510, 413);
             this.wareh_but.Name = "wareh_but";
             this.wareh_but.Size = new System.Drawing.Size(32, 32);
             this.wareh_but.TabIndex = 7;
@@ -139,7 +140,7 @@
             this.steam_but.FlatAppearance.BorderColor = System.Drawing.Color.Red;
             this.steam_but.FlatAppearance.BorderSize = 2;
             this.steam_but.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.steam_but.Location = new System.Drawing.Point(447, 413);
+            this.steam_but.Location = new System.Drawing.Point(458, 413);
             this.steam_but.Name = "steam_but";
             this.steam_but.Size = new System.Drawing.Size(32, 32);
             this.steam_but.TabIndex = 8;
@@ -157,7 +158,7 @@
             this.drill_but.FlatAppearance.BorderColor = System.Drawing.Color.Red;
             this.drill_but.FlatAppearance.BorderSize = 2;
             this.drill_but.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.drill_but.Location = new System.Drawing.Point(552, 413);
+            this.drill_but.Location = new System.Drawing.Point(563, 413);
             this.drill_but.Name = "drill_but";
             this.drill_but.Size = new System.Drawing.Size(32, 32);
             this.drill_but.TabIndex = 9;
@@ -186,7 +187,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackgroundImage = global::game.Properties.Resources.fon;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(823, 450);
             this.Controls.Add(this.drill_but);
             this.Controls.Add(this.steam_but);
             this.Controls.Add(this.wareh_but);
@@ -196,12 +197,13 @@
             this.Controls.Add(this.factory_but);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.DoubleBuffered = true;
-            this.MinimumSize = new System.Drawing.Size(816, 489);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(839, 489);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.paint_vis);
+            this.DoubleClick += new System.EventHandler(this.Form1_DoubleClick);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseUp);

@@ -13,8 +13,7 @@ namespace game
     {
         private int mouseX, mouseY,lastX = 0, lastY =0, spritesSize, scrlToX, scrlToY;
         private const int sizeChange = 14;
-        Random random = new Random();
-        SoundPlayer sp;
+        SoundPlayer sp = null;
         private readonly Button[] _buttons;
         private readonly Sprites _sprites = new Sprites();
         private Point _dragStartCoordinates, _dragDeltaCoordinates = new Point(0,0);
@@ -57,6 +56,11 @@ namespace game
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
             _startMenu.Show();
+        }
+
+        private void Form1_DoubleClick(object sender, EventArgs e)
+        {
+            MessageBox.Show("Улучшить здание?","UpBuild",MessageBoxButtons.YesNo, MessageBoxIcon.Question);
         }
 
         private void From1_MouseWheel(object sender, MouseEventArgs e)
@@ -145,12 +149,7 @@ namespace game
                     break;
                 case MouseButtons.Right:
                     _buildingClass.Add_build(new Point(mouseX, mouseY), _buttons, _dragDeltaCoordinates);
-                    _buildings.Add_Resources(_buttons);
-                    if(random.Next(2) ==0)
-                        sp = new SoundPlayer(Properties.Resources.build);
-                    else
-                        sp = new SoundPlayer(Properties.Resources.build_hummer);
-                    sp.Play();
+                    _buildings.Add_Resources(_buttons, sp);
                     Invalidate();
                     break;
             }
@@ -249,6 +248,7 @@ namespace game
             Building.Draw_building(graphicsForm, _buttons, _dragDeltaCoordinates, mouseX, mouseY);
             _buildingClass.Grah_build(graphicsForm, _dragDeltaCoordinates);
             Create_Top(graphicsForm, this.Size);
+            Create_Bottom(graphicsForm, this.Size);
         }
 
         private void Create_Top(Graphics graphicsForm, Size sizeForm)
@@ -261,9 +261,12 @@ namespace game
             graphicsForm.DrawString(_status.Get_Sand().ToString(), font, brush, Start_Top_X + 97, 9);
             graphicsForm.DrawString(_status.Get_Ore().ToString(), font, brush, Start_Top_X + 207, 9);
             graphicsForm.DrawString(_status.Get_Energy().ToString(), font, brush, Start_Top_X + 157, 9);
+        }
 
+        private void Create_Bottom(Graphics graphicsForm, Size sizeForm)
+        {
             var Start_bottom_X = sizeForm.Width / 2 - 420 / 2;
-            graphicsForm.DrawImage(Properties.Resources.botton_button, Start_bottom_X, sizeForm.Height- 90, 420,60);
+            graphicsForm.DrawImage(Properties.Resources.botton_button, Start_bottom_X, sizeForm.Height - 90, 420, 60);
         }
     }
 }
