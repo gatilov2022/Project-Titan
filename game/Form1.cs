@@ -151,8 +151,9 @@ namespace game
                     dragStarted = false; 
                     break;
                 case MouseButtons.Right:
+                    if (!Building.Checking_The_Building(new Point(mouseX, mouseY), _dragDeltaCoordinates))
+                        return;
                     new Building().PlaceBuilding(new Point(mouseX, mouseY), _buttons, _dragDeltaCoordinates);
-                    _buildings.Add_Resources(_buttons, sp);
                     Invalidate();
                     break;
             }
@@ -249,9 +250,10 @@ namespace game
             Map.Draw_map(graphicsForm, _dragDeltaCoordinates,this.Size, _status);
             e.Graphics.DrawString("spritesSize: " + _sprites.GetSpritesSize() + "\n Sprites max/min sizes: " + _sprites.GetSpritesMaxSize() + " ," + _sprites.GetSpritesMinSize() + "\nDrags: X - "
                 + _dragDeltaCoordinates.X + ", Y - " + _dragDeltaCoordinates.Y, f, new SolidBrush(Color.Red), 200, 200);
-            
-            Building.DrawBuilding(graphicsForm, _buttons, _dragDeltaCoordinates, mouseX, mouseY);
+
+            bool chekBuild = Building.Checking_The_Building(new Point(mouseX, mouseY), _dragDeltaCoordinates);
             Building.DrawCreatedBuildings(graphicsForm, _dragDeltaCoordinates);
+            Building.DrawBuilding(graphicsForm, _buttons, _dragDeltaCoordinates, mouseX, mouseY, chekBuild);
             Create_Top(graphicsForm, this.Size);
             Create_Bottom(graphicsForm, this.Size);
         }

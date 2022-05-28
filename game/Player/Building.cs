@@ -38,6 +38,17 @@ namespace game.Player
             listOfBuildings.Add(someBuilding);
         }
 
+        public static bool Checking_The_Building(Point p, Point Drag)
+        {
+            var blockSize = new Sprites().GetSpritesSize();
+            for (int i = 0; i < listOfBuildings.Count; i++)
+            {
+                var point = new Point((p.X - Drag.X) / blockSize, (p.Y - Drag.Y) / blockSize);
+                if (point == listOfBuildings[i].buildingCoordiantes)
+                    return false;
+            }
+            return true;
+        }
         static void CreateBuilding(int buildingNumber)
         {
             //_buttons = new Button[] { factory_but, pump_but, drill_but, base_but, wareh_but, house_but, steam_but };
@@ -134,7 +145,7 @@ namespace game.Player
             listOfBuildings[listOfBuildings.Count - 1].buildingImage = bitmaps[m];
         }
 
-        public static void DrawBuilding(Graphics graphicsForm, Button[] buts, Point DragDelta, int X, int Y)
+        public static void DrawBuilding(Graphics graphicsForm, Button[] buts, Point DragDelta, int X, int Y, bool chekBuild)
         {
             var SpritesSize = new Sprites().GetSpritesSize();
 
@@ -145,7 +156,7 @@ namespace game.Player
                 if (buts[m].FlatAppearance.BorderColor == Color.Blue)
                 {
                     graphicsForm.DrawImage(bitmaps[m], rec);
-                    if(DragDelta.X > rec.X || DragDelta.Y > rec.Y)
+                    if(!chekBuild)
                         graphicsForm.FillRectangle(new SolidBrush(Color.FromArgb(60, Color.Red)), rec);
                     else
                         graphicsForm.FillRectangle(new SolidBrush(Color.FromArgb(60, Color.Green)), rec);
