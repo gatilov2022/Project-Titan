@@ -14,13 +14,12 @@ namespace game
         private int mouseX, mouseY,lastX = 0, lastY =0, spritesSize, scrlToX, scrlToY;
         private const int sizeChange = 14;
         SoundPlayer sp = null;
-        private readonly Button[] _buttons;
+        private Button[] _buttons;
         private readonly Sprites _sprites = new Sprites();
         private Point _dragStartCoordinates, _dragDeltaCoordinates = new Point(0,0);
 
         private const double MaxMultiplier = 4, MinMultiplier = 0.5;
         private bool dragStarted = false, scrlDown = false, scrlUp = false;
-        private readonly Map_Build _buildingClass;
         private readonly Buildings _buildings;
         private readonly Status _status;
         private readonly StartMenu _startMenu;
@@ -36,8 +35,7 @@ namespace game
             _buildings = new Buildings();
 
             spritesSize = _sprites.GetSpritesSize();
-
-            _buildingClass = new Map_Build();
+            
             this.MouseWheel += new MouseEventHandler(From1_MouseWheel);
 
             
@@ -153,7 +151,7 @@ namespace game
                     dragStarted = false; 
                     break;
                 case MouseButtons.Right:
-                    _buildingClass.Add_build(new Point(mouseX, mouseY), _buttons, _dragDeltaCoordinates);
+                    new Building().PlaceBuilding(new Point(mouseX, mouseY), _buttons, _dragDeltaCoordinates);
                     _buildings.Add_Resources(_buttons, sp);
                     Invalidate();
                     break;
@@ -176,10 +174,12 @@ namespace game
             if (but.FlatAppearance.BorderColor != Color.Blue)
                 but.FlatAppearance.BorderColor = Color.Red;
         }
-        
+
         private void but_MouseClick(object sender, EventArgs e)
         {
             //События для кнопок, при нажатии которых, рамка Flat будет синей(Blue). При повторном клике, рамка меняет цвет на жёлтый(Yellow).
+            //var but = sender as Button;
+
             var but = sender as Button;
             if (but.FlatAppearance.BorderColor != Color.Blue)
             {
@@ -187,6 +187,7 @@ namespace game
                 but.FlatAppearance.BorderColor = Color.Blue;
             }
             else but.FlatAppearance.BorderColor = Color.Yellow;
+
             Invalidate();
         }
 
@@ -246,8 +247,8 @@ namespace game
             e.Graphics.DrawString("spritesSize: " + _sprites.GetSpritesSize() + "\n Sprites max/min sizes: " + _sprites.GetSpritesMaxSize() + " ," + _sprites.GetSpritesMinSize() + "\nDrags: X - "
                 + _dragDeltaCoordinates.X + ", Y - " + _dragDeltaCoordinates.Y, f, new SolidBrush(Color.Red), 200, 200);
             
-            Building.Draw_building(graphicsForm, _buttons, _dragDeltaCoordinates, mouseX, mouseY);
-            _buildingClass.Grah_build(graphicsForm, _dragDeltaCoordinates);
+            Building.DrawBuilding(graphicsForm, _buttons, _dragDeltaCoordinates, mouseX, mouseY);
+            Building.DrawCreatedBuildings(graphicsForm, _dragDeltaCoordinates);
             Create_Top(graphicsForm, this.Size);
             Create_Bottom(graphicsForm, this.Size);
         }
