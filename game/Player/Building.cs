@@ -12,7 +12,7 @@ namespace game.Player
             Properties.Resources.Warehouse, Properties.Resources.Home_Defult,
             Properties.Resources.Steam_Eng_1lvl
         };
-        static public void Draw_building(Graphics graphicsForm, Button[] buts, Point DragDelta, int X, int Y)
+        static public void Draw_building(Graphics graphicsForm, Button[] buts, Point DragDelta, int X, int Y, bool checkBuild)
         {
             var SpritesSize = new Sprites().GetSpritesSize();
 
@@ -23,10 +23,10 @@ namespace game.Player
                 if (buts[m].FlatAppearance.BorderColor == Color.Blue)
                 {
                     graphicsForm.DrawImage(bitmaps[m], rec);
-                    if(DragDelta.X > rec.X || DragDelta.Y > rec.Y)
-                        graphicsForm.FillRectangle(new SolidBrush(Color.FromArgb(60, Color.Red)), rec);
-                    else
+                    if (checkBuild)
                         graphicsForm.FillRectangle(new SolidBrush(Color.FromArgb(60, Color.Green)), rec);
+                    else
+                        graphicsForm.FillRectangle(new SolidBrush(Color.FromArgb(60, Color.Red)), rec);
                     break;
                 }
             }

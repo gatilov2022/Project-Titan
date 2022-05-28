@@ -13,8 +13,7 @@ namespace game
     {
         private int mouseX, mouseY,lastX = 0, lastY =0, spritesSize, scrlToX, scrlToY;
         private const int sizeChange = 14;
-        SoundPlayer sp = null;
-        private readonly Button[] _buttons;
+        private  Button[] _buttons = new Button[7];
         private readonly Sprites _sprites = new Sprites();
         private Point _dragStartCoordinates, _dragDeltaCoordinates = new Point(0,0);
 
@@ -153,8 +152,10 @@ namespace game
                     dragStarted = false; 
                     break;
                 case MouseButtons.Right:
-                    _buildingClass.Add_build(new Point(mouseX, mouseY), _buttons, _dragDeltaCoordinates);
-                    _buildings.Add_Resources(_buttons, sp);
+                    if (!_buildingClass.Checking_The_Building(new Point(mouseX, mouseY), _dragDeltaCoordinates))
+                        break;
+                    _buildingClass.Add_build(new Point(mouseX, mouseY), _buttons, _dragDeltaCoordinates,_status);
+                    _buildings.Add_Resources_Tick(_buttons);
                     Invalidate();
                     break;
             }
@@ -187,6 +188,7 @@ namespace game
                 but.FlatAppearance.BorderColor = Color.Blue;
             }
             else but.FlatAppearance.BorderColor = Color.Yellow;
+            
             Invalidate();
         }
 
@@ -237,6 +239,12 @@ namespace game
         }
         private void paint_vis(object sender, PaintEventArgs e)
         {
+            if (!_status.Are_There_Resources())
+            {
+                _startMenu.Show();
+                this.Close();
+                MessageBox.Show("^_^ GAME_OVER ^_^");
+            }
             if (scrlDown || scrlUp)
                 Zoom();
             Graphics graphicsForm = e.Graphics;
@@ -245,9 +253,10 @@ namespace game
             Map.Draw_map(graphicsForm, _dragDeltaCoordinates,this.Size, _status);
             e.Graphics.DrawString("spritesSize: " + _sprites.GetSpritesSize() + "\n Sprites max/min sizes: " + _sprites.GetSpritesMaxSize() + " ," + _sprites.GetSpritesMinSize() + "\nDrags: X - "
                 + _dragDeltaCoordinates.X + ", Y - " + _dragDeltaCoordinates.Y, f, new SolidBrush(Color.Red), 200, 200);
-            
-            Building.Draw_building(graphicsForm, _buttons, _dragDeltaCoordinates, mouseX, mouseY);
+            bool checkBuild = _buildingClass.Checking_The_Building(new Point(mouseX, mouseY), _dragDeltaCoordinates);
+
             _buildingClass.Grah_build(graphicsForm, _dragDeltaCoordinates);
+            Building.Draw_building(graphicsForm, _buttons, _dragDeltaCoordinates, mouseX, mouseY, checkBuild);
             Create_Top(graphicsForm, this.Size);
             Create_Bottom(graphicsForm, this.Size);
         }
@@ -260,8 +269,8 @@ namespace game
             graphicsForm.DrawImage(Properties.Resources.top_info, new Point(Start_Top_X, 0));
             graphicsForm.DrawString(_status.Get_Water().ToString(), font, brush, Start_Top_X + 45, 9);
             graphicsForm.DrawString(_status.Get_Sand().ToString(), font, brush, Start_Top_X + 97, 9);
-            graphicsForm.DrawString(_status.Get_Ore().ToString(), font, brush, Start_Top_X + 207, 9);
-            graphicsForm.DrawString(_status.Get_Energy().ToString(), font, brush, Start_Top_X + 157, 9);
+            graphicsForm.DrawString(_status.Get_Ore().ToString(), font, brush, Start_Top_X + 157, 9);
+            graphicsForm.DrawString(_status.Get_Energy().ToString(), font, brush, Start_Top_X + 207, 9);
         }
 
         private void Create_Bottom(Graphics graphicsForm, Size sizeForm)
