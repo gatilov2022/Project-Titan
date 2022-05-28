@@ -8,16 +8,16 @@ namespace game.Player
 {
     public class Building : Sprites
     {
-        private Point buildingCoordiantes;
-        Bitmap buildingImage;
-        protected Type buildingType;
+        private Point _buildingCoordiantes;
+        private Bitmap _buildingImage;
+        protected Type BuildingType;
 
-        protected Dictionary<string, int> usingResoursecDictionary = new Dictionary<string, int>()  {{"Energy" , 0} , 
+        protected Dictionary<string, int> UsingResourcesDictionary = new Dictionary<string, int>()  {{"Energy" , 0} , 
             {"Water", 0} ,
             {"Sand",  0},
             {"Iron" , 0}};
 
-        protected Dictionary<string, int> producingResourcesDictionary = new Dictionary<string, int>() {{"Energy", 0}, 
+        protected Dictionary<string, int> ProducingResourcesDictionary = new Dictionary<string, int>() {{"Energy", 0}, 
                 {"Water", 0}, 
                 {"Iron", 0}, 
                 {"Sand", 0}};
@@ -26,7 +26,7 @@ namespace game.Player
 
         protected int buildingLevel = 0, buildingMaxLevel; 
 
-        private static List<Building> listOfBuildings = new List<Building>();
+        private static List<Building> _listOfBuildings = new List<Building>();
 
         protected bool IsMaxLevel()
         {
@@ -35,60 +35,104 @@ namespace game.Player
 
         protected void AddBuilding(Building someBuilding)
         {
-            listOfBuildings.Add(someBuilding);
+            _listOfBuildings.Add(someBuilding);
         }
 
         public static bool Checking_The_Building(Point p, Point Drag)
         {
             var blockSize = new Sprites().GetSpritesSize();
-            for (int i = 0; i < listOfBuildings.Count; i++)
+            for (int i = 0; i < _listOfBuildings.Count; i++)
             {
                 var point = new Point((p.X - Drag.X) / blockSize, (p.Y - Drag.Y) / blockSize);
-                if (point == listOfBuildings[i].buildingCoordiantes)
+                if (point == _listOfBuildings[i]._buildingCoordiantes)
                     return false;
             }
-            return true;
-        }
-        static void CreateBuilding(int buildingNumber)
-        {
-            //_buttons = new Button[] { factory_but, pump_but, drill_but, base_but, wareh_but, house_but, steam_but };
 
             
+            return true;
+        }
+        static bool CreateBuilding(int buildingNumber)
+        {
+            //_buttons = new Button[] { factory_but, pump_but, drill_but, base_but, wareh_but, house_but, steam_but };
+            //_buttons = new Button[] {0factory_but ,1pump_but ,2drill_but ,3base_but//gamegoal ,4wareh_but ,5house_but ,6steam_but};
+
             switch (buildingNumber)
             {
                 case 0:
-                    new Factory();
-                    break;
-                case 1:
-                    new Pump();
-                    break;
-                    case 2:
-                        new Drill();
-                    break;
-                case 3:
-                    //new Base();
-                    break;
-                case 4:
-                    //new Warehouse();
-                    break;
-                case 5:
-                    //new House();
-                    break;
-                case 6:
-                    new SteamEngine();
-                    break;
+                    if (Player.GetAmountOfResources("Sand") - 100 < 0
+                        || Player.GetAmountOfResources("Iron") - 50 < 0) 
+                        return false;
 
-                default: break;
+                        Player.DecreaseAmountOfResources("Sand", 100);
+                        Player.DecreaseAmountOfResources("Iron", 50);
+                        new Factory();
+                        return true;
+                    
+                case 1:
+                    if (Player.GetAmountOfResources("Iron") - 10 < 0)
+                        return false;
+                    
+                    Player.DecreaseAmountOfResources("Iron", 10);
+
+                    new Pump();
+                    return true;
+
+                case 2:
+                    if (Player.GetAmountOfResources("Sand") - 50 < 0
+                        || Player.GetAmountOfResources("Iron") - 50 < 0)
+                        return false;
+
+                    Player.DecreaseAmountOfResources("Sand", 50);
+                    Player.DecreaseAmountOfResources("Iron", 50);
+
+                    new Drill();
+                    return true;
+
+                case 3:
+                    new GameGoal();
+                    return true;
+                case 4:
+                    if (Player.GetAmountOfResources("Sand") - 100 < 0
+                        || Player.GetAmountOfResources("Iron") - 100 < 0)
+                        return false;
+
+                    Player.DecreaseAmountOfResources("Sand", 100);
+                    Player.DecreaseAmountOfResources("Iron", 100);
+
+                    new Warehouse();
+                    return true;
+
+                case 5:
+                    if (Player.GetAmountOfResources("Iron") - 50 < 0)
+                        return false;
+                    
+                    Player.DecreaseAmountOfResources("Iron", 50);
+
+                    new SandQuarry();
+
+                    return true;
+
+                case 6:
+                    if (Player.GetAmountOfResources("Sand") - 20 < 0
+                        || Player.GetAmountOfResources("Iron") - 50 < 0)
+                        return false;
+
+                    Player.DecreaseAmountOfResources("Sand", 20);
+                    Player.DecreaseAmountOfResources("Iron", 50);
+
+                    new SteamEngine();
+                    return true;
+
+                default: return false;
             }
         }
 
-        static void UpdateResources()
+        public static void UpdateResources()
         {
             bool BuildingActive = false;
-            foreach (var someBuilding in listOfBuildings)
+            foreach (var someBuilding in _listOfBuildings)
             {
-
-                foreach (var dictItem in someBuilding.usingResoursecDictionary)
+                foreach (var dictItem in someBuilding.UsingResourcesDictionary)
                 {
                     if (Player.GetAmountOfResources(dictItem.Key) - dictItem.Value > 0)
                     {
@@ -99,7 +143,7 @@ namespace game.Player
 
                 if (BuildingActive)
 
-                foreach (var dictItem in someBuilding.producingResourcesDictionary)
+                foreach (var dictItem in someBuilding.ProducingResourcesDictionary)
                 {
                     Player.IncreaseAmountOfResources(dictItem.Key, dictItem.Value);
                 }
@@ -109,15 +153,15 @@ namespace game.Player
         public static void DrawCreatedBuildings(Graphics graphicsForm, Point Drag)
         {
            
-                foreach (var someBuilding in listOfBuildings)
+                foreach (var someBuilding in _listOfBuildings)
                 {
                     var blockSize = new Sprites().GetSpritesSize();
 
-                    int actualX = someBuilding.buildingCoordiantes.X * blockSize + Drag.X,
-                        actualY = someBuilding.buildingCoordiantes.Y * blockSize + Drag.Y;
+                    int actualX = someBuilding._buildingCoordiantes.X * blockSize + Drag.X,
+                        actualY = someBuilding._buildingCoordiantes.Y * blockSize + Drag.Y;
 
                     var rec = new Rectangle(actualX, actualY, blockSize + 1, blockSize + 1);
-                    graphicsForm.DrawImage(someBuilding.buildingImage, rec);
+                    graphicsForm.DrawImage(someBuilding._buildingImage, rec);
                 }
             
         }
@@ -136,13 +180,18 @@ namespace game.Player
             for ( ;m < buts.Length; m++)
             {
                 if (buts[m].FlatAppearance.BorderColor != Color.Blue) continue;
-                
-                CreateBuilding(m);
-                break;
+
+
+                if (CreateBuilding(m))
+                {
+                    _listOfBuildings[_listOfBuildings.Count - 1]._buildingCoordiantes =
+                        (new Point((p.X - Drag.X) / blockSize, (p.Y - Drag.Y) / blockSize));
+                    _listOfBuildings[_listOfBuildings.Count - 1]._buildingImage = bitmaps[m];
+                    break;
+                }
             }
 
-            listOfBuildings[listOfBuildings.Count - 1].buildingCoordiantes = (new Point((p.X - Drag.X) / blockSize, (p.Y - Drag.Y) / blockSize));
-            listOfBuildings[listOfBuildings.Count - 1].buildingImage = bitmaps[m];
+            
         }
 
         public static void DrawBuilding(Graphics graphicsForm, Button[] buts, Point DragDelta, int X, int Y, bool chekBuild)
@@ -173,11 +222,11 @@ namespace game.Player
         public Drill()
         {
 
-            buildingType = typeof(Drill);
+            BuildingType = typeof(Drill);
 
             buildingMaxLevel = 3;
-            usingResoursecDictionary["usingEnergy"] = 5;
-            usingResoursecDictionary["producingIron"] = 5;
+            UsingResourcesDictionary["Energy"] = 5;
+            ProducingResourcesDictionary["Iron"] = 5;
             AddBuilding(this);
         }
 
@@ -187,8 +236,8 @@ namespace game.Player
             {
                 buildingLevel++;
 
-                usingResoursecDictionary["Energy"] = (int)(usingResoursecDictionary["Energy"] * Math.E * 0.8);
-                producingResourcesDictionary["Iron"] = (int)(producingResourcesDictionary["Iron"] * Math.E);
+                UsingResourcesDictionary["Energy"] = (int)(UsingResourcesDictionary["Energy"] * Math.E * 0.8);
+                ProducingResourcesDictionary["Iron"] = (int)(ProducingResourcesDictionary["Iron"] * Math.E);
             }
         }
     }
@@ -197,9 +246,12 @@ namespace game.Player
     {
         public Factory()
         {
+            BuildingType = typeof(Factory);
+
             buildingMaxLevel = 2;
-            usingResoursecDictionary["Energy"] = 5;
-            usingResoursecDictionary["Iron"] = 5;
+            UsingResourcesDictionary["Energy"] = 5;
+            UsingResourcesDictionary["Iron"] = 5;
+
             AddBuilding(this);
         }
 
@@ -211,16 +263,16 @@ namespace game.Player
                 {
                     case 1:
                     {
-                        usingResoursecDictionary["Energy"] =
-                            (int) (usingResoursecDictionary["usingEnergy"] * Math.E * 0.8);
-                        usingResoursecDictionary["Iron"] = (int) (usingResoursecDictionary["usingIron"] * Math.E);
+                        UsingResourcesDictionary["Energy"] =
+                            (int) (UsingResourcesDictionary["Energy"] * Math.E * 0.8);
+                        UsingResourcesDictionary["Iron"] = (int) (UsingResourcesDictionary["Iron"] * Math.E);
                         break;
                     }
                     case 2:
                     {
-                        usingResoursecDictionary["Energy"] =
-                            (int) (usingResoursecDictionary["usingEnergy"] * Math.E * 0.8);
-                        usingResoursecDictionary["Iron"] = (int) (usingResoursecDictionary["usingIron"] * Math.E);
+                        UsingResourcesDictionary["Energy"] =
+                            (int) (UsingResourcesDictionary["Energy"] * Math.E * 0.8);
+                        UsingResourcesDictionary["Iron"] = (int) (UsingResourcesDictionary["Iron"] * Math.E);
                         break;
                     }
                 }
@@ -234,8 +286,8 @@ namespace game.Player
         {
             
             buildingMaxLevel = 1;
-            usingResoursecDictionary["Energy"] = 1;
-            usingResoursecDictionary["Water"] = 5;
+            UsingResourcesDictionary["Energy"] = 1;
+            ProducingResourcesDictionary["Water"] = 5;
             AddBuilding(this);
         }
 
@@ -243,8 +295,8 @@ namespace game.Player
         {
             if (!IsMaxLevel())
             {
-                usingResoursecDictionary["Energy"] = (int)(usingResoursecDictionary["Energy"] * Math.E * 0.8);
-                producingResourcesDictionary["Water"] = (int)(producingResourcesDictionary["Iron"] * Math.E);
+                UsingResourcesDictionary["Energy"] = (int)(UsingResourcesDictionary["Energy"] * Math.E * 0.8);
+                ProducingResourcesDictionary["Water"] = (int)(ProducingResourcesDictionary["Water"] * Math.E);
             }
         }
     }
@@ -253,9 +305,12 @@ namespace game.Player
     {
         public SteamEngine()
         {
+            BuildingType = typeof(SteamEngine);
+
             buildingMaxLevel = 2;
-            usingResoursecDictionary["Water"] = 3;
-            usingResoursecDictionary["Energy"] = 6;
+            UsingResourcesDictionary["Water"] = 3;
+            ProducingResourcesDictionary["Energy"] = 6;
+
             AddBuilding(this);
         }
 
@@ -263,9 +318,64 @@ namespace game.Player
         {
             if (!IsMaxLevel())
             {
-                usingResoursecDictionary["Water"] = (int)(usingResoursecDictionary["Energy"] * Math.E * 0.8);
-                producingResourcesDictionary["Energy"] = (int)(producingResourcesDictionary["Iron"] * Math.E);
+                UsingResourcesDictionary["Water"] = (int)(UsingResourcesDictionary["Water"] * Math.E * 0.8);
+                ProducingResourcesDictionary["Energy"] = (int)(ProducingResourcesDictionary["Energy"] * Math.E);
             }
         }
     }
+
+    class SandQuarry : Building
+    {
+        public SandQuarry()
+        {
+            BuildingType = typeof(SandQuarry);
+
+            
+            buildingMaxLevel = 1;
+            UsingResourcesDictionary["Water"] = 3;
+            UsingResourcesDictionary["Energy"] = 6;
+
+            ProducingResourcesDictionary["Sand"] = 10;
+
+            AddBuilding(this);
+        }
+
+        public void UpgradeBuilding()
+        {
+            if (!IsMaxLevel())
+            {
+                UsingResourcesDictionary["Energy"] = (int)(UsingResourcesDictionary["Energy"] * Math.E * 0.8);
+                ProducingResourcesDictionary["Sand"] = (int)(ProducingResourcesDictionary["Sand"] * Math.E);
+            }
+        }
+    }
+
+    class Warehouse : Building
+    {
+        public Warehouse()
+        {
+            BuildingType = typeof(Warehouse);
+
+            buildingMaxLevel = 2;
+
+            AddBuilding(this);
+        }
+
+        public void UpgradeBuilding()
+        {
+            if (!IsMaxLevel())
+            {
+
+            }
+        }
+    }
+
+    class GameGoal : Building
+    {
+        public GameGoal()
+        {
+
+        }
+    }
+    
 }

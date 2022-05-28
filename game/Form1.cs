@@ -52,6 +52,7 @@ namespace game
 
         private void Timer1_Tick(object sender, EventArgs e)
         {
+            Building.UpdateResources();
             _buildings.Tick_Add(_status);
             Invalidate();
         }
@@ -260,16 +261,16 @@ namespace game
 
         private void Create_Top(Graphics graphicsForm, Size sizeForm)
         {
-            Font font = new Font("Arial", 6, FontStyle.Bold);
+            Font font = new Font("Arial", 11, FontStyle.Bold);
             SolidBrush brush = new SolidBrush(Color.White);
             var Start_Top_X = sizeForm.Width / 2 - Properties.Resources.Top_Interface.Width / 2;
             graphicsForm.DrawImage(Properties.Resources.Top_Interface, new Point(Start_Top_X, 0));
 
             //Отображение ресурсов
-            graphicsForm.DrawString(_status.Get_Water().ToString(), font, brush, Start_Top_X + 45, 8);
-            graphicsForm.DrawString(_status.Get_Sand().ToString(), font, brush, Start_Top_X + 94, 8);
-            graphicsForm.DrawString(_status.Get_Ore().ToString(), font, brush, Start_Top_X + 141, 8);
-            graphicsForm.DrawString(_status.Get_Energy().ToString(), font, brush, Start_Top_X + 183, 8);
+            graphicsForm.DrawString(Player.Player.GetAmountOfResources("Water").ToString(), font, brush, Start_Top_X + 45, 7);
+            graphicsForm.DrawString(Player.Player.GetAmountOfResources("Iron").ToString(), font, brush, Start_Top_X + 94, 7);
+            graphicsForm.DrawString(Player.Player.GetAmountOfResources("Sand").ToString(), font, brush, Start_Top_X + 141, 7);
+            graphicsForm.DrawString(Player.Player.GetAmountOfResources("Energy").ToString(), font, brush, Start_Top_X + 183, 7);
         }
 
         private void Create_Bottom(Graphics graphicsForm, Size sizeForm)

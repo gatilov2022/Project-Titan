@@ -11,7 +11,7 @@ namespace game.Player
     {
         static Dictionary<string, int> playerResources = new Dictionary<string, int>()
         {
-            {"IronOre", 0}, {"Iron", 0}, {"Sand", 0}, {"Glass", 0}, {"Energy", 0}, {"Steam", 0}
+            {"Iron", 500}, {"Sand", 400}, {"Energy", 500}, {"Water", 300}
         };
 
         public static int GetAmountOfResources(string resource)
