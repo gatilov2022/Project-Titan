@@ -53,6 +53,7 @@
             this.factory_but.Name = "factory_but";
             this.factory_but.Size = new System.Drawing.Size(32, 32);
             this.factory_but.TabIndex = 0;
+            this.factory_but.Text = ".";
             this.toolTip1.SetToolTip(this.factory_but, "Фабрика 1lvl\r\n");
             this.factory_but.UseVisualStyleBackColor = true;
             this.factory_but.Click += new System.EventHandler(this.but_MouseClick);

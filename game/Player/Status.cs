@@ -19,21 +19,27 @@ namespace game.Player
             ore = 1000;energy = 1000;
         }
 
-        public void Add_Sand(int sand)
+        public void Add_Resources(int sand, int water, int ore, int energy)
         {
             this.sand += sand;
-        }
-        public void Add_Water(int water)
-        {
             this.water += water;
-        }
-        public void Add_Ore(int ore)
-        {
             this.ore += ore;
-        }
-        public void Add_Energy(int energy)
-        {
             this.energy += energy;
+        }
+        
+        public void Delete_resources(int sand, int water, int ore, int energy)
+        {
+            this.sand -= sand;
+            this.water -= water;
+            this.ore -= ore;
+            this.energy -= energy;
+        }
+
+        public bool Are_There_Resources()
+        {
+            if (this.water < 100 || this.ore < 100 || this.energy < 100 || this.sand < 100)
+                return false;
+            return true;
         }
 
         public int Get_Sand()

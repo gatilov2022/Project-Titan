@@ -11,6 +11,7 @@ namespace game.Town
         private int tick_ore;
         private int tick_water;
         private int tick_energy;
+        private SoundPlayer sound;
 
         public Buildings()
         {
@@ -20,31 +21,28 @@ namespace game.Town
 
         public void Tick_Add(Player.Status status)
         {
-            status.Add_Sand(tick_sand);
-            status.Add_Ore(tick_ore);
-            status.Add_Water(tick_water);
-            status.Add_Energy(tick_energy);
+            status.Add_Resources(tick_sand, tick_water, tick_ore, tick_energy);
         }
-        public void Add_Resources(Button[] but, System.Media.SoundPlayer sp)
+        public void Add_Resources_Tick(Button[] but)
         {
             for (int i = 0; i < but.Length; i++)
             {
-                if(but[i].FlatAppearance.BorderColor == Color.Blue)
+                if (but[i].FlatAppearance.BorderColor == Color.Blue)
                 {
                     var random = new Random();
                     if (random.Next(2) == 0)
-                        sp = new SoundPlayer(Properties.Resources.build);
+                        sound = new SoundPlayer(Properties.Resources.build);
                     else
-                        sp = new SoundPlayer(Properties.Resources.build_hummer);
-                    sp.Play();
+                        sound = new SoundPlayer(Properties.Resources.build_hummer);
+                    sound.Play();
                     if (i == 0)
-                        tick_ore++;
+                        tick_ore += 5;
                     else if (i == 1)
-                        tick_water++;
-                    else if(i == 2)
-                        tick_sand++;
-                    else if(i == 6)
-                        tick_energy++;
+                        tick_water += 5;
+                    else if (i == 2)
+                        tick_sand += 5;
+                    else if (i == 6)
+                        tick_energy += 5;
                 }
             }
         }

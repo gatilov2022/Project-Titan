@@ -178,8 +178,6 @@ namespace game
         private void but_MouseClick(object sender, EventArgs e)
         {
             //События для кнопок, при нажатии которых, рамка Flat будет синей(Blue). При повторном клике, рамка меняет цвет на жёлтый(Yellow).
-            //var but = sender as Button;
-
             var but = sender as Button;
             if (but.FlatAppearance.BorderColor != Color.Blue)
             {
@@ -187,7 +185,6 @@ namespace game
                 but.FlatAppearance.BorderColor = Color.Blue;
             }
             else but.FlatAppearance.BorderColor = Color.Yellow;
-
             Invalidate();
         }
 
@@ -238,6 +235,12 @@ namespace game
         }
         private void paint_vis(object sender, PaintEventArgs e)
         {
+            if (!_status.Are_There_Resources())
+            {
+                _startMenu.Show();
+                this.Close();
+                MessageBox.Show("^_^ GAME_OVER ^_^");
+            }
             if (scrlDown || scrlUp)
                 Zoom();
             Graphics graphicsForm = e.Graphics;
@@ -261,8 +264,8 @@ namespace game
             graphicsForm.DrawImage(Properties.Resources.top_info, new Point(Start_Top_X, 0));
             graphicsForm.DrawString(_status.Get_Water().ToString(), font, brush, Start_Top_X + 45, 9);
             graphicsForm.DrawString(_status.Get_Sand().ToString(), font, brush, Start_Top_X + 97, 9);
-            graphicsForm.DrawString(_status.Get_Ore().ToString(), font, brush, Start_Top_X + 207, 9);
-            graphicsForm.DrawString(_status.Get_Energy().ToString(), font, brush, Start_Top_X + 157, 9);
+            graphicsForm.DrawString(_status.Get_Ore().ToString(), font, brush, Start_Top_X + 157, 9);
+            graphicsForm.DrawString(_status.Get_Energy().ToString(), font, brush, Start_Top_X + 207, 9);
         }
 
         private void Create_Bottom(Graphics graphicsForm, Size sizeForm)
