@@ -63,7 +63,7 @@
             // base_but
             // 
             this.base_but.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.base_but.BackgroundImage = global::game.Properties.Resources.Base;
+            this.base_but.BackgroundImage = global::game.Properties.Resources.goal_of_the_game;
             this.base_but.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.base_but.FlatAppearance.BorderColor = System.Drawing.Color.Red;
             this.base_but.FlatAppearance.BorderSize = 2;
@@ -81,7 +81,7 @@
             // house_but
             // 
             this.house_but.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.house_but.BackgroundImage = global::game.Properties.Resources.Home_Defult;
+            this.house_but.BackgroundImage = global::game.Properties.Resources.Sand_Quarry;
             this.house_but.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.house_but.FlatAppearance.BorderColor = System.Drawing.Color.Red;
             this.house_but.FlatAppearance.BorderSize = 2;

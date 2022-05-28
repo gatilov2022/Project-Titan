@@ -262,12 +262,14 @@ namespace game
         {
             Font font = new Font("Arial", 6, FontStyle.Bold);
             SolidBrush brush = new SolidBrush(Color.White);
-            var Start_Top_X = sizeForm.Width / 2 - Properties.Resources.top_info.Width / 2;
-            graphicsForm.DrawImage(Properties.Resources.top_info, new Point(Start_Top_X, 0));
-            graphicsForm.DrawString(_status.Get_Water().ToString(), font, brush, Start_Top_X + 45, 9);
-            graphicsForm.DrawString(_status.Get_Sand().ToString(), font, brush, Start_Top_X + 97, 9);
-            graphicsForm.DrawString(_status.Get_Ore().ToString(), font, brush, Start_Top_X + 157, 9);
-            graphicsForm.DrawString(_status.Get_Energy().ToString(), font, brush, Start_Top_X + 207, 9);
+            var Start_Top_X = sizeForm.Width / 2 - Properties.Resources.Top_Interface.Width / 2;
+            graphicsForm.DrawImage(Properties.Resources.Top_Interface, new Point(Start_Top_X, 0));
+
+            //Отображение ресурсов
+            graphicsForm.DrawString(_status.Get_Water().ToString(), font, brush, Start_Top_X + 45, 8);
+            graphicsForm.DrawString(_status.Get_Sand().ToString(), font, brush, Start_Top_X + 94, 8);
+            graphicsForm.DrawString(_status.Get_Ore().ToString(), font, brush, Start_Top_X + 141, 8);
+            graphicsForm.DrawString(_status.Get_Energy().ToString(), font, brush, Start_Top_X + 183, 8);
         }
 
         private void Create_Bottom(Graphics graphicsForm, Size sizeForm)

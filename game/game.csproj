@@ -165,6 +165,9 @@
     <None Include="Town\Sprites_Resources\exit_no_active.jpg" />
     <None Include="Town\Sprites_Resources\fon_menu.jpg" />
     <None Include="Town\Sprites_Resources\botton_button.png" />
+    <None Include="Resources\Top_Interface.png" />
+    <None Include="Town\Sprites_City\Goal of the Game\goal_of_the_game.jpg" />
+    <None Include="Town\Sprites_City\Sand_Quarry\Sand_Quarry.jpg" />
     <Content Include="Town\Sprites_Resources\top_info.png" />
     <None Include="World_map\fon.jpg" />
     <None Include="Musics\build_hummer.wav" />

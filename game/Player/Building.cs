@@ -124,8 +124,8 @@ namespace game.Player
 
         private static Bitmap[] bitmaps = new Bitmap[] {
             Properties.Resources.Factory_1lvl, Properties.Resources.Pump_1lvl,
-            Properties.Resources.Drill_Burner_1lvl, Properties.Resources.Base,
-            Properties.Resources.Warehouse, Properties.Resources.Home_Defult,
+            Properties.Resources.Drill_Burner_1lvl, Properties.Resources.goal_of_the_game,
+            Properties.Resources.Warehouse, Properties.Resources.Sand_Quarry,
             Properties.Resources.Steam_Eng_1lvl
         };
 
