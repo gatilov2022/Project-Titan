@@ -101,6 +101,16 @@ namespace game.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Button_Save {
+            get {
+                object obj = ResourceManager.GetObject("Button_Save", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Drill_Burner_1lvl {
             get {
                 object obj = ResourceManager.GetObject("Drill_Burner_1lvl", resourceCulture);
@@ -234,6 +244,36 @@ namespace game.Properties {
         internal static System.Drawing.Bitmap Home_Defult {
             get {
                 object obj = ResourceManager.GetObject("Home_Defult", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Load_Click {
+            get {
+                object obj = ResourceManager.GetObject("Load_Click", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Load_Move {
+            get {
+                object obj = ResourceManager.GetObject("Load_Move", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Load_No_Move {
+            get {
+                object obj = ResourceManager.GetObject("Load_No_Move", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

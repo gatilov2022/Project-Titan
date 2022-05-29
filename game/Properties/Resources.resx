@@ -214,4 +214,16 @@
   <data name="Top_Interface" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Top_Interface.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Button_Save" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Button_Save.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Load_Click" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Town\Sprites_Resources\Load_Click.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Load_Move" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Town\Sprites_Resources\Load_Move.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Load_No_Move" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Town\Sprites_Resources\Load_No_Move.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

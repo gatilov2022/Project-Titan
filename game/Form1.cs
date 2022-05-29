@@ -132,6 +132,7 @@ namespace game
             }
         }
 
+
         private void Form1_MouseMove(object sender, MouseEventArgs e)
         {
             if (dragStarted)

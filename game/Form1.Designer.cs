@@ -41,6 +41,7 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
             // factory_but
@@ -196,13 +197,22 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(540, 101);
+            this.button2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.button2.BackgroundImage = global::game.Properties.Resources.Button_Save;
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Location = new System.Drawing.Point(563, 0);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(180, 163);
+            this.button2.Size = new System.Drawing.Size(47, 46);
             this.button2.TabIndex = 11;
-            this.button2.Text = "button2";
+            this.toolTip2.SetToolTip(this.button2, "Сохранение");
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // toolTip2
+            // 
+            this.toolTip2.ToolTipTitle = "Игра";
             // 
             // Form1
             // 
@@ -248,6 +258,7 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ToolTip toolTip2;
     }
 }
 
