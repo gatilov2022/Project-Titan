@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="game.Form1">
+    <Position X="38.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CESAAARHADYQKIAQHACACEACAFQdEEAgCrAAgCAIABA=</HashCode>
+      <FileName>Form1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="game.Program">
+    <Position X="31.75" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="game.StartMenu">
+    <Position X="31.75" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAACAAAAAEAACAAAACIEA4AAAAAHACAABAEAA=</HashCode>
+      <FileName>StartMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="game.Player.Building">
+    <Position X="26.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABCAAiAQSAAjgIBAAUAAAIAQIAAAgAAAAAEAAIQQA=</HashCode>
+      <FileName>Player\Buildings\Building.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="game.Player.Pump">
+    <Position X="23" Y="7.25" Width="1.5" />
+    <InheritanceLine Type="game.Player.Building" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="27" Y="7.75" />
+        <Point X="27" Y="6.983" />
+        <Point X="23.688" Y="6.983" />
+        <Point X="23.688" Y="7.25" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAEAAAAYAAAKAAAAAAAAAABAgAAIAAA=</HashCode>
+      <FileName>Player\Buildings\Pump.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="game.Player.Player">
+    <Position X="34.25" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gQAEAAAAAKEIgAAAACAwAAAQAACBAAEAAAAAAAAAQAA=</HashCode>
+      <FileName>Player\Player.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="game.Player.Buildings.Drill">
+    <Position X="18.75" Y="11.25" Width="1.5" />
+    <InheritanceLine Type="game.Player.Building" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="26.25" Y="10.938" />
+        <Point X="19.562" Y="10.938" />
+        <Point X="19.562" Y="11.25" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAEAAAAYAAACAAAAAAAAAABAgAAIAAA=</HashCode>
+      <FileName>Player\Buildings\Drill.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="game.Player.Buildings.Factory">
+    <Position X="21" Y="7.25" Width="1.5" />
+    <InheritanceLine Type="game.Player.Building" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="27" Y="7.75" />
+        <Point X="27" Y="6.983" />
+        <Point X="21.688" Y="6.983" />
+        <Point X="21.688" Y="7.25" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAEAAAAYAAACAAAAAAAAAABAgABIAAA=</HashCode>
+      <FileName>Player\Buildings\Factory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="game.Player.Buildings.Gamegoal">
+    <Position X="21" Y="11.25" Width="1.5" />
+    <InheritanceLine Type="game.Player.Building" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="26.25" Y="10.938" />
+        <Point X="24.786" Y="10.938" />
+        <Point X="24.786" Y="10.934" />
+        <Point X="21.812" Y="10.934" />
+        <Point X="21.812" Y="11.25" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAEAAAAAAAACAAAAAAAAAABAgAAAAAA=</HashCode>
+      <FileName>Player\Buildings\Gamegoal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="game.Player.Buildings.SandQuarry">
+    <Position X="16.75" Y="7.25" Width="1.5" />
+    <InheritanceLine Type="game.Player.Building" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="27" Y="7.75" />
+        <Point X="27" Y="7" />
+        <Point X="17.625" Y="7" />
+        <Point X="17.625" Y="7.25" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAEAAAAYAAACAAAAAAAAAABAgAAIAAA=</HashCode>
+      <FileName>Player\Buildings\SandQuarry.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="game.Player.Buildings.SteamEngine">
+    <Position X="18.75" Y="7.25" Width="1.5" />
+    <InheritanceLine Type="game.Player.Building" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="27" Y="7.75" />
+        <Point X="27" Y="6.983" />
+        <Point X="19.562" Y="6.983" />
+        <Point X="19.562" Y="7.25" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAEAAAAYAAACAAAAAAAAAABAgAAIAAA=</HashCode>
+      <FileName>Player\Buildings\SteamEgnine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="game.Player.Buildings.Warehouse" Collapsed="true">
+    <Position X="23" Y="11.25" Width="1.5" />
+    <InheritanceLine Type="game.Player.Building" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="26.25" Y="10.938" />
+        <Point X="23.812" Y="10.938" />
+        <Point X="23.812" Y="11.25" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAEAAAAYAAACAAAAAAAAAABAgAAIAAA=</HashCode>
+      <FileName>Player\Buildings\Warehouse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="game.Properties.Resources">
+    <Position X="36.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAQAgAAAAAJhEAEEAUAYEBAACoEAAFEAQLQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="game.Properties.Settings">
+    <Position X="36.5" Y="15.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="game.World_map.Block.Grass">
+    <Position X="27" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAAAAACAAAAAAAAAAAAAAABEAAAAAAA=</HashCode>
+      <FileName>World_map\Block\Grass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="game.World_map.Block.Ore">
+    <Position X="24.5" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAAAAACAAAAAAAAAAQAAAABAAAAAAAA=</HashCode>
+      <FileName>World_map\Block\Ore.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="game.World_map.Block.Sand">
+    <Position X="29.25" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAEAAAAAAAAACAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>World_map\Block\Sand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="game.World_map.Block.Water">
+    <Position X="22" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAAQAACAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>World_map\Block\Water.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="game.World_map.Chunk">
+    <Position X="31.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAIAAAAACCAAAAAAAIAAgAAQAAAAAAAAAAAgAFAAAAA=</HashCode>
+      <FileName>World_map\Chunk.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="game.World_map.Map">
+    <Position X="34.25" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAABCgAAAAAAAAAAAKAACAAAAAEAAAAAACAA=</HashCode>
+      <FileName>World_map\Map.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="game.World_map.Sprites">
+    <Position X="29.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAACAAAAASAAAAkEAgAABAAGAAAACAAACAgAAIBYAI=</HashCode>
+      <FileName>World_map\Sprites.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
