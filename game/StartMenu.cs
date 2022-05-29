@@ -78,31 +78,34 @@ namespace game
         }
         private void button3_Click(object sender, EventArgs e)
         {
+            folderBrowserDialog1.RootFolder = Environment.SpecialFolder.UserProfile;
+            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+            {
+                var path = folderBrowserDialog1.SelectedPath;
 
-            string path = $"../saves/29";
+                var fileStream = File.Open( path + "\\Chunks.sav", FileMode.Open);
 
-            var fileStream = File.Open(path + ".cnk", FileMode.Open);
+                var chunksList = DeserializeList<Chunk>(fileStream);
+                Map.LoadChunks(chunksList.ToList());
+                fileStream.Close();
 
-            var chunksList = DeserializeList<Chunk>(fileStream);
-            Map.LoadChunks(chunksList.ToList());
-            fileStream.Close();
+                fileStream = File.Open(path + "\\Buildings.sav", FileMode.Open);
+                var buildingsList = DeserializeList<Building>(fileStream);
+                Building.LoadBuildings(buildingsList.ToList());
 
-            fileStream = File.Open(path + ".bdk", FileMode.Open);
-            var buildingsList = DeserializeList<Building>(fileStream);
-            Building.LoadBuildings(buildingsList.ToList());
+                fileStream.Close();
 
-            fileStream.Close();
+                var playerObj = ReadFromBinaryFile<Player.Player>(path + "\\Player.sav");
 
-            var playerObj = ReadFromBinaryFile<Player.Player>(path + ".plr");
+                var newPlayer = new Player.Player();
 
-            var newPlayer = new Player.Player();
+                newPlayer.loadResourecesDict(playerObj.GetPlayerResourcesDict());
+                newPlayer.loadWarehouseDict(playerObj.GetWarehouseDict());
 
-            newPlayer.loadResourecesDict(playerObj.GetPlayerResourcesDict());
-            newPlayer.loadWarehouseDict(playerObj.GetWarehouseDict());
-
-            form1 = new Form1(this, playerObj);
-            form1.Show();
-            this.Hide();
+                form1 = new Form1(this, playerObj);
+                form1.Show();
+                this.Hide();
+            }
         }
     }
 }

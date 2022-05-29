@@ -110,29 +110,32 @@ namespace game
         }
         private void button2_Click(object sender, EventArgs e)
         {
+            
             var mapObjects = Map.GetChunks();
             var buildObjects = Building.GetBuildings();
 
-            SaveGame($"../saves/{DateTime.Today.Date.Day}.plr", playerObj, false);
+            var date = $"{DateTime.Today.Day}.{DateTime.Today.Month}.{DateTime.Today.Year}.{DateTime.Today.Hour}.{DateTime.Today.Minute}";
+
+            var path = "..\\saves"; 
+            Directory.CreateDirectory($"{path}\\{date}");
+            SaveGame($"{path}\\{date}\\Player.sav", playerObj, false);
 
             if (buildObjects.Count > 0)
-            SaveGame($"../saves/{DateTime.Today.Date.Day}.bdk", buildObjects[0],false);
+            SaveGame($"{path}\\{date}\\Buildings.sav", buildObjects[0],false);
 
             for (int i = 1; i < buildObjects.Count; i++)
             {
-                SaveGame($"../saves/{DateTime.Today.Date.Day}.bdk", buildObjects[i], true);
+                SaveGame($"{path}\\{date}\\Buildings.sav", buildObjects[i], true);
             }
 
             if (mapObjects.Count > 0)
-                SaveGame($"../saves/{DateTime.Today.Date.Day}.cnk", mapObjects[0], false);
+                SaveGame($"{path}\\{date}\\Chunks.sav", mapObjects[0], false);
 
             for (int i = 1; i < mapObjects.Count; i++)
             {
-                SaveGame($"../saves/{DateTime.Today.Date.Day}.cnk", mapObjects[i], true);
+                SaveGame($"{path}\\{date}\\Chunks.sav", mapObjects[i], true);
             }
         }
-
-
         private void Form1_MouseMove(object sender, MouseEventArgs e)
         {
             if (dragStarted)
