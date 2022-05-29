@@ -5,7 +5,6 @@ using System.Windows.Forms;
 using System.Media;
 using game.Player;
 using game.World_map;
-using game.Town;
 
 namespace game
 {
@@ -13,15 +12,12 @@ namespace game
     {
         private int mouseX, mouseY,lastX = 0, lastY =0, spritesSize, scrlToX, scrlToY;
         private const int sizeChange = 14;
-        SoundPlayer sp = null;
         private Button[] _buttons;
         private readonly Sprites Sprites = new Sprites();
         private Point _dragStartCoordinates, _dragDeltaCoordinates = new Point(0,0);
 
         private const double MaxMultiplier = 4, MinMultiplier = 0.5;
         private bool dragStarted = false, scrlDown = false, scrlUp = false;
-        private readonly Buildings _buildings;
-        private readonly Status _status;
         private readonly StartMenu _startMenu;
 
         private const int resourceInfoY = 4;
@@ -33,9 +29,7 @@ namespace game
             timer1.Start();
 
             _startMenu = startMenu;
-            _status = new Status();
             _buttons = new Button[] {factory_but ,pump_but ,drill_but ,base_but ,wareh_but ,house_but ,steam_but};
-            _buildings = new Buildings();
 
             spritesSize = Sprites.GetSpritesSize();
             
@@ -57,7 +51,6 @@ namespace game
         {
             Player.Player.SetShiftToZero();
             Building.UpdateResources();
-            _buildings.Tick_Add(_status);
             Invalidate();
         }
 
@@ -248,12 +241,6 @@ namespace game
         }
         private void paint_vis(object sender, PaintEventArgs e)
         {
-            if (!_status.Are_There_Resources())
-            {
-                _startMenu.Show();
-                this.Close();
-                MessageBox.Show("^_^ GAME_OVER ^_^");
-            }
             if (scrlDown || scrlUp)
                 Zoom();
             Graphics graphicsForm = e.Graphics;
@@ -269,7 +256,7 @@ namespace game
             bool checkBlock =
                 Building.Checking_The_Building(new Point(mouseX, mouseY), _dragDeltaCoordinates, _buttons);
 
-            Map.Draw_map(graphicsForm, _dragDeltaCoordinates,this.Size, _status);
+            Map.Draw_map(graphicsForm, _dragDeltaCoordinates,this.Size);
             e.Graphics.DrawString("spritesSize: " + Sprites.GetSpritesSize() + "\n Sprites max/min sizes: " + Sprites.GetSpritesMaxSize() + " ," + Sprites.GetSpritesMinSize() + "\nDrags: X - "
                 + _dragDeltaCoordinates.X + ", Y - " + _dragDeltaCoordinates.Y + $"\n ChunkNumber: {chunkNumber}\nBlockNumber: {blockNumber}"
                 + $"\nBlocktype {block}\nCorrectBlock for build:{checkBlock}", f, new SolidBrush(Color.Wheat), 200, 200);

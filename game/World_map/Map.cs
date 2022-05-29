@@ -35,7 +35,7 @@ namespace game.World_map
             return mapSize;
         }
         // Отрисовка всех объектов из всех списков
-        static public void Draw_map(Graphics graphicsForm, Point DragDelta, Size sizeForm, Player.Status _status)
+        static public void Draw_map(Graphics graphicsForm, Point DragDelta, Size sizeForm)
         {
             int loc_x, loc_y;
             var SpritesSize = Sprites.GetSpritesSize();

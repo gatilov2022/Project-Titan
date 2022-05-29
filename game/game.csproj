@@ -61,7 +61,6 @@
     <Compile Include="Player\Buildings\Warehouse.cs" />
     <Compile Include="Player\Player.cs" />
     <Compile Include="Player\Buildings\Pump.cs" />
-    <Compile Include="Player\Status.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Player\Buildings\Building.cs" />
@@ -76,7 +75,6 @@
     <Compile Include="StartMenu.Designer.cs">
       <DependentUpon>StartMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="Town\Buildings.cs" />
     <Compile Include="World_map\Block\Grass.cs" />
     <Compile Include="World_map\Map.cs" />
     <Compile Include="World_map\Block\Ore.cs" />
@@ -110,16 +108,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Town\Sprites_City\Base\Base.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Town\Sprites_City\Drill\Drill_Burner_1lvl.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Town\Sprites_City\Factory\Factory_1lvl.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Town\Sprites_City\House\Home_Defult.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Town\Sprites_City\Pump\Pump_1lvl.png" />

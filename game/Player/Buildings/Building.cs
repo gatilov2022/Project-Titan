@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Media;
 using System.Windows.Forms;
 using game.Player.Buildings;
 using game.World_map;
@@ -11,6 +12,7 @@ namespace game.Player
     {
         private Point _buildingCoordiantes;
         private Bitmap _buildingImage;
+        private SoundPlayer sound;
 
         protected string buildingType;
 
@@ -249,6 +251,11 @@ namespace game.Player
 
                 if (CreateBuilding(m))
                 {
+                    var rand = new Random().Next(2);
+                    if (rand == 0)
+                        sound = new SoundPlayer(Properties.Resources.build);
+                    else sound = new SoundPlayer(Properties.Resources.build_hummer);
+                    sound.Play();
                     _listOfBuildings[_listOfBuildings.Count - 1]._buildingCoordiantes =
                         (new Point((p.X - Drag.X) / blockSize, (p.Y - Drag.Y) / blockSize));
                     _listOfBuildings[_listOfBuildings.Count - 1]._buildingImage = bitmaps[m];
