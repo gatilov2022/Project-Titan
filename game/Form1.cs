@@ -79,6 +79,10 @@ namespace game
                     costString += $"\n{dictPare.Key} - {dictPare.Value}";
                 }
 
+                costString = costString.Replace("Iron", "Железо").Replace("Sand", "Песок")
+                    .Replace("ComponentsT1", "Компоненты 1-го уровня").Replace("ComponentsT2", "Компоненты 2-го уровня")
+                    .Replace("ComponentsT3", "Компоненты 3-го уровня");
+
                 if (MessageBox.Show("Улучшить здание? Стоимость улучшения:" + costString, "BuildingUpgrade", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) 
                     someBuilding.UpgradeBuilding();
                 
