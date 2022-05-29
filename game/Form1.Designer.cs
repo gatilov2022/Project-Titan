@@ -54,7 +54,7 @@
             this.factory_but.Size = new System.Drawing.Size(32, 32);
             this.factory_but.TabIndex = 0;
             this.factory_but.Text = ".";
-            this.toolTip1.SetToolTip(this.factory_but, "Фабрика 1lvl\r\n");
+            this.toolTip1.SetToolTip(this.factory_but, "Фабрика ");
             this.factory_but.UseVisualStyleBackColor = true;
             this.factory_but.Click += new System.EventHandler(this.but_MouseClick);
             this.factory_but.MouseLeave += new System.EventHandler(this.but_MouseLeave);
@@ -72,7 +72,7 @@
             this.base_but.Name = "base_but";
             this.base_but.Size = new System.Drawing.Size(32, 32);
             this.base_but.TabIndex = 4;
-            this.toolTip1.SetToolTip(this.base_but, "База");
+            this.toolTip1.SetToolTip(this.base_but, "Ядро планеты");
             this.base_but.UseVisualStyleBackColor = true;
             this.base_but.Click += new System.EventHandler(this.but_MouseClick);
             this.base_but.MouseLeave += new System.EventHandler(this.but_MouseLeave);
@@ -90,7 +90,8 @@
             this.house_but.Name = "house_but";
             this.house_but.Size = new System.Drawing.Size(32, 32);
             this.house_but.TabIndex = 5;
-            this.toolTip1.SetToolTip(this.house_but, "Жилой дом\r\n");
+            this.house_but.Text = ".";
+            this.toolTip1.SetToolTip(this.house_but, "Роторный экскаватор");
             this.house_but.UseVisualStyleBackColor = true;
             this.house_but.Click += new System.EventHandler(this.but_MouseClick);
             this.house_but.MouseLeave += new System.EventHandler(this.but_MouseLeave);
@@ -109,7 +110,7 @@
             this.pump_but.Name = "pump_but";
             this.pump_but.Size = new System.Drawing.Size(32, 32);
             this.pump_but.TabIndex = 6;
-            this.toolTip1.SetToolTip(this.pump_but, "Помпа 1lvl\r\n");
+            this.toolTip1.SetToolTip(this.pump_but, "Помпа ");
             this.pump_but.UseVisualStyleBackColor = true;
             this.pump_but.Click += new System.EventHandler(this.but_MouseClick);
             this.pump_but.MouseLeave += new System.EventHandler(this.but_MouseLeave);
@@ -136,17 +137,18 @@
             // steam_but
             // 
             this.steam_but.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.steam_but.BackgroundImage = global::game.Properties.Resources.Steam_Eng_1lvl;
+            this.steam_but.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.steam_but.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.steam_but.FlatAppearance.BorderColor = System.Drawing.Color.Red;
             this.steam_but.FlatAppearance.BorderSize = 2;
             this.steam_but.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.steam_but.Image = global::game.Properties.Resources.Steam_Eng_1lvl;
             this.steam_but.Location = new System.Drawing.Point(458, 413);
             this.steam_but.Name = "steam_but";
             this.steam_but.Size = new System.Drawing.Size(32, 32);
             this.steam_but.TabIndex = 8;
-            this.toolTip1.SetToolTip(this.steam_but, "Паровой двигатель 1lvl\r\n");
-            this.steam_but.UseVisualStyleBackColor = true;
+            this.toolTip1.SetToolTip(this.steam_but, "Паровой двигатель ");
+            this.steam_but.UseVisualStyleBackColor = false;
             this.steam_but.Click += new System.EventHandler(this.but_MouseClick);
             this.steam_but.MouseLeave += new System.EventHandler(this.but_MouseLeave);
             this.steam_but.MouseMove += new System.Windows.Forms.MouseEventHandler(this.but_MouseMove);
@@ -154,17 +156,18 @@
             // drill_but
             // 
             this.drill_but.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.drill_but.BackgroundImage = global::game.Properties.Resources.Drill_Burner_1lvl;
+            this.drill_but.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.drill_but.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.drill_but.FlatAppearance.BorderColor = System.Drawing.Color.Red;
             this.drill_but.FlatAppearance.BorderSize = 2;
             this.drill_but.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.drill_but.Image = global::game.Properties.Resources.Drill_Burner_1lvl;
             this.drill_but.Location = new System.Drawing.Point(563, 413);
             this.drill_but.Name = "drill_but";
             this.drill_but.Size = new System.Drawing.Size(32, 32);
             this.drill_but.TabIndex = 9;
-            this.toolTip1.SetToolTip(this.drill_but, "Дрель 1lvl");
-            this.drill_but.UseVisualStyleBackColor = true;
+            this.toolTip1.SetToolTip(this.drill_but, "Дрель");
+            this.drill_but.UseVisualStyleBackColor = false;
             this.drill_but.Click += new System.EventHandler(this.but_MouseClick);
             this.drill_but.MouseLeave += new System.EventHandler(this.but_MouseLeave);
             this.drill_but.MouseMove += new System.Windows.Forms.MouseEventHandler(this.but_MouseMove);
