@@ -6,6 +6,7 @@ using game.World_map.Block;
 namespace game.World_map
 {
     // Класс, хранящий в себе блоки. 
+    [Serializable]
     internal class Chunk
     {
         // Создаёт пустое изображение

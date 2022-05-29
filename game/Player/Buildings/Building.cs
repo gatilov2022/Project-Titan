@@ -7,11 +7,13 @@ using game.World_map;
 
 namespace game.Player
 {
+    [Serializable]
     public class Building : Sprites
     {
         private Point _buildingCoordiantes;
         private Bitmap _buildingImage;
 
+        protected static Player playerObj;
         protected string buildingType;
 
         protected Dictionary<string, int> UsingResourcesDictionary = new Dictionary<string, int>()  {{"Energy" , 0} , 
@@ -24,12 +26,27 @@ namespace game.Player
                 {"Iron", 0}, 
                 {"Sand", 0}};
 
+        
+
         public virtual Dictionary<string, int> AmountResourcesForUpgrade()
         { return new Dictionary<string, int>(); }
 
         protected int buildingLevel = 0, buildingMaxLevel; 
 
         private static List<Building> _listOfBuildings = new List<Building>();
+
+        public static void SetPlayerObj(Player obj)
+        {
+            playerObj = obj;
+        }
+        public static void LoadBuildings (List<Building> buildings)
+        {
+            _listOfBuildings= buildings;
+        }
+        public static List<Building> GetBuildings()
+        {
+            return _listOfBuildings;
+        }
 
         protected bool IsMaxLevel()
         {
@@ -115,6 +132,8 @@ namespace game.Player
             }
             return true;
         }
+
+        public 
         static bool CreateBuilding(int buildingNumber)
         {
             //_buttons = new Button[] { factory_but, pump_but, drill_but, base_but, wareh_but, house_but, steam_but };
@@ -191,7 +210,7 @@ namespace game.Player
             {
                 foreach (var dictItem in someBuilding.UsingResourcesDictionary)
                 {
-                    if (Player.GetAmountOfResources(dictItem.Key) - dictItem.Value < 0)
+                    if (playerObj.GetAmountOfResources(dictItem.Key) - dictItem.Value < 0)
                     {
                         BuildingActive = false;
                         break;
@@ -202,16 +221,16 @@ namespace game.Player
                 {
                     foreach (var dictItem in someBuilding.UsingResourcesDictionary)
                     {
-                            Player.DecreaseAmountOfResources(dictItem.Key, dictItem.Value);
-                            Player.DecrShiftRes(dictItem.Key, dictItem.Value);
+                        playerObj.DecreaseAmountOfResources(dictItem.Key, dictItem.Value);
+                        playerObj.DecrShiftRes(dictItem.Key, dictItem.Value);
                     }
 
                     foreach (var dictItem in someBuilding.ProducingResourcesDictionary)
                     {
-                        if(Player.GetAmountOfResources(dictItem.Key) + dictItem.Value <= Player.GetResourceCapacity(dictItem.Key))
+                        if(playerObj.GetAmountOfResources(dictItem.Key) + dictItem.Value <= playerObj.GetResourceCapacity(dictItem.Key))
                         {
-                            Player.IncreaseAmountOfResources(dictItem.Key, dictItem.Value);
-                            Player.IncrShiftRes(dictItem.Key, dictItem.Value);
+                            playerObj.IncreaseAmountOfResources(dictItem.Key, dictItem.Value);
+                            playerObj.IncrShiftRes(dictItem.Key, dictItem.Value);
                         }                    }
                 }
             }

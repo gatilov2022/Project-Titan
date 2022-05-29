@@ -1,12 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 
 namespace game.World_map.Block
 {
+    [Serializable]
     internal class Ore : Sprites
     {
         private const string blockType = "Ore";
-
+        [NonSerialized()]
         public static List<SolidBrush> OreBrushList = new List<SolidBrush>() 
         { 
             new SolidBrush(Color.FromArgb(255, 128, 128, 128)),
@@ -14,7 +16,8 @@ namespace game.World_map.Block
             new SolidBrush(Color.FromArgb(255, 128, 128, 128)),
             new SolidBrush(Color.FromArgb(255, 116, 116, 128)),
             new SolidBrush(Color.FromArgb(255, 142, 142, 128))
-        };
+        }; 
+        [NonSerialized()]
         private readonly List<SolidBrush> _partColor;
 
         public Ore(int inX, int inY)

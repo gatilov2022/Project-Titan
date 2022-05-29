@@ -7,6 +7,7 @@ using game.World_map.Block;
 
 namespace game.Player.Buildings
 {
+    [Serializable]
     internal class Gamegoal : Building
     {
         private static string suitableBlock = typeof(Grass).ToString();
@@ -26,14 +27,14 @@ namespace game.Player.Buildings
         {
             foreach (var dictVal in buildingCostsDictionary["Build"])
             {
-                Player.DecreaseAmountOfResources(dictVal.Key, dictVal.Value);
+                playerObj.DecreaseAmountOfResources(dictVal.Key, dictVal.Value);
             }
         }
         public static bool IsResourcesEnough()
         {
             foreach (var dictValue in buildingCostsDictionary["Build"])
             {
-                if (Player.GetAmountOfResources(dictValue.Key) - dictValue.Value < 0) return false;
+                if (playerObj.GetAmountOfResources(dictValue.Key) - dictValue.Value < 0) return false;
             }
             return true;
         }

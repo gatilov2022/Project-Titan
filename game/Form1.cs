@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 using System.Media;
 using game.Player;
@@ -18,6 +19,7 @@ namespace game
         private readonly Sprites Sprites = new Sprites();
         private Point _dragStartCoordinates, _dragDeltaCoordinates = new Point(0,0);
 
+        private Player.Player playerObj;
         private const double MaxMultiplier = 6, MinMultiplier = 2;
         private bool dragStarted = false, scrlDown = false, scrlUp = false;
         private readonly Buildings _buildings;
@@ -27,11 +29,15 @@ namespace game
         private const int resourceInfoY = 4;
         private const int resourceShiftX = 60;
 
-        public Form1(StartMenu startMenu)
+        public Form1(StartMenu startMenu, Player.Player loadedPlayer = null)
         {
             InitializeComponent();
             timer1.Start();
 
+            if (loadedPlayer == null)
+                playerObj = new Player.Player();
+            else playerObj = loadedPlayer;
+            Building.SetPlayerObj(playerObj);
             _startMenu = startMenu;
             _status = new Status();
             _buttons = new Button[] {factory_but ,pump_but ,drill_but ,base_but ,wareh_but ,house_but ,steam_but};
@@ -45,7 +51,7 @@ namespace game
             Sprites.SetSpritesMinSize((int)(Convert.ToInt32(Math.Sqrt(Sprites.GetPixelCount())) * MinMultiplier * 2));
             Sprites.SetSpritesMaxSize((int)(Convert.ToInt32(Math.Sqrt(Sprites.GetPixelCount())) * MaxMultiplier * 2));
 
-            Map.GenerateMap();    
+             
         }
 
         private void Form1_Resize(object sender, EventArgs e)
@@ -55,7 +61,7 @@ namespace game
 
         private void Timer1_Tick(object sender, EventArgs e)
         {
-            Player.Player.SetShiftToZero();
+            playerObj.SetShiftToZero();
             Building.UpdateResources();
             _buildings.Tick_Add(_status);
             Invalidate();
@@ -98,6 +104,38 @@ namespace game
                 scrlUp = true;
 
             Invalidate();
+        }
+
+        public static void SaveGame<T>(string filePath, T objectToWrite, bool append = false)
+        {
+            using (Stream stream = File.Open(filePath, append ? FileMode.Append : FileMode.Create))
+            {
+                var binaryFormatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                binaryFormatter.Serialize(stream, objectToWrite);
+            }
+        }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var mapObjects = Map.GetChunks();
+            var buildObjects = Building.GetBuildings();
+
+            SaveGame($"../saves/{DateTime.Today.Date.Day}.plr", playerObj, false);
+
+            if (buildObjects.Count > 0)
+            SaveGame($"../saves/{DateTime.Today.Date.Day}.bdk", buildObjects[0],false);
+
+            for (int i = 1; i < buildObjects.Count; i++)
+            {
+                SaveGame($"../saves/{DateTime.Today.Date.Day}.bdk", buildObjects[i], true);
+            }
+
+            if (mapObjects.Count > 0)
+                SaveGame($"../saves/{DateTime.Today.Date.Day}.cnk", mapObjects[0], false);
+
+            for (int i = 1; i < mapObjects.Count; i++)
+            {
+                SaveGame($"../saves/{DateTime.Today.Date.Day}.cnk", mapObjects[i], true);
+            }
         }
 
         private void Form1_MouseMove(object sender, MouseEventArgs e)
@@ -308,26 +346,26 @@ namespace game
             graphicsForm.DrawImage(Properties.Resources.Top_Interface, new Point(Start_Top_X, 0));
 
             //Отображение ресурсов
-            graphicsForm.DrawString(Player.Player.GetAmountOfResources("Water").ToString(), font, brushWhite, Start_Top_X + 90, resourceInfoY + 24);
-            graphicsForm.DrawString(Player.Player.GetAmountOfResources("Iron").ToString(), font, brushWhite, Start_Top_X + 90, resourceInfoY);
-            graphicsForm.DrawString(Player.Player.GetAmountOfResources("Sand").ToString(), font, brushWhite, Start_Top_X + 215, resourceInfoY + 24) ;
-            graphicsForm.DrawString(Player.Player.GetAmountOfResources("Energy").ToString(), font, brushWhite, Start_Top_X + 215, resourceInfoY);
+            graphicsForm.DrawString(playerObj.GetAmountOfResources("Water").ToString(), font, brushWhite, Start_Top_X + 90, resourceInfoY + 24);
+            graphicsForm.DrawString(playerObj.GetAmountOfResources("Iron").ToString(), font, brushWhite, Start_Top_X + 90, resourceInfoY);
+            graphicsForm.DrawString(playerObj.GetAmountOfResources("Sand").ToString(), font, brushWhite, Start_Top_X + 215, resourceInfoY + 24) ;
+            graphicsForm.DrawString(playerObj.GetAmountOfResources("Energy").ToString(), font, brushWhite, Start_Top_X + 215, resourceInfoY);
 
-            graphicsForm.DrawString(Player.Player.GetShiftRes("Water").ToString(), font, Player.Player.GetShiftRes("Water") < 0 ? brushRed : brushGreen,
+            graphicsForm.DrawString(playerObj.GetShiftRes("Water").ToString(), font, playerObj.GetShiftRes("Water") < 0 ? brushRed : brushGreen,
                 Start_Top_X + 90 + resourceShiftX, resourceInfoY + 24);
-            graphicsForm.DrawString(Player.Player.GetShiftRes("Iron").ToString(), font, Player.Player.GetShiftRes("Iron") < 0 ? brushRed : brushGreen, Start_Top_X + 90 + resourceShiftX, resourceInfoY);
-            graphicsForm.DrawString(Player.Player.GetShiftRes("Sand").ToString(), font, Player.Player.GetShiftRes("Sand") < 0 ? brushRed : brushGreen, Start_Top_X + 215 + resourceShiftX, resourceInfoY + 24);
-            graphicsForm.DrawString(Player.Player.GetShiftRes("Energy").ToString(), font, Player.Player.GetShiftRes("Energy") < 0 ? brushRed : brushGreen, Start_Top_X + 215 + resourceShiftX, resourceInfoY);
+            graphicsForm.DrawString(playerObj.GetShiftRes("Iron").ToString(), font, playerObj.GetShiftRes("Iron") < 0 ? brushRed : brushGreen, Start_Top_X + 90 + resourceShiftX, resourceInfoY);
+            graphicsForm.DrawString(playerObj.GetShiftRes("Sand").ToString(), font, playerObj.GetShiftRes("Sand") < 0 ? brushRed : brushGreen, Start_Top_X + 215 + resourceShiftX, resourceInfoY + 24);
+            graphicsForm.DrawString(playerObj.GetShiftRes("Energy").ToString(), font, playerObj.GetShiftRes("Energy") < 0 ? brushRed : brushGreen, Start_Top_X + 215 + resourceShiftX, resourceInfoY);
 
 
-            graphicsForm.DrawString(Player.Player.GetAmountOfResources("ComponentsT1").ToString(), font, brushWhite, Start_Top_X + 328, resourceInfoY);
-            graphicsForm.DrawString(Player.Player.GetAmountOfResources("ComponentsT2").ToString(), font, brushWhite, Start_Top_X + 328, resourceInfoY + 14);
-            graphicsForm.DrawString(Player.Player.GetAmountOfResources("ComponentsT3").ToString(), font, brushWhite, Start_Top_X + 328, resourceInfoY + 28);
+            graphicsForm.DrawString(playerObj.GetAmountOfResources("ComponentsT1").ToString(), font, brushWhite, Start_Top_X + 328, resourceInfoY);
+            graphicsForm.DrawString(playerObj.GetAmountOfResources("ComponentsT2").ToString(), font, brushWhite, Start_Top_X + 328, resourceInfoY + 14);
+            graphicsForm.DrawString(playerObj.GetAmountOfResources("ComponentsT3").ToString(), font, brushWhite, Start_Top_X + 328, resourceInfoY + 28);
 
-            graphicsForm.DrawString(Player.Player.GetShiftRes("ComponentsT1").ToString(), font, Player.Player.GetShiftRes("ComponentsT1") < 0 ? brushRed : brushGreen,
+            graphicsForm.DrawString(playerObj.GetShiftRes("ComponentsT1").ToString(), font, playerObj.GetShiftRes("ComponentsT1") < 0 ? brushRed : brushGreen,
                 Start_Top_X + 328 + 30 , resourceInfoY);
-            graphicsForm.DrawString(Player.Player.GetShiftRes("ComponentsT2").ToString(), font, Player.Player.GetShiftRes("ComponentsT2") < 0 ? brushRed : brushGreen, Start_Top_X + 328 + 30, resourceInfoY + 14);
-            graphicsForm.DrawString(Player.Player.GetShiftRes("ComponentsT3").ToString(), font, Player.Player.GetShiftRes("ComponentsT3") < 0 ? brushRed : brushGreen, Start_Top_X + 328 + 30, resourceInfoY + 28);
+            graphicsForm.DrawString(playerObj.GetShiftRes("ComponentsT2").ToString(), font, playerObj.GetShiftRes("ComponentsT2") < 0 ? brushRed : brushGreen, Start_Top_X + 328 + 30, resourceInfoY + 14);
+            graphicsForm.DrawString(playerObj.GetShiftRes("ComponentsT3").ToString(), font, playerObj.GetShiftRes("ComponentsT3") < 0 ? brushRed : brushGreen, Start_Top_X + 328 + 30, resourceInfoY + 28);
         }
 
         private void Create_Bottom(Graphics graphicsForm, Size sizeForm)

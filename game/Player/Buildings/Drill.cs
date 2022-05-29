@@ -7,6 +7,7 @@ using game.World_map.Block;
 
 namespace game.Player.Buildings
 {
+    [Serializable]
     internal class Drill : Building
     {
         private static string suitableBlock = typeof(Ore).ToString();
@@ -33,14 +34,14 @@ namespace game.Player.Buildings
         {
             foreach (var dictVal in buildingCostsDictionary["Build"])
             {
-                Player.DecreaseAmountOfResources(dictVal.Key, dictVal.Value);
+                playerObj.DecreaseAmountOfResources(dictVal.Key, dictVal.Value);
             }
         }
         public static bool IsResourcesEnough()
         {
             foreach (var dictValue in buildingCostsDictionary["Build"])
             {
-                if (Player.GetAmountOfResources(dictValue.Key) - dictValue.Value < 0) return false;
+                if (playerObj.GetAmountOfResources(dictValue.Key) - dictValue.Value < 0) return false;
             }
             return true;
         }
@@ -48,7 +49,7 @@ namespace game.Player.Buildings
         {
             foreach (var dictValue in checkDictionary)
             {
-                if (Player.GetAmountOfResources(dictValue.Key) - dictValue.Value * Math.Pow(Math.E / 2, buildingLevel) < 0) return false;
+                if (playerObj.GetAmountOfResources(dictValue.Key) - dictValue.Value * Math.Pow(Math.E / 2, buildingLevel) < 0) return false;
             }
 
             return true;
@@ -68,7 +69,7 @@ namespace game.Player.Buildings
         {
             foreach (var dictVal in buildingCostsDictionary["Upgrade"])
             {
-                Player.DecreaseAmountOfResources(dictVal.Key, dictVal.Value * (buildingLevel + 1));
+                playerObj.DecreaseAmountOfResources(dictVal.Key, dictVal.Value * (buildingLevel + 1));
             }
         }
         override 

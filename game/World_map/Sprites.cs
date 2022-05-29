@@ -4,6 +4,7 @@ using System.Drawing;
 
 namespace game.World_map
 {
+    [Serializable]
     public class Sprites
     {
         private static readonly Random Rand = new Random();

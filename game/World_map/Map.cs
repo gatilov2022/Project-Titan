@@ -1,9 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace game.World_map
 {
+    [Serializable]
     internal class Map
     {
         // Класс карта. Хранит в себе все объекты на карте, а так же отвечает за их отрисовку
@@ -11,6 +14,19 @@ namespace game.World_map
         // Список чанков
         private static List<Chunk> chunks = new List<Chunk>();
 
+        public static void AddChunk(Chunk chunk)
+        {
+            chunks.Add(chunk);
+        }
+
+        public static void LoadChunks(List<Chunk> deserealizedChunks)
+        {
+            chunks = deserealizedChunks;
+        }
+        public static List<Chunk> GetChunks()
+        {
+            return chunks;
+        }
         public static string GetBlockType(Point coordinates)
         {
             var chunkNumber = (coordinates.Y) / (Chunk.GetChunkSize() * Sprites.GetSpritesSize()) * Map.GetMapSize() +

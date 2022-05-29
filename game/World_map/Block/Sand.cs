@@ -1,11 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 
 namespace game.World_map.Block
 {
+    [Serializable]
     internal class Sand : Sprites
     {
         private const string blockType = "Sand";
+
+        [NonSerialized()]
         public static List<SolidBrush> YellowBrushList = new List<SolidBrush>() 
         {
             new SolidBrush(Color.FromArgb(255, 210, 203, 149)),
@@ -14,7 +18,7 @@ namespace game.World_map.Block
             new SolidBrush(Color.FromArgb(255, 254, 254, 211))
         };
 
-        private readonly List<SolidBrush> _partColor;
+        [NonSerialized()] private readonly List<SolidBrush> _partColor;
         
         public Sand(int inX, int inY)
         {
