@@ -40,7 +40,7 @@ namespace game.World_map
             return PixelCount;
         }
 
-        public int GetSpritesSize()
+        public static int GetSpritesSize()
         {
             return _size;
         }

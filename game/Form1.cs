@@ -15,7 +15,7 @@ namespace game
         private const int sizeChange = 14;
         SoundPlayer sp = null;
         private Button[] _buttons;
-        private readonly Sprites _sprites = new Sprites();
+        private readonly Sprites Sprites = new Sprites();
         private Point _dragStartCoordinates, _dragDeltaCoordinates = new Point(0,0);
 
         private const double MaxMultiplier = 4, MinMultiplier = 0.5;
@@ -23,6 +23,9 @@ namespace game
         private readonly Buildings _buildings;
         private readonly Status _status;
         private readonly StartMenu _startMenu;
+
+        private const int resourceInfoY = 4;
+        private const int resourceShiftX = 60;
 
         public Form1(StartMenu startMenu)
         {
@@ -34,13 +37,13 @@ namespace game
             _buttons = new Button[] {factory_but ,pump_but ,drill_but ,base_but ,wareh_but ,house_but ,steam_but};
             _buildings = new Buildings();
 
-            spritesSize = _sprites.GetSpritesSize();
+            spritesSize = Sprites.GetSpritesSize();
             
             this.MouseWheel += new MouseEventHandler(From1_MouseWheel);
 
             
-            _sprites.SetSpritesMinSize((int)(Convert.ToInt32(Math.Sqrt(_sprites.GetPixelCount())) * MinMultiplier * 2));
-            _sprites.SetSpritesMaxSize((int)(Convert.ToInt32(Math.Sqrt(_sprites.GetPixelCount())) * MaxMultiplier * 2));
+            Sprites.SetSpritesMinSize((int)(Convert.ToInt32(Math.Sqrt(Sprites.GetPixelCount())) * MinMultiplier * 2));
+            Sprites.SetSpritesMaxSize((int)(Convert.ToInt32(Math.Sqrt(Sprites.GetPixelCount())) * MaxMultiplier * 2));
 
             Map.GenerateMap();    
         }
@@ -52,6 +55,7 @@ namespace game
 
         private void Timer1_Tick(object sender, EventArgs e)
         {
+            Player.Player.SetShiftToZero();
             Building.UpdateResources();
             _buildings.Tick_Add(_status);
             Invalidate();
@@ -64,7 +68,14 @@ namespace game
 
         private void Form1_DoubleClick(object sender, EventArgs e)
         {
-            MessageBox.Show("Улучшить здание?","UpBuild",MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (Building.HasBuildingOnTheBlock(new Point(mouseX, mouseY), _dragDeltaCoordinates))
+            {
+                Building someBuilding= Building.GetBuilding(new Point(mouseX, mouseY), _dragDeltaCoordinates) as Building;
+
+                //if (MessageBox.Show("Улучшить здание?", "UpBuild", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) 
+                    someBuilding.UpgradeBuilding();
+                
+            }
         }
 
         private void From1_MouseWheel(object sender, MouseEventArgs e)
@@ -72,11 +83,11 @@ namespace game
             scrlToX = e.X;
             scrlToY = e.Y;
 
-            spritesSize = _sprites.GetSpritesSize();
+            spritesSize = Sprites.GetSpritesSize();
 
-            if (e.Delta < 0 && spritesSize - 14 >= _sprites.GetSpritesMinSize())
+            if (e.Delta < 0 && spritesSize - 14 >= Sprites.GetSpritesMinSize())
                 scrlDown = true;
-            else if (e.Delta > 0 && spritesSize + 14 <= _sprites.GetSpritesMaxSize())
+            else if (e.Delta > 0 && spritesSize + 14 <= Sprites.GetSpritesMaxSize())
                 scrlUp = true;
 
             Invalidate();
@@ -123,7 +134,7 @@ namespace game
                 Invalidate();
             }
 
-            var blockSize = _sprites.GetSpritesSize();
+            var blockSize = Sprites.GetSpritesSize();
 
             var currentXBlock = (e.X - _dragDeltaCoordinates.X % blockSize) / blockSize;
             var currentYBlock = (e.Y - _dragDeltaCoordinates.Y % blockSize) / blockSize;
@@ -152,7 +163,7 @@ namespace game
                     dragStarted = false; 
                     break;
                 case MouseButtons.Right:
-                    if (!Building.Checking_The_Building(new Point(mouseX, mouseY), _dragDeltaCoordinates))
+                    if (!Building.Checking_The_Building(new Point(mouseX, mouseY), _dragDeltaCoordinates, _buttons))
                         return;
                     new Building().PlaceBuilding(new Point(mouseX, mouseY), _buttons, _dragDeltaCoordinates);
                     Invalidate();
@@ -192,11 +203,11 @@ namespace game
 
         private void Zoom()
         {
-            spritesSize = _sprites.GetSpritesSize();
+            spritesSize = Sprites.GetSpritesSize();
 
             if (scrlDown)
             {
-                _sprites.DecreaseSize(sizeChange);
+                Sprites.DecreaseSize(sizeChange);
 
                 _dragDeltaCoordinates.X = (_dragDeltaCoordinates.X - scrlToX) / spritesSize * (spritesSize - sizeChange) + scrlToX;
                 _dragDeltaCoordinates.Y = (_dragDeltaCoordinates.Y - scrlToY) / spritesSize * (spritesSize - sizeChange) + scrlToY;
@@ -209,12 +220,12 @@ namespace game
                 _dragDeltaCoordinates.X = ((_dragDeltaCoordinates.X - scrlToX) / spritesSize) * (spritesSize + sizeChange) + scrlToX;
                 _dragDeltaCoordinates.Y = ((_dragDeltaCoordinates.Y - scrlToY) / spritesSize) * (spritesSize + sizeChange) + scrlToY;
 
-                _sprites.IncreaseSize(sizeChange);
+                Sprites.IncreaseSize(sizeChange);
 
                 scrlUp = false;
             }
 
-            spritesSize = _sprites.GetSpritesSize();
+            spritesSize = Sprites.GetSpritesSize();
             var mapSizeInPixels = Map.GetMapSize() * Chunk.GetChunkSize() * spritesSize;
 
             if (-_dragDeltaCoordinates.X + this.Width > mapSizeInPixels)
@@ -247,14 +258,35 @@ namespace game
                 Zoom();
             Graphics graphicsForm = e.Graphics;
             Font f = new Font("Arial", 12, FontStyle.Bold, GraphicsUnit.Point);
-            
-            Map.Draw_map(graphicsForm, _dragDeltaCoordinates,this.Size, _status);
-            e.Graphics.DrawString("spritesSize: " + _sprites.GetSpritesSize() + "\n Sprites max/min sizes: " + _sprites.GetSpritesMaxSize() + " ," + _sprites.GetSpritesMinSize() + "\nDrags: X - "
-                + _dragDeltaCoordinates.X + ", Y - " + _dragDeltaCoordinates.Y, f, new SolidBrush(Color.Red), 200, 200);
 
-            bool chekBuild = Building.Checking_The_Building(new Point(mouseX, mouseY), _dragDeltaCoordinates);
+            var chunkNumber = (-_dragDeltaCoordinates.Y + mouseY) / (Chunk.GetChunkSize() * Sprites.GetSpritesSize()) * Map.GetMapSize() +
+                              (-_dragDeltaCoordinates.X + mouseX) / (Sprites.GetSpritesSize() * Chunk.GetChunkSize());
+
+            var blockNumber = (-_dragDeltaCoordinates.Y + mouseY) / Sprites.GetSpritesSize() % Chunk.GetChunkSize() * Chunk.GetChunkSize()+
+                              (-_dragDeltaCoordinates.X + mouseX) / Sprites.GetSpritesSize() % Chunk.GetChunkSize();
+
+            var block = Map.GetBlockType(new Point(-_dragDeltaCoordinates.X + mouseX, -_dragDeltaCoordinates.Y + mouseY));
+            bool checkBlock =
+                Building.Checking_The_Building(new Point(mouseX, mouseY), _dragDeltaCoordinates, _buttons);
+
+            Map.Draw_map(graphicsForm, _dragDeltaCoordinates,this.Size, _status);
+            e.Graphics.DrawString("spritesSize: " + Sprites.GetSpritesSize() + "\n Sprites max/min sizes: " + Sprites.GetSpritesMaxSize() + " ," + Sprites.GetSpritesMinSize() + "\nDrags: X - "
+                + _dragDeltaCoordinates.X + ", Y - " + _dragDeltaCoordinates.Y + $"\n ChunkNumber: {chunkNumber}\nBlockNumber: {blockNumber}"
+                + $"\nBlocktype {block}\nCorrectBlock for build:{checkBlock}", f, new SolidBrush(Color.Wheat), 200, 200);
             Building.DrawCreatedBuildings(graphicsForm, _dragDeltaCoordinates);
-            Building.DrawBuilding(graphicsForm, _buttons, _dragDeltaCoordinates, mouseX, mouseY, chekBuild);
+            foreach (var someButton in _buttons)
+            {
+                if (someButton.FlatAppearance.BorderColor == Color.Blue)
+                {
+
+                    bool chekBuild =
+                        Building.Checking_The_Building(new Point(mouseX, mouseY), _dragDeltaCoordinates, _buttons);
+                    
+                    Building.DrawBuilding(graphicsForm, _buttons, _dragDeltaCoordinates, mouseX, mouseY, chekBuild);
+                }
+            }
+
+
             Create_Top(graphicsForm, this.Size);
             Create_Bottom(graphicsForm, this.Size);
         }
@@ -262,15 +294,33 @@ namespace game
         private void Create_Top(Graphics graphicsForm, Size sizeForm)
         {
             Font font = new Font("Arial", 11, FontStyle.Bold);
-            SolidBrush brush = new SolidBrush(Color.White);
+            SolidBrush brushWhite = new SolidBrush(Color.White);
+            SolidBrush brushRed = new SolidBrush(Color.Red);
+            SolidBrush brushGreen = new SolidBrush(Color.Green);
             var Start_Top_X = sizeForm.Width / 2 - Properties.Resources.Top_Interface.Width / 2;
             graphicsForm.DrawImage(Properties.Resources.Top_Interface, new Point(Start_Top_X, 0));
 
             //Отображение ресурсов
-            graphicsForm.DrawString(Player.Player.GetAmountOfResources("Water").ToString(), font, brush, Start_Top_X + 45, 7);
-            graphicsForm.DrawString(Player.Player.GetAmountOfResources("Iron").ToString(), font, brush, Start_Top_X + 94, 7);
-            graphicsForm.DrawString(Player.Player.GetAmountOfResources("Sand").ToString(), font, brush, Start_Top_X + 141, 7);
-            graphicsForm.DrawString(Player.Player.GetAmountOfResources("Energy").ToString(), font, brush, Start_Top_X + 183, 7);
+            graphicsForm.DrawString(Player.Player.GetAmountOfResources("Water").ToString(), font, brushWhite, Start_Top_X + 90, resourceInfoY + 24);
+            graphicsForm.DrawString(Player.Player.GetAmountOfResources("Iron").ToString(), font, brushWhite, Start_Top_X + 90, resourceInfoY);
+            graphicsForm.DrawString(Player.Player.GetAmountOfResources("Sand").ToString(), font, brushWhite, Start_Top_X + 215, resourceInfoY + 24) ;
+            graphicsForm.DrawString(Player.Player.GetAmountOfResources("Energy").ToString(), font, brushWhite, Start_Top_X + 215, resourceInfoY);
+
+            graphicsForm.DrawString(Player.Player.GetShiftRes("Water").ToString(), font, Player.Player.GetShiftRes("Water") < 0 ? brushRed : brushGreen,
+                Start_Top_X + 90 + resourceShiftX, resourceInfoY + 24);
+            graphicsForm.DrawString(Player.Player.GetShiftRes("Iron").ToString(), font, Player.Player.GetShiftRes("Iron") < 0 ? brushRed : brushGreen, Start_Top_X + 90 + resourceShiftX, resourceInfoY);
+            graphicsForm.DrawString(Player.Player.GetShiftRes("Sand").ToString(), font, Player.Player.GetShiftRes("Sand") < 0 ? brushRed : brushGreen, Start_Top_X + 215 + resourceShiftX, resourceInfoY + 24);
+            graphicsForm.DrawString(Player.Player.GetShiftRes("Energy").ToString(), font, Player.Player.GetShiftRes("Energy") < 0 ? brushRed : brushGreen, Start_Top_X + 215 + resourceShiftX, resourceInfoY);
+
+
+            graphicsForm.DrawString(Player.Player.GetAmountOfResources("ComponentsT1").ToString(), font, brushWhite, Start_Top_X + 328, resourceInfoY);
+            graphicsForm.DrawString(Player.Player.GetAmountOfResources("ComponentsT2").ToString(), font, brushWhite, Start_Top_X + 328, resourceInfoY + 14);
+            graphicsForm.DrawString(Player.Player.GetAmountOfResources("ComponentsT3").ToString(), font, brushWhite, Start_Top_X + 328, resourceInfoY + 28);
+
+            graphicsForm.DrawString(Player.Player.GetShiftRes("ComponentsT1").ToString(), font, Player.Player.GetShiftRes("ComponentsT1") < 0 ? brushRed : brushGreen,
+                Start_Top_X + 328 + 30 , resourceInfoY);
+            graphicsForm.DrawString(Player.Player.GetShiftRes("ComponentsT2").ToString(), font, Player.Player.GetShiftRes("ComponentsT2") < 0 ? brushRed : brushGreen, Start_Top_X + 328 + 30, resourceInfoY + 14);
+            graphicsForm.DrawString(Player.Player.GetShiftRes("ComponentsT3").ToString(), font, Player.Player.GetShiftRes("ComponentsT3") < 0 ? brushRed : brushGreen, Start_Top_X + 328 + 30, resourceInfoY + 28);
         }
 
         private void Create_Bottom(Graphics graphicsForm, Size sizeForm)

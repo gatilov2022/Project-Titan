@@ -53,11 +53,18 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Player\Buildings\Drill.cs" />
+    <Compile Include="Player\Buildings\Factory.cs" />
+    <Compile Include="Player\Buildings\Gamegoal.cs" />
+    <Compile Include="Player\Buildings\SandQuarry.cs" />
+    <Compile Include="Player\Buildings\SteamEgnine.cs" />
+    <Compile Include="Player\Buildings\Warehouse.cs" />
     <Compile Include="Player\Player.cs" />
+    <Compile Include="Player\Buildings\Pump.cs" />
     <Compile Include="Player\Status.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Player\Building.cs" />
+    <Compile Include="Player\Buildings\Building.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

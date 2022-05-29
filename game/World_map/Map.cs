@@ -11,6 +11,17 @@ namespace game.World_map
         // Список чанков
         private static List<Chunk> chunks = new List<Chunk>();
 
+        public static string GetBlockType(Point coordinates)
+        {
+            var chunkNumber = (coordinates.Y) / (Chunk.GetChunkSize() * Sprites.GetSpritesSize()) * Map.GetMapSize() +
+                              (coordinates.X) / (Sprites.GetSpritesSize() * Chunk.GetChunkSize());
+            
+            var blockNumber = (coordinates.Y) / Sprites.GetSpritesSize() % Chunk.GetChunkSize() * Chunk.GetChunkSize() +
+                              (coordinates.X) / Sprites.GetSpritesSize() % Chunk.GetChunkSize();
+            var a = chunks[chunkNumber].GetBlockByNumber(blockNumber);
+            return a.GetType().ToString();
+        }
+
         private static int mapSize = 12;
 
         public static void GenerateMap()
@@ -27,7 +38,7 @@ namespace game.World_map
         static public void Draw_map(Graphics graphicsForm, Point DragDelta, Size sizeForm, Player.Status _status)
         {
             int loc_x, loc_y;
-            var SpritesSize = new Sprites().GetSpritesSize();
+            var SpritesSize = Sprites.GetSpritesSize();
             for (int i = 0; i < chunks.Count; i++)
             {
                 loc_x = i % mapSize * SpritesSize * Chunk.GetChunkSize();

@@ -5,6 +5,8 @@ namespace game.World_map.Block
 {
     internal class Water : Sprites
     {
+        private const string blockType = "Water";
+
         static readonly List<SolidBrush> BlueBrushList = new List<SolidBrush>() 
         {
             new SolidBrush(Color.FromArgb(255, 20, 20, 180)),

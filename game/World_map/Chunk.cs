@@ -12,13 +12,13 @@ namespace game.World_map
         private readonly Bitmap _chunkImage = new Bitmap(ImageXSize, ImageYSize);
 
         // Списки под объекты
-        private readonly Dictionary<string, List<object>> blocksInChunk = new Dictionary<string, List<object>>();
+        private readonly List<object> blocksInChunk = new List<object>();
 
         // Задаёт размер чанка в блоках
         private const int ChunkSize = 16;
 
         // Задаёт размер изображения чанка
-        private static readonly int SpritesSize = new Sprites().GetSpritesSize();
+        private static readonly int SpritesSize = Sprites.GetSpritesSize();
 
         private static readonly int ImageXSize = SpritesSize * ChunkSize; 
         private static readonly int ImageYSize = SpritesSize * ChunkSize;
@@ -110,12 +110,13 @@ namespace game.World_map
             return ChunkSize;
         }
 
+        public object GetBlockByNumber(int number)
+        {
+            return blocksInChunk[number];
+        }
         private void Add(Object obj)
         {
-            if (!blocksInChunk.ContainsKey(obj.GetType().ToString()))
-                blocksInChunk.Add(obj.GetType().ToString(), new List<object>() {obj});
-            else
-                blocksInChunk[obj.GetType().ToString()].Add(obj);
+            blocksInChunk.Add(obj);
         }
     }
 }

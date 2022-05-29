@@ -5,6 +5,8 @@ namespace game.World_map.Block
 {
     internal class Ore : Sprites
     {
+        private const string blockType = "Ore";
+
         public static List<SolidBrush> OreBrushList = new List<SolidBrush>() 
         { 
             new SolidBrush(Color.FromArgb(255, 128, 128, 128)),

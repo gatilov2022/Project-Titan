@@ -5,6 +5,7 @@ namespace game.World_map.Block
 {
     internal class Sand : Sprites
     {
+        private const string blockType = "Sand";
         public static List<SolidBrush> YellowBrushList = new List<SolidBrush>() 
         {
             new SolidBrush(Color.FromArgb(255, 210, 203, 149)),
