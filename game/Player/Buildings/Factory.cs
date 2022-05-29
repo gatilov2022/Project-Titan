@@ -33,7 +33,19 @@ namespace game.Player.Buildings
 
             return true;
         }
-        
+        override
+        public Dictionary<string, int> AmountResourcesForUpgrade()
+        {
+            switch (buildingLevel)
+            {
+                case 0:
+                    return T1Cost;
+                case 1:
+                    return T2Cost;
+            }
+
+            return null;
+        }
 
         public static bool IsResourcesEnough()
         {

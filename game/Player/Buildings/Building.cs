@@ -23,7 +23,9 @@ namespace game.Player
                 {"Water", 0}, 
                 {"Iron", 0}, 
                 {"Sand", 0}};
-        
+
+        public virtual Dictionary<string, int> AmountResourcesForUpgrade()
+        { return new Dictionary<string, int>(); }
 
         protected int buildingLevel = 0, buildingMaxLevel; 
 
@@ -206,9 +208,11 @@ namespace game.Player
 
                     foreach (var dictItem in someBuilding.ProducingResourcesDictionary)
                     {
-                        Player.IncreaseAmountOfResources(dictItem.Key, dictItem.Value);
-                        Player.IncrShiftRes(dictItem.Key, dictItem.Value);
-                    }
+                        if(Player.GetAmountOfResources(dictItem.Key) + dictItem.Value <= Player.GetResourceCapacity(dictItem.Key))
+                        {
+                            Player.IncreaseAmountOfResources(dictItem.Key, dictItem.Value);
+                            Player.IncrShiftRes(dictItem.Key, dictItem.Value);
+                        }                    }
                 }
             }
         }

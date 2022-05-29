@@ -63,5 +63,19 @@ namespace game.Player
                 playerResourcesShift[keyList[i]] = 0;
             }
         }
+
+        public static int GetResourceCapacity(string resource)
+        {
+            return playerWarehouse[resource];
+        }
+
+        public static void IncreaseResourceCapacity( int amount)
+        {
+            var keyList = playerWarehouse.Keys.ToArray();
+            for (int i = 0; i < keyList.Length; i++)
+            {
+                playerWarehouse[keyList[i]] += amount;
+            }
+        }
     }
 }

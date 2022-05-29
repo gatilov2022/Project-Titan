@@ -12,13 +12,13 @@ namespace game
     public partial class Form1 : Form
     {
         private int mouseX, mouseY,lastX = 0, lastY =0, spritesSize, scrlToX, scrlToY;
-        private const int sizeChange = 14;
+        private const int sizeChange = 7;
         SoundPlayer sp = null;
         private Button[] _buttons;
         private readonly Sprites Sprites = new Sprites();
         private Point _dragStartCoordinates, _dragDeltaCoordinates = new Point(0,0);
 
-        private const double MaxMultiplier = 4, MinMultiplier = 0.5;
+        private const double MaxMultiplier = 6, MinMultiplier = 2;
         private bool dragStarted = false, scrlDown = false, scrlUp = false;
         private readonly Buildings _buildings;
         private readonly Status _status;
@@ -71,8 +71,15 @@ namespace game
             if (Building.HasBuildingOnTheBlock(new Point(mouseX, mouseY), _dragDeltaCoordinates))
             {
                 Building someBuilding= Building.GetBuilding(new Point(mouseX, mouseY), _dragDeltaCoordinates) as Building;
+                
+                string costString = "";
 
-                //if (MessageBox.Show("Улучшить здание?", "UpBuild", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) 
+                foreach (var dictPare in someBuilding.AmountResourcesForUpgrade())
+                {
+                    costString += $"\n{dictPare.Key} - {dictPare.Value}";
+                }
+
+                if (MessageBox.Show("Улучшить здание? Стоимость улучшения:" + costString, "BuildingUpgrade", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) 
                     someBuilding.UpgradeBuilding();
                 
             }

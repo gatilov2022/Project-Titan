@@ -51,6 +51,16 @@ namespace game.Player.Buildings
             return true;
         }
 
+        public override Dictionary<string, int> AmountResourcesForUpgrade()
+        {
+            Dictionary<string, int> retDictionary = new Dictionary<string, int>();
+            foreach (var dictValue in buildingCostsDictionary["Upgrade"])
+            {
+                retDictionary[dictValue.Key] = (int)(dictValue.Value * Math.Pow(Math.E / 2, buildingLevel));
+            }
+            return retDictionary;
+        }
+
         private void TakeResourcesForUpgrade()
         {
             foreach (var dictVal in buildingCostsDictionary["Upgrade"])
@@ -65,9 +75,10 @@ namespace game.Player.Buildings
             {
                 if (IsResourcesEnough(buildingCostsDictionary["Upgrade"]))
                 {
-                    TakeResourcesForBuild();
-
+                    TakeResourcesForUpgrade();
                     buildingLevel++;
+
+                    Player.IncreaseResourceCapacity(300 * buildingLevel);
 
 
                 }
