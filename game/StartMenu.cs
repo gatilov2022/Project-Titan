@@ -79,8 +79,8 @@ namespace game
         private void button3_Click(object sender, EventArgs e)
         {
             folderBrowserDialog1.RootFolder = Environment.SpecialFolder.UserProfile;
-            
-
+            folderBrowserDialog1.SelectedPath = Environment.CurrentDirectory.ToString() + "\\saves\\";
+                
             if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
             {
                 var path = folderBrowserDialog1.SelectedPath;

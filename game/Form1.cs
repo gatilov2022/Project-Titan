@@ -13,7 +13,6 @@ namespace game
     {
         private int mouseX, mouseY,lastX = 0, lastY =0, spritesSize, scrlToX, scrlToY;
         private const int sizeChange = 7;
-        SoundPlayer sp = null;
         private Button[] _buttons;
         private Point _dragStartCoordinates, _dragDeltaCoordinates = new Point(0,0);
 
@@ -116,9 +115,8 @@ namespace game
             
             var mapObjects = Map.GetChunks();
             var buildObjects = Building.GetBuildings();
-            var date = $"{DateTime.Today.Day}.{DateTime.Today.Month}.{DateTime.Today.Year}.{DateTime.Today.Hour}.{DateTime.Today.Minute}";
-
-            var path = "..\\saves"; 
+            var date = $"{DateTime.Now.ToString().Replace(" ", "_").Replace(":", ".")}";
+            var path = Environment.CurrentDirectory.ToString() + "\\saves"; 
             Directory.CreateDirectory($"{path}\\{date}");
             SaveGame($"{path}\\{date}\\Player.sav", playerObj, false);
 
@@ -308,7 +306,7 @@ namespace game
             var block = Map.GetBlockType(new Point(-_dragDeltaCoordinates.X + mouseX, -_dragDeltaCoordinates.Y + mouseY));
             bool checkBlock =
                 Building.Checking_The_Building(new Point(mouseX, mouseY), _dragDeltaCoordinates, _buttons);
-            Map.DrawMap(graphicsForm, _dragDeltaCoordinates, this.Size);
+            Map.DrawMap(graphicsForm, _dragDeltaCoordinates);
             e.Graphics.DrawString("spritesSize: " + Sprites.GetSpritesSize() + "\n Sprites max/min sizes: " + Sprites.GetSpritesMaxSize() + " ," + Sprites.GetSpritesMinSize() + "\nDrags: X - "
                 + _dragDeltaCoordinates.X + ", Y - " + _dragDeltaCoordinates.Y + $"\n ChunkNumber: {chunkNumber}\nBlockNumber: {blockNumber}"
                 + $"\nBlocktype {block}\nCorrectBlock for build:{checkBlock}", f, new SolidBrush(Color.Wheat), 200, 200);
@@ -317,7 +315,6 @@ namespace game
             {
                 if (someButton.FlatAppearance.BorderColor == Color.Blue)
                 {
-
                     bool chekBuild =
                         Building.Checking_The_Building(new Point(mouseX, mouseY), _dragDeltaCoordinates, _buttons);
                     

@@ -20,10 +20,11 @@ namespace game.World_map.Block
         };
 
         /*!
-         * \brief Класс 
-         * Хранит в себе цевата блока Земли.
+         * \param inX Координата X для блока.
+         * \param inY Координата Y для блока.
+         * \param chunkGraphics Графика(область) на которой будет отрисован блок, по заданным координатам и подготовленным цветам блока.
          */
-        public Sand(int inX, int inY, Graphics g) : base(inX, inY, YellowBrushList, g)
+        public Sand(int inX, int inY, Graphics chunkGraphics) : base(inX, inY, YellowBrushList, chunkGraphics)
         {
         }
     }

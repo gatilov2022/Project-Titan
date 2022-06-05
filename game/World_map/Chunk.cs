@@ -5,7 +5,10 @@ using game.World_map.Block;
 
 namespace game.World_map
 {
-    // Класс, хранящий в себе блоки. 
+    /*!
+     * \brief Класс, хранящий в себе изображение блоков.
+     * Так же хранит в себе типы блоков.
+     */
     [Serializable]
     internal class Chunk
     {
@@ -57,21 +60,31 @@ namespace game.World_map
             }
             return _chunkImage;
         }
-
+        /*!
+         * \return _chunkImage Изображение одного чанка.
+         */
         public Bitmap GetImage()
         {
             return _chunkImage;
         }
 
+        /*!
+         * \return ChunkSize Размер чанка.
+         */
         public static int GetChunkSize()
         {
             return ChunkSize;
         }
 
+        /*!
+         * \param number Номер блока в чанке.
+         * \return _blocksInChunk[number] Тип блока.
+         */
         public object GetBlockByNumber(int number)
         {
             return _blocksInChunk[number];
         }
+
         private void Add(object inputObject)
         {
             _blocksInChunk.Add(inputObject);

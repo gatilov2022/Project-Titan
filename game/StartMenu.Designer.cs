@@ -93,6 +93,11 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // folderBrowserDialog1
+            // 
+            this.folderBrowserDialog1.Description = "Выбирите сохранение";
+            this.folderBrowserDialog1.ShowNewFolderButton = false;
+            // 
             // StartMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);

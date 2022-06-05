@@ -4,6 +4,10 @@ using System.Drawing;
 
 namespace game.World_map
 {
+    /*!
+     * \brief Класс Map служит созданию игровой области.
+     * Хранит в себе размер карты, игровые области(чанки).
+     */
     [Serializable]
     internal class Map
     {
@@ -14,14 +18,29 @@ namespace game.World_map
             _chunks.Add(chunk);
         }
 
+        /*!
+         * \brief Метод для загрузки всех чанков из сохранения.
+         */
         public static void LoadChunks(List<Chunk> deserealizedChunks)
         {
             _chunks = deserealizedChunks;
         }
+
+        /*!
+         * \brief Метод для получения всех чанков.
+         * Полсе чего они сохраняются.
+         * \return _chunks Все чанки карты.
+         */
         public static List<Chunk> GetChunks()
         {
             return _chunks;
         }
+        /*!
+         * \brief Метод для возращения типа блока.
+         * Ищет тип блока от координат курсора.
+         * \param coordinates Координаты для поиска типа блока.
+         * \return _chunks[chunkNumber].GetBlockByNumber(blockNumber) Тип блока.
+         */
         public static string GetBlockType(Point coordinates)
         {
             var chunkNumber = coordinates.Y / (Chunk.GetChunkSize() * Sprites.GetSpritesSize()) * Map.GetMapSize() + 
@@ -30,19 +49,31 @@ namespace game.World_map
                               coordinates.X / Sprites.GetSpritesSize() % Chunk.GetChunkSize();
             return _chunks[chunkNumber].GetBlockByNumber(blockNumber).ToString();
         }
-        
+
+        /*!
+         * \brief Генерация карты.
+         * Генерирует по заданному размеру. Карта имеет вид квадрата.
+         */
         public static void GenerateMap()
         {
             for (var i = 0; i < _mapSize; i++)
                 for (var j = 0; j < _mapSize; j++)
                     _chunks.Add(new Chunk());
         }
+        /*!
+         * \return Возращает размер карты.
+         */
         public static int GetMapSize()
         {
             return _mapSize;
         }
         // Отрисовка всех объектов из всех списков
-        public static void DrawMap(Graphics graphicsForm, Point dragDelta, Size sizeForm)
+        /*!
+         * \brief Отрисовка всех блоков на карте.
+         * \param graphicsForm Область окна , на котором будет отображена карта.
+         * \param dragDelta Координаты изменения от первичного располежения карты
+         */
+        public static void DrawMap(Graphics graphicsForm, Point dragDelta)
         {
             var spritesSize = Sprites.GetSpritesSize();
             for (var i = 0; i < _chunks.Count; i++)
@@ -52,7 +83,6 @@ namespace game.World_map
                 graphicsForm.DrawImage(_chunks[i].GetImage(),
                     dragDelta.X + localCoordinateX, dragDelta.Y + localCoordinateY, 
                     spritesSize * Chunk.GetChunkSize() + 1, spritesSize * Chunk.GetChunkSize() + 1);
-                             
             }
         }
     }

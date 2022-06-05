@@ -6,7 +6,7 @@ namespace game.World_map.Block
 {
     /*!
      * \brief Класс Grass 
-     * Хранит в себе цевата блока Земли.
+     * Пресдавляет собой шаблон для создания блока типа Grass, с соответсвующими цветами.
      */
     [Serializable]
     internal class Grass : Sprites
@@ -18,10 +18,13 @@ namespace game.World_map.Block
             new SolidBrush(Color.DarkGreen), 
             new SolidBrush(Color.DarkOliveGreen) 
         };
+
         /*!
-         * Создаёт цветовую 
+         * \param inX Координата X для блока.
+         * \param inY Координата Y для блока.
+         * \param chunkGraphics Графика(область) на которой будет отрисован блок, по заданным координатам и подготовленным цветам блока.
          */
-        public Grass(int inX, int inY, Graphics g) : base (inX, inY, GreenBrushList, g)
+        public Grass(int inX, int inY, Graphics chunkGraphics) : base (inX, inY, GreenBrushList, chunkGraphics)
         {
         }
     }

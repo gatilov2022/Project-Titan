@@ -5,8 +5,8 @@ using System.Drawing;
 namespace game.World_map.Block
 {
     /*!
-     * \brief Класс 
-     * Хранит в себе цевата блока Земли.
+     * \brief Класс Ore
+     * Пресдавляет собой шаблон для создания блока типа Ore, с соответсвующими цветами.
      */
     [Serializable]
     internal class Ore : Sprites
@@ -22,10 +22,11 @@ namespace game.World_map.Block
         };
 
         /*!
-         * \brief Класс 
-         * Хранит в себе цевата блока Земли.
+         * \param inX Координата X для блока.
+         * \param inY Координата Y для блока.
+         * \param chunkGraphics Графика(область) на которой будет отрисован блок, по заданным координатам и подготовленным цветам блока.
          */
-        public Ore(int inX, int inY, Graphics g) : base(inX, inY, OreBrushList, g)
+        public Ore(int inX, int inY, Graphics chunkGraphics) : base(inX, inY, OreBrushList, chunkGraphics)
         {
         }
     }

@@ -56,9 +56,9 @@ namespace game.World_map
             if (_size - value >= _minSpriteSize)
                 _size -= value;
         }
-        protected Sprites(int inX, int inY, List<SolidBrush> brushList, Graphics g)
+        protected Sprites(int inX, int inY, List<SolidBrush> brushList, Graphics chunkGraphics)
         {
-            Draw_sprite(inX, inY, Generate_texture(brushList), g);
+            Draw_sprite(inX, inY, Generate_texture(brushList), chunkGraphics);
         }
         protected static void Draw_sprite(int x, int y, List<SolidBrush> texture, Graphics g) // Отрисовка
         {

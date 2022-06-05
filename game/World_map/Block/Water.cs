@@ -5,8 +5,8 @@ using System.Drawing;
 namespace game.World_map.Block
 {
     /*!
-     * \brief Класс Grass 
-     * Хранит в себе цевата блока Земли.
+     * \brief Класс Water
+     * Пресдавляет собой шаблон для создания блока типа Water, с соответсвующими цветами.
      */
     [Serializable]
     internal class Water : Sprites
@@ -17,11 +17,13 @@ namespace game.World_map.Block
             new SolidBrush(Color.FromArgb(255, 30, 30, 180)),
             new SolidBrush(Color.FromArgb(255, 25, 25, 180))
         };
+
         /*!
-         * \brief Класс 
-         * Хранит в себе цевата блока Земли.
+         * \param inX Координата X для блока.
+         * \param inY Координата Y для блока.
+         * \param chunkGraphics Графика(область) на которой будет отрисован блок, по заданным координатам и подготовленным цветам блока.
          */
-        public Water(int inX, int inY, Graphics g) : base(inX, inY, BlueBrushList, g)
+        public Water(int inX, int inY, Graphics chunkGraphics) : base(inX, inY, BlueBrushList, chunkGraphics)
         {
         }
     }
