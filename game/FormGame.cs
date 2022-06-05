@@ -38,7 +38,7 @@ namespace game
             Building.SetPlayerObj(playerObj);
             _startMenu = startMenu;
             _buttons = new Button[] {factory_but ,pump_but ,drill_but ,base_but ,wareh_but ,house_but ,steam_but};
-
+            spritesSize = Sprites.GetSpritesSize();
             
             this.MouseWheel += new MouseEventHandler(From1_MouseWheel);
 

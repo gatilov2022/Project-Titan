@@ -60,9 +60,9 @@
             this.exitButton.TabIndex = 1;
             this.exitButton.UseVisualStyleBackColor = true;
             this.exitButton.Click += new System.EventHandler(this.ExitButton_Click);
-            this.exitButton.MouseDown += new System.Windows.Forms.MouseEventHandler(this.button1_MouseDown);
-            this.exitButton.MouseLeave += new System.EventHandler(this.button1_MouseLeave);
-            this.exitButton.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button1_MouseMove);
+            this.exitButton.MouseDown += new System.Windows.Forms.MouseEventHandler(this.buttonsMouseDown);
+            this.exitButton.MouseLeave += new System.EventHandler(this.buttonsMouseLeave);
+            this.exitButton.MouseMove += new System.Windows.Forms.MouseEventHandler(this.buttonsMouseMove);
             // 
             // startButton
             // 
@@ -76,22 +76,23 @@
             this.startButton.TabIndex = 0;
             this.startButton.UseVisualStyleBackColor = true;
             this.startButton.Click += new System.EventHandler(this.StartButton_Click);
-            this.startButton.MouseDown += new System.Windows.Forms.MouseEventHandler(this.button1_MouseDown);
-            this.startButton.MouseLeave += new System.EventHandler(this.button1_MouseLeave);
-            this.startButton.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button1_MouseMove);
+            this.startButton.MouseDown += new System.Windows.Forms.MouseEventHandler(this.buttonsMouseDown);
+            this.startButton.MouseLeave += new System.EventHandler(this.buttonsMouseLeave);
+            this.startButton.MouseMove += new System.Windows.Forms.MouseEventHandler(this.buttonsMouseMove);
             // 
             // loadButton
             // 
+            this.loadButton.BackgroundImage = global::game.Properties.Resources.Load_No_Move;
             this.loadButton.FlatAppearance.BorderSize = 0;
             this.loadButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.loadButton.ForeColor = System.Drawing.Color.Transparent;
-            this.loadButton.Image = global::game.Properties.Resources.Load_No_Move;
             this.loadButton.Location = new System.Drawing.Point(165, 374);
             this.loadButton.Name = "loadButton";
             this.loadButton.Size = new System.Drawing.Size(140, 40);
             this.loadButton.TabIndex = 4;
             this.loadButton.UseVisualStyleBackColor = true;
             this.loadButton.Click += new System.EventHandler(this.LoadButton_Click);
+            this.loadButton.MouseMove += new System.Windows.Forms.MouseEventHandler(this.buttonsMouseMove);
             // 
             // folderBrowserDialog1
             // 

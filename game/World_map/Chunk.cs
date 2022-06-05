@@ -69,7 +69,6 @@ namespace game.World_map
             }
             return _chunkImage;
         }
-
         /*!
          * \return _chunkImage Изображение одного чанка.
          */
