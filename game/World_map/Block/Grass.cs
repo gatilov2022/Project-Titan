@@ -4,10 +4,13 @@ using System.Drawing;
 
 namespace game.World_map.Block
 {
+    /*!
+     * \brief Класс Grass 
+     * Хранит в себе цевата блока Земли.
+     */
     [Serializable]
     internal class Grass : Sprites
     {
-        private const string blockType = "Grass";
         [NonSerialized()]
         private static readonly List<SolidBrush> GreenBrushList = new List<SolidBrush>() { 
             new SolidBrush(Color.ForestGreen),
@@ -15,18 +18,12 @@ namespace game.World_map.Block
             new SolidBrush(Color.DarkGreen), 
             new SolidBrush(Color.DarkOliveGreen) 
         };
-        [NonSerialized()]
-        private readonly List<SolidBrush> _partColor;
-
-        public Grass(int inX, int inY)
+        /*!
+         * Создаёт цветовую 
+         */
+        public Grass(int inX, int inY, Graphics g)
         {
-            _partColor = Sprites.Generate_texture(GreenBrushList);
-            this.X = inX; this.Y = inY;
-        }
-
-        public void DrawBlock(Graphics g)
-        {
-            Sprites.Draw_sprite(X, Y, _partColor, g);
+            Sprites.Draw_sprite(inX, inY, Sprites.Generate_texture(GreenBrushList), g);
         }
     }
 }

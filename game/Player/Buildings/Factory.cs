@@ -131,7 +131,5 @@ namespace game.Player.Buildings
         {
             return suitableBlock;
         }
-
-
     }
 }

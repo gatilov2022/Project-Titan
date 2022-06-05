@@ -117,7 +117,6 @@ namespace game
             
             var mapObjects = Map.GetChunks();
             var buildObjects = Building.GetBuildings();
-
             var date = $"{DateTime.Today.Day}.{DateTime.Today.Month}.{DateTime.Today.Year}.{DateTime.Today.Hour}.{DateTime.Today.Minute}";
 
             var path = "..\\saves"; 
@@ -310,8 +309,7 @@ namespace game
             var block = Map.GetBlockType(new Point(-_dragDeltaCoordinates.X + mouseX, -_dragDeltaCoordinates.Y + mouseY));
             bool checkBlock =
                 Building.Checking_The_Building(new Point(mouseX, mouseY), _dragDeltaCoordinates, _buttons);
-
-            Map.DrawMap(graphicsForm, _dragDeltaCoordinates,this.Size);
+            Map.DrawMap(graphicsForm, _dragDeltaCoordinates, this.Size);
             e.Graphics.DrawString("spritesSize: " + Sprites.GetSpritesSize() + "\n Sprites max/min sizes: " + Sprites.GetSpritesMaxSize() + " ," + Sprites.GetSpritesMinSize() + "\nDrags: X - "
                 + _dragDeltaCoordinates.X + ", Y - " + _dragDeltaCoordinates.Y + $"\n ChunkNumber: {chunkNumber}\nBlockNumber: {blockNumber}"
                 + $"\nBlocktype {block}\nCorrectBlock for build:{checkBlock}", f, new SolidBrush(Color.Wheat), 200, 200);

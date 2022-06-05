@@ -38,35 +38,19 @@ namespace game.World_map
                     var randNum = Rand.Next(0, 100);
                     
                     if (randNum <= oreChance)
-                    {
-                        var block = new Ore(coordinateX, coordinateY);
-                        block.DrawBlock(chunkImageGraphics);
-                        this.Add(block);
-                    } 
+                        this.Add(new Ore(coordinateX, coordinateY, chunkImageGraphics));
                     else 
                     {
                         overallChances += oreChance;
                         if (randNum <= overallChances + waterChance)
-                        {
-                            var block = new Water(coordinateX, coordinateY);
-                            block.DrawBlock(chunkImageGraphics);
-                            this.Add(block);
-                        }
+                            this.Add(new Water(coordinateX, coordinateY, chunkImageGraphics));
                         else 
                         {
                             overallChances += waterChance;
                             if (randNum <= overallChances + sandChance)
-                            {
-                                var block = new Sand(coordinateX, coordinateY);
-                                block.DrawBlock(chunkImageGraphics);
-                                this.Add(block);
-                            }
+                                this.Add(new Sand(coordinateX, coordinateY, chunkImageGraphics));
                             else
-                            {
-                                var block = new Grass(coordinateX, coordinateY);
-                                block.DrawBlock(chunkImageGraphics);
-                                this.Add(block);
-                            }
+                                this.Add(new Grass(coordinateX, coordinateY, chunkImageGraphics));
                         }
                     }
                 }

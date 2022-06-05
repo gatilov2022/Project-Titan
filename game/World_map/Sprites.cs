@@ -12,7 +12,6 @@ namespace game.World_map
         private static int _maxSpriteSize;
         private static int _minSpriteSize;
 
-        protected int X, Y;
         private static readonly int PixelCount = 49; // Значение должно быть равно некоторому числу в квадрате.
         private static readonly int PixelSize = Convert.ToInt32(Math.Sqrt(PixelCount));
 
@@ -56,11 +55,6 @@ namespace game.World_map
         {
             if (_size - value >= _minSpriteSize)
                 _size -= value;
-        }
-
-        public Point GetCoordinates()
-        {
-            return new Point(X, Y);
         }
 
         protected static void Draw_sprite(int x, int y, List<SolidBrush> texture, Graphics g) // Отрисовка
