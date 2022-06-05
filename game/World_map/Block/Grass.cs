@@ -11,7 +11,6 @@ namespace game.World_map.Block
     [Serializable]
     internal class Grass : Sprites
     {
-        [NonSerialized()]
         private static readonly List<SolidBrush> GreenBrushList = new List<SolidBrush>() { 
             new SolidBrush(Color.ForestGreen),
             new SolidBrush(Color.Green),
@@ -24,7 +23,7 @@ namespace game.World_map.Block
          * \param inY Координата Y для блока.
          * \param chunkGraphics Графика(область) на которой будет отрисован блок, по заданным координатам и подготовленным цветам блока.
          */
-        public Grass(int inX, int inY, Graphics chunkGraphics) : base (inX, inY, GreenBrushList, chunkGraphics)
+        public Grass(Point chunkPoint, Graphics chunkGraphics) : base(chunkPoint, GreenBrushList, chunkGraphics)
         {
         }
     }

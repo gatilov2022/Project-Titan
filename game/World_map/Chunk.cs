@@ -13,14 +13,12 @@ namespace game.World_map
     internal class Chunk
     {
         private const int ChunkSize = 16;
+        private static readonly int SpritesSize = Sprites.GetSpritesSize();
+        private static readonly int ImageXSize = SpritesSize * ChunkSize;
+        private static readonly int ImageYSize = SpritesSize * ChunkSize;
 
         private readonly Bitmap _chunkImage = new Bitmap(ImageXSize, ImageYSize);
         private readonly List<object> _blocksInChunk = new List<object>();
-        
-        private static readonly int SpritesSize = Sprites.GetSpritesSize();
-
-        private static readonly int ImageXSize = SpritesSize * ChunkSize; 
-        private static readonly int ImageYSize = SpritesSize * ChunkSize;
 
         private static readonly Random Rand = new Random(); 
 
@@ -38,28 +36,32 @@ namespace game.World_map
                 for (var  coordinateX = 0;  coordinateX < ChunkSize;  coordinateX++)
                 {
                     var overallChances = 0;
-                    var randNum = Rand.Next(0, 100);
+                    var randNum = Rand.Next(101);
+                    Point chunkPoint = new Point(coordinateX, coordinateY);
                     
                     if (randNum <= oreChance)
-                        this.Add(new Ore(coordinateX, coordinateY, chunkImageGraphics));
+                        _blocksInChunk.Add(new Ore(chunkPoint, chunkImageGraphics));
                     else 
                     {
                         overallChances += oreChance;
+
                         if (randNum <= overallChances + waterChance)
-                            this.Add(new Water(coordinateX, coordinateY, chunkImageGraphics));
+                            _blocksInChunk.Add(new Water(chunkPoint, chunkImageGraphics));
                         else 
                         {
                             overallChances += waterChance;
+
                             if (randNum <= overallChances + sandChance)
-                                this.Add(new Sand(coordinateX, coordinateY, chunkImageGraphics));
+                                _blocksInChunk.Add(new Sand(chunkPoint, chunkImageGraphics));
                             else
-                                this.Add(new Grass(coordinateX, coordinateY, chunkImageGraphics));
+                                _blocksInChunk.Add(new Grass(chunkPoint, chunkImageGraphics));
                         }
                     }
                 }
             }
             return _chunkImage;
         }
+
         /*!
          * \return _chunkImage Изображение одного чанка.
          */
@@ -83,11 +85,6 @@ namespace game.World_map
         public object GetBlockByNumber(int number)
         {
             return _blocksInChunk[number];
-        }
-
-        private void Add(object inputObject)
-        {
-            _blocksInChunk.Add(inputObject);
         }
     }
 }

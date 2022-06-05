@@ -24,7 +24,7 @@ namespace game.World_map.Block
          * \param inY Координата Y для блока.
          * \param chunkGraphics Графика(область) на которой будет отрисован блок, по заданным координатам и подготовленным цветам блока.
          */
-        public Sand(int inX, int inY, Graphics chunkGraphics) : base(inX, inY, YellowBrushList, chunkGraphics)
+        public Sand(Point chunkPoint, Graphics chunkGraphics) : base(chunkPoint, YellowBrushList, chunkGraphics)
         {
         }
     }

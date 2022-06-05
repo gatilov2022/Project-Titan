@@ -11,7 +11,6 @@ namespace game.World_map.Block
     [Serializable]
     internal class Ore : Sprites
     {
-        [NonSerialized()]
         private static readonly List<SolidBrush> OreBrushList = new List<SolidBrush>() 
         { 
             new SolidBrush(Color.FromArgb(255, 128, 128, 128)),
@@ -26,7 +25,7 @@ namespace game.World_map.Block
          * \param inY Координата Y для блока.
          * \param chunkGraphics Графика(область) на которой будет отрисован блок, по заданным координатам и подготовленным цветам блока.
          */
-        public Ore(int inX, int inY, Graphics chunkGraphics) : base(inX, inY, OreBrushList, chunkGraphics)
+        public Ore(Point chunkPoint, Graphics chunkGraphics) : base(chunkPoint, OreBrushList, chunkGraphics)
         {
         }
     }

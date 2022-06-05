@@ -13,10 +13,6 @@ namespace game.World_map
     {
         private static List<Chunk> _chunks = new List<Chunk>();
         private static int _mapSize = 12;
-        public static void AddChunk(Chunk chunk)
-        {
-            _chunks.Add(chunk);
-        }
 
         /*!
          * \brief Метод для загрузки всех чанков из сохранения.
@@ -35,6 +31,7 @@ namespace game.World_map
         {
             return _chunks;
         }
+
         /*!
          * \brief Метод для возращения типа блока.
          * Ищет тип блока от координат курсора.
@@ -44,9 +41,11 @@ namespace game.World_map
         public static string GetBlockType(Point coordinates)
         {
             var chunkNumber = coordinates.Y / (Chunk.GetChunkSize() * Sprites.GetSpritesSize()) * Map.GetMapSize() + 
-                                    coordinates.X / (Sprites.GetSpritesSize() * Chunk.GetChunkSize());
+                              coordinates.X / (Sprites.GetSpritesSize() * Chunk.GetChunkSize());
+
             var blockNumber = coordinates.Y / Sprites.GetSpritesSize() % Chunk.GetChunkSize() * Chunk.GetChunkSize() +
                               coordinates.X / Sprites.GetSpritesSize() % Chunk.GetChunkSize();
+
             return _chunks[chunkNumber].GetBlockByNumber(blockNumber).ToString();
         }
 
@@ -56,8 +55,7 @@ namespace game.World_map
          */
         public static void GenerateMap()
         {
-            for (var i = 0; i < _mapSize; i++)
-                for (var j = 0; j < _mapSize; j++)
+            for (var chunk = 0; chunk < _mapSize * _mapSize; chunk++)
                     _chunks.Add(new Chunk());
         }
         /*!
@@ -76,11 +74,13 @@ namespace game.World_map
         public static void DrawMap(Graphics graphicsForm, Point dragDelta)
         {
             var spritesSize = Sprites.GetSpritesSize();
-            for (var i = 0; i < _chunks.Count; i++)
+
+            for (var chunk = 0; chunk < _chunks.Count; chunk++)
             {
-                var localCoordinateX = i % _mapSize * spritesSize * Chunk.GetChunkSize();
-                var localCoordinateY = i / _mapSize * spritesSize * Chunk.GetChunkSize();
-                graphicsForm.DrawImage(_chunks[i].GetImage(),
+                var localCoordinateX = chunk % _mapSize * spritesSize * Chunk.GetChunkSize();
+                var localCoordinateY = chunk / _mapSize * spritesSize * Chunk.GetChunkSize();
+
+                graphicsForm.DrawImage(_chunks[chunk].GetImage(),
                     dragDelta.X + localCoordinateX, dragDelta.Y + localCoordinateY, 
                     spritesSize * Chunk.GetChunkSize() + 1, spritesSize * Chunk.GetChunkSize() + 1);
             }
