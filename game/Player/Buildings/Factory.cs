@@ -7,110 +7,130 @@ namespace game.Player.Buildings
     [Serializable]
     internal class Factory : Building
     {
-
-        private static Dictionary<string, int> buildingCostsDictionary =
-            new Dictionary<string, int>()
+        private static Dictionary<string, int> _buildingCostsDictionary =
+            new Dictionary<string, int>
             {
-                {"Sand", 100}, {"Iron", 50}
+                {
+                    "Sand", 100
+                },
+                {
+                    "Iron", 50
+                }
             };
+        
+        private static Dictionary<string, int> _t1Cost = new Dictionary<string, int>
+        {
+            {
+                "Iron", 100
+            },
+            {
+                "ComponentsT1", 50
+            }
+        };
+        private static Dictionary<string, int> _t2Cost = new Dictionary<string, int>
+        {
+            {
+                "Iron", 200
+            },
+            {
+                "ComponentsT1", 100
+            },
+            {
+                "ComponentsT2", 50
+            }
+        };
+        private static string _suitableBlock = typeof(Grass).ToString();
+        public Factory()
+        {
+            BuildingMaxLevel = 2;
+            UsingResourcesDictionary["Energy"] = 5;
+            UsingResourcesDictionary["Iron"] = 5;
+            ProducingResourcesDictionary["ComponentsT1"] = 1;
 
-        private static string suitableBlock = typeof(Grass).ToString();
-
-        private static Dictionary<string, int> T1Cost = new Dictionary<string, int>()
-            {{"Iron", 100}, {"ComponentsT1", 50}};
-        private static Dictionary<string, int> T2Cost = new Dictionary<string, int>()
-            {{"Iron", 200}, {"ComponentsT1", 100}, {"ComponentsT2", 50}};
+            AddBuilding(this);
+        }
 
         private static bool IsResourcesEnough(Dictionary<string, int> checkDictionary)
         {
             foreach (var dictValue in checkDictionary)
             {
-                if (playerObj.GetAmountOfResources(dictValue.Key) - dictValue.Value < 0) return false;
+                if (PlayerObject.GetAmountOfResources(dictValue.Key) - dictValue.Value < 0)
+                {
+                    return false;
+                }
             }
-
             return true;
         }
-        override
-        public Dictionary<string, int> AmountResourcesForUpgrade()
+
+        public override Dictionary<string, int> AmountResourcesForUpgrade()
         {
-            switch (buildingLevel)
+            switch (BuildingLevel)
             {
                 case 0:
-                    return T1Cost;
+                    return _t1Cost;
                 case 1:
-                    return T2Cost;
+                    return _t2Cost;
             }
-
             return null;
         }
 
         public static bool IsResourcesEnough()
         {
-            foreach (var dictValue in buildingCostsDictionary)
+            foreach (var dictValue in _buildingCostsDictionary)
             {
-                if (playerObj.GetAmountOfResources(dictValue.Key) - dictValue.Value < 0) return false;
+                if (PlayerObject.GetAmountOfResources(dictValue.Key) - dictValue.Value < 0)
+                {
+                    return false;
+                }
             }
-
             return true;
-        }
-        public Factory()
-        {
-            buildingType = "Factory";
-
-            buildingMaxLevel = 2;
-            UsingResourcesDictionary["Energy"] = 5;
-            UsingResourcesDictionary["Iron"] = 5;
-
-            ProducingResourcesDictionary["ComponentsT1"] = 1;
-            AddBuilding(this);
         }
 
         public static void TakeResourcesForBuild()
         {
-            foreach (var dictVal in buildingCostsDictionary)
+            foreach (var dictVal in _buildingCostsDictionary)
             {
-                playerObj.DecreaseAmountOfResources(dictVal.Key, dictVal.Value);
+                PlayerObject.DecreaseAmountOfResources(dictVal.Key, dictVal.Value);
             }
-
         }
 
         private void TakeResourcesForUpgrade(Dictionary<string, int> upgradeDictionary)
         {
             foreach (var dictVal in upgradeDictionary)
             {
-                playerObj.DecreaseAmountOfResources(dictVal.Key, dictVal.Value);
+                PlayerObject.DecreaseAmountOfResources(dictVal.Key, dictVal.Value);
             }
         }
-        
-        override 
-        public void UpgradeBuilding()
+        public override void UpgradeBuilding()
         {
             if (!IsMaxLevel())
             {
-                switch (buildingLevel)
+                switch (BuildingLevel)
                 {
                     case 0:
-                        if (IsResourcesEnough(T1Cost))
+                        if (IsResourcesEnough(_t1Cost))
                         {
-                            TakeResourcesForUpgrade(T1Cost);
+                            TakeResourcesForUpgrade(_t1Cost);
+
                             UsingResourcesDictionary["Energy"] = (int)(UsingResourcesDictionary["Energy"] * Math.E * 0.8);
                             UsingResourcesDictionary["Iron"] = (int)(UsingResourcesDictionary["Iron"] * Math.E);
-
                             ProducingResourcesDictionary["ComponentsT2"] = 2;
-                            buildingLevel++;
+
+                            BuildingLevel++;
                         }
                         break;
                     case 1:
-                        if (IsResourcesEnough(T2Cost))
+                        if (IsResourcesEnough(_t2Cost))
                         {
-                            TakeResourcesForUpgrade(T2Cost);
+                            TakeResourcesForUpgrade(_t2Cost);
+
                             UsingResourcesDictionary["Energy"] = (int)(UsingResourcesDictionary["Energy"] * Math.E * 0.8);
                             UsingResourcesDictionary["Iron"] = (int)(UsingResourcesDictionary["Iron"] * Math.E);
                             UsingResourcesDictionary["ComponentsT1"] = 1;
                             UsingResourcesDictionary["ComponentsT2"] = 1;
-
                             ProducingResourcesDictionary["ComponentsT3"] = 2;
-                            buildingLevel++;
+
+                            BuildingLevel++;
                         }
                         break;
                 }
@@ -119,7 +139,7 @@ namespace game.Player.Buildings
 
         public static string GetSuitableBlock()
         {
-            return suitableBlock;
+            return _suitableBlock;
         }
     }
 }

@@ -58,9 +58,9 @@
             this.factory_but.Text = ".";
             this.toolTip1.SetToolTip(this.factory_but, "Фабрика 1lvl\r\n");
             this.factory_but.UseVisualStyleBackColor = true;
-            this.factory_but.Click += new System.EventHandler(this.but_MouseClick);
-            this.factory_but.MouseLeave += new System.EventHandler(this.but_MouseLeave);
-            this.factory_but.MouseMove += new System.Windows.Forms.MouseEventHandler(this.but_MouseMove);
+            this.factory_but.Click += new System.EventHandler(this.ButtonMouseClick);
+            this.factory_but.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
+            this.factory_but.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ButtonMouseMove);
             // 
             // base_but
             // 
@@ -76,9 +76,9 @@
             this.base_but.TabIndex = 4;
             this.toolTip1.SetToolTip(this.base_but, "База");
             this.base_but.UseVisualStyleBackColor = true;
-            this.base_but.Click += new System.EventHandler(this.but_MouseClick);
-            this.base_but.MouseLeave += new System.EventHandler(this.but_MouseLeave);
-            this.base_but.MouseMove += new System.Windows.Forms.MouseEventHandler(this.but_MouseMove);
+            this.base_but.Click += new System.EventHandler(this.ButtonMouseClick);
+            this.base_but.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
+            this.base_but.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ButtonMouseMove);
             // 
             // house_but
             // 
@@ -94,9 +94,9 @@
             this.house_but.TabIndex = 5;
             this.toolTip1.SetToolTip(this.house_but, "Жилой дом\r\n");
             this.house_but.UseVisualStyleBackColor = true;
-            this.house_but.Click += new System.EventHandler(this.but_MouseClick);
-            this.house_but.MouseLeave += new System.EventHandler(this.but_MouseLeave);
-            this.house_but.MouseMove += new System.Windows.Forms.MouseEventHandler(this.but_MouseMove);
+            this.house_but.Click += new System.EventHandler(this.ButtonMouseClick);
+            this.house_but.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
+            this.house_but.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ButtonMouseMove);
             // 
             // pump_but
             // 
@@ -113,9 +113,9 @@
             this.pump_but.TabIndex = 6;
             this.toolTip1.SetToolTip(this.pump_but, "Помпа 1lvl\r\n");
             this.pump_but.UseVisualStyleBackColor = true;
-            this.pump_but.Click += new System.EventHandler(this.but_MouseClick);
-            this.pump_but.MouseLeave += new System.EventHandler(this.but_MouseLeave);
-            this.pump_but.MouseMove += new System.Windows.Forms.MouseEventHandler(this.but_MouseMove);
+            this.pump_but.Click += new System.EventHandler(this.ButtonMouseClick);
+            this.pump_but.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
+            this.pump_but.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ButtonMouseMove);
             // 
             // wareh_but
             // 
@@ -131,9 +131,9 @@
             this.wareh_but.TabIndex = 7;
             this.toolTip1.SetToolTip(this.wareh_but, "Склад");
             this.wareh_but.UseVisualStyleBackColor = true;
-            this.wareh_but.Click += new System.EventHandler(this.but_MouseClick);
-            this.wareh_but.MouseLeave += new System.EventHandler(this.but_MouseLeave);
-            this.wareh_but.MouseMove += new System.Windows.Forms.MouseEventHandler(this.but_MouseMove);
+            this.wareh_but.Click += new System.EventHandler(this.ButtonMouseClick);
+            this.wareh_but.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
+            this.wareh_but.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ButtonMouseMove);
             // 
             // steam_but
             // 
@@ -149,9 +149,9 @@
             this.steam_but.TabIndex = 8;
             this.toolTip1.SetToolTip(this.steam_but, "Паровой двигатель 1lvl\r\n");
             this.steam_but.UseVisualStyleBackColor = true;
-            this.steam_but.Click += new System.EventHandler(this.but_MouseClick);
-            this.steam_but.MouseLeave += new System.EventHandler(this.but_MouseLeave);
-            this.steam_but.MouseMove += new System.Windows.Forms.MouseEventHandler(this.but_MouseMove);
+            this.steam_but.Click += new System.EventHandler(this.ButtonMouseClick);
+            this.steam_but.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
+            this.steam_but.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ButtonMouseMove);
             // 
             // drill_but
             // 
@@ -167,9 +167,9 @@
             this.drill_but.TabIndex = 9;
             this.toolTip1.SetToolTip(this.drill_but, "Дрель 1lvl");
             this.drill_but.UseVisualStyleBackColor = true;
-            this.drill_but.Click += new System.EventHandler(this.but_MouseClick);
-            this.drill_but.MouseLeave += new System.EventHandler(this.but_MouseLeave);
-            this.drill_but.MouseMove += new System.Windows.Forms.MouseEventHandler(this.but_MouseMove);
+            this.drill_but.Click += new System.EventHandler(this.ButtonMouseClick);
+            this.drill_but.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
+            this.drill_but.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ButtonMouseMove);
             // 
             // toolTip1
             // 
@@ -183,7 +183,7 @@
             // timer1
             // 
             this.timer1.Interval = 1000;
-            this.timer1.Tick += new System.EventHandler(this.Timer1_Tick);
+            this.timer1.Tick += new System.EventHandler(this.GameLogicTimerTick);
             // 
             // button2
             // 
@@ -198,7 +198,7 @@
             this.button2.TabIndex = 11;
             this.toolTip2.SetToolTip(this.button2, "Сохранение");
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.SaveGameButtonClick);
             // 
             // toolTip2
             // 
@@ -224,13 +224,13 @@
             this.MinimumSize = new System.Drawing.Size(839, 489);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
-            this.Paint += new System.Windows.Forms.PaintEventHandler(this.paint_vis);
-            this.DoubleClick += new System.EventHandler(this.Form1_DoubleClick);
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
-            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
-            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseUp);
-            this.Resize += new System.EventHandler(this.Form1_Resize);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.GameWindowClosed);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.DrawForm);
+            this.DoubleClick += new System.EventHandler(this.GameWindowDoubleClick);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.GameFieldMouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.GameFieldMouseMoveEvent);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.GameFieldMouseUpEvent);
+            this.Resize += new System.EventHandler(this.GameWindowResized);
             this.ResumeLayout(false);
 
         }

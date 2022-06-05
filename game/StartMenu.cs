@@ -32,18 +32,18 @@ namespace game
         private void button1_MouseDown(object sender, MouseEventArgs e)
         {
             var but = sender as Button;
-            switch (but)
-            {
-                case startButton:
-                    but.BackgroundImage = Properties.Resources.start_Down;
-                    break;
-                case exitButton:
-                    but.BackgroundImage = Properties.Resources.exit_Down;
-                    break;
-                case loadButton:
-                    but.BackgroundImage = Properties.Resources.Load_No_Move;
-                    break;
-            }
+            //switch (but)
+            //{
+            //    //case startButton:
+            //    //    but.BackgroundImage = Properties.Resources.start_Down;
+            //    //    break;
+            //    //case exitButton:
+            //    //    but.BackgroundImage = Properties.Resources.exit_Down;
+            //    //    break;
+            //    //case loadButton:
+            //    //    but.BackgroundImage = Properties.Resources.Load_No_Move;
+            //        break;
+            //}
         }
 
         private void ExitButton_Click(object sender, EventArgs e)
@@ -83,8 +83,8 @@ namespace game
         }
         private void LoadButton_Click(object sender, EventArgs e)
         {
-            folderBrowserDialog1.RootFolder = Environment.SpecialFolder.UserProfile;
-            folderBrowserDialog1.SelectedPath = Environment.CurrentDirectory.ToString() + "\\saves\\";
+            //folderBrowserDialog1.RootFolder = Environment.SpecialFolder.UserProfile;
+            folderBrowserDialog1.SelectedPath = Environment.CurrentDirectory + "\\saves\\";
                 
             if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
             {

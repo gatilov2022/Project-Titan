@@ -9,100 +9,107 @@ namespace game
 {
     public partial class FormGame : Form
     {
-        private int mouseX, mouseY,lastX = 0, lastY =0, spritesSize, scrlToX, scrlToY;
-        private const int sizeChange = 7;
-        private Button[] _buttons;
-        private Point _dragStartCoordinates, _dragDeltaCoordinates = new Point(0,0);
-
-        private Player.Player playerObj;
-        private const double MaxMultiplier = 6, MinMultiplier = 2;
-        private bool dragStarted = false, scrlDown = false, scrlUp = false;
         private readonly StartMenu _startMenu;
+        private readonly Player.Player _playerObject;
 
-        private const int resourceInfoY = 4;
-        private const int resourceShiftX = 60;
+        private readonly Button[] _buttons;
+        private Point _dragStartCoordinates, _dragDistancePoint = new Point(0,0);
 
-        public FormGame(StartMenu startMenu, Player.Player loadedPlayer = null)
+        private bool _dragging, _scrollingDown, _scrollingUp;
+        private int _mouseX, _mouseY, _lastX, _lastY, _spritesSize, _scrollToX, _scrollToY;
+
+        private const int SpriteSizeChangeOnScroll = 7;
+        private const double MaxMultiplier = 6, MinMultiplier = 2;
+
+        private readonly ResourcesInfo[] _resourcesInfoList =
+        {
+            new ResourcesInfo("Water", new Point(90, 24), new Point(60, 24)),
+            new ResourcesInfo("Iron", new Point(90, 0),new Point(60, 0)),
+            new ResourcesInfo("Sand", new Point(215, 24), new Point(60, 24)),
+            new ResourcesInfo("Energy", new Point(215, 0), new Point(60, 0)),
+            new ResourcesInfo("ComponentsT1", new Point(328, 0), new Point(30, 0)),
+            new ResourcesInfo("ComponentsT2", new Point(328, 14), new Point(30, 14)),
+            new ResourcesInfo("ComponentsT3", new Point(328, 28), new Point(30, 28))
+        };
+
+        public FormGame(StartMenu startMenu, Player.Player loadingPlayer = null)
         {
             InitializeComponent();
-            timer1.Start();
 
-            if (loadedPlayer == null)
-            {
-                playerObj = new Player.Player();
-            }
-            else
-            {
-                playerObj = loadedPlayer;
-            }
-            Building.SetPlayerObj(playerObj);
+            _playerObject = loadingPlayer ?? new Player.Player();
             _startMenu = startMenu;
-            _buttons = new Button[] {factory_but ,pump_but ,drill_but ,base_but ,wareh_but ,house_but ,steam_but};
+            _buttons = new[] {factory_but ,pump_but ,drill_but ,base_but ,wareh_but ,house_but ,steam_but};
+            _spritesSize = Sprites.GetSpritesSize();
 
-            
-            this.MouseWheel += new MouseEventHandler(From1_MouseWheel);
+            MouseWheel += GameWindowMouseWheel;
 
-            
+            Building.SetPlayerObj(_playerObject);
+            ResourcesInfo.SetPlayerObject(_playerObject);
+            timer1.Start();
             Sprites.SetSpritesMinSize((int)(Convert.ToInt32(Math.Sqrt(Sprites.GetPixelCount())) * MinMultiplier * 2));
             Sprites.SetSpritesMaxSize((int)(Convert.ToInt32(Math.Sqrt(Sprites.GetPixelCount())) * MaxMultiplier * 2));
         }
 
-        private void Form1_Resize(object sender, EventArgs e)
+        private void GameWindowResized(object sender, EventArgs e)
         {
-            Zoom();
+            ChangeMapZoom();
         }
 
-        private void Timer1_Tick(object sender, EventArgs e)
+        private void GameLogicTimerTick(object sender, EventArgs e)
         {
-            playerObj.SetShiftToZero();
+            _playerObject.SetResourcesShiftToZero();
             Building.UpdateResources();
             Invalidate();
         }
 
-        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        private void GameWindowClosed(object sender, FormClosedEventArgs e)
         {
             _startMenu.Show();
         }
 
-        private void Form1_DoubleClick(object sender, EventArgs e)
+        private void GameWindowDoubleClick(object sender, EventArgs e)
         {
-            if (Building.HasBuildingOnTheBlock(new Point(mouseX, mouseY), _dragDeltaCoordinates))
+            if (Building.HasBuildingOnTheBlock(new Point(_mouseX, _mouseY), _dragDistancePoint) && !Building.GetBuilding(new Point(_mouseX,_mouseY), _dragDistancePoint).IsMaxLevel())
             {
-                Building someBuilding= Building.GetBuilding(new Point(mouseX, mouseY), _dragDeltaCoordinates) as Building;
-                
-                string costString = "";
+                var someBuilding= Building.GetBuilding(new Point(_mouseX, _mouseY), _dragDistancePoint) as Building;
+                var costString = "";
 
                 foreach (var dictPare in someBuilding.AmountResourcesForUpgrade())
                 {
                     costString += $"\n{dictPare.Key} - {dictPare.Value}";
                 }
-
-                costString = costString.Replace("Iron", "Железо").Replace("Sand", "Песок")
-                    .Replace("ComponentsT1", "Компоненты 1-го уровня").Replace("ComponentsT2", "Компоненты 2-го уровня")
+                costString = costString.Replace("Iron", "Железо")
+                    .Replace("Sand", "Песок")
+                    .Replace("ComponentsT1", "Компоненты 1-го уровня")
+                    .Replace("ComponentsT2", "Компоненты 2-го уровня")
                     .Replace("ComponentsT3", "Компоненты 3-го уровня");
 
-                if (MessageBox.Show("Улучшить здание? Стоимость улучшения:" + costString, "BuildingUpgrade", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) 
+                if (MessageBox.Show(@"Улучшить здание? Стоимость улучшения:" + costString, @"BuildingUpgrade", 
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) 
                     someBuilding.UpgradeBuilding();
-                
             }
         }
 
-        private void From1_MouseWheel(object sender, MouseEventArgs e)
+        private void GameWindowMouseWheel(object sender, MouseEventArgs e)
         {
-            scrlToX = e.X;
-            scrlToY = e.Y;
+            _scrollToX = e.X;
+            _scrollToY = e.Y;
+            _spritesSize = Sprites.GetSpritesSize();
 
-            spritesSize = Sprites.GetSpritesSize();
+            if (e.Delta < 0 && _spritesSize - SpriteSizeChangeOnScroll >= Sprites.GetSpritesMinSize())
+            {
+                _scrollingDown = true;
+            } 
+            else if (e.Delta > 0 && _spritesSize + SpriteSizeChangeOnScroll <= Sprites.GetSpritesMaxSize())
+            {
+                _scrollingUp = true;
+            }
 
-            if (e.Delta < 0 && spritesSize - 14 >= Sprites.GetSpritesMinSize())
-                scrlDown = true;
-            else if (e.Delta > 0 && spritesSize + 14 <= Sprites.GetSpritesMaxSize())
-                scrlUp = true;
-
+            ChangeMapZoom();
             Invalidate();
         }
 
-        public static void SaveGame<T>(string filePath, T objectToWrite, bool append = false)
+        public static void SaveObjects<T>(string filePath, T objectToWrite, bool append = false)
         {
             using (Stream stream = File.Open(filePath, append ? FileMode.Append : FileMode.Create))
             {
@@ -110,64 +117,69 @@ namespace game
                 binaryFormatter.Serialize(stream, objectToWrite);
             }
         }
-        private void button2_Click(object sender, EventArgs e)
+        private void SaveGameButtonClick(object sender, EventArgs e)
         {
             var mapObjects = Map.GetChunks();
             var buildObjects = Building.GetBuildings();
             var date = $"{DateTime.Now.ToString().Replace(" ", "_").Replace(":", ".")}";
-            var path = Environment.CurrentDirectory.ToString() + "\\saves"; 
+            var path = Environment.CurrentDirectory + "\\saves"; 
+
             Directory.CreateDirectory($"{path}\\{date}");
-            SaveGame($"{path}\\{date}\\Player.sav", playerObj, false);
+            SaveObjects($"{path}\\{date}\\Player.sav", _playerObject);
 
             if (buildObjects.Count > 0)
-            SaveGame($"{path}\\{date}\\Buildings.sav", buildObjects[0],false);
-
-            for (int i = 1; i < buildObjects.Count; i++)
             {
-                SaveGame($"{path}\\{date}\\Buildings.sav", buildObjects[i], true);
+                SaveObjects($"{path}\\{date}\\Buildings.sav", buildObjects[0]);
             }
-
-            if (mapObjects.Count > 0)
-                SaveGame($"{path}\\{date}\\Chunks.sav", mapObjects[0], false);
-
-            for (int i = 1; i < mapObjects.Count; i++)
+            for (var index = 1; index < buildObjects.Count; index++)
             {
-                SaveGame($"{path}\\{date}\\Chunks.sav", mapObjects[i], true);
+                SaveObjects($"{path}\\{date}\\Buildings.sav", buildObjects[index], true);
+            }
+            if (mapObjects.Count > 0)
+            {
+                SaveObjects($"{path}\\{date}\\Chunks.sav", mapObjects[0]);
+            }
+            for (var index = 1; index < mapObjects.Count; index++)
+            {
+                SaveObjects($"{path}\\{date}\\Chunks.sav", mapObjects[index], true);
             }
         }
-        private void Form1_MouseMove(object sender, MouseEventArgs e)
+        private void GameFieldMouseMoveEvent(object sender, MouseEventArgs e)
         {
-            if (dragStarted)
+            if (_dragging)
             {
                 var xDelta = _dragStartCoordinates.X - e.X;
                 var yDelta = _dragStartCoordinates.Y - e.Y;
 
-                var mapSizeInPixels = Map.GetMapSize() * Chunk.GetChunkSize() * spritesSize;
+                var mapSizeInPixels = Map.GetMapSize() * Chunk.GetChunkSize() * _spritesSize;
 
-                if (-_dragDeltaCoordinates.X + xDelta >= 1 && -_dragDeltaCoordinates.X + xDelta + this.Width <= mapSizeInPixels - 1)
+                if (-_dragDistancePoint.X + xDelta >= 1 && -_dragDistancePoint.X + xDelta + Width <= mapSizeInPixels - 1)
                 {
-                    _dragDeltaCoordinates.X -= (_dragStartCoordinates.X - e.X);
+                    _dragDistancePoint.X -= (_dragStartCoordinates.X - e.X);
                 } 
-                else if (-_dragDeltaCoordinates.X + this.Width + xDelta > mapSizeInPixels)
-                    _dragDeltaCoordinates.X = -mapSizeInPixels + this.Width + 1;
-
-                else if (-_dragDeltaCoordinates.X + xDelta < 0) 
-                    _dragDeltaCoordinates.X = 0;
-
-
-
-
-                if (-_dragDeltaCoordinates.Y + yDelta >= 1 && -_dragDeltaCoordinates.Y + yDelta + this.Height <= mapSizeInPixels - 1) 
+                else if (-_dragDistancePoint.X + Width + xDelta > mapSizeInPixels)
                 {
-                    _dragDeltaCoordinates.Y -= (_dragStartCoordinates.Y - e.Y);
+                    _dragDistancePoint.X = -mapSizeInPixels + Width + 1;
+                }
+
+                else if (-_dragDistancePoint.X + xDelta < 0)
+                {
+                    _dragDistancePoint.X = 0;
+                }
+                
+                if (-_dragDistancePoint.Y + yDelta >= 1 && -_dragDistancePoint.Y + yDelta + Height <= mapSizeInPixels - 1) 
+                {
+                    _dragDistancePoint.Y -= (_dragStartCoordinates.Y - e.Y);
                     
                 }
-                else if (-_dragDeltaCoordinates.Y + this.Height + yDelta > mapSizeInPixels)
-                    _dragDeltaCoordinates.Y = -mapSizeInPixels + this.Height + 1;
-
-                else if (-_dragDeltaCoordinates.Y + yDelta < 0)
-                    _dragDeltaCoordinates.Y = 0;
-
+                else if (-_dragDistancePoint.Y + Height + yDelta > mapSizeInPixels)
+                {
+                    _dragDistancePoint.Y = -mapSizeInPixels + Height + 1;
+                }
+                else if (-_dragDistancePoint.Y + yDelta < 0)
+                {
+                    _dragDistancePoint.Y = 0;
+                }
 
                 _dragStartCoordinates.X = e.X;
                 _dragStartCoordinates.Y = e.Y;
@@ -176,190 +188,170 @@ namespace game
             }
 
             var blockSize = Sprites.GetSpritesSize();
+            var currentXBlock = (e.X - _dragDistancePoint.X % blockSize) / blockSize;
+            var currentYBlock = (e.Y - _dragDistancePoint.Y % blockSize) / blockSize;
 
-            var currentXBlock = (e.X - _dragDeltaCoordinates.X % blockSize) / blockSize;
-            var currentYBlock = (e.Y - _dragDeltaCoordinates.Y % blockSize) / blockSize;
-
-            if (currentXBlock != lastX || currentYBlock != lastY)
+            if (currentXBlock != _lastX || currentYBlock != _lastY)
             {
-                lastY = currentYBlock; lastX = currentXBlock;
-                mouseX = currentXBlock * blockSize;
-                mouseY = currentYBlock * blockSize;
+                _lastY = currentYBlock; 
+                _lastX = currentXBlock;
+                _mouseX = currentXBlock * blockSize;
+                _mouseY = currentYBlock * blockSize;
+
                 Invalidate();
             }
         }
         
-        private void but_MouseMove(object sender, MouseEventArgs e)
+        private void ButtonMouseMove(object sender, MouseEventArgs e)
         {
-            var but = sender as Button;
-            if (but.FlatAppearance.BorderColor != Color.Blue)
-                but.FlatAppearance.BorderColor = Color.Yellow;
+            var sendButton = sender as Button;
+            if (sendButton.FlatAppearance.BorderColor != Color.Blue)
+            {
+                sendButton.FlatAppearance.BorderColor = Color.Yellow;
+            }
         }
 
-        private void Form1_MouseUp(object sender, MouseEventArgs e)
+        private void GameFieldMouseUpEvent(object sender, MouseEventArgs e)
         {
             switch (e.Button)
             {
                 case MouseButtons.Left:
-                    dragStarted = false; 
+                    _dragging = false; 
                     break;
                 case MouseButtons.Right:
-                    if (!Building.Checking_The_Building(new Point(mouseX, mouseY), _dragDeltaCoordinates, _buttons))
+                    if (!Building.Checking_The_Building(new Point(_mouseX, _mouseY), _dragDistancePoint, _buttons))
+                    {
                         return;
-                    new Building().PlaceBuilding(new Point(mouseX, mouseY), _buttons, _dragDeltaCoordinates);
+                    }
+                    new Building().PlaceBuilding(new Point(_mouseX, _mouseY), _buttons, _dragDistancePoint);
+
                     Invalidate();
                     break;
             }
         }
 
-        private void Form1_MouseDown(object sender, MouseEventArgs e)
+        private void GameFieldMouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
-                dragStarted = true;
+                _dragging = true;
                 _dragStartCoordinates.X = e.X;
                 _dragStartCoordinates.Y = e.Y;
             }
         }
 
-        private void but_MouseLeave(object sender, EventArgs e)
+        private void ButtonMouseLeave(object sender, EventArgs e)
         {
-            var but = sender as Button;
-            if (but.FlatAppearance.BorderColor != Color.Blue)
-                but.FlatAppearance.BorderColor = Color.Red;
+            var sendButton = sender as Button;
+
+            if (sendButton.FlatAppearance.BorderColor != Color.Blue)
+            {
+                sendButton.FlatAppearance.BorderColor = Color.Red;
+            }
         }
 
-        private void but_MouseClick(object sender, EventArgs e)
+        private void ButtonMouseClick(object sender, EventArgs e)
         {
             //События для кнопок, при нажатии которых, рамка Flat будет синей(Blue). При повторном клике, рамка меняет цвет на жёлтый(Yellow).
-            var but = sender as Button;
-            if (but.FlatAppearance.BorderColor != Color.Blue)
+            var sendButton = sender as Button;
+
+            if (sendButton.FlatAppearance.BorderColor != Color.Blue)
             {
-                foreach (Button b in _buttons) { b.FlatAppearance.BorderColor = Color.Red; }
-                but.FlatAppearance.BorderColor = Color.Blue;
+                foreach (var someButton in _buttons)
+                {
+                    someButton.FlatAppearance.BorderColor = Color.Red;
+                }
+                sendButton.FlatAppearance.BorderColor = Color.Blue;
             }
-            else but.FlatAppearance.BorderColor = Color.Yellow;
+            else
+            {
+                sendButton.FlatAppearance.BorderColor = Color.Yellow;
+            }
+
             Invalidate();
         }
 
-        private void Zoom()
+        private void ChangeMapZoom()
         {
-            spritesSize = Sprites.GetSpritesSize();
+            _spritesSize = Sprites.GetSpritesSize();
 
-            if (scrlDown)
+            if (_scrollingDown)
             {
-                Sprites.DecreaseSize(sizeChange);
+                Sprites.DecreaseSize(SpriteSizeChangeOnScroll);
 
-                _dragDeltaCoordinates.X = (_dragDeltaCoordinates.X - scrlToX) / spritesSize * (spritesSize - sizeChange) + scrlToX;
-                _dragDeltaCoordinates.Y = (_dragDeltaCoordinates.Y - scrlToY) / spritesSize * (spritesSize - sizeChange) + scrlToY;
-                
-                scrlDown = false;
+                _dragDistancePoint.X = (_dragDistancePoint.X - _scrollToX) / _spritesSize * (_spritesSize - SpriteSizeChangeOnScroll) + _scrollToX;
+                _dragDistancePoint.Y = (_dragDistancePoint.Y - _scrollToY) / _spritesSize * (_spritesSize - SpriteSizeChangeOnScroll) + _scrollToY;
+                _scrollingDown = false;
+            }
+            else if (_scrollingUp)
+            {
+                Sprites.IncreaseSize(SpriteSizeChangeOnScroll);
+
+                _dragDistancePoint.X = ((_dragDistancePoint.X - _scrollToX) / _spritesSize) * (_spritesSize + SpriteSizeChangeOnScroll) + _scrollToX;
+                _dragDistancePoint.Y = ((_dragDistancePoint.Y - _scrollToY) / _spritesSize) * (_spritesSize + SpriteSizeChangeOnScroll) + _scrollToY;
+                _scrollingUp = false;
             }
 
-            else if (scrlUp)
+            _spritesSize = Sprites.GetSpritesSize();
+            var mapSizeInPixels = Map.GetMapSize() * Chunk.GetChunkSize() * _spritesSize;
+
+            if (-_dragDistancePoint.X + Width > mapSizeInPixels)
             {
-                _dragDeltaCoordinates.X = ((_dragDeltaCoordinates.X - scrlToX) / spritesSize) * (spritesSize + sizeChange) + scrlToX;
-                _dragDeltaCoordinates.Y = ((_dragDeltaCoordinates.Y - scrlToY) / spritesSize) * (spritesSize + sizeChange) + scrlToY;
-
-                Sprites.IncreaseSize(sizeChange);
-
-                scrlUp = false;
+                _dragDistancePoint.X = -(mapSizeInPixels - Width);
             }
-
-            spritesSize = Sprites.GetSpritesSize();
-            var mapSizeInPixels = Map.GetMapSize() * Chunk.GetChunkSize() * spritesSize;
-
-            if (-_dragDeltaCoordinates.X + this.Width > mapSizeInPixels)
-
-                _dragDeltaCoordinates.X = -(mapSizeInPixels - this.Width);
-
-            else if (-_dragDeltaCoordinates.X < 0) 
-
-                _dragDeltaCoordinates.X = 0;
-
-
-            if (-_dragDeltaCoordinates.Y + this.Height > mapSizeInPixels)
-
-                _dragDeltaCoordinates.Y = -(mapSizeInPixels - this.Height);
-
-            else if (-_dragDeltaCoordinates.Y < 0)
-
-                _dragDeltaCoordinates.Y = 0;
-
+            else if (-_dragDistancePoint.X < 0)
+            {
+                _dragDistancePoint.X = 0;
+            }
+            if (-_dragDistancePoint.Y + Height > mapSizeInPixels)
+            {
+                _dragDistancePoint.Y = -(mapSizeInPixels - Height);
+            }
+            else if (-_dragDistancePoint.Y < 0)
+            {
+                _dragDistancePoint.Y = 0;
+            }
         }
-        private void paint_vis(object sender, PaintEventArgs e)
+        private void DrawForm(object sender, PaintEventArgs e)
         {
+            var formGraphics = e.Graphics;
+            
+            Map.DrawMap(formGraphics, _dragDistancePoint);
+            Building.DrawCreatedBuildings(formGraphics, _dragDistancePoint);
 
-            if (scrlDown || scrlUp)
-                Zoom();
-            Graphics graphicsForm = e.Graphics;
-            Font f = new Font("Arial", 12, FontStyle.Bold, GraphicsUnit.Point);
-
-            var chunkNumber = (-_dragDeltaCoordinates.Y + mouseY) / (Chunk.GetChunkSize() * Sprites.GetSpritesSize()) * Map.GetMapSize() +
-                              (-_dragDeltaCoordinates.X + mouseX) / (Sprites.GetSpritesSize() * Chunk.GetChunkSize());
-
-            var blockNumber = (-_dragDeltaCoordinates.Y + mouseY) / Sprites.GetSpritesSize() % Chunk.GetChunkSize() * Chunk.GetChunkSize()+
-                              (-_dragDeltaCoordinates.X + mouseX) / Sprites.GetSpritesSize() % Chunk.GetChunkSize();
-
-            var block = Map.GetBlockType(new Point(-_dragDeltaCoordinates.X + mouseX, -_dragDeltaCoordinates.Y + mouseY));
-            bool checkBlock =
-                Building.Checking_The_Building(new Point(mouseX, mouseY), _dragDeltaCoordinates, _buttons);
-            Map.DrawMap(graphicsForm, _dragDeltaCoordinates);
-            e.Graphics.DrawString("spritesSize: " + Sprites.GetSpritesSize() + "\n Sprites max/min sizes: " + Sprites.GetSpritesMaxSize() + " ," + Sprites.GetSpritesMinSize() + "\nDrags: X - "
-                + _dragDeltaCoordinates.X + ", Y - " + _dragDeltaCoordinates.Y + $"\n ChunkNumber: {chunkNumber}\nBlockNumber: {blockNumber}"
-                + $"\nBlocktype {block}\nCorrectBlock for build:{checkBlock}", f, new SolidBrush(Color.Wheat), 200, 200);
-            Building.DrawCreatedBuildings(graphicsForm, _dragDeltaCoordinates);
             foreach (var someButton in _buttons)
             {
                 if (someButton.FlatAppearance.BorderColor == Color.Blue)
                 {
-                    bool chekBuild =
-                        Building.Checking_The_Building(new Point(mouseX, mouseY), _dragDeltaCoordinates, _buttons);
+                    var blockOccupied = Building.Checking_The_Building(new Point(_mouseX, _mouseY), _dragDistancePoint, _buttons);
                     
-                    Building.DrawBuilding(graphicsForm, _buttons, _dragDeltaCoordinates, mouseX, mouseY, chekBuild);
+                    Building.DrawBuilding(formGraphics, _buttons, _dragDistancePoint, _mouseX, _mouseY, blockOccupied);
                 }
             }
 
-            Create_Top(graphicsForm, this.Size);
-            Create_Bottom(graphicsForm, this.Size);
+            DrawResourcesInfo(formGraphics, Size);
+            DrawBuildingPick(formGraphics, Size);
         }
 
-        private void Create_Top(Graphics graphicsForm, Size sizeForm)
+        private void DrawResourcesInfo(Graphics formGraphics, Size sizeForm)
         {
-            Font font = new Font("Arial", 11, FontStyle.Bold);
-            SolidBrush brushWhite = new SolidBrush(Color.White);
-            SolidBrush brushRed = new SolidBrush(Color.Red);
-            SolidBrush brushGreen = new SolidBrush(Color.Green);
-            var Start_Top_X = sizeForm.Width / 2 - Properties.Resources.Top_Interface.Width / 2;
-            graphicsForm.DrawImage(Properties.Resources.Top_Interface, new Point(Start_Top_X, 0));
+            
+            var resourcesInfoXCoordinate = sizeForm.Width / 2 - Properties.Resources.ResourcesInfo.Width / 2;
 
-            //Отображение ресурсов
-            graphicsForm.DrawString(playerObj.GetAmountOfResources("Water").ToString(), font, brushWhite, Start_Top_X + 90, resourceInfoY + 24);
-            graphicsForm.DrawString(playerObj.GetAmountOfResources("Iron").ToString(), font, brushWhite, Start_Top_X + 90, resourceInfoY);
-            graphicsForm.DrawString(playerObj.GetAmountOfResources("Sand").ToString(), font, brushWhite, Start_Top_X + 215, resourceInfoY + 24) ;
-            graphicsForm.DrawString(playerObj.GetAmountOfResources("Energy").ToString(), font, brushWhite, Start_Top_X + 215, resourceInfoY);
+            formGraphics.DrawImage(Properties.Resources.ResourcesInfo, new Point(resourcesInfoXCoordinate, 0));
 
-            graphicsForm.DrawString(playerObj.GetShiftRes("Water").ToString(), font, playerObj.GetShiftRes("Water") < 0 ? brushRed : brushGreen,
-                Start_Top_X + 90 + resourceShiftX, resourceInfoY + 24);
-            graphicsForm.DrawString(playerObj.GetShiftRes("Iron").ToString(), font, playerObj.GetShiftRes("Iron") < 0 ? brushRed : brushGreen, Start_Top_X + 90 + resourceShiftX, resourceInfoY);
-            graphicsForm.DrawString(playerObj.GetShiftRes("Sand").ToString(), font, playerObj.GetShiftRes("Sand") < 0 ? brushRed : brushGreen, Start_Top_X + 215 + resourceShiftX, resourceInfoY + 24);
-            graphicsForm.DrawString(playerObj.GetShiftRes("Energy").ToString(), font, playerObj.GetShiftRes("Energy") < 0 ? brushRed : brushGreen, Start_Top_X + 215 + resourceShiftX, resourceInfoY);
-
-
-            graphicsForm.DrawString(playerObj.GetAmountOfResources("ComponentsT1").ToString(), font, brushWhite, Start_Top_X + 328, resourceInfoY);
-            graphicsForm.DrawString(playerObj.GetAmountOfResources("ComponentsT2").ToString(), font, brushWhite, Start_Top_X + 328, resourceInfoY + 14);
-            graphicsForm.DrawString(playerObj.GetAmountOfResources("ComponentsT3").ToString(), font, brushWhite, Start_Top_X + 328, resourceInfoY + 28);
-
-            graphicsForm.DrawString(playerObj.GetShiftRes("ComponentsT1").ToString(), font, playerObj.GetShiftRes("ComponentsT1") < 0 ? brushRed : brushGreen,
-                Start_Top_X + 328 + 30 , resourceInfoY);
-            graphicsForm.DrawString(playerObj.GetShiftRes("ComponentsT2").ToString(), font, playerObj.GetShiftRes("ComponentsT2") < 0 ? brushRed : brushGreen, Start_Top_X + 328 + 30, resourceInfoY + 14);
-            graphicsForm.DrawString(playerObj.GetShiftRes("ComponentsT3").ToString(), font, playerObj.GetShiftRes("ComponentsT3") < 0 ? brushRed : brushGreen, Start_Top_X + 328 + 30, resourceInfoY + 28);
+            foreach (var resourcesInfoObject in _resourcesInfoList)
+            {
+                resourcesInfoObject.DrawResourceInfo(formGraphics, resourcesInfoXCoordinate);
+                resourcesInfoObject.DrawResourceShift(formGraphics, resourcesInfoXCoordinate);
+            }
+            
         }
 
-        private void Create_Bottom(Graphics graphicsForm, Size sizeForm)
+        private void DrawBuildingPick(Graphics graphicsForm, Size sizeForm)
         {
-            var Start_bottom_X = sizeForm.Width / 2 - 420 / 2;
-            graphicsForm.DrawImage(Properties.Resources.botton_button, Start_bottom_X, sizeForm.Height - 90, 420, 60);
+            var buildingPickXCoordinate = sizeForm.Width / 2 - 420 / 2;
+            graphicsForm.DrawImage(Properties.Resources.botton_button, buildingPickXCoordinate, sizeForm.Height - 90, 420, 60);
         }
     }
 }

@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using game.World_map.Block;
 
 namespace game.Player.Buildings
@@ -10,40 +7,61 @@ namespace game.Player.Buildings
     [Serializable]
     internal class Gamegoal : Building
     {
-        private static string suitableBlock = typeof(Grass).ToString();
-        
-
-        private static Dictionary<string, Dictionary<string, int>> buildingCostsDictionary =
-            new Dictionary<string, Dictionary<string, int>>()
+        private static string _suitableBlock = typeof(Grass).ToString();
+        private static Dictionary<string, Dictionary<string, int>> _buildingCostsDictionary =
+            new Dictionary<string, Dictionary<string, int>>
             {
-                {"Build", new Dictionary<string, int>() {{"Sand", 5000}, {"Iron", 4000}, {"ComponentsT1", 4000}, {"ComponentsT2", 2000}, {"ComponentsT3", 1000}}}
+                {
+                    "Build", new Dictionary<string, int>
+                    {
+                        {
+                            "Sand", 5000
+                        },
+                        {
+                            "Iron", 4000
+                        },
+                        {
+                            "ComponentsT1", 4000
+                        },
+                        {
+                            "ComponentsT2", 2000
+                        },
+                        {
+                            "ComponentsT3", 1000
+                        }
+                    }
+                }
             };
+
         public Gamegoal()
         {
-            buildingType = "GameGoal";
             AddBuilding(this);
         }
+
         public static void TakeResourcesForBuild()
         {
-            foreach (var dictVal in buildingCostsDictionary["Build"])
+            foreach (var dictVal in _buildingCostsDictionary["Build"])
             {
-                playerObj.DecreaseAmountOfResources(dictVal.Key, dictVal.Value);
+                PlayerObject.DecreaseAmountOfResources(dictVal.Key, dictVal.Value);
             }
         }
+
         public static bool IsResourcesEnough()
         {
-            foreach (var dictValue in buildingCostsDictionary["Build"])
+            foreach (var dictValue in _buildingCostsDictionary["Build"])
             {
-                if (playerObj.GetAmountOfResources(dictValue.Key) - dictValue.Value < 0) return false;
+                if (PlayerObject.GetAmountOfResources(dictValue.Key) - dictValue.Value < 0)
+                {
+                    return false;
+                }
             }
             return true;
         }
 
         public static string GetSuitableBlock()
         {
-            return suitableBlock;
+            return _suitableBlock;
         }
-
     }
 }
 

@@ -172,7 +172,7 @@
   <data name="Sand_Quarry" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Town\Sprites_City\Sand_Quarry\Sand_Quarry.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Top_Interface" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="ResourcesInfo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Top_Interface.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Button_Save" type="System.Resources.ResXFileRef, System.Windows.Forms">

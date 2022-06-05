@@ -7,20 +7,34 @@ namespace game.Player
     [Serializable]
     internal class Pump : Building
     {
-        private static string suitableBlock = typeof(Water).ToString();
-
-        private static Dictionary<string, Dictionary<string, int>> buildingCostsDictionary =
-            new Dictionary<string, Dictionary<string, int>>()
+        private static string _suitableBlock = typeof(Water).ToString();
+        private static Dictionary<string, Dictionary<string, int>> _buildingCostsDictionary =
+            new Dictionary<string, Dictionary<string, int>>
             {
-                {"Build", new Dictionary<string, int>() {{"Sand", 50}, {"Iron", 50}}},
-                {"Upgrade", new Dictionary<string, int>() {{"Iron", 40}}}
+                {
+                    "Build", new Dictionary<string, int>
+                    {
+                        {
+                            "Sand", 50
+                        },
+                        {
+                            "Iron", 50
+                        }
+                    }
+                },
+                {
+                    "Upgrade", new Dictionary<string, int>
+                    {
+                        {
+                            "Iron", 40
+                        }
+                    }
+                }
             };
-
 
         public Pump()
         {
-            buildingType = "Pump";
-            buildingMaxLevel = 2;
+            BuildingMaxLevel = 2;
             UsingResourcesDictionary["Energy"] = 1;
             ProducingResourcesDictionary["Water"] = 5;
 
@@ -29,30 +43,32 @@ namespace game.Player
 
         public static void TakeResourcesForBuild()
         {
-            foreach (var dictVal in buildingCostsDictionary["Build"])
+            foreach (var dictVal in _buildingCostsDictionary["Build"])
             {
-                playerObj.DecreaseAmountOfResources(dictVal.Key, dictVal.Value);
+                PlayerObject.DecreaseAmountOfResources(dictVal.Key, dictVal.Value);
             }
         }
 
         public static bool IsResourcesEnough()
         {
-            foreach (var dictValue in buildingCostsDictionary["Build"])
+            foreach (var dictValue in _buildingCostsDictionary["Build"])
             {
-                if (playerObj.GetAmountOfResources(dictValue.Key) - dictValue.Value < 0) return false;
+                if (PlayerObject.GetAmountOfResources(dictValue.Key) - dictValue.Value < 0)
+                {
+                    return false;
+                }
             }
-
             return true;
         }
 
         public override Dictionary<string, int> AmountResourcesForUpgrade()
         {
-            Dictionary<string, int> retDictionary = new Dictionary<string, int>();
-            foreach (var dictValue in buildingCostsDictionary["Upgrade"])
-            {
-                retDictionary[dictValue.Key] = (int)(dictValue.Value * Math.Pow(Math.E / 2, buildingLevel));
-            }
+            var retDictionary = new Dictionary<string, int>();
 
+            foreach (var dictValue in _buildingCostsDictionary["Upgrade"])
+            {
+                retDictionary[dictValue.Key] = (int)(dictValue.Value * Math.Pow(Math.E / 2, BuildingLevel));
+            }
             return retDictionary;
         }
 
@@ -60,41 +76,41 @@ namespace game.Player
         {
             foreach (var dictValue in checkDictionary)
             {
-                if (playerObj.GetAmountOfResources(dictValue.Key) - dictValue.Value * Math.Pow(Math.E / 2, buildingLevel) < 0) return false;
+                if (PlayerObject.GetAmountOfResources(dictValue.Key) - dictValue.Value * Math.Pow(Math.E / 2, BuildingLevel) < 0)
+                {
+                    return false;
+                }
             }
-
             return true;
         }
 
         private void TakeResourcesForUpgrade()
         {
-            foreach (var dictVal in buildingCostsDictionary["Upgrade"])
+            foreach (var dictVal in _buildingCostsDictionary["Upgrade"])
             {
-                playerObj.DecreaseAmountOfResources(dictVal.Key, dictVal.Value * (buildingLevel + 1));
+                PlayerObject.DecreaseAmountOfResources(dictVal.Key, dictVal.Value * (BuildingLevel + 1));
             }
         }
 
-        override 
-        public void UpgradeBuilding()
+        public override void UpgradeBuilding()
         {
             if (!IsMaxLevel())
             {
-                if (IsResourcesEnough(buildingCostsDictionary["Upgrade"]))
+                if (IsResourcesEnough(_buildingCostsDictionary["Upgrade"]))
                 {
                     TakeResourcesForUpgrade();
 
                     UsingResourcesDictionary["Energy"] = (int)(UsingResourcesDictionary["Energy"] * Math.E * 0.8);
                     ProducingResourcesDictionary["Water"] = (int)(ProducingResourcesDictionary["Water"] * Math.E);
 
-                    buildingLevel++;
+                    BuildingLevel++;
                 }
             }
-
         }
 
         public static string GetSuitableBlock()
         {
-            return suitableBlock;
+            return _suitableBlock;
         }
     }
 }

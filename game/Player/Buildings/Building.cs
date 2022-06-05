@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 using game.Player.Buildings;
 using game.World_map;
@@ -10,77 +11,101 @@ namespace game.Player
     [Serializable]
     public class Building
     {
-        private Point _buildingCoordiantes;
+        private Point _buildingCoordinates;
         private Bitmap _buildingImage;
+        protected static Player PlayerObject;
 
-        protected static Player playerObj;
-        protected string buildingType;
+        private static Font _timesFont = new Font("Times New Roman", 14, FontStyle.Bold);
+        protected Dictionary<string, int> UsingResourcesDictionary = new Dictionary<string, int>  {
+            {
+                "Energy" , 0
+            },
+            {
+                "Water", 0
+            },
+            {
+                "Sand",  0
+            },
+            {
+                "Iron" , 0
+            }
+        };
 
-        protected Dictionary<string, int> UsingResourcesDictionary = new Dictionary<string, int>()  {{"Energy" , 0} , 
-            {"Water", 0} ,
-            {"Sand",  0},
-            {"Iron" , 0}};
-
-        protected Dictionary<string, int> ProducingResourcesDictionary = new Dictionary<string, int>() {{"Energy", 0}, 
-                {"Water", 0}, 
-                {"Iron", 0}, 
-                {"Sand", 0}};
-
-        
-
-        public virtual Dictionary<string, int> AmountResourcesForUpgrade()
-        { return new Dictionary<string, int>(); }
-
-        protected int buildingLevel = 0, buildingMaxLevel; 
-
+        protected Dictionary<string, int> ProducingResourcesDictionary = new Dictionary<string, int> {
+            {
+                "Energy", 0
+            },
+            {
+                "Water", 0
+            },
+            {
+                "Iron", 0
+            },
+            {
+                "Sand", 0
+            }
+        };
+        private static Bitmap[] _bitmaps = {
+            Properties.Resources.Factory_1lvl, Properties.Resources.Pump_1lvl,
+            Properties.Resources.Drill_Burner_1lvl, Properties.Resources.goal_of_the_game,
+            Properties.Resources.Warehouse, Properties.Resources.Sand_Quarry,
+            Properties.Resources.Steam_Eng_1lvl
+        };
+        protected int BuildingLevel = 0, BuildingMaxLevel;
         private static List<Building> _listOfBuildings = new List<Building>();
 
-        public static void SetPlayerObj(Player obj)
+        public virtual Dictionary<string, int> AmountResourcesForUpgrade()
         {
-            playerObj = obj;
+            return new Dictionary<string, int>(); 
+
         }
+
+        public static void SetPlayerObj(Player inPlayerObject)
+        {
+            PlayerObject = inPlayerObject;
+        }
+
         public static void LoadBuildings (List<Building> buildings)
         {
             _listOfBuildings= buildings;
         }
+
         public static List<Building> GetBuildings()
         {
             return _listOfBuildings;
         }
 
-        protected bool IsMaxLevel()
+        public bool IsMaxLevel()
         {
-            return buildingLevel == buildingMaxLevel;
+            return BuildingLevel == BuildingMaxLevel;
         }
 
-        protected void AddBuilding(Building someBuilding)
+        protected void AddBuilding(Building inBuilding)
         {
-            _listOfBuildings.Add(someBuilding);
+            _listOfBuildings.Add(inBuilding);
         }
 
-        public static bool HasBuildingOnTheBlock(Point p, Point Drag)
+        public static bool HasBuildingOnTheBlock(Point toCheckPoint, Point mapDragCoordinates)
         {
             var blockSize = Sprites.GetSpritesSize();
 
-            for (int i = 0; i < _listOfBuildings.Count; i++)
-            {
-                var point = new Point((p.X - Drag.X) / blockSize, (p.Y - Drag.Y) / blockSize);
-
-                if (point == _listOfBuildings[i]._buildingCoordiantes)
-                    return true;
-            }
-            return false;
+            return (from someBuilding in _listOfBuildings 
+                let point = new Point((toCheckPoint.X - mapDragCoordinates.X) / blockSize, (toCheckPoint.Y - mapDragCoordinates.Y) / blockSize) 
+                where point == someBuilding._buildingCoordinates select someBuilding).Any();
         }
 
-        public static object GetBuilding(Point p, Point Drag)
+        public static Building GetBuilding(Point mouseCoordinates, Point mapDragCoordinates)
         {
             var blockSize = Sprites.GetSpritesSize();
-            for (int i = 0; i < _listOfBuildings.Count; i++)
-            {
-                var point = new Point((p.X - Drag.X) / blockSize, (p.Y - Drag.Y) / blockSize);
 
-                if (point == _listOfBuildings[i]._buildingCoordiantes)
+            for (var i = 0; i < _listOfBuildings.Count; i++)
+            {
+                var point = new Point((mouseCoordinates.X - mapDragCoordinates.X) / blockSize, (mouseCoordinates.Y - mapDragCoordinates.Y) / blockSize);
+
+                if (point == _listOfBuildings[i]._buildingCoordinates)
+                {
                     return _listOfBuildings[i];
+                }
             }
             return null;
         }
@@ -97,9 +122,10 @@ namespace game.Player
             {
                 if (ButtonsList[buttonNum].FlatAppearance.BorderColor == Color.Blue) break;
             }
-
-
-            if (HasBuildingOnTheBlock(p, Drag)) return false;
+            if (HasBuildingOnTheBlock(p, Drag))
+            {
+                return false;
+            }
             
             var block = Map.GetBlockType(new Point(p.X - Drag.X, p.Y - Drag.Y));
 
@@ -123,69 +149,70 @@ namespace game.Player
             return true;
         }
 
-        public 
-        static bool CreateBuilding(int buildingNumber)
+        public static bool CreateBuilding(int buildingNumber)
         {
-            //_buttons = new Button[] { factory_but, pump_but, drill_but, base_but, wareh_but, house_but, steam_but };
-            //_buttons = new Button[] {0factory_but ,1pump_but ,2drill_but ,3base_but//gamegoal ,4wareh_but ,5house_but ,6steam_but};
-
             switch (buildingNumber)
             {
                 case 0:
-                    if (!Factory.IsResourcesEnough()) 
+                    if (!Factory.IsResourcesEnough())
+                    {
                         return false;
-
-                        Factory.TakeResourcesForBuild();
-                        new Factory();
-                        return true;
+                    }
+                    Factory.TakeResourcesForBuild();
+                    new Factory();
+                    return true;
                     
                 case 1:
                     if (!Pump.IsResourcesEnough())
+                    {
                         return false;
-
+                    }
                     Pump.TakeResourcesForBuild();
-
                     new Pump();
-
                     return true;
 
                 case 2:
                     if (!Drill.IsResourcesEnough())
+                    {
                         return false;
-
+                    }
                     Drill.TakeResourcesForBuild();
                     new Drill();
                     return true;
 
                 case 3:
                     if (!Gamegoal.IsResourcesEnough())
+                    {
                         return false;
-
+                    }
                     Gamegoal.TakeResourcesForBuild();
                     new Gamegoal();
                     return true;
+
                 case 4:
                     if (!Warehouse.IsResourcesEnough())
+                    {
                         return false;
-
+                    }
                     Warehouse.TakeResourcesForBuild();
                     new Warehouse();
                     return true;
 
                 case 5:
                     if (!SandQuarry.IsResourcesEnough())
+                    {
                         return false;
-
+                    }
                     SandQuarry.TakeResourcesForBuild();
                     new SandQuarry();
                     return true;
 
                 case 6:
                     if (!SteamEngine.IsResourcesEnough())
+                    {
                         return false;
-
+                    }
                     SteamEngine.TakeResourcesForBuild();
-
                     new SteamEngine();
                     return true;
 
@@ -195,94 +222,84 @@ namespace game.Player
 
         public static void UpdateResources()
         {
-            bool BuildingActive = true;
+            var buildingActive = true;
+
             foreach (var someBuilding in _listOfBuildings)
             {
                 foreach (var dictItem in someBuilding.UsingResourcesDictionary)
                 {
-                    if (playerObj.GetAmountOfResources(dictItem.Key) - dictItem.Value < 0)
+                    if (PlayerObject.GetAmountOfResources(dictItem.Key) - dictItem.Value < 0)
                     {
-                        BuildingActive = false;
+                        buildingActive = false;
                         break;
                     }
                 }
-
-                if (BuildingActive)
+                if (buildingActive)
                 {
                     foreach (var dictItem in someBuilding.UsingResourcesDictionary)
                     {
-                        playerObj.DecreaseAmountOfResources(dictItem.Key, dictItem.Value);
-                        playerObj.DecreaseShiftRes(dictItem.Key, dictItem.Value);
+                        PlayerObject.DecreaseAmountOfResources(dictItem.Key, dictItem.Value);
+                        PlayerObject.DecreaseShiftRes(dictItem.Key, dictItem.Value);
                     }
-
                     foreach (var dictItem in someBuilding.ProducingResourcesDictionary)
                     {
-                        if(playerObj.GetAmountOfResources(dictItem.Key) + dictItem.Value <= playerObj.GetResourceCapacity(dictItem.Key))
+                        if(PlayerObject.GetAmountOfResources(dictItem.Key) + dictItem.Value <= PlayerObject.GetResourceCapacity(dictItem.Key))
                         {
-                            playerObj.IncreaseAmountOfResources(dictItem.Key, dictItem.Value);
-                            playerObj.IncrShiftRes(dictItem.Key, dictItem.Value);
-                        }                    }
+                            PlayerObject.IncreaseAmountOfResources(dictItem.Key, dictItem.Value);
+                            PlayerObject.IncrShiftRes(dictItem.Key, dictItem.Value);
+                        }
+                    }
                 }
             }
         }
 
-        private static Font timesFont = new Font("Times New Roman", 14, FontStyle.Bold);
         public static void DrawCreatedBuildings(Graphics graphicsForm, Point Drag)
         {
-           
-                foreach (var someBuilding in _listOfBuildings)
-                {
-                    var blockSize = Sprites.GetSpritesSize();
+            foreach (var someBuilding in _listOfBuildings)
+            {
+                var blockSize = Sprites.GetSpritesSize();
+                int actualX = someBuilding._buildingCoordinates.X * blockSize + Drag.X,
+                    actualY = someBuilding._buildingCoordinates.Y * blockSize + Drag.Y;
+                var rec = new Rectangle(actualX, actualY, blockSize + 1, blockSize + 1);
 
-                    int actualX = someBuilding._buildingCoordiantes.X * blockSize + Drag.X,
-                        actualY = someBuilding._buildingCoordiantes.Y * blockSize + Drag.Y;
-
-                    var rec = new Rectangle(actualX, actualY, blockSize + 1, blockSize + 1);
-                    graphicsForm.DrawImage(someBuilding._buildingImage, rec);
-                    graphicsForm.DrawString($"{someBuilding.buildingLevel + 1}", timesFont, new SolidBrush(someBuilding.buildingLevel == someBuilding.buildingMaxLevel ? Color.OrangeRed : Color.White), actualX + Sprites.GetSpritesSize() - 13, actualY  );
-                }
-            
+                graphicsForm.DrawImage(someBuilding._buildingImage, rec);
+                graphicsForm.DrawString($"{someBuilding.BuildingLevel + 1}", _timesFont, 
+                    new SolidBrush(someBuilding.BuildingLevel == someBuilding.BuildingMaxLevel ? Color.OrangeRed : Color.White), 
+                    actualX + Sprites.GetSpritesSize() - 13, actualY);
+            }
         }
-
-        private static Bitmap[] bitmaps = new Bitmap[] {
-            Properties.Resources.Factory_1lvl, Properties.Resources.Pump_1lvl,
-            Properties.Resources.Drill_Burner_1lvl, Properties.Resources.goal_of_the_game,
-            Properties.Resources.Warehouse, Properties.Resources.Sand_Quarry,
-            Properties.Resources.Steam_Eng_1lvl
-        };
-
+        
         public void PlaceBuilding(Point p, Button[] buts, Point Drag)
         {
             var blockSize = Sprites.GetSpritesSize();
             var m = 0;
-            for ( ;m < buts.Length; m++)
+
+            for (;m < buts.Length; m++)
             {
-                if (buts[m].FlatAppearance.BorderColor != Color.Blue) continue;
-
-
+                if (buts[m].FlatAppearance.BorderColor != Color.Blue)
+                {
+                    continue;
+                }
                 if (CreateBuilding(m))
                 {
-                    _listOfBuildings[_listOfBuildings.Count - 1]._buildingCoordiantes =
-                        (new Point((p.X - Drag.X) / blockSize, (p.Y - Drag.Y) / blockSize));
-                    _listOfBuildings[_listOfBuildings.Count - 1]._buildingImage = bitmaps[m];
+                    _listOfBuildings[_listOfBuildings.Count - 1]._buildingCoordinates = new Point((p.X - Drag.X) / blockSize, 
+                        (p.Y - Drag.Y) / blockSize);
+                    _listOfBuildings[_listOfBuildings.Count - 1]._buildingImage = _bitmaps[m];
                     break;
                 }
             }
-
-            
         }
 
         public static void DrawBuilding(Graphics graphicsForm, Button[] buts, Point DragDelta, int X, int Y, bool chekBuild)
         {
-            var SpritesSize = Sprites.GetSpritesSize();
+            var spritesSize = Sprites.GetSpritesSize();
+            var rec = new Rectangle(DragDelta.X % spritesSize + X, DragDelta.Y % spritesSize + Y, spritesSize + 1, spritesSize + 1);
 
-            var rec = new Rectangle(DragDelta.X % SpritesSize + X, DragDelta.Y % SpritesSize + Y, SpritesSize + 1, SpritesSize + 1);
-
-            for (int m = 0; m < buts.Length; m++)
+            for (var m = 0; m < buts.Length; m++)
             {
                 if (buts[m].FlatAppearance.BorderColor == Color.Blue)
                 {
-                    graphicsForm.DrawImage(bitmaps[m], rec);
+                    graphicsForm.DrawImage(_bitmaps[m], rec);
                     if(!chekBuild)
                         graphicsForm.FillRectangle(new SolidBrush(Color.FromArgb(60, Color.Red)), rec);
                     else
@@ -292,5 +309,4 @@ namespace game.Player
             }
         }
     }
-    
 }

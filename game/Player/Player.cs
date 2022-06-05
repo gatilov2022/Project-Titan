@@ -11,9 +11,9 @@ namespace game.Player
         private Dictionary<string, int[]> _playerResources;
         public Player()
         {
-            _playerResources = new Dictionary<string, int[]>()
+            _playerResources = new Dictionary<string, int[]>
             {
-                {"Iron",  new[]{500, 0, 1000}}, {"Sand",  new[]{400, 0, 600}}, {"Energy", new[]{500, 0, 400}}, {"Water",  new[]{300, 0, 400}}, {"ComponentsT1" ,  new[]{0, 0, 100}}, {"ComponentsT2",  new[]{0, 0, 100}}, {"ComponentsT3",  new[]{0, 0, 100}}
+                {"Iron",  new[]{500, 0, 1000}}, {"Sand",  new[]{400, 0, 600}}, {"Energy", new[]{400, 0, 600}}, {"Water",  new[]{300, 0, 400}}, {"ComponentsT1" ,  new[]{0, 0, 100}}, {"ComponentsT2",  new[]{0, 0, 100}}, {"ComponentsT3",  new[]{0, 0, 100}}
             };
         }
         public Dictionary<string, int[]> GetPlayerResourcesDict()
@@ -24,7 +24,6 @@ namespace game.Player
         {
             _playerResources = loadResources;
         }
-
 
         public int GetAmountOfResources(string resource)
         {
@@ -56,7 +55,7 @@ namespace game.Player
             _playerResources[resource][1] -= amount;
         }
 
-        public void SetShiftToZero()
+        public void SetResourcesShiftToZero()
         {
             foreach (var key in _playerResources.Keys.ToArray())
             {
