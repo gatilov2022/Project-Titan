@@ -5,8 +5,8 @@ using System.Drawing;
 namespace game.World_map.Block
 {
     /*!
-     * \brief Класс Grass 
-     * Хранит в себе цевата блока Земли.
+     * \brief Класс Sand
+     * Пресдавляет собой шаблон для создания блока типа Sand, с соответсвующими цветами.
      */
     [Serializable]
     internal class Sand : Sprites
