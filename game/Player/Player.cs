@@ -11,96 +11,72 @@ namespace game.Player
     [Serializable]
     public class Player
     {
-        private Dictionary<string, int> playerWarehouse;
-
-
-        private Dictionary<string, int> playerResourcesShift;
-
-        private Dictionary<string, int> playerResources;
-
+        private Dictionary<string, int[]> _playerResources;
         public Player()
         {
-            playerResources = new Dictionary<string, int>()
+            _playerResources = new Dictionary<string, int[]>()
             {
-                {"Iron", 500}, {"Sand", 400}, {"Energy", 500}, {"Water", 300}, {"ComponentsT1" , 0}, {"ComponentsT2", 0}, {"ComponentsT3", 0}
-            };
-
-            playerResourcesShift = new Dictionary<string, int>() {
-                {"Iron", 5}, {"Sand", 0}, { "Energy", 0}, { "Water", 0}, { "ComponentsT1" , 0}, { "ComponentsT2", 0}, { "ComponentsT3", 0}
-            };
-
-            playerWarehouse = new Dictionary<string, int>() {
-                {"Iron", 1000}, {"Sand", 600}, { "Energy", 400}, { "Water", 400}, { "ComponentsT1" , 100}, { "ComponentsT2", 100}, { "ComponentsT3", 100}
+                {"Iron",  new[]{500, 0, 1000}}, {"Sand",  new[]{400, 0, 600}}, {"Energy", new[]{500, 0, 400}}, {"Water",  new[]{300, 0, 400}}, {"ComponentsT1" ,  new[]{0, 0, 100}}, {"ComponentsT2",  new[]{0, 0, 100}}, {"ComponentsT3",  new[]{0, 0, 100}}
             };
         }
-        public Dictionary<string, int> GetWarehouseDict()
+        public Dictionary<string, int[]> GetPlayerResourcesDict()
         {
-            return playerWarehouse;
+            return _playerResources;
         }
-        public Dictionary<string, int> GetPlayerResourcesDict()
+        public void loadResourecesDict(Dictionary<string, int[]> loadResources)
         {
-            return playerResources;
-        }
-        public void loadWarehouseDict(Dictionary<string, int> loadWarehouse)
-        {
-            playerWarehouse = loadWarehouse;
-        }
-        public void loadResourecesDict(Dictionary<string, int> loadResources)
-        {
-            playerResources = loadResources;
+            _playerResources = loadResources;
         }
 
 
         public int GetAmountOfResources(string resource)
         {
-            return playerResources[resource];
+            return _playerResources[resource][0];
         }
 
         public void DecreaseAmountOfResources(string resource, int amount)
         {
-            playerResources[resource] -= amount;
+            _playerResources[resource][0] -= amount;
         }
 
         public void IncreaseAmountOfResources(string resource, int amount)
         {
-            playerResources[resource] += amount;
+            _playerResources[resource][0] += amount;
         }
 
         public void IncrShiftRes(string resource, int amount)
         {
-            playerResourcesShift[resource] += amount;
+            _playerResources[resource][1] += amount;
         }
 
         public int GetShiftRes(string resource)
         {
-            return playerResourcesShift[resource];
+            return _playerResources[resource][1];
         }
 
-        public void DecrShiftRes(string resource, int amount)
+        public void DecreaseShiftRes(string resource, int amount)
         {
-            playerResourcesShift[resource] -= amount;
+            _playerResources[resource][1] -= amount;
         }
 
         public void SetShiftToZero()
         {
-            var keyList = playerResourcesShift.Keys.ToArray();
-            for (int i = 0; i < playerResourcesShift.Count; i++)
+            foreach (var key in _playerResources.Keys.ToArray())
             {
-                playerResourcesShift[keyList[i]] = 0;
+                _playerResources[key][1] = 0;
             }
         }
 
         public int GetResourceCapacity(string resource)
         {
-            return playerWarehouse[resource];
+            return _playerResources[resource][2];
         }
 
         public void IncreaseResourceCapacity( int amount)
         {
-            var keyList = playerWarehouse.Keys.ToArray();
-            for (int i = 0; i < keyList.Length; i++)
+            foreach (var key in _playerResources.Keys.ToArray())
             {
-                playerWarehouse[keyList[i]] += amount;
+                _playerResources[key][2] += amount;
             }
         }
     }

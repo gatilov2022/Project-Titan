@@ -39,11 +39,7 @@ namespace game.Player.Buildings
         }
         public static bool IsResourcesEnough()
         {
-            foreach (var dictValue in buildingCostsDictionary["Build"])
-            {
-                if (playerObj.GetAmountOfResources(dictValue.Key) - dictValue.Value < 0) return false;
-            }
-            return true;
+            return buildingCostsDictionary["Build"].All(dictValue => playerObj.GetAmountOfResources(dictValue.Key) - dictValue.Value >= 0);
         }
         private bool IsResourcesEnough(Dictionary<string, int> checkDictionary)
         {

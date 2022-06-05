@@ -222,7 +222,7 @@ namespace game.Player
                     foreach (var dictItem in someBuilding.UsingResourcesDictionary)
                     {
                         playerObj.DecreaseAmountOfResources(dictItem.Key, dictItem.Value);
-                        playerObj.DecrShiftRes(dictItem.Key, dictItem.Value);
+                        playerObj.DecreaseShiftRes(dictItem.Key, dictItem.Value);
                     }
 
                     foreach (var dictItem in someBuilding.ProducingResourcesDictionary)

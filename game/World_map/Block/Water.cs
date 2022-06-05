@@ -22,7 +22,7 @@ namespace game.World_map.Block
             _partColor = Sprites.Generate_texture(BlueBrushList);
             this.X = inX; this.Y = inY;
         }
-        public void Draw_block(Graphics g)
+        public void DrawBlock(Graphics g)
         {
             Sprites.Draw_sprite(X, Y, _partColor, g);
         }

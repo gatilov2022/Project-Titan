@@ -102,7 +102,6 @@ namespace game
                 var newPlayer = new Player.Player();
 
                 newPlayer.loadResourecesDict(playerObj.GetPlayerResourcesDict());
-                newPlayer.loadWarehouseDict(playerObj.GetWarehouseDict());
 
                 form1 = new Form1(this, playerObj);
                 form1.Show();

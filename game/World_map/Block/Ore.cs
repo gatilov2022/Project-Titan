@@ -26,7 +26,7 @@ namespace game.World_map.Block
             this.X = inX; this.Y = inY;
         }
 
-        public void Draw_block(Graphics g)
+        public void DrawBlock(Graphics g)
         {
             Sprites.Draw_sprite(X, Y, _partColor, g);
         }

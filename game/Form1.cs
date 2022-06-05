@@ -311,7 +311,7 @@ namespace game
             bool checkBlock =
                 Building.Checking_The_Building(new Point(mouseX, mouseY), _dragDeltaCoordinates, _buttons);
 
-            Map.Draw_map(graphicsForm, _dragDeltaCoordinates,this.Size);
+            Map.DrawMap(graphicsForm, _dragDeltaCoordinates,this.Size);
             e.Graphics.DrawString("spritesSize: " + Sprites.GetSpritesSize() + "\n Sprites max/min sizes: " + Sprites.GetSpritesMaxSize() + " ," + Sprites.GetSpritesMinSize() + "\nDrags: X - "
                 + _dragDeltaCoordinates.X + ", Y - " + _dragDeltaCoordinates.Y + $"\n ChunkNumber: {chunkNumber}\nBlockNumber: {blockNumber}"
                 + $"\nBlocktype {block}\nCorrectBlock for build:{checkBlock}", f, new SolidBrush(Color.Wheat), 200, 200);
