@@ -17,33 +17,55 @@ namespace game
             InitializeComponent();
         }
 
-        private void button1_MouseMove(object sender, MouseEventArgs e)
+        private void buttonsMouseMove(object sender, MouseEventArgs e)
         {
             var but = sender as Button;
-            _ = but == startButton ? but.BackgroundImage = Properties.Resources.start_active : but.BackgroundImage = Properties.Resources.exit_active;
+            if (but == startButton)
+            {
+                but.BackgroundImage = Properties.Resources.start_active;
+            }
+            else if (but == exitButton)
+            {
+                but.BackgroundImage = Properties.Resources.exit_active;
+            }
+            else if (but == loadButton)
+            {
+                but.BackgroundImage = Properties.Resources.Load_Move;
+            }
         }
 
-        private void button1_MouseLeave(object sender, EventArgs e)
+        private void buttonsMouseLeave(object sender, EventArgs e)
         {
             var but = sender as Button;
-            _ = but == startButton ? but.BackgroundImage = Properties.Resources.start_no_active : but.BackgroundImage = Properties.Resources.exit_no_active;
+            if (but == startButton)
+            {
+                but.BackgroundImage = Properties.Resources.start_no_active;
+            }
+            else if (but == exitButton)
+            {
+                but.BackgroundImage = Properties.Resources.exit_no_active;
+            }
+            else if (but == loadButton)
+            {
+                but.BackgroundImage = Properties.Resources.Load_No_Move;
+            }
         }
 
-        private void button1_MouseDown(object sender, MouseEventArgs e)
+        private void buttonsMouseDown(object sender, MouseEventArgs e)
         {
             var but = sender as Button;
-            //switch (but)
-            //{
-            //    //case startButton:
-            //    //    but.BackgroundImage = Properties.Resources.start_Down;
-            //    //    break;
-            //    //case exitButton:
-            //    //    but.BackgroundImage = Properties.Resources.exit_Down;
-            //    //    break;
-            //    //case loadButton:
-            //    //    but.BackgroundImage = Properties.Resources.Load_No_Move;
-            //        break;
-            //}
+            if(but == startButton)
+            {
+                but.BackgroundImage = Properties.Resources.start_Down;
+            }
+            else if (but == exitButton)
+            {
+                but.BackgroundImage = Properties.Resources.exit_Down;
+            }
+            else if (but == loadButton)
+            {
+                but.BackgroundImage = Properties.Resources.Load_Click;
+            }
         }
 
         private void ExitButton_Click(object sender, EventArgs e)
@@ -83,8 +105,8 @@ namespace game
         }
         private void LoadButton_Click(object sender, EventArgs e)
         {
-            //folderBrowserDialog1.RootFolder = Environment.SpecialFolder.UserProfile;
-            folderBrowserDialog1.SelectedPath = Environment.CurrentDirectory + "\\saves\\";
+            folderBrowserDialog1.RootFolder = Environment.SpecialFolder.UserProfile;
+            folderBrowserDialog1.SelectedPath = Environment.CurrentDirectory.ToString() + "\\saves\\";
                 
             if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
             {
