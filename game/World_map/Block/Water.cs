@@ -11,8 +11,7 @@ namespace game.World_map.Block
     [Serializable]
     internal class Water : Sprites
     {
-        [NonSerialized()]
-        static readonly List<SolidBrush> BlueBrushList = new List<SolidBrush>() 
+        private static readonly List<SolidBrush> BlueBrushList = new List<SolidBrush>() 
         {
             new SolidBrush(Color.FromArgb(255, 20, 20, 180)),
             new SolidBrush(Color.FromArgb(255, 30, 30, 180)),
@@ -22,9 +21,8 @@ namespace game.World_map.Block
          * \brief Класс 
          * Хранит в себе цевата блока Земли.
          */
-        public Water(int inX, int inY, Graphics g)
+        public Water(int inX, int inY, Graphics g) : base(inX, inY, BlueBrushList, g)
         {
-            Sprites.Draw_sprite(inX, inY, Sprites.Generate_texture(BlueBrushList), g);
         }
     }
 }

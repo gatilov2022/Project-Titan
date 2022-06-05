@@ -12,22 +12,21 @@ namespace game.World_map.Block
     internal class Ore : Sprites
     {
         [NonSerialized()]
-        public static List<SolidBrush> OreBrushList = new List<SolidBrush>() 
+        private static readonly List<SolidBrush> OreBrushList = new List<SolidBrush>() 
         { 
             new SolidBrush(Color.FromArgb(255, 128, 128, 128)),
             new SolidBrush(Color.FromArgb(255, 189, 154, 129)),
             new SolidBrush(Color.FromArgb(255, 128, 128, 128)),
             new SolidBrush(Color.FromArgb(255, 116, 116, 128)),
             new SolidBrush(Color.FromArgb(255, 142, 142, 128))
-        }; 
+        };
 
         /*!
          * \brief Класс 
          * Хранит в себе цевата блока Земли.
          */
-        public Ore(int inX, int inY, Graphics g)
+        public Ore(int inX, int inY, Graphics g) : base(inX, inY, OreBrushList, g)
         {
-            Sprites.Draw_sprite(inX, inY, Sprites.Generate_texture(OreBrushList), g);
         }
     }
 }

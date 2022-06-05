@@ -8,7 +8,7 @@ using game.World_map;
 namespace game.Player
 {
     [Serializable]
-    public class Building : Sprites
+    public class Building
     {
         private Point _buildingCoordiantes;
         private Bitmap _buildingImage;

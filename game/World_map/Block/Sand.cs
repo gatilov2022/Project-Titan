@@ -11,8 +11,7 @@ namespace game.World_map.Block
     [Serializable]
     internal class Sand : Sprites
     {
-        [NonSerialized()]
-        public static List<SolidBrush> YellowBrushList = new List<SolidBrush>() 
+        private static readonly List<SolidBrush> YellowBrushList = new List<SolidBrush>() 
         {
             new SolidBrush(Color.FromArgb(255, 210, 203, 149)),
             new SolidBrush(Color.FromArgb(255, 175, 168, 114)),
@@ -24,9 +23,8 @@ namespace game.World_map.Block
          * \brief Класс 
          * Хранит в себе цевата блока Земли.
          */
-        public Sand(int inX, int inY, Graphics g)
+        public Sand(int inX, int inY, Graphics g) : base(inX, inY, YellowBrushList, g)
         {
-            Sprites.Draw_sprite(inX, inY, Sprites.Generate_texture(YellowBrushList), g);
         }
     }
 }

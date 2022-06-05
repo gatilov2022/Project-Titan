@@ -21,9 +21,8 @@ namespace game.World_map.Block
         /*!
          * Создаёт цветовую 
          */
-        public Grass(int inX, int inY, Graphics g)
+        public Grass(int inX, int inY, Graphics g) : base (inX, inY, GreenBrushList, g)
         {
-            Sprites.Draw_sprite(inX, inY, Sprites.Generate_texture(GreenBrushList), g);
         }
     }
 }

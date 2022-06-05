@@ -15,27 +15,27 @@ namespace game.World_map
         private static readonly int PixelCount = 49; // Значение должно быть равно некоторому числу в квадрате.
         private static readonly int PixelSize = Convert.ToInt32(Math.Sqrt(PixelCount));
 
-        public void SetSpritesMinSize(int minSize)
+        public static void SetSpritesMinSize(int minSize)
         {
             _minSpriteSize = minSize;
         }
 
-        public int GetSpritesMinSize()
+        public static int GetSpritesMinSize()
         {
             return _minSpriteSize;
         }
 
-        public void SetSpritesMaxSize(int maxSize)
+        public static void SetSpritesMaxSize(int maxSize)
         {
             _maxSpriteSize = maxSize;
         }
 
-        public int GetSpritesMaxSize()
+        public static int GetSpritesMaxSize()
         {
             return _maxSpriteSize;
         }
 
-        public int GetPixelCount()
+        public static int GetPixelCount()
         {
             return PixelCount;
         }
@@ -45,18 +45,21 @@ namespace game.World_map
             return _size;
         }
 
-        public void IncreaseSize(int value)
+        public static void IncreaseSize(int value)
         {
             if (_size + value <= _maxSpriteSize)
                 _size += value;
         }
 
-        public void DecreaseSize(int value)
+        public static void DecreaseSize(int value)
         {
             if (_size - value >= _minSpriteSize)
                 _size -= value;
         }
-
+        protected Sprites(int inX, int inY, List<SolidBrush> brushList, Graphics g)
+        {
+            Draw_sprite(inX, inY, Generate_texture(brushList), g);
+        }
         protected static void Draw_sprite(int x, int y, List<SolidBrush> texture, Graphics g) // Отрисовка
         {
             for (var i = 0; i < PixelCount; i++)

@@ -15,7 +15,6 @@ namespace game
         private const int sizeChange = 7;
         SoundPlayer sp = null;
         private Button[] _buttons;
-        private readonly Sprites Sprites = new Sprites();
         private Point _dragStartCoordinates, _dragDeltaCoordinates = new Point(0,0);
 
         private Player.Player playerObj;
