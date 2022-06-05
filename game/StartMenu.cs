@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using game.Player;
 using game.World_map;
@@ -16,7 +11,7 @@ namespace game
 {
     public partial class StartMenu : Form
     {
-        Form1 form1;
+        FormGame formGame;
         public StartMenu()
         {
             InitializeComponent();
@@ -25,39 +20,49 @@ namespace game
         private void button1_MouseMove(object sender, MouseEventArgs e)
         {
             var but = sender as Button;
-            _ = but == button1 ? but.BackgroundImage = Properties.Resources.start_active : but.BackgroundImage = Properties.Resources.exit_active;
+            _ = but == startButton ? but.BackgroundImage = Properties.Resources.start_active : but.BackgroundImage = Properties.Resources.exit_active;
         }
 
         private void button1_MouseLeave(object sender, EventArgs e)
         {
             var but = sender as Button;
-            _ = but == button1 ? but.BackgroundImage = Properties.Resources.start_no_active : but.BackgroundImage = Properties.Resources.exit_no_active;
+            _ = but == startButton ? but.BackgroundImage = Properties.Resources.start_no_active : but.BackgroundImage = Properties.Resources.exit_no_active;
         }
 
         private void button1_MouseDown(object sender, MouseEventArgs e)
         {
             var but = sender as Button;
-            _ = but == button1 ? but.BackgroundImage = Properties.Resources.start_Down : but.BackgroundImage = Properties.Resources.exit_Down;
+            switch (but)
+            {
+                case startButton:
+                    but.BackgroundImage = Properties.Resources.start_Down;
+                    break;
+                case exitButton:
+                    but.BackgroundImage = Properties.Resources.exit_Down;
+                    break;
+                case loadButton:
+                    but.BackgroundImage = Properties.Resources.Load_No_Move;
+                    break;
+            }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void ExitButton_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void StartButton_Click(object sender, EventArgs e)
         {
             Map.GenerateMap();
-            form1 = new Form1(this);
-            form1.Show();
+            formGame = new FormGame(this);
+            formGame.Show();
             this.Hide();
         }
         public static T ReadFromBinaryFile<T>(string filePath)
         {
             using (Stream stream = File.Open(filePath, FileMode.Open))
             {
-
-                var binaryFormatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                var binaryFormatter = new BinaryFormatter();
                 return (T)binaryFormatter.Deserialize(stream);
             }
         }
@@ -76,7 +81,7 @@ namespace game
             //return the list of objects
             return list;
         }
-        private void button3_Click(object sender, EventArgs e)
+        private void LoadButton_Click(object sender, EventArgs e)
         {
             folderBrowserDialog1.RootFolder = Environment.SpecialFolder.UserProfile;
             folderBrowserDialog1.SelectedPath = Environment.CurrentDirectory.ToString() + "\\saves\\";
@@ -85,26 +90,21 @@ namespace game
             {
                 var path = folderBrowserDialog1.SelectedPath;
 
-                var fileStream = File.Open( path + "\\Chunks.sav", FileMode.Open);
+                var fileStream = File.Open(path + "\\Chunks.sav", FileMode.Open);
+                Map.LoadChunks(DeserializeList<Chunk>(fileStream).ToList());
 
-                var chunksList = DeserializeList<Chunk>(fileStream);
-                Map.LoadChunks(chunksList.ToList());
                 fileStream.Close();
 
                 fileStream = File.Open(path + "\\Buildings.sav", FileMode.Open);
-                var buildingsList = DeserializeList<Building>(fileStream);
-                Building.LoadBuildings(buildingsList.ToList());
+                Building.LoadBuildings(DeserializeList<Building>(fileStream).ToList());
 
                 fileStream.Close();
 
                 var playerObj = ReadFromBinaryFile<Player.Player>(path + "\\Player.sav");
+                new Player.Player().loadResourecesDict(playerObj.GetPlayerResourcesDict());
 
-                var newPlayer = new Player.Player();
-
-                newPlayer.loadResourecesDict(playerObj.GetPlayerResourcesDict());
-
-                form1 = new Form1(this, playerObj);
-                form1.Show();
+                formGame = new FormGame(this, playerObj);
+                formGame.Show();
                 this.Hide();
             }
         }

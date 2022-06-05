@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using game.World_map.Block;
 
 namespace game.Player
@@ -10,7 +7,7 @@ namespace game.Player
     [Serializable]
     internal class Pump : Building
     {
-        private static string buildingType = "Pump";
+        private static string suitableBlock = typeof(Water).ToString();
 
         private static Dictionary<string, Dictionary<string, int>> buildingCostsDictionary =
             new Dictionary<string, Dictionary<string, int>>()
@@ -19,7 +16,7 @@ namespace game.Player
                 {"Upgrade", new Dictionary<string, int>() {{"Iron", 40}}}
             };
 
-        private static string suitableBlock = typeof(Water).ToString();
+
         public Pump()
         {
             buildingType = "Pump";
@@ -27,9 +24,9 @@ namespace game.Player
             UsingResourcesDictionary["Energy"] = 1;
             ProducingResourcesDictionary["Water"] = 5;
 
-
             AddBuilding(this);
         }
+
         public static void TakeResourcesForBuild()
         {
             foreach (var dictVal in buildingCostsDictionary["Build"])
@@ -37,14 +34,17 @@ namespace game.Player
                 playerObj.DecreaseAmountOfResources(dictVal.Key, dictVal.Value);
             }
         }
+
         public static bool IsResourcesEnough()
         {
             foreach (var dictValue in buildingCostsDictionary["Build"])
             {
                 if (playerObj.GetAmountOfResources(dictValue.Key) - dictValue.Value < 0) return false;
             }
+
             return true;
         }
+
         public override Dictionary<string, int> AmountResourcesForUpgrade()
         {
             Dictionary<string, int> retDictionary = new Dictionary<string, int>();
@@ -52,6 +52,7 @@ namespace game.Player
             {
                 retDictionary[dictValue.Key] = (int)(dictValue.Value * Math.Pow(Math.E / 2, buildingLevel));
             }
+
             return retDictionary;
         }
 
@@ -72,6 +73,7 @@ namespace game.Player
                 playerObj.DecreaseAmountOfResources(dictVal.Key, dictVal.Value * (buildingLevel + 1));
             }
         }
+
         override 
         public void UpgradeBuilding()
         {
@@ -85,11 +87,11 @@ namespace game.Player
                     ProducingResourcesDictionary["Water"] = (int)(ProducingResourcesDictionary["Water"] * Math.E);
 
                     buildingLevel++;
-                    
                 }
             }
 
         }
+
         public static string GetSuitableBlock()
         {
             return suitableBlock;

@@ -74,7 +74,9 @@ namespace game.World_map
         public static void IncreaseSize(int value)
         {
             if (_size + value <= _maxSpriteSize)
+            {
                 _size += value;
+            }
         }
 
         /*!
@@ -84,7 +86,9 @@ namespace game.World_map
         public static void DecreaseSize(int value)
         {
             if (_size - value >= _minSpriteSize)
+            {
                 _size -= value;
+            }
         }
 
         /*!
@@ -110,11 +114,13 @@ namespace game.World_map
         protected static void Draw_sprite(Point chunkPoint, List<SolidBrush> texture, Graphics chunkGraphics) // Отрисовка
         {
             for (var pixel = 0; pixel < PixelCount; pixel++)
+            {
                 chunkGraphics.FillRectangle(texture[pixel],
                     chunkPoint.X * Sprites._size + pixel / PixelSize * Sprites._size / PixelSize,
                     chunkPoint.Y * Sprites._size + pixel % PixelSize * Sprites._size / PixelSize,
                     Sprites._size / PixelSize,
                     Sprites._size / PixelSize);
+            }
 
             chunkGraphics.DrawRectangle(new Pen(Color.Gray),
                     chunkPoint.X * Sprites._size ,
@@ -133,7 +139,9 @@ namespace game.World_map
             var textureBlock = new List<SolidBrush>();
 
             for (var pixel = 0; pixel < PixelCount; pixel++)
+            {
                 textureBlock.Add(brush_list[Rand.Next(brush_list.Count)]);
+            }
 
             return textureBlock;
         }

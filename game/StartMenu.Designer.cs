@@ -30,9 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StartMenu));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.exitButton = new System.Windows.Forms.Button();
+            this.startButton = new System.Windows.Forms.Button();
+            this.loadButton = new System.Windows.Forms.Button();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -48,50 +48,50 @@
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
-            // button2
+            // exitButton
             // 
-            this.button2.BackgroundImage = global::game.Properties.Resources.exit_no_active;
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(165, 420);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(140, 40);
-            this.button2.TabIndex = 1;
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            this.button2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.button1_MouseDown);
-            this.button2.MouseLeave += new System.EventHandler(this.button1_MouseLeave);
-            this.button2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button1_MouseMove);
+            this.exitButton.BackgroundImage = global::game.Properties.Resources.exit_no_active;
+            this.exitButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.exitButton.FlatAppearance.BorderSize = 0;
+            this.exitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.exitButton.Location = new System.Drawing.Point(165, 420);
+            this.exitButton.Name = "exitButton";
+            this.exitButton.Size = new System.Drawing.Size(140, 40);
+            this.exitButton.TabIndex = 1;
+            this.exitButton.UseVisualStyleBackColor = true;
+            this.exitButton.Click += new System.EventHandler(this.ExitButton_Click);
+            this.exitButton.MouseDown += new System.Windows.Forms.MouseEventHandler(this.button1_MouseDown);
+            this.exitButton.MouseLeave += new System.EventHandler(this.button1_MouseLeave);
+            this.exitButton.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button1_MouseMove);
             // 
-            // button1
+            // startButton
             // 
-            this.button1.BackgroundImage = global::game.Properties.Resources.start_no_active;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(165, 328);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(140, 40);
-            this.button1.TabIndex = 0;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            this.button1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.button1_MouseDown);
-            this.button1.MouseLeave += new System.EventHandler(this.button1_MouseLeave);
-            this.button1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button1_MouseMove);
+            this.startButton.BackgroundImage = global::game.Properties.Resources.start_no_active;
+            this.startButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.startButton.FlatAppearance.BorderSize = 0;
+            this.startButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.startButton.Location = new System.Drawing.Point(165, 328);
+            this.startButton.Name = "startButton";
+            this.startButton.Size = new System.Drawing.Size(140, 40);
+            this.startButton.TabIndex = 0;
+            this.startButton.UseVisualStyleBackColor = true;
+            this.startButton.Click += new System.EventHandler(this.StartButton_Click);
+            this.startButton.MouseDown += new System.Windows.Forms.MouseEventHandler(this.button1_MouseDown);
+            this.startButton.MouseLeave += new System.EventHandler(this.button1_MouseLeave);
+            this.startButton.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button1_MouseMove);
             // 
-            // button3
+            // loadButton
             // 
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.ForeColor = System.Drawing.Color.Transparent;
-            this.button3.Image = global::game.Properties.Resources.Load_No_Move;
-            this.button3.Location = new System.Drawing.Point(165, 374);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(140, 40);
-            this.button3.TabIndex = 4;
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.loadButton.FlatAppearance.BorderSize = 0;
+            this.loadButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.loadButton.ForeColor = System.Drawing.Color.Transparent;
+            this.loadButton.Image = global::game.Properties.Resources.Load_No_Move;
+            this.loadButton.Location = new System.Drawing.Point(165, 374);
+            this.loadButton.Name = "loadButton";
+            this.loadButton.Size = new System.Drawing.Size(140, 40);
+            this.loadButton.TabIndex = 4;
+            this.loadButton.UseVisualStyleBackColor = true;
+            this.loadButton.Click += new System.EventHandler(this.LoadButton_Click);
             // 
             // folderBrowserDialog1
             // 
@@ -104,10 +104,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::game.Properties.Resources.fon_menu;
             this.ClientSize = new System.Drawing.Size(454, 461);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.loadButton);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.exitButton);
+            this.Controls.Add(this.startButton);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "StartMenu";
@@ -120,10 +120,10 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button startButton;
+        private System.Windows.Forms.Button exitButton;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button loadButton;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
     }
 }

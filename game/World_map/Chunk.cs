@@ -38,23 +38,31 @@ namespace game.World_map
                     var overallChances = 0;
                     var randNum = Rand.Next(101);
                     Point chunkPoint = new Point(coordinateX, coordinateY);
-                    
+
                     if (randNum <= oreChance)
+                    {
                         _blocksInChunk.Add(new Ore(chunkPoint, chunkImageGraphics));
-                    else 
+                    } 
+                    else
                     {
                         overallChances += oreChance;
 
                         if (randNum <= overallChances + waterChance)
+                        {
                             _blocksInChunk.Add(new Water(chunkPoint, chunkImageGraphics));
-                        else 
+                        }
+                        else
                         {
                             overallChances += waterChance;
 
                             if (randNum <= overallChances + sandChance)
+                            {
                                 _blocksInChunk.Add(new Sand(chunkPoint, chunkImageGraphics));
+                            }
                             else
+                            {
                                 _blocksInChunk.Add(new Grass(chunkPoint, chunkImageGraphics));
+                            }
                         }
                     }
                 }

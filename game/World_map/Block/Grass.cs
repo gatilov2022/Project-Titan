@@ -11,7 +11,8 @@ namespace game.World_map.Block
     [Serializable]
     internal class Grass : Sprites
     {
-        private static readonly List<SolidBrush> GreenBrushList = new List<SolidBrush>() { 
+        private static readonly List<SolidBrush> GreenBrushList = new List<SolidBrush>() 
+        { 
             new SolidBrush(Color.ForestGreen),
             new SolidBrush(Color.Green),
             new SolidBrush(Color.DarkGreen), 

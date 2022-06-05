@@ -107,28 +107,18 @@ namespace game.Player
             {
                 case 0:
                     return Factory.GetSuitableBlock() == block && Factory.IsResourcesEnough();
-
                 case 1:
                     return Pump.GetSuitableBlock() == block && Pump.IsResourcesEnough();
-
                 case 2:
                     return Drill.GetSuitableBlock() == block && Drill.IsResourcesEnough();
-
-
                 case 3:
                     return Gamegoal.GetSuitableBlock() == block && Gamegoal.IsResourcesEnough();
-
                 case 4:
                     return Warehouse.GetSuitableBlock() == block && Warehouse.IsResourcesEnough();
-
-
                 case 5:
                     return SandQuarry.GetSuitableBlock() == block && SandQuarry.IsResourcesEnough();
-
-
                 case 6:
                     return SteamEngine.GetSuitableBlock() == block && SteamEngine.IsResourcesEnough();
-
             }
             return true;
         }
@@ -160,33 +150,33 @@ namespace game.Player
                     return true;
 
                 case 2:
-                    if (!Buildings.Drill.IsResourcesEnough())
+                    if (!Drill.IsResourcesEnough())
                         return false;
 
-                    Buildings.Drill.TakeResourcesForBuild();
+                    Drill.TakeResourcesForBuild();
                     new Drill();
                     return true;
 
                 case 3:
-                    if (!Buildings.Gamegoal.IsResourcesEnough())
+                    if (!Gamegoal.IsResourcesEnough())
                         return false;
 
-                    Buildings.Gamegoal.TakeResourcesForBuild();
+                    Gamegoal.TakeResourcesForBuild();
                     new Gamegoal();
                     return true;
                 case 4:
-                    if (!Buildings.Warehouse.IsResourcesEnough())
+                    if (!Warehouse.IsResourcesEnough())
                         return false;
 
-                    Buildings.Warehouse.TakeResourcesForBuild();
+                    Warehouse.TakeResourcesForBuild();
                     new Warehouse();
                     return true;
 
                 case 5:
-                    if (!Buildings.SandQuarry.IsResourcesEnough())
+                    if (!SandQuarry.IsResourcesEnough())
                         return false;
 
-                    Buildings.SandQuarry.TakeResourcesForBuild();
+                    SandQuarry.TakeResourcesForBuild();
                     new SandQuarry();
                     return true;
 

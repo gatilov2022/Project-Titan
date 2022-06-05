@@ -47,11 +47,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="FormGame.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="FormGame.Designer.cs">
+      <DependentUpon>FormGame.cs</DependentUpon>
     </Compile>
     <Compile Include="Player\Buildings\Drill.cs" />
     <Compile Include="Player\Buildings\Factory.cs" />
@@ -82,8 +82,8 @@
     <Compile Include="World_map\Sprites.cs" />
     <Compile Include="World_map\Block\Water.cs" />
     <Compile Include="World_map\Chunk.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="FormGame.resx">
+      <DependentUpon>FormGame.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -109,16 +109,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Town\Sprites_City\Base\Base.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Town\Sprites_City\Drill\Drill_Burner_1lvl.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Town\Sprites_City\Factory\Factory_1lvl.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Town\Sprites_City\House\Home_Defult.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Town\Sprites_City\Pump\Pump_1lvl.png" />
@@ -130,34 +124,6 @@
     <None Include="Town\Sprites_City\Warehouse\Warehouse.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Town\Sprites_City\Steam engine\Steam_Eng_2lvl.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Town\Sprites_City\Pump\Pubp_2lvl.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Town\Sprites_City\Factory\Factory_2lvl.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Town\Sprites_City\Factory\Factory_3lvl.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Town\Sprites_City\Drill\Drill_Burner_2lvl.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Town\Sprites_City\Drill\Drill_Electro_1lvl.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Town\Sprites_City\Drill\Drill_Electro_2lvl.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Musics\mus#1.mp3" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Musics\mus#2.mp3" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Musics\build.wav" />
     <None Include="Resources\logo_menu.png" />
     <None Include="Resources\Menu.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -181,7 +147,6 @@
     <None Include="Town\Sprites_Resources\Load_No_Move.png" />
     <Content Include="Town\Sprites_Resources\top_info.png" />
     <None Include="World_map\fon.jpg" />
-    <None Include="Musics\build_hummer.wav" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

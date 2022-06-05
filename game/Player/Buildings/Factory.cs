@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using game.World_map.Block;
 
 namespace game.Player.Buildings
@@ -15,7 +12,6 @@ namespace game.Player.Buildings
             new Dictionary<string, int>()
             {
                 {"Sand", 100}, {"Iron", 50}
-
             };
 
         private static string suitableBlock = typeof(Grass).ToString();
@@ -73,18 +69,18 @@ namespace game.Player.Buildings
         {
             foreach (var dictVal in buildingCostsDictionary)
             {
-                playerObj.DecreaseAmountOfResources(dictVal.Key,dictVal.Value);
+                playerObj.DecreaseAmountOfResources(dictVal.Key, dictVal.Value);
             }
+
         }
 
         private void TakeResourcesForUpgrade(Dictionary<string, int> upgradeDictionary)
         {
             foreach (var dictVal in upgradeDictionary)
             {
-                playerObj.DecreaseAmountOfResources(dictVal.Key,dictVal.Value);
+                playerObj.DecreaseAmountOfResources(dictVal.Key, dictVal.Value);
             }
         }
-
         
         override 
         public void UpgradeBuilding()
@@ -94,39 +90,33 @@ namespace game.Player.Buildings
                 switch (buildingLevel)
                 {
                     case 0:
+                        if (IsResourcesEnough(T1Cost))
                         {
-                            if (IsResourcesEnough(T1Cost))
-                            {
-                                TakeResourcesForUpgrade(T1Cost);
-                                UsingResourcesDictionary["Energy"] = (int)(UsingResourcesDictionary["Energy"] * Math.E * 0.8);
-                                UsingResourcesDictionary["Iron"] = (int)(UsingResourcesDictionary["Iron"] * Math.E);
+                            TakeResourcesForUpgrade(T1Cost);
+                            UsingResourcesDictionary["Energy"] = (int)(UsingResourcesDictionary["Energy"] * Math.E * 0.8);
+                            UsingResourcesDictionary["Iron"] = (int)(UsingResourcesDictionary["Iron"] * Math.E);
 
-                                ProducingResourcesDictionary["ComponentsT2"] = 2;
-                                buildingLevel++;
-                            }
-                            break;
+                            ProducingResourcesDictionary["ComponentsT2"] = 2;
+                            buildingLevel++;
                         }
+                        break;
                     case 1:
+                        if (IsResourcesEnough(T2Cost))
                         {
-                            if (IsResourcesEnough(T2Cost))
-                            {
-                                TakeResourcesForUpgrade(T2Cost);
-                                UsingResourcesDictionary["Energy"] = (int)(UsingResourcesDictionary["Energy"] * Math.E * 0.8);
-                                UsingResourcesDictionary["Iron"] = (int)(UsingResourcesDictionary["Iron"] * Math.E);
-                                UsingResourcesDictionary["ComponentsT1"] = 1;
-                                UsingResourcesDictionary["ComponentsT2"] = 1;
+                            TakeResourcesForUpgrade(T2Cost);
+                            UsingResourcesDictionary["Energy"] = (int)(UsingResourcesDictionary["Energy"] * Math.E * 0.8);
+                            UsingResourcesDictionary["Iron"] = (int)(UsingResourcesDictionary["Iron"] * Math.E);
+                            UsingResourcesDictionary["ComponentsT1"] = 1;
+                            UsingResourcesDictionary["ComponentsT2"] = 1;
 
-                                ProducingResourcesDictionary["ComponentsT3"] = 2;
-
-                                buildingLevel++;
-                            }
-                            break;
-                            
+                            ProducingResourcesDictionary["ComponentsT3"] = 2;
+                            buildingLevel++;
                         }
-                    
+                        break;
                 }
             }
         }
+
         public static string GetSuitableBlock()
         {
             return suitableBlock;

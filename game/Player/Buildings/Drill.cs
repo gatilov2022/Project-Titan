@@ -11,7 +11,6 @@ namespace game.Player.Buildings
     internal class Drill : Building
     {
         private static string suitableBlock = typeof(Ore).ToString();
-        
 
         private static Dictionary<string, Dictionary<string, int>> buildingCostsDictionary =
             new Dictionary<string, Dictionary<string, int>>()
@@ -21,15 +20,14 @@ namespace game.Player.Buildings
             };
         public Drill()
         {
-
             buildingType = "Drill";
             buildingMaxLevel = 2;
             UsingResourcesDictionary["Energy"] = 5;
             ProducingResourcesDictionary["Iron"] = 10;
 
-
             AddBuilding(this);
         }
+
         public static void TakeResourcesForBuild()
         {
             foreach (var dictVal in buildingCostsDictionary["Build"])
@@ -37,10 +35,12 @@ namespace game.Player.Buildings
                 playerObj.DecreaseAmountOfResources(dictVal.Key, dictVal.Value);
             }
         }
+
         public static bool IsResourcesEnough()
         {
             return buildingCostsDictionary["Build"].All(dictValue => playerObj.GetAmountOfResources(dictValue.Key) - dictValue.Value >= 0);
         }
+
         private bool IsResourcesEnough(Dictionary<string, int> checkDictionary)
         {
             foreach (var dictValue in checkDictionary)
@@ -50,6 +50,7 @@ namespace game.Player.Buildings
 
             return true;
         }
+
         override 
         public Dictionary<string, int> AmountResourcesForUpgrade()
         {
@@ -58,6 +59,7 @@ namespace game.Player.Buildings
             {
                 retDictionary[dictValue.Key] = (int)(dictValue.Value * Math.Pow(Math.E / 2, buildingLevel));
             }
+
             return retDictionary;
         }
 
@@ -68,6 +70,7 @@ namespace game.Player.Buildings
                 playerObj.DecreaseAmountOfResources(dictVal.Key, dictVal.Value * (buildingLevel + 1));
             }
         }
+
         override 
         public void UpgradeBuilding()
         {

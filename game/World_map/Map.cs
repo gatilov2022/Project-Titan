@@ -56,7 +56,9 @@ namespace game.World_map
         public static void GenerateMap()
         {
             for (var chunk = 0; chunk < _mapSize * _mapSize; chunk++)
-                    _chunks.Add(new Chunk());
+            {
+                _chunks.Add(new Chunk());
+            }
         }
         /*!
          * \return Возращает размер карты.
