@@ -358,7 +358,7 @@ namespace game
 
         private void DrawBuildingPick(Graphics graphicsForm, Size sizeForm)
         {
-            var buildingPickXCoordinate= sizeForm.Width / 2 - 420 / 2;
+            var buildingPickXCoordinate = sizeForm.Width / 2 - 420 / 2;
             graphicsForm.DrawImage(Properties.Resources.botton_button, buildingPickXCoordinate, sizeForm.Height - 90, 420, 60);
         }
     }
