@@ -12,14 +12,15 @@ namespace game
         private readonly StartMenu _startMenu;
         private readonly Player.Player _playerObject;
 
-        private readonly Button[] _buttons;
+        private Button _pressedButton;
+        //private readonly Button[] _buttons;
         private Point _dragStartCoordinates, _dragDistancePoint = new Point(0,0);
 
         private bool _dragging, _scrollingDown, _scrollingUp;
         private int _mouseX, _mouseY, _lastX, _lastY, _spritesSize, _scrollToX, _scrollToY;
 
         private const int SpriteSizeChangeOnScroll = 7;
-        private const double MaxMultiplier = 6, MinMultiplier = 2;
+        private const double MaxMultiplier = 6, MinMultiplier = 0.25;
 
         private readonly ResourcesInfo[] _resourcesInfoList =
         {
@@ -38,7 +39,6 @@ namespace game
 
             _playerObject = loadingPlayer ?? new Player.Player();
             _startMenu = startMenu;
-            _buttons = new[] {factory_but ,pump_but ,drill_but ,base_but ,wareh_but ,house_but ,steam_but};
             _spritesSize = Sprites.GetSpritesSize();
 
             MouseWheel += GameWindowMouseWheel;
@@ -205,6 +205,7 @@ namespace game
         private void ButtonMouseMove(object sender, MouseEventArgs e)
         {
             var sendButton = sender as Button;
+
             if (sendButton.FlatAppearance.BorderColor != Color.Blue)
             {
                 sendButton.FlatAppearance.BorderColor = Color.Yellow;
@@ -216,14 +217,18 @@ namespace game
             switch (e.Button)
             {
                 case MouseButtons.Left:
-                    _dragging = false; 
+                    _dragging = false;
                     break;
                 case MouseButtons.Right:
-                    if (!Building.Checking_The_Building(new Point(_mouseX, _mouseY), _dragDistancePoint, _buttons))
+                    if (_pressedButton != null)
                     {
-                        return;
+                        if (!Building.BuildingIsAbleToPlace(new Point(_mouseX, _mouseY), 
+                                _dragDistancePoint, _pressedButton))
+                        {
+                            return;
+                        }
+                        new Building().PlaceBuilding(new Point(_mouseX, _mouseY), _pressedButton, _dragDistancePoint);
                     }
-                    new Building().PlaceBuilding(new Point(_mouseX, _mouseY), _buttons, _dragDistancePoint);
 
                     Invalidate();
                     break;
@@ -249,23 +254,27 @@ namespace game
                 sendButton.FlatAppearance.BorderColor = Color.Red;
             }
         }
+        
 
         private void ButtonMouseClick(object sender, EventArgs e)
         {
             //События для кнопок, при нажатии которых, рамка Flat будет синей(Blue). При повторном клике, рамка меняет цвет на жёлтый(Yellow).
             var sendButton = sender as Button;
 
-            if (sendButton.FlatAppearance.BorderColor != Color.Blue)
+            if (_pressedButton != null)
             {
-                foreach (var someButton in _buttons)
-                {
-                    someButton.FlatAppearance.BorderColor = Color.Red;
-                }
+                _pressedButton.FlatAppearance.BorderColor = Color.Red;
+                _pressedButton = null;
+            }
+            if (sendButton.FlatAppearance.BorderColor.Equals(Color.Yellow))
+            {
                 sendButton.FlatAppearance.BorderColor = Color.Blue;
+                _pressedButton = sendButton;
             }
             else
             {
                 sendButton.FlatAppearance.BorderColor = Color.Yellow;
+                _pressedButton = null;
             }
 
             Invalidate();
@@ -312,6 +321,7 @@ namespace game
                 _dragDistancePoint.Y = 0;
             }
         }
+
         private void DrawForm(object sender, PaintEventArgs e)
         {
             var formGraphics = e.Graphics;
@@ -319,17 +329,15 @@ namespace game
             Map.DrawMap(formGraphics, _dragDistancePoint);
             Building.DrawCreatedBuildings(formGraphics, _dragDistancePoint);
 
-            foreach (var someButton in _buttons)
-            {
-                if (someButton.FlatAppearance.BorderColor == Color.Blue)
+                if (_pressedButton != null)
                 {
-                    var blockOccupied = Building.Checking_The_Building(new Point(_mouseX, _mouseY), _dragDistancePoint, _buttons);
-                    
-                    Building.DrawBuilding(formGraphics, _buttons, _dragDistancePoint, _mouseX, _mouseY, blockOccupied);
-                }
-            }
 
-            DrawResourcesInfo(formGraphics, Size);
+                    var blockOccupied = Building.BuildingIsAbleToPlace(new Point(_mouseX, _mouseY), _dragDistancePoint, _pressedButton);
+                    
+                    Building.DrawBuilding(formGraphics, _pressedButton, _dragDistancePoint, _mouseX, _mouseY, blockOccupied);
+                }
+            
+        DrawResourcesInfo(formGraphics, Size);
             DrawBuildingPick(formGraphics, Size);
         }
 
@@ -350,7 +358,7 @@ namespace game
 
         private void DrawBuildingPick(Graphics graphicsForm, Size sizeForm)
         {
-            var buildingPickXCoordinate = sizeForm.Width / 2 - 420 / 2;
+            var buildingPickXCoordinate= sizeForm.Width / 2 - 420 / 2;
             graphicsForm.DrawImage(Properties.Resources.botton_button, buildingPickXCoordinate, sizeForm.Height - 90, 420, 60);
         }
     }

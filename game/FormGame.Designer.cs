@@ -30,146 +30,146 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormGame));
-            this.factory_but = new System.Windows.Forms.Button();
-            this.base_but = new System.Windows.Forms.Button();
-            this.house_but = new System.Windows.Forms.Button();
-            this.pump_but = new System.Windows.Forms.Button();
-            this.wareh_but = new System.Windows.Forms.Button();
-            this.steam_but = new System.Windows.Forms.Button();
-            this.drill_but = new System.Windows.Forms.Button();
+            this.factoryButton = new System.Windows.Forms.Button();
+            this.gameGoalButton = new System.Windows.Forms.Button();
+            this.sandQuarryButton = new System.Windows.Forms.Button();
+            this.pumpButton = new System.Windows.Forms.Button();
+            this.warehouseButton = new System.Windows.Forms.Button();
+            this.steamEngineButton = new System.Windows.Forms.Button();
+            this.drillButton = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.button2 = new System.Windows.Forms.Button();
             this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
-            // factory_but
+            // factoryButton
             // 
-            this.factory_but.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.factory_but.BackgroundImage = global::game.Properties.Resources.Factory_1lvl;
-            this.factory_but.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.factory_but.FlatAppearance.BorderColor = System.Drawing.Color.Red;
-            this.factory_but.FlatAppearance.BorderSize = 2;
-            this.factory_but.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.factory_but.Location = new System.Drawing.Point(238, 413);
-            this.factory_but.Name = "factory_but";
-            this.factory_but.Size = new System.Drawing.Size(32, 32);
-            this.factory_but.TabIndex = 0;
-            this.factory_but.Text = ".";
-            this.toolTip1.SetToolTip(this.factory_but, "Фабрика 1lvl\r\n");
-            this.factory_but.UseVisualStyleBackColor = true;
-            this.factory_but.Click += new System.EventHandler(this.ButtonMouseClick);
-            this.factory_but.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
-            this.factory_but.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ButtonMouseMove);
+            this.factoryButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.factoryButton.BackgroundImage = global::game.Properties.Resources.Factory_1lvl;
+            this.factoryButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.factoryButton.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.factoryButton.FlatAppearance.BorderSize = 2;
+            this.factoryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.factoryButton.Location = new System.Drawing.Point(238, 413);
+            this.factoryButton.Name = "factoryButton";
+            this.factoryButton.Size = new System.Drawing.Size(32, 32);
+            this.factoryButton.TabIndex = 0;
+            this.factoryButton.Text = ".";
+            this.toolTip1.SetToolTip(this.factoryButton, "Фабрика 1lvl\r\n");
+            this.factoryButton.UseVisualStyleBackColor = true;
+            this.factoryButton.Click += new System.EventHandler(this.ButtonMouseClick);
+            this.factoryButton.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
+            this.factoryButton.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ButtonMouseMove);
             // 
-            // base_but
+            // gameGoalButton
             // 
-            this.base_but.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.base_but.BackgroundImage = global::game.Properties.Resources.goal_of_the_game;
-            this.base_but.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.base_but.FlatAppearance.BorderColor = System.Drawing.Color.Red;
-            this.base_but.FlatAppearance.BorderSize = 2;
-            this.base_but.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.base_but.Location = new System.Drawing.Point(402, 413);
-            this.base_but.Name = "base_but";
-            this.base_but.Size = new System.Drawing.Size(32, 32);
-            this.base_but.TabIndex = 4;
-            this.toolTip1.SetToolTip(this.base_but, "База");
-            this.base_but.UseVisualStyleBackColor = true;
-            this.base_but.Click += new System.EventHandler(this.ButtonMouseClick);
-            this.base_but.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
-            this.base_but.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ButtonMouseMove);
+            this.gameGoalButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.gameGoalButton.BackgroundImage = global::game.Properties.Resources.goal_of_the_game;
+            this.gameGoalButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.gameGoalButton.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.gameGoalButton.FlatAppearance.BorderSize = 2;
+            this.gameGoalButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.gameGoalButton.Location = new System.Drawing.Point(402, 413);
+            this.gameGoalButton.Name = "gameGoalButton";
+            this.gameGoalButton.Size = new System.Drawing.Size(32, 32);
+            this.gameGoalButton.TabIndex = 4;
+            this.toolTip1.SetToolTip(this.gameGoalButton, "База");
+            this.gameGoalButton.UseVisualStyleBackColor = true;
+            this.gameGoalButton.Click += new System.EventHandler(this.ButtonMouseClick);
+            this.gameGoalButton.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
+            this.gameGoalButton.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ButtonMouseMove);
             // 
-            // house_but
+            // sandQuarryButton
             // 
-            this.house_but.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.house_but.BackgroundImage = global::game.Properties.Resources.Sand_Quarry;
-            this.house_but.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.house_but.FlatAppearance.BorderColor = System.Drawing.Color.Red;
-            this.house_but.FlatAppearance.BorderSize = 2;
-            this.house_but.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.house_but.Location = new System.Drawing.Point(345, 413);
-            this.house_but.Name = "house_but";
-            this.house_but.Size = new System.Drawing.Size(32, 32);
-            this.house_but.TabIndex = 5;
-            this.toolTip1.SetToolTip(this.house_but, "Жилой дом\r\n");
-            this.house_but.UseVisualStyleBackColor = true;
-            this.house_but.Click += new System.EventHandler(this.ButtonMouseClick);
-            this.house_but.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
-            this.house_but.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ButtonMouseMove);
+            this.sandQuarryButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.sandQuarryButton.BackgroundImage = global::game.Properties.Resources.Sand_Quarry;
+            this.sandQuarryButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.sandQuarryButton.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.sandQuarryButton.FlatAppearance.BorderSize = 2;
+            this.sandQuarryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.sandQuarryButton.Location = new System.Drawing.Point(345, 413);
+            this.sandQuarryButton.Name = "sandQuarryButton";
+            this.sandQuarryButton.Size = new System.Drawing.Size(32, 32);
+            this.sandQuarryButton.TabIndex = 5;
+            this.toolTip1.SetToolTip(this.sandQuarryButton, "Жилой дом\r\n");
+            this.sandQuarryButton.UseVisualStyleBackColor = true;
+            this.sandQuarryButton.Click += new System.EventHandler(this.ButtonMouseClick);
+            this.sandQuarryButton.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
+            this.sandQuarryButton.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ButtonMouseMove);
             // 
-            // pump_but
+            // pumpButton
             // 
-            this.pump_but.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.pump_but.BackgroundImage = global::game.Properties.Resources.Pump_1lvl;
-            this.pump_but.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pump_but.FlatAppearance.BorderColor = System.Drawing.Color.Red;
-            this.pump_but.FlatAppearance.BorderSize = 2;
-            this.pump_but.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.pump_but.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.pump_but.Location = new System.Drawing.Point(292, 413);
-            this.pump_but.Name = "pump_but";
-            this.pump_but.Size = new System.Drawing.Size(32, 32);
-            this.pump_but.TabIndex = 6;
-            this.toolTip1.SetToolTip(this.pump_but, "Помпа 1lvl\r\n");
-            this.pump_but.UseVisualStyleBackColor = true;
-            this.pump_but.Click += new System.EventHandler(this.ButtonMouseClick);
-            this.pump_but.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
-            this.pump_but.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ButtonMouseMove);
+            this.pumpButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.pumpButton.BackgroundImage = global::game.Properties.Resources.Pump_1lvl;
+            this.pumpButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pumpButton.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.pumpButton.FlatAppearance.BorderSize = 2;
+            this.pumpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.pumpButton.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.pumpButton.Location = new System.Drawing.Point(292, 413);
+            this.pumpButton.Name = "pumpButton";
+            this.pumpButton.Size = new System.Drawing.Size(32, 32);
+            this.pumpButton.TabIndex = 6;
+            this.toolTip1.SetToolTip(this.pumpButton, "Помпа 1lvl\r\n");
+            this.pumpButton.UseVisualStyleBackColor = true;
+            this.pumpButton.Click += new System.EventHandler(this.ButtonMouseClick);
+            this.pumpButton.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
+            this.pumpButton.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ButtonMouseMove);
             // 
-            // wareh_but
+            // warehouseButton
             // 
-            this.wareh_but.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.wareh_but.BackgroundImage = global::game.Properties.Resources.Warehouse;
-            this.wareh_but.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.wareh_but.FlatAppearance.BorderColor = System.Drawing.Color.Red;
-            this.wareh_but.FlatAppearance.BorderSize = 2;
-            this.wareh_but.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.wareh_but.Location = new System.Drawing.Point(510, 413);
-            this.wareh_but.Name = "wareh_but";
-            this.wareh_but.Size = new System.Drawing.Size(32, 32);
-            this.wareh_but.TabIndex = 7;
-            this.toolTip1.SetToolTip(this.wareh_but, "Склад");
-            this.wareh_but.UseVisualStyleBackColor = true;
-            this.wareh_but.Click += new System.EventHandler(this.ButtonMouseClick);
-            this.wareh_but.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
-            this.wareh_but.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ButtonMouseMove);
+            this.warehouseButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.warehouseButton.BackgroundImage = global::game.Properties.Resources.Warehouse;
+            this.warehouseButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.warehouseButton.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.warehouseButton.FlatAppearance.BorderSize = 2;
+            this.warehouseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.warehouseButton.Location = new System.Drawing.Point(510, 413);
+            this.warehouseButton.Name = "warehouseButton";
+            this.warehouseButton.Size = new System.Drawing.Size(32, 32);
+            this.warehouseButton.TabIndex = 7;
+            this.toolTip1.SetToolTip(this.warehouseButton, "Склад");
+            this.warehouseButton.UseVisualStyleBackColor = true;
+            this.warehouseButton.Click += new System.EventHandler(this.ButtonMouseClick);
+            this.warehouseButton.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
+            this.warehouseButton.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ButtonMouseMove);
             // 
-            // steam_but
+            // steamEngineButton
             // 
-            this.steam_but.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.steam_but.BackgroundImage = global::game.Properties.Resources.Steam_Eng_1lvl;
-            this.steam_but.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.steam_but.FlatAppearance.BorderColor = System.Drawing.Color.Red;
-            this.steam_but.FlatAppearance.BorderSize = 2;
-            this.steam_but.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.steam_but.Location = new System.Drawing.Point(458, 413);
-            this.steam_but.Name = "steam_but";
-            this.steam_but.Size = new System.Drawing.Size(32, 32);
-            this.steam_but.TabIndex = 8;
-            this.toolTip1.SetToolTip(this.steam_but, "Паровой двигатель 1lvl\r\n");
-            this.steam_but.UseVisualStyleBackColor = true;
-            this.steam_but.Click += new System.EventHandler(this.ButtonMouseClick);
-            this.steam_but.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
-            this.steam_but.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ButtonMouseMove);
+            this.steamEngineButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.steamEngineButton.BackgroundImage = global::game.Properties.Resources.Steam_Eng_1lvl;
+            this.steamEngineButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.steamEngineButton.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.steamEngineButton.FlatAppearance.BorderSize = 2;
+            this.steamEngineButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.steamEngineButton.Location = new System.Drawing.Point(458, 413);
+            this.steamEngineButton.Name = "steamEngineButton";
+            this.steamEngineButton.Size = new System.Drawing.Size(32, 32);
+            this.steamEngineButton.TabIndex = 8;
+            this.toolTip1.SetToolTip(this.steamEngineButton, "Паровой двигатель 1lvl\r\n");
+            this.steamEngineButton.UseVisualStyleBackColor = true;
+            this.steamEngineButton.Click += new System.EventHandler(this.ButtonMouseClick);
+            this.steamEngineButton.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
+            this.steamEngineButton.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ButtonMouseMove);
             // 
-            // drill_but
+            // drillButton
             // 
-            this.drill_but.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.drill_but.BackgroundImage = global::game.Properties.Resources.Drill_Burner_1lvl;
-            this.drill_but.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.drill_but.FlatAppearance.BorderColor = System.Drawing.Color.Red;
-            this.drill_but.FlatAppearance.BorderSize = 2;
-            this.drill_but.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.drill_but.Location = new System.Drawing.Point(563, 413);
-            this.drill_but.Name = "drill_but";
-            this.drill_but.Size = new System.Drawing.Size(32, 32);
-            this.drill_but.TabIndex = 9;
-            this.toolTip1.SetToolTip(this.drill_but, "Дрель 1lvl");
-            this.drill_but.UseVisualStyleBackColor = true;
-            this.drill_but.Click += new System.EventHandler(this.ButtonMouseClick);
-            this.drill_but.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
-            this.drill_but.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ButtonMouseMove);
+            this.drillButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.drillButton.BackgroundImage = global::game.Properties.Resources.Drill_Burner_1lvl;
+            this.drillButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.drillButton.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.drillButton.FlatAppearance.BorderSize = 2;
+            this.drillButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.drillButton.Location = new System.Drawing.Point(563, 413);
+            this.drillButton.Name = "drillButton";
+            this.drillButton.Size = new System.Drawing.Size(32, 32);
+            this.drillButton.TabIndex = 9;
+            this.toolTip1.SetToolTip(this.drillButton, "Дрель 1lvl");
+            this.drillButton.UseVisualStyleBackColor = true;
+            this.drillButton.Click += new System.EventHandler(this.ButtonMouseClick);
+            this.drillButton.MouseLeave += new System.EventHandler(this.ButtonMouseLeave);
+            this.drillButton.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ButtonMouseMove);
             // 
             // toolTip1
             // 
@@ -204,25 +204,25 @@
             // 
             this.toolTip2.ToolTipTitle = "Игра";
             // 
-            // Form1
+            // FormGame
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackgroundImage = global::game.Properties.Resources.fon;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(823, 450);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.drill_but);
-            this.Controls.Add(this.steam_but);
-            this.Controls.Add(this.wareh_but);
-            this.Controls.Add(this.pump_but);
-            this.Controls.Add(this.house_but);
-            this.Controls.Add(this.base_but);
-            this.Controls.Add(this.factory_but);
+            this.Controls.Add(this.drillButton);
+            this.Controls.Add(this.steamEngineButton);
+            this.Controls.Add(this.warehouseButton);
+            this.Controls.Add(this.pumpButton);
+            this.Controls.Add(this.sandQuarryButton);
+            this.Controls.Add(this.gameGoalButton);
+            this.Controls.Add(this.factoryButton);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(839, 489);
-            this.Name = "Form1";
+            this.Name = "FormGame";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.GameWindowClosed);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.DrawForm);
@@ -236,17 +236,17 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button factory_but;
-        private System.Windows.Forms.Button base_but;
-        private System.Windows.Forms.Button house_but;
-        private System.Windows.Forms.Button pump_but;
-        private System.Windows.Forms.Button wareh_but;
-        private System.Windows.Forms.Button steam_but;
-        private System.Windows.Forms.Button drill_but;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ToolTip toolTip2;
+        public System.Windows.Forms.Button factoryButton;
+        public System.Windows.Forms.Button gameGoalButton;
+        public System.Windows.Forms.Button sandQuarryButton;
+        public System.Windows.Forms.Button pumpButton;
+        public System.Windows.Forms.Button warehouseButton;
+        public System.Windows.Forms.Button steamEngineButton;
+        public System.Windows.Forms.Button drillButton;
     }
 }
 
