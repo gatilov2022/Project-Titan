@@ -1,0 +1,7 @@
+<map id="Иерархия классов. Графический вид." name="Иерархия классов. Графический вид.">
+<area shape="rect" id="node1" href="$classgame_1_1_world__map_1_1_sprites.html" title="Класс Sprites хранит в себе параметры изображения. Он задаёт размер блоков, зданий,..." alt="" coords="5,81,175,108"/>
+<area shape="rect" id="node2" href="$classgame_1_1_world__map_1_1_block_1_1_grass.html" title="Класс Grass Пресдавляет собой шаблон для создания блока типа Grass, с соответсвующими цветами." alt="" coords="223,5,423,32"/>
+<area shape="rect" id="node3" href="$classgame_1_1_world__map_1_1_block_1_1_ore.html" title="Класс Ore Пресдавляет собой шаблон для создания блока типа Ore, с соответсвующими цветами." alt="" coords="229,56,416,83"/>
+<area shape="rect" id="node4" href="$classgame_1_1_world__map_1_1_block_1_1_sand.html" title="Класс Sand Пресдавляет собой шаблон для создания блока типа Sand, с соответсвующими цветами." alt="" coords="225,107,420,133"/>
+<area shape="rect" id="node5" href="$classgame_1_1_world__map_1_1_block_1_1_water.html" title="Класс Water Пресдавляет собой шаблон для создания блока типа Water, с соответсвующими цветами." alt="" coords="223,157,423,184"/>
+</map>

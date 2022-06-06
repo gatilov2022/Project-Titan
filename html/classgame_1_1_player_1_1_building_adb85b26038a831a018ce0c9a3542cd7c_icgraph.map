@@ -1,0 +1,9 @@
+<map id="game.Player.Building.IsMaxLevel" name="game.Player.Building.IsMaxLevel">
+<area shape="rect" id="node1" title="Проверяет, является ли обьект класса Building максимальным уровнем return bool." alt="" coords="280,169,464,211"/>
+<area shape="rect" id="node2" href="$classgame_1_1_player_1_1_buildings_1_1_drill.html#a5df145bbb02fe1ef2db7a12d77e86542" title="Метод для проверки возможности улучшения здания. Если уровень максимальный или ресурсов не хватает,..." alt="" coords="27,5,210,47"/>
+<area shape="rect" id="node3" href="$classgame_1_1_player_1_1_buildings_1_1_factory.html#a1e4e2ed3af2a76f3cb7e691da9783662" title="Метод для проверки возможности улучшения здания. Если уровень максимальный или ресурсов не хватает,..." alt="" coords="17,71,221,112"/>
+<area shape="rect" id="node4" href="$classgame_1_1_player_1_1_pump.html#af75a7133662b48d8eba2ee4dccb7c7dc" title="Метод для проверки возможности улучшения здания. Если уровень максимальный или ресурсов не хватает,..." alt="" coords="26,136,211,177"/>
+<area shape="rect" id="node5" href="$classgame_1_1_player_1_1_buildings_1_1_sand_quarry.html#aad51103bba68eae47653b34922c138e2" title="Метод для проверки возможности улучшения здания. Если уровень максимальный или ресурсов не хватает,..." alt="" coords="25,201,212,243"/>
+<area shape="rect" id="node6" href="$classgame_1_1_player_1_1_buildings_1_1_steam_engine.html#a0bf932f82fedb5d670b3ebe8d32c6b98" title="Метод для проверки возможности улучшения здания. Если уровень максимальный или ресурсов не хватает,..." alt="" coords="21,267,216,308"/>
+<area shape="rect" id="node7" href="$classgame_1_1_player_1_1_buildings_1_1_warehouse.html#a01c45a4c28ed4aab512e4fe67c0b5676" title="Метод для проверки возможности улучшения здания. Если уровень максимальный или ресурсов не хватает,..." alt="" coords="5,332,232,373"/>
+</map>

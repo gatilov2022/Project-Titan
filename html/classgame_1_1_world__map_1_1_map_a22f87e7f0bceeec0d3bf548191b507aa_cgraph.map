@@ -1,0 +1,6 @@
+<map id="game.World_map.Map.GetBlockType" name="game.World_map.Map.GetBlockType">
+<area shape="rect" id="node1" title="Метод для возращения типа блока. Ищет тип блока от координат курсора." alt="" coords="5,71,244,98"/>
+<area shape="rect" id="node2" href="$classgame_1_1_world__map_1_1_chunk.html#a9c04242d02892d827281dbbc229c5d5c" title=" " alt="" coords="311,5,502,47"/>
+<area shape="rect" id="node3" href="$classgame_1_1_world__map_1_1_map.html#aebd8ed190ff3b41526dca5ac7c90b672" title=" " alt="" coords="292,71,521,98"/>
+<area shape="rect" id="node4" href="$classgame_1_1_world__map_1_1_sprites.html#ab0e556518af360593bba87f55368448a" title=" " alt="" coords="309,123,504,164"/>
+</map>

@@ -1,0 +1,18 @@
+<map id="game.Player.Building.CreateBuilding" name="game.Player.Building.CreateBuilding">
+<area shape="rect" id="node1" title="Создаёт экземпляр одного из классов: Factory, Pump, Drill, Gamegoal, Warehouse, SandQuarry,..." alt="" coords="5,397,192,439"/>
+<area shape="rect" id="node2" href="$classgame_1_1_player_1_1_buildings_1_1_drill.html#ab73a7b72cb441e5dbb576b699eda2a43" title="Проверка, хватает ли ресурсов для постройки." alt="" coords="262,5,445,47"/>
+<area shape="rect" id="node4" href="$classgame_1_1_player_1_1_buildings_1_1_gamegoal.html#af6b332c41127a8623d989e9e558f9bcf" title="Проверка, хватает ли ресурсов для постройки." alt="" coords="244,71,463,112"/>
+<area shape="rect" id="node5" href="$classgame_1_1_player_1_1_pump.html#ab1be344f4641520069037280f0b74906" title="Проверка, хватает ли ресурсов для постройки." alt="" coords="249,136,458,177"/>
+<area shape="rect" id="node6" href="$classgame_1_1_player_1_1_buildings_1_1_sand_quarry.html#ab463ebcfb4027d9d2cd4f7ff51a99583" title="Проверка, хватает ли ресурсов для постройки." alt="" coords="260,201,447,243"/>
+<area shape="rect" id="node7" href="$classgame_1_1_player_1_1_buildings_1_1_steam_engine.html#a1dff6a0cf5b95a5ee8162c6fdc354de9" title="Класс SteamEngine служит для переработки воды в энергию." alt="" coords="256,267,451,308"/>
+<area shape="rect" id="node8" href="$classgame_1_1_player_1_1_buildings_1_1_warehouse.html#a0720100305c67525163b02ac739481dd" title="Проверка, хватает ли ресурсов для постройки." alt="" coords="240,332,467,373"/>
+<area shape="rect" id="node9" href="$classgame_1_1_player_1_1_buildings_1_1_drill.html#af50f573ada498a027ce9af50bcec063d" title="Метод забирает ресурсу у игрока. В замен игрок получает добычу железа." alt="" coords="262,397,445,439"/>
+<area shape="rect" id="node11" href="$classgame_1_1_player_1_1_buildings_1_1_factory.html#afbbbc6a93a279f0f42b299815e53eafb" title="Метод забирает ресурсу у игрока. В замен строится здание и начинается производство компонентов." alt="" coords="251,463,455,504"/>
+<area shape="rect" id="node12" href="$classgame_1_1_player_1_1_buildings_1_1_gamegoal.html#a362f79affecb51110b764e3072ff0a7a" title="Метод забирает ресурсу у игрока. В замен строится здание и начинается производство компонентов." alt="" coords="244,528,463,569"/>
+<area shape="rect" id="node13" href="$classgame_1_1_player_1_1_pump.html#a517598394f9c3cd8f196345cc98c7add" title="Метод забирает ресурсу у игрока. В замен строится здание и начинается добыча воды взамен на энергию." alt="" coords="240,593,467,635"/>
+<area shape="rect" id="node14" href="$classgame_1_1_player_1_1_buildings_1_1_sand_quarry.html#a4c57f0efa036b81b4c20fd998c0dd810" title="Метод забирает ресурсу у игрока. В замен строится здание и начинается добыча песка взамен на энергию." alt="" coords="252,659,455,700"/>
+<area shape="rect" id="node15" href="$classgame_1_1_player_1_1_buildings_1_1_steam_engine.html#af565e0a56980a375648f675e34b3a065" title="Метод забирает ресурсу у игрока. В замен строится здание и начинается переработка ресурсов." alt="" coords="251,724,455,765"/>
+<area shape="rect" id="node16" href="$classgame_1_1_player_1_1_buildings_1_1_warehouse.html#aac156d025d68449a3663869adb412607" title="Метод забирает ресурсу у игрока. В замен строится здание и увеличивает вместимость ресурсов." alt="" coords="240,789,467,831"/>
+<area shape="rect" id="node3" href="$classgame_1_1_player_1_1_player.html#ac611a3bcfc5f2e198c059ce0d4c1f48a" title="Метод возращающий кол&#45;во ресурса." alt="" coords="515,169,721,211"/>
+<area shape="rect" id="node10" href="$classgame_1_1_player_1_1_player.html#a65011c997084f3db5d0bdf48c21beeaa" title="Метод уменьшает кол&#45;во ресурса." alt="" coords="521,593,715,635"/>
+</map>

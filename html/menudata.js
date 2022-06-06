@@ -29,7 +29,7 @@ var menudata={children:[
 {text:"Структуры данных",url:"annotated.html",children:[
 {text:"Структуры данных",url:"annotated.html"},
 {text:"Алфавитный указатель структур данных",url:"classes.html"},
-{text:"Иерархия классов",url:"hierarchy.html"},
+{text:"Иерархия классов",url:"inherits.html"},
 {text:"Поля структур",url:"functions.html",children:[
 {text:"Указатель",url:"functions.html",children:[
 {text:"a",url:"functions.html#index_a"},

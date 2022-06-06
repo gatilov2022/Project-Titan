@@ -1,0 +1,4 @@
+<map id="game.World_map.Block.Sand" name="game.World_map.Block.Sand">
+<area shape="rect" id="node1" title="Класс Sand Пресдавляет собой шаблон для создания блока типа Sand, с соответсвующими цветами." alt="" coords="5,80,200,107"/>
+<area shape="rect" id="node2" href="$classgame_1_1_world__map_1_1_sprites.html" title="Класс Sprites хранит в себе параметры изображения. Он задаёт размер блоков, зданий,..." alt="" coords="71,5,134,32"/>
+</map>

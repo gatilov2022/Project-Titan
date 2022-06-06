@@ -2,7 +2,7 @@
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,200,200italic,400italic);
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,500italic,700,700italic,900,900italic&subset=latin,greek-ext,greek,latin-ext);
 body{
-	background-color: #000;
+	background-color: #E8E9E8;
 	margin: 0;
 	font-size: 12pt;
 }
@@ -10,7 +10,7 @@ body, table, div, p, dl,
 table.directory, #nav-tree,#nav-tree .label {
 font-family: "Segoe UI", "Lucida Sans Unicode", Helvetica, Arial, Verdana, 'Roboto', sans-serif;
 color: #000000;
-font-size: 1.3rem;
+font-size: 1.2rem;
 }
 .arrow,
 .navpath li.navelem a,

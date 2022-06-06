@@ -1,0 +1,6 @@
+<map id="game.World_map.Chunk.GetChunkSize" name="game.World_map.Chunk.GetChunkSize">
+<area shape="rect" id="node1" title=" " alt="" coords="535,23,725,65"/>
+<area shape="rect" id="node2" href="$classgame_1_1_world__map_1_1_map.html#a73a670d25269232b540a6005c0937d2a" title="Отрисовка всех блоков на карте." alt="" coords="262,5,473,32"/>
+<area shape="rect" id="node3" href="$classgame_1_1_world__map_1_1_map.html#a22f87e7f0bceeec0d3bf548191b507aa" title="Метод для возращения типа блока. Ищет тип блока от координат курсора." alt="" coords="248,56,487,83"/>
+<area shape="rect" id="node4" href="$classgame_1_1_player_1_1_building.html#abe6f874c0d6db9c96d10ffa751970e83" title="Проверяет, соблюдены ли условия для размещения обьекта класса Building на игровой карте param mouseCo..." alt="" coords="5,49,200,90"/>
+</map>

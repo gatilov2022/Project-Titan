@@ -1,0 +1,4 @@
+<map id="game.Player.Player.IncrShiftRes" name="game.Player.Player.IncrShiftRes">
+<area shape="rect" id="node1" title="Метод увеличивающий добывание ресурса." alt="" coords="244,13,455,39"/>
+<area shape="rect" id="node2" href="$classgame_1_1_player_1_1_building.html#aaeebbb9fe21dea89f39493bd43dcb7b5" title="Обновляет ресурсы игрока" alt="" coords="5,5,196,47"/>
+</map>

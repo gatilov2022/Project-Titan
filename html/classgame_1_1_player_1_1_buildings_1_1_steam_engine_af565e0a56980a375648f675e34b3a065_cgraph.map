@@ -1,0 +1,4 @@
+<map id="game.Player.Buildings.SteamEngine.TakeResourcesForBuild" name="game.Player.Buildings.SteamEngine.TakeResourcesForBuild">
+<area shape="rect" id="node1" title="Метод забирает ресурсу у игрока. В замен строится здание и начинается переработка ресурсов." alt="" coords="5,5,209,47"/>
+<area shape="rect" id="node2" href="$classgame_1_1_player_1_1_player.html#a65011c997084f3db5d0bdf48c21beeaa" title="Метод уменьшает кол&#45;во ресурса." alt="" coords="257,5,452,47"/>
+</map>

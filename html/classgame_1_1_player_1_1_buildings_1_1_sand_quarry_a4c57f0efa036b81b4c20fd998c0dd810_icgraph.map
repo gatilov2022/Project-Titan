@@ -1,0 +1,5 @@
+<map id="game.Player.Buildings.SandQuarry.TakeResourcesForBuild" name="game.Player.Buildings.SandQuarry.TakeResourcesForBuild">
+<area shape="rect" id="node1" title="Метод забирает ресурсу у игрока. В замен строится здание и начинается добыча песка взамен на энергию." alt="" coords="471,5,673,47"/>
+<area shape="rect" id="node2" href="$classgame_1_1_player_1_1_building.html#a628d8c6d11231b2f9d0839d781605b15" title="Создаёт экземпляр одного из классов: Factory, Pump, Drill, Gamegoal, Warehouse, SandQuarry,..." alt="" coords="236,5,423,47"/>
+<area shape="rect" id="node3" href="$classgame_1_1_player_1_1_building.html#ac7ab27e3ad701936e85fd6964ac23d04" title="Размещает здание на игровой карте param mouseCoordinates &#45; Координаты указателя мыши param pressedBut..." alt="" coords="5,5,188,47"/>
+</map>

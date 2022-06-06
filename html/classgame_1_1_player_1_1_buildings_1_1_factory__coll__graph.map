@@ -1,0 +1,5 @@
+<map id="game.Player.Buildings.Factory" name="game.Player.Buildings.Factory">
+<area shape="rect" id="node1" title="Класс Factory служит для производства компонентов разного уровня в замен на железо и энергию" alt="" coords="5,171,205,197"/>
+<area shape="rect" id="node2" href="$classgame_1_1_player_1_1_building.html" title="Класс Building даёт возможность строительства игроку. Так же предоставляет возможность улучшать здани..." alt="" coords="71,95,139,121"/>
+<area shape="rect" id="node3" href="$classgame_1_1_player_1_1_player.html" title="Класс Player хранит в себе информация о ресурсах. В хранение входит: кол&#45;во каждого ресурса,..." alt="" coords="37,5,173,32"/>
+</map>
