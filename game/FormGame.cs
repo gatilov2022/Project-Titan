@@ -109,7 +109,7 @@ namespace game
             Invalidate();
         }
 
-        public static void SaveObjects<T>(string filePath, T objectToWrite, bool append = false)
+        private static void SaveObjects<T>(string filePath, T objectToWrite, bool append = false)
         {
             using (Stream stream = File.Open(filePath, append ? FileMode.Append : FileMode.Create))
             {
@@ -279,7 +279,9 @@ namespace game
 
             Invalidate();
         }
-
+        /*
+         * \brief Изменяет размер карты при приближении и отдалении её игроком, а также при изменении размеров игрового окна
+         */
         private void ChangeMapZoom()
         {
             _spritesSize = Sprites.GetSpritesSize();
@@ -321,21 +323,20 @@ namespace game
                 _dragDistancePoint.Y = 0;
             }
         }
-
-        private void DrawForm(object sender, PaintEventArgs e)
+        private void DrawGraphics(object sender, PaintEventArgs e)
         {
             var formGraphics = e.Graphics;
             
             Map.DrawMap(formGraphics, _dragDistancePoint);
             Building.DrawCreatedBuildings(formGraphics, _dragDistancePoint);
 
-                if (_pressedButton != null)
-                {
+            if (_pressedButton != null)
+            {
 
-                    var blockOccupied = Building.BuildingIsAbleToPlace(new Point(_mouseX, _mouseY), _dragDistancePoint, _pressedButton);
-                    
-                    Building.DrawBuilding(formGraphics, _pressedButton, _dragDistancePoint, _mouseX, _mouseY, blockOccupied);
-                }
+                var blockOccupied = Building.BuildingIsAbleToPlace(new Point(_mouseX, _mouseY), _dragDistancePoint, _pressedButton);
+                
+                Building.DrawPrebuildingImage(formGraphics, _pressedButton, _dragDistancePoint, new Point(_mouseX, _mouseY), blockOccupied);
+            } 
             
         DrawResourcesInfo(formGraphics, Size);
             DrawBuildingPick(formGraphics, Size);
