@@ -20,8 +20,7 @@ namespace game.World_map.Block
         };
 
         /*!
-         * \param inX Координата X для блока.
-         * \param inY Координата Y для блока.
+         * \param chunkPoint - Координаты X и Y в чанке. 
          * \param chunkGraphics Графика(область) на которой будет отрисован блок, по заданным координатам и подготовленным цветам блока.
          */
         public Grass(Point chunkPoint, Graphics chunkGraphics) : base(chunkPoint, GreenBrushList, chunkGraphics)

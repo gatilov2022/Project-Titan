@@ -19,60 +19,23 @@ namespace game.Player
 
         protected Dictionary<string, int> UsingResourcesDictionary = new Dictionary<string, int>
         {
-            {
-                "Energy", 0
-            },
-            {
-                "Water", 0
-            },
-            {
-                "Sand", 0
-            },
-            {
-                "Iron", 0
-            }
+            {"Energy", 0}, {"Water", 0}, {"Sand", 0}, {"Iron", 0}
         };
 
         protected Dictionary<string, int> ProducingResourcesDictionary = new Dictionary<string, int>
         {
-            {
-                "Energy", 0
-            },
-            {
-                "Water", 0
-            },
-            {
-                "Iron", 0
-            },
-            {
-                "Sand", 0
-            }
+            {"Energy", 0}, {"Water", 0}, {"Iron", 0}, {"Sand", 0}
         };
 
         private static Dictionary<string, Bitmap> _bitmapsDictionary = new Dictionary<string, Bitmap>
         {
-            {
-                "factoryButton", Properties.Resources.Factory_1lvl
-
-            },
-            {
-                "pumpButton", Properties.Resources.Pump_1lvl
-            },
-            {
-                "drillButton", Properties.Resources.Drill_Burner_1lvl
-            },
-            {
-                "gameGoalButton", Properties.Resources.goal_of_the_game
-            },
-            {
-                "warehouseButton", Properties.Resources.Warehouse
-            },
-            {
-                "sandQuarryButton", Properties.Resources.Sand_Quarry
-            },
-            {
-                "steamEngineButton", Properties.Resources.Steam_Eng_1lvl
-            }
+            {"factoryButton", Properties.Resources.Factory_1lvl},
+            {"pumpButton", Properties.Resources.Pump_1lvl},
+            {"drillButton", Properties.Resources.Drill_Burner_1lvl},
+            {"gameGoalButton", Properties.Resources.goal_of_the_game},
+            {"warehouseButton", Properties.Resources.Warehouse},
+            {"sandQuarryButton", Properties.Resources.Sand_Quarry},
+            {"steamEngineButton", Properties.Resources.Steam_Eng_1lvl}
         };
 
         protected int BuildingLevel = 0, BuildingMaxLevel;
@@ -80,7 +43,7 @@ namespace game.Player
         
         /*!
          * \brief Виртуальный метод, возвращающий количество ресурсов, необходимое для повышения уровня обьекта класса Building
-         * return Dictionary<string, int>
+         * \return Dictionary<string, int>
          */
         public virtual Dictionary<string, int> AmountResourcesForUpgrade()
         {
@@ -90,7 +53,7 @@ namespace game.Player
 
         /*!
          * \brief Устанавливает оьект класса Player для последющего взаимодейтсвия с ним
-         * param inPlayerObject - Объект класса Palayer
+         * \param inPlayerObject - Объект класса Palayer
          */
         public static void SetPlayerObj(Player inPlayerObject)
         {
@@ -99,7 +62,7 @@ namespace game.Player
 
         /*!
          * \brief Записывает в память обьект класса Building из сохраненного состояния игры
-         * param buildings - Сохраненный обьект класса Building
+         * \param buildings - Сохраненный обьект класса Building
          */
         public static void LoadBuildings(List<Building> buildings)
         {
@@ -108,7 +71,7 @@ namespace game.Player
 
         /*!
          * \brief Возвращает все созданные экземпляры класса Building для их последующего сохранения
-         * return List<Building>
+         * \return List<Building>
          */
         public static List<Building> GetBuildings()
         {
@@ -117,7 +80,7 @@ namespace game.Player
 
         /*!
          * \brief Проверяет, является ли обьект класса Building максимальным уровнем
-         * return bool
+         * \return bool
          */
         public bool IsMaxLevel()
         {
@@ -131,9 +94,9 @@ namespace game.Player
 
         /*!
          * \brief Проверяет, занята ли позиция на введённых координатах обьектом класса Building
-         * param mouseCoordinates - Координаты указателя мыши
-         * param mapDragCoordinates - Координаты сдвига карты
-         * return bool
+         * \param mouseCoordinates - Координаты указателя мыши
+         * \param mapDragCoordinates - Координаты сдвига карты
+         * \return bool
          */
         public static bool HasBuildingOnTheBlock(Point mouseCoordinates, Point mapDragCoordinates)
         {
@@ -147,10 +110,10 @@ namespace game.Player
         }
         /*!
          * \brief Возвращает обьект класса Building по заданным координатам или null
-         * param mouseCoordinates - Координаты указателя мыши
-         * param mapDragCoordinates - Координаты сдвига карты
-         * return Building
-         * return null
+         * \param mouseCoordinates - Координаты указателя мыши
+         * \param mapDragCoordinates - Координаты сдвига карты
+         * \return Building
+         * \return null
          */
         public static Building GetBuilding(Point mouseCoordinates, Point mapDragCoordinates)
         {
@@ -179,10 +142,10 @@ namespace game.Player
 
         /*!
          * \brief Проверяет, соблюдены ли условия для размещения обьекта класса Building на игровой карте
-         * param mouseCoordinates - Координаты указателя мыши
-         * param mapDrag - Координаты сдвига карты
-         * pressedButton - Текущее выбранное здание, условия раазмещения которого нужно проверить
-         * return bool
+         * \param mouseCoordinates - Координаты указателя мыши
+         * \param mapDrag - Координаты сдвига карты
+         * \pressedButton - Текущее выбранное здание, условия раазмещения которого нужно проверить
+         * \return bool
          */
         public static bool BuildingIsAbleToPlace(Point mouseCoordinates, Point mapDrag, Button pressedButton)
         {
@@ -216,8 +179,9 @@ namespace game.Player
 
         /*!
          * \brief Создаёт экземпляр одного из классов: Factory, Pump, Drill, Gamegoal, Warehouse, SandQuarry, SteamEngine
-         * param pressedButton - текущее выбранное здание, которое нужно разместить
-         * return bool
+         * \param pressedButton - текущее выбранное здание, которое нужно разместить
+         * \return true - если у игрока было достаточно ресурсов, что бы построить здание
+         * \return false - если у игрока не хватило ресурсов что бы построить здание
          */
         public static bool CreateBuilding(Button pressedButton)
         {
@@ -338,8 +302,8 @@ namespace game.Player
 
         /*!
          * \brief Отрисовывает все созданные здания
-         * param graphicsForm - графика формы FormGame
-         * param mapDrag - координаты сдвига карты 
+         * \param graphicsForm - графика формы FormGame
+         * \param mapDrag - координаты сдвига карты 
          */
         public static void DrawCreatedBuildings(Graphics graphicsForm, Point mapDrag)
         {
@@ -361,9 +325,9 @@ namespace game.Player
 
         /*!
          * \brief Размещает здание на игровой карте
-         * param mouseCoordinates - Координаты указателя мыши
-         * param pressedButton - Выбранное здание, которое нужно разместить
-         * param dragCoordinates - Координаты сдвига карты
+         * \param mouseCoordinates - Координаты указателя мыши
+         * \param pressedButton - Выбранное здание, которое нужно разместить
+         * \param dragCoordinates - Координаты сдвига карты
          */
         public void PlaceBuilding(Point mouseCoordinates, Button pressedButton, Point dragCoordinates)
         {
@@ -380,11 +344,11 @@ namespace game.Player
 
         /*!
          * \brief Рисует полупрозрачное здание на координатах указателя мыши в соответсвии с соблюдением условий размещения некоторого здания
-         * param graphicsForm - Графика форы FormGame
-         * param pressedButton - Текущее выбранное здание, которое нужно отрисовать
-         * param dragCoordinates - Координаты сдвига карты
-         * param mouseCoordinates - Координаты указателя мыши
-         * param buildingPlaceable - Соблюдены ли условия размещения выбранного здания
+         * \param graphicsForm - Графика форы FormGame
+         * \param pressedButton - Текущее выбранное здание, которое нужно отрисовать
+         * \param dragCoordinates - Координаты сдвига карты
+         * \param mouseCoordinates - Координаты указателя мыши
+         * \param buildingPlaceable - Соблюдены ли условия размещения выбранного здания
          */
         public static void DrawPrebuildingImage(Graphics graphicsForm, Button pressedButton, Point dragCoordinates,
             Point mouseCoordinates, bool buildingPlaceable)
