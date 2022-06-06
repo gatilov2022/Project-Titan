@@ -9,7 +9,7 @@ namespace game.World_map
      * Хранит в себе размер карты, игровые области(чанки).
      */
     [Serializable]
-    internal class Map
+    public class Map
     {
         private static List<Chunk> _chunks = new List<Chunk>();
         private static int _mapSize = 12;

@@ -1,0 +1,12 @@
+digraph "Иерархия классов. Графический вид."
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node0 [label="Form",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node0 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 [label="game.FormGame",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classgame_1_1_form_game.html",tooltip="Основное окно игры. Служит для отображения игрового поля, зданий, ресурсов."];
+  Node0 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="game.StartMenu",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classgame_1_1_start_menu.html",tooltip="Стартовое окно игры. Даёт выбор пользователю выйти из игры, загрузить сохранение или начать новую игр..."];
+}

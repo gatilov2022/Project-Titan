@@ -1,0 +1,120 @@
+\hypertarget{classgame_1_1_world__map_1_1_map}{}\doxysection{Класс game.\+World\+\_\+map.\+Map}
+\label{classgame_1_1_world__map_1_1_map}\index{game.World\_map.Map@{game.World\_map.Map}}
+
+
+Класс \mbox{\hyperlink{classgame_1_1_world__map_1_1_map}{Map}} служит созданию игровой области. Хранит в себе размер карты, игровые области(чанки).  
+
+
+\doxysubsection*{Открытые статические члены}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classgame_1_1_world__map_1_1_map_ae10a263680a35ca8d37fae6f7aff3b82}\label{classgame_1_1_world__map_1_1_map_ae10a263680a35ca8d37fae6f7aff3b82}} 
+static void {\bfseries Load\+Chunks} (List$<$ \mbox{\hyperlink{classgame_1_1_world__map_1_1_chunk}{Chunk}} $>$ deserealized\+Chunks)
+\begin{DoxyCompactList}\small\item\em Метод для загрузки всех чанков из сохранения. \end{DoxyCompactList}\item 
+static List$<$ \mbox{\hyperlink{classgame_1_1_world__map_1_1_chunk}{Chunk}} $>$ \mbox{\hyperlink{classgame_1_1_world__map_1_1_map_a4b924a553e26c64e669361f3e9562947}{Get\+Chunks}} ()
+\begin{DoxyCompactList}\small\item\em Метод для получения всех чанков. Полсе чего они сохраняются. \end{DoxyCompactList}\item 
+static string \mbox{\hyperlink{classgame_1_1_world__map_1_1_map_a22f87e7f0bceeec0d3bf548191b507aa}{Get\+Block\+Type}} (Point coordinates)
+\begin{DoxyCompactList}\small\item\em Метод для возращения типа блока. Ищет тип блока от координат курсора. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgame_1_1_world__map_1_1_map_a0a6d676b92af5d57e22312299554cffb}\label{classgame_1_1_world__map_1_1_map_a0a6d676b92af5d57e22312299554cffb}} 
+static void {\bfseries Generate\+Map} ()
+\begin{DoxyCompactList}\small\item\em Генерация карты. Генерирует по заданному размеру. Карта имеет вид квадрата. \end{DoxyCompactList}\item 
+static int \mbox{\hyperlink{classgame_1_1_world__map_1_1_map_aebd8ed190ff3b41526dca5ac7c90b672}{Get\+Map\+Size}} ()
+\item 
+static void \mbox{\hyperlink{classgame_1_1_world__map_1_1_map_a73a670d25269232b540a6005c0937d2a}{Draw\+Map}} (Graphics graphics\+Form, Point drag\+Delta)
+\begin{DoxyCompactList}\small\item\em Отрисовка всех блоков на карте. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Класс \mbox{\hyperlink{classgame_1_1_world__map_1_1_map}{Map}} служит созданию игровой области. Хранит в себе размер карты, игровые области(чанки). 
+
+\doxysubsection{Методы}
+\mbox{\Hypertarget{classgame_1_1_world__map_1_1_map_a73a670d25269232b540a6005c0937d2a}\label{classgame_1_1_world__map_1_1_map_a73a670d25269232b540a6005c0937d2a}} 
+\index{game.World\_map.Map@{game.World\_map.Map}!DrawMap@{DrawMap}}
+\index{DrawMap@{DrawMap}!game.World\_map.Map@{game.World\_map.Map}}
+\doxysubsubsection{\texorpdfstring{DrawMap()}{DrawMap()}}
+{\footnotesize\ttfamily static void game.\+World\+\_\+map.\+Map.\+Draw\+Map (\begin{DoxyParamCaption}\item[{Graphics}]{graphics\+Form,  }\item[{Point}]{drag\+Delta }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Отрисовка всех блоков на карте. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em graphics\+Form} & Область окна , на котором будет отображена карта. \\
+\hline
+{\em drag\+Delta} & Координаты изменения от первичного располежения карты \\
+\hline
+\end{DoxyParams}
+Граф вызовов\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classgame_1_1_world__map_1_1_map_a73a670d25269232b540a6005c0937d2a_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classgame_1_1_world__map_1_1_map_a22f87e7f0bceeec0d3bf548191b507aa}\label{classgame_1_1_world__map_1_1_map_a22f87e7f0bceeec0d3bf548191b507aa}} 
+\index{game.World\_map.Map@{game.World\_map.Map}!GetBlockType@{GetBlockType}}
+\index{GetBlockType@{GetBlockType}!game.World\_map.Map@{game.World\_map.Map}}
+\doxysubsubsection{\texorpdfstring{GetBlockType()}{GetBlockType()}}
+{\footnotesize\ttfamily static string game.\+World\+\_\+map.\+Map.\+Get\+Block\+Type (\begin{DoxyParamCaption}\item[{Point}]{coordinates }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Метод для возращения типа блока. Ищет тип блока от координат курсора. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em coordinates} & Координаты для поиска типа блока. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+\+\_\+chunks\mbox{[}chunk\+Number\mbox{]}.Get\+Block\+By\+Number(block\+Number) Тип блока. 
+\end{DoxyReturn}
+Граф вызовов\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classgame_1_1_world__map_1_1_map_a22f87e7f0bceeec0d3bf548191b507aa_cgraph}
+\end{center}
+\end{figure}
+Граф вызова функции\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classgame_1_1_world__map_1_1_map_a22f87e7f0bceeec0d3bf548191b507aa_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classgame_1_1_world__map_1_1_map_a4b924a553e26c64e669361f3e9562947}\label{classgame_1_1_world__map_1_1_map_a4b924a553e26c64e669361f3e9562947}} 
+\index{game.World\_map.Map@{game.World\_map.Map}!GetChunks@{GetChunks}}
+\index{GetChunks@{GetChunks}!game.World\_map.Map@{game.World\_map.Map}}
+\doxysubsubsection{\texorpdfstring{GetChunks()}{GetChunks()}}
+{\footnotesize\ttfamily static List$<$ \mbox{\hyperlink{classgame_1_1_world__map_1_1_chunk}{Chunk}} $>$ game.\+World\+\_\+map.\+Map.\+Get\+Chunks (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Метод для получения всех чанков. Полсе чего они сохраняются. 
+
+\begin{DoxyReturn}{Возвращает}
+\+\_\+chunks Все чанки карты. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classgame_1_1_world__map_1_1_map_aebd8ed190ff3b41526dca5ac7c90b672}\label{classgame_1_1_world__map_1_1_map_aebd8ed190ff3b41526dca5ac7c90b672}} 
+\index{game.World\_map.Map@{game.World\_map.Map}!GetMapSize@{GetMapSize}}
+\index{GetMapSize@{GetMapSize}!game.World\_map.Map@{game.World\_map.Map}}
+\doxysubsubsection{\texorpdfstring{GetMapSize()}{GetMapSize()}}
+{\footnotesize\ttfamily static int game.\+World\+\_\+map.\+Map.\+Get\+Map\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\begin{DoxyReturn}{Возвращает}
+Возращает размер карты. 
+\end{DoxyReturn}
+Граф вызова функции\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classgame_1_1_world__map_1_1_map_aebd8ed190ff3b41526dca5ac7c90b672_icgraph}
+\end{center}
+\end{figure}
+
+
+Объявления и описания членов класса находятся в файле\+:\begin{DoxyCompactItemize}
+\item 
+game/\+World\+\_\+map/Map.\+cs\end{DoxyCompactItemize}

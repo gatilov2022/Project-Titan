@@ -9,7 +9,7 @@ namespace game.World_map.Block
      * Пресдавляет собой шаблон для создания блока типа Sand, с соответсвующими цветами.
      */
     [Serializable]
-    internal class Sand : Sprites
+    public class Sand : Sprites
     {
         private static readonly List<SolidBrush> YellowBrushList = new List<SolidBrush>() 
         {

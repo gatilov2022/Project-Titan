@@ -1,0 +1,10 @@
+<map id="game.FormGame.FormGame" name="game.FormGame.FormGame">
+<area shape="rect" id="node1" title=" " alt="" coords="5,195,197,222"/>
+<area shape="rect" id="node2" href="$classgame_1_1_world__map_1_1_sprites.html#ac46ebf6517a557506785b26fe61066cf" title=" " alt="" coords="249,5,443,47"/>
+<area shape="rect" id="node3" href="$classgame_1_1_world__map_1_1_sprites.html#ab0e556518af360593bba87f55368448a" title=" " alt="" coords="249,71,443,112"/>
+<area shape="rect" id="node4" href="$classgame_1_1_player_1_1_player.html#a823dbada51a4f0037a09b868ceac7ed7" title=" " alt="" coords="257,137,435,163"/>
+<area shape="rect" id="node5" href="$classgame_1_1_player_1_1_building.html#aad7a0e7240bc42e7f7bd68ce68a9c0f4" title="Устанавливает оьект класса Player для последющего взаимодейтсвия с ним param inPlayerObject &#45; Объект ..." alt="" coords="261,188,431,229"/>
+<area shape="rect" id="node6" href="$classgame_1_1_resources_info.html#a57a51b1de9057409924e7b5cbd643279" title="Задает пользователя при старте игры." alt="" coords="245,253,447,295"/>
+<area shape="rect" id="node7" href="$classgame_1_1_world__map_1_1_sprites.html#a660ba3ad0a11d66e2ad4ed449292ffe6" title=" " alt="" coords="249,319,443,360"/>
+<area shape="rect" id="node8" href="$classgame_1_1_world__map_1_1_sprites.html#ae173cd4c8ee50cee0737f749ddae0f45" title=" " alt="" coords="249,384,443,425"/>
+</map>

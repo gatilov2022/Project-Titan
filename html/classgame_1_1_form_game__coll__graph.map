@@ -1,0 +1,5 @@
+<map id="game.FormGame" name="game.FormGame">
+<area shape="rect" id="node1" title="Основное окно игры. Служит для отображения игрового поля, зданий, ресурсов." alt="" coords="11,183,134,209"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,5,57,32"/>
+<area shape="rect" id="node3" title=" " alt="" coords="82,5,149,32"/>
+</map>

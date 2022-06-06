@@ -9,6 +9,10 @@ using game.World_map;
 
 namespace game
 {
+    /*!
+     * \brief Стартовое окно игры.
+     * Даёт выбор пользователю выйти из игры, загрузить сохранение или начать новую игру.
+     */
     public partial class StartMenu : Form
     {
         FormGame formGame;

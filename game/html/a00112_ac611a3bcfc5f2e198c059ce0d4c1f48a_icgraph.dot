@@ -1,0 +1,54 @@
+digraph "game.Player.Player.GetAmountOfResources"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="game.Player.Player.GetAmount\lOfResources",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Метод возращающий кол-во ресурса."];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="game.ResourcesInfo.DrawResourceInfo",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00156.html#ade33a55cd0faf95dd4c1096bf3775d89",tooltip="Вывод кол-ва ресурсов на графику формы."];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="game.Player.Buildings.Drill.\lIsResourcesEnough",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00120.html#ab73a7b72cb441e5dbb576b699eda2a43",tooltip="Проверка, хватает ли ресурсов для постройки."];
+  Node3 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="game.Player.Building.Building\lIsAbleToPlace",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00116.html#abe6f874c0d6db9c96d10ffa751970e83",tooltip="Проверяет, соблюдены ли условия для размещения обьекта класса Building на игровой карте param mouseCo..."];
+  Node3 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="game.Player.Building.Create\lBuilding",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00116.html#a628d8c6d11231b2f9d0839d781605b15",tooltip="Создаёт экземпляр одного из классов: Factory, Pump, Drill, Gamegoal, Warehouse, SandQuarry,..."];
+  Node5 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="game.Player.Building.Place\lBuilding",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00116.html#ac7ab27e3ad701936e85fd6964ac23d04",tooltip="Размещает здание на игровой карте param mouseCoordinates - Координаты указателя мыши param pressedBut..."];
+  Node3 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="game.Player.Buildings.Drill.\lUpgradeBuilding",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00120.html#a5df145bbb02fe1ef2db7a12d77e86542",tooltip="Метод для проверки возможности улучшения здания. Если уровень максимальный или ресурсов не хватает,..."];
+  Node1 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="game.Player.Buildings.Factory.\lIsResourcesEnough",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00124.html#af7f42a39401dc11f5d68966db1a746d3",tooltip="Проверка, хватает ли ресурсов для постройки."];
+  Node8 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="game.Player.Buildings.Factory.\lUpgradeBuilding",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00124.html#a1e4e2ed3af2a76f3cb7e691da9783662",tooltip="Метод для проверки возможности улучшения здания. Если уровень максимальный или ресурсов не хватает,..."];
+  Node1 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 [label="game.Player.Buildings.Gamegoal.\lIsResourcesEnough",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00128.html#af6b332c41127a8623d989e9e558f9bcf",tooltip="Проверка, хватает ли ресурсов для постройки."];
+  Node10 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node11 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 [label="game.Player.Pump.IsResources\lEnough",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00132.html#ab1be344f4641520069037280f0b74906",tooltip="Проверка, хватает ли ресурсов для постройки."];
+  Node11 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 -> Node12 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node12 [label="game.Player.Pump.Upgrade\lBuilding",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00132.html#af75a7133662b48d8eba2ee4dccb7c7dc",tooltip="Метод для проверки возможности улучшения здания. Если уровень максимальный или ресурсов не хватает,..."];
+  Node1 -> Node13 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node13 [label="game.Player.Buildings.Sand\lQuarry.IsResourcesEnough",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00136.html#ab463ebcfb4027d9d2cd4f7ff51a99583",tooltip="Проверка, хватает ли ресурсов для постройки."];
+  Node13 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node13 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node13 -> Node14 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node14 [label="game.Player.Buildings.Sand\lQuarry.UpgradeBuilding",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00136.html#aad51103bba68eae47653b34922c138e2",tooltip="Метод для проверки возможности улучшения здания. Если уровень максимальный или ресурсов не хватает,..."];
+  Node1 -> Node15 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node15 [label="game.Player.Buildings.Steam\lEngine.IsResourcesEnough",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00140.html#a1dff6a0cf5b95a5ee8162c6fdc354de9",tooltip="Класс SteamEngine служит для переработки воды в энергию."];
+  Node15 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node15 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node15 -> Node16 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node16 [label="game.Player.Buildings.Steam\lEngine.UpgradeBuilding",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00140.html#a0bf932f82fedb5d670b3ebe8d32c6b98",tooltip="Метод для проверки возможности улучшения здания. Если уровень максимальный или ресурсов не хватает,..."];
+  Node1 -> Node17 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node17 [label="game.Player.Buildings.Warehouse.\lIsResourcesEnough",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00144.html#a0720100305c67525163b02ac739481dd",tooltip="Проверка, хватает ли ресурсов для постройки."];
+  Node17 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node17 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node17 -> Node18 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node18 [label="game.Player.Buildings.Warehouse.\lUpgradeBuilding",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00144.html#a01c45a4c28ed4aab512e4fe67c0b5676",tooltip="Метод для проверки возможности улучшения здания. Если уровень максимальный или ресурсов не хватает,..."];
+  Node1 -> Node19 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node19 [label="game.Player.Building.Update\lResources",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00116.html#aaeebbb9fe21dea89f39493bd43dcb7b5",tooltip="Обновляет ресурсы игрока"];
+}

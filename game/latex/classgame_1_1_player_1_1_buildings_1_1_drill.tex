@@ -1,0 +1,97 @@
+\hypertarget{classgame_1_1_player_1_1_buildings_1_1_drill}{}\doxysection{Класс game.\+Player.\+Buildings.\+Drill}
+\label{classgame_1_1_player_1_1_buildings_1_1_drill}\index{game.Player.Buildings.Drill@{game.Player.Buildings.Drill}}
+
+
+Класс \mbox{\hyperlink{classgame_1_1_player_1_1_buildings_1_1_drill}{Drill}} служит для добычи железа в замен на энергию.  
+
+
+Граф наследования\+:game.\+Player.\+Buildings.\+Drill\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classgame_1_1_player_1_1_buildings_1_1_drill}
+\end{center}
+\end{figure}
+\doxysubsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+override Dictionary$<$ string, int $>$ \mbox{\hyperlink{classgame_1_1_player_1_1_buildings_1_1_drill_adedc1682e347ca02e012aa79bdbf6d78}{Amount\+Resources\+For\+Upgrade}} ()
+\begin{DoxyCompactList}\small\item\em Метод улучшает показатели здания. \end{DoxyCompactList}\item 
+override void \mbox{\hyperlink{classgame_1_1_player_1_1_buildings_1_1_drill_a5df145bbb02fe1ef2db7a12d77e86542}{Upgrade\+Building}} ()
+\begin{DoxyCompactList}\small\item\em Метод для проверки возможности улучшения здания. Если уровень максимальный или ресурсов не хватает, ничего не улучшится. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Открытые статические члены}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classgame_1_1_player_1_1_buildings_1_1_drill_af50f573ada498a027ce9af50bcec063d}\label{classgame_1_1_player_1_1_buildings_1_1_drill_af50f573ada498a027ce9af50bcec063d}} 
+static void {\bfseries Take\+Resources\+For\+Build} ()
+\begin{DoxyCompactList}\small\item\em Метод забирает ресурсу у игрока. В замен игрок получает добычу железа. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{classgame_1_1_player_1_1_buildings_1_1_drill_ab73a7b72cb441e5dbb576b699eda2a43}{Is\+Resources\+Enough}} ()
+\begin{DoxyCompactList}\small\item\em Проверка, хватает ли ресурсов для постройки. \end{DoxyCompactList}\item 
+static string \mbox{\hyperlink{classgame_1_1_player_1_1_buildings_1_1_drill_a1a2d8ddb4ed6a901f0683cabb262cad4}{Get\+Suitable\+Block}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Дополнительные унаследованные члены}
+
+
+\doxysubsection{Подробное описание}
+Класс \mbox{\hyperlink{classgame_1_1_player_1_1_buildings_1_1_drill}{Drill}} служит для добычи железа в замен на энергию. 
+
+\doxysubsection{Методы}
+\mbox{\Hypertarget{classgame_1_1_player_1_1_buildings_1_1_drill_adedc1682e347ca02e012aa79bdbf6d78}\label{classgame_1_1_player_1_1_buildings_1_1_drill_adedc1682e347ca02e012aa79bdbf6d78}} 
+\index{game.Player.Buildings.Drill@{game.Player.Buildings.Drill}!AmountResourcesForUpgrade@{AmountResourcesForUpgrade}}
+\index{AmountResourcesForUpgrade@{AmountResourcesForUpgrade}!game.Player.Buildings.Drill@{game.Player.Buildings.Drill}}
+\doxysubsubsection{\texorpdfstring{AmountResourcesForUpgrade()}{AmountResourcesForUpgrade()}}
+{\footnotesize\ttfamily override Dictionary$<$ string, int $>$ game.\+Player.\+Buildings.\+Drill.\+Amount\+Resources\+For\+Upgrade (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Метод улучшает показатели здания. 
+
+\begin{DoxyReturn}{Возвращает}
+ret\+Dictionary Новые показатели здания при улучшении. 
+\end{DoxyReturn}
+
+
+Переопределяет метод предка \mbox{\hyperlink{classgame_1_1_player_1_1_building_a08bdbd0d010bb589b0409b105e49aca6}{game.\+Player.\+Building}}.
+
+\mbox{\Hypertarget{classgame_1_1_player_1_1_buildings_1_1_drill_a1a2d8ddb4ed6a901f0683cabb262cad4}\label{classgame_1_1_player_1_1_buildings_1_1_drill_a1a2d8ddb4ed6a901f0683cabb262cad4}} 
+\index{game.Player.Buildings.Drill@{game.Player.Buildings.Drill}!GetSuitableBlock@{GetSuitableBlock}}
+\index{GetSuitableBlock@{GetSuitableBlock}!game.Player.Buildings.Drill@{game.Player.Buildings.Drill}}
+\doxysubsubsection{\texorpdfstring{GetSuitableBlock()}{GetSuitableBlock()}}
+{\footnotesize\ttfamily static string game.\+Player.\+Buildings.\+Drill.\+Get\+Suitable\+Block (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\begin{DoxyReturn}{Возвращает}
+\+\_\+suitable\+Block Тип блока на котором может стоять здание. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classgame_1_1_player_1_1_buildings_1_1_drill_ab73a7b72cb441e5dbb576b699eda2a43}\label{classgame_1_1_player_1_1_buildings_1_1_drill_ab73a7b72cb441e5dbb576b699eda2a43}} 
+\index{game.Player.Buildings.Drill@{game.Player.Buildings.Drill}!IsResourcesEnough@{IsResourcesEnough}}
+\index{IsResourcesEnough@{IsResourcesEnough}!game.Player.Buildings.Drill@{game.Player.Buildings.Drill}}
+\doxysubsubsection{\texorpdfstring{IsResourcesEnough()}{IsResourcesEnough()}}
+{\footnotesize\ttfamily static bool game.\+Player.\+Buildings.\+Drill.\+Is\+Resources\+Enough (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Проверка, хватает ли ресурсов для постройки. 
+
+\begin{DoxyReturn}{Возвращает}
+false Если не хватает ресурсов. 
+
+true Если хватает ресурсов. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classgame_1_1_player_1_1_buildings_1_1_drill_a5df145bbb02fe1ef2db7a12d77e86542}\label{classgame_1_1_player_1_1_buildings_1_1_drill_a5df145bbb02fe1ef2db7a12d77e86542}} 
+\index{game.Player.Buildings.Drill@{game.Player.Buildings.Drill}!UpgradeBuilding@{UpgradeBuilding}}
+\index{UpgradeBuilding@{UpgradeBuilding}!game.Player.Buildings.Drill@{game.Player.Buildings.Drill}}
+\doxysubsubsection{\texorpdfstring{UpgradeBuilding()}{UpgradeBuilding()}}
+{\footnotesize\ttfamily override void game.\+Player.\+Buildings.\+Drill.\+Upgrade\+Building (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Метод для проверки возможности улучшения здания. Если уровень максимальный или ресурсов не хватает, ничего не улучшится. 
+
+
+
+Переопределяет метод предка \mbox{\hyperlink{classgame_1_1_player_1_1_building_a6307afe93f5f7a54fca9e03e74f13a7f}{game.\+Player.\+Building}}.
+
+
+
+Объявления и описания членов класса находятся в файле\+:\begin{DoxyCompactItemize}
+\item 
+Player/\+Buildings/Drill.\+cs\end{DoxyCompactItemize}

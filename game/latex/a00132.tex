@@ -1,0 +1,107 @@
+\hypertarget{a00132}{}\doxysection{Класс game.\+Player.\+Pump}
+\label{a00132}\index{game.Player.Pump@{game.Player.Pump}}
+
+
+Класс \mbox{\hyperlink{a00132}{Pump}} служит для добычи воды в замен на энергию.  
+
+
+
+
+Граф наследования\+:game.\+Player.\+Pump\+:
+% FIG 0
+
+
+Граф связей класса game.\+Player.\+Pump\+:
+% FIG 1
+\doxysubsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+override Dictionary$<$ string, int $>$ \mbox{\hyperlink{a00132_a96b41558cd5d1984d93d93bca908fc48}{Amount\+Resources\+For\+Upgrade}} ()
+\begin{DoxyCompactList}\small\item\em Метод улучшает показатели здания. \end{DoxyCompactList}\item 
+override void \mbox{\hyperlink{a00132_af75a7133662b48d8eba2ee4dccb7c7dc}{Upgrade\+Building}} ()
+\begin{DoxyCompactList}\small\item\em Метод для проверки возможности улучшения здания. Если уровень максимальный или ресурсов не хватает, ничего не улучшится. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Открытые статические члены}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{a00132_a517598394f9c3cd8f196345cc98c7add}\label{a00132_a517598394f9c3cd8f196345cc98c7add}} 
+static void {\bfseries Take\+Resources\+For\+Build} ()
+\begin{DoxyCompactList}\small\item\em Метод забирает ресурсу у игрока. В замен строится здание и начинается добыча воды взамен на энергию. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{a00132_ab1be344f4641520069037280f0b74906}{Is\+Resources\+Enough}} ()
+\begin{DoxyCompactList}\small\item\em Проверка, хватает ли ресурсов для постройки. \end{DoxyCompactList}\item 
+static string \mbox{\hyperlink{a00132_a08847c5ac2df8c718233e57409f07e4c}{Get\+Suitable\+Block}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Дополнительные унаследованные члены}
+
+
+\doxysubsection{Подробное описание}
+Класс \mbox{\hyperlink{a00132}{Pump}} служит для добычи воды в замен на энергию. 
+
+\doxysubsection{Методы}
+\mbox{\Hypertarget{a00132_a96b41558cd5d1984d93d93bca908fc48}\label{a00132_a96b41558cd5d1984d93d93bca908fc48}} 
+\index{game.Player.Pump@{game.Player.Pump}!AmountResourcesForUpgrade@{AmountResourcesForUpgrade}}
+\index{AmountResourcesForUpgrade@{AmountResourcesForUpgrade}!game.Player.Pump@{game.Player.Pump}}
+\doxysubsubsection{\texorpdfstring{AmountResourcesForUpgrade()}{AmountResourcesForUpgrade()}}
+{\footnotesize\ttfamily override Dictionary$<$ string, int $>$ game.\+Player.\+Pump.\+Amount\+Resources\+For\+Upgrade (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Метод улучшает показатели здания. 
+
+\begin{DoxyReturn}{Возвращает}
+ret\+Dictionary Новые показатели здания при улучшении. 
+\end{DoxyReturn}
+
+
+Переопределяет метод предка \mbox{\hyperlink{a00116_a08bdbd0d010bb589b0409b105e49aca6}{game.\+Player.\+Building}}.
+
+\mbox{\Hypertarget{a00132_a08847c5ac2df8c718233e57409f07e4c}\label{a00132_a08847c5ac2df8c718233e57409f07e4c}} 
+\index{game.Player.Pump@{game.Player.Pump}!GetSuitableBlock@{GetSuitableBlock}}
+\index{GetSuitableBlock@{GetSuitableBlock}!game.Player.Pump@{game.Player.Pump}}
+\doxysubsubsection{\texorpdfstring{GetSuitableBlock()}{GetSuitableBlock()}}
+{\footnotesize\ttfamily static string game.\+Player.\+Pump.\+Get\+Suitable\+Block (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\begin{DoxyReturn}{Возвращает}
+\+\_\+suitable\+Block Тип блока на котором может стоять здание. 
+\end{DoxyReturn}
+Граф вызова функции\+:
+% FIG 2
+\mbox{\Hypertarget{a00132_ab1be344f4641520069037280f0b74906}\label{a00132_ab1be344f4641520069037280f0b74906}} 
+\index{game.Player.Pump@{game.Player.Pump}!IsResourcesEnough@{IsResourcesEnough}}
+\index{IsResourcesEnough@{IsResourcesEnough}!game.Player.Pump@{game.Player.Pump}}
+\doxysubsubsection{\texorpdfstring{IsResourcesEnough()}{IsResourcesEnough()}}
+{\footnotesize\ttfamily static bool game.\+Player.\+Pump.\+Is\+Resources\+Enough (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Проверка, хватает ли ресурсов для постройки. 
+
+\begin{DoxyReturn}{Возвращает}
+false Если не хватает ресурсов. 
+
+true Если хватает ресурсов. 
+\end{DoxyReturn}
+Граф вызовов\+:
+% FIG 3
+Граф вызова функции\+:
+% FIG 4
+\mbox{\Hypertarget{a00132_af75a7133662b48d8eba2ee4dccb7c7dc}\label{a00132_af75a7133662b48d8eba2ee4dccb7c7dc}} 
+\index{game.Player.Pump@{game.Player.Pump}!UpgradeBuilding@{UpgradeBuilding}}
+\index{UpgradeBuilding@{UpgradeBuilding}!game.Player.Pump@{game.Player.Pump}}
+\doxysubsubsection{\texorpdfstring{UpgradeBuilding()}{UpgradeBuilding()}}
+{\footnotesize\ttfamily override void game.\+Player.\+Pump.\+Upgrade\+Building (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Метод для проверки возможности улучшения здания. Если уровень максимальный или ресурсов не хватает, ничего не улучшится. 
+
+
+
+Переопределяет метод предка \mbox{\hyperlink{a00116_a6307afe93f5f7a54fca9e03e74f13a7f}{game.\+Player.\+Building}}.
+
+Граф вызовов\+:
+% FIG 5
+
+
+Объявления и описания членов класса находятся в файле\+:\begin{DoxyCompactItemize}
+\item 
+Player/\+Buildings/Pump.\+cs\end{DoxyCompactItemize}

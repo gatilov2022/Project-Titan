@@ -9,7 +9,7 @@ namespace game.World_map.Block
      * Пресдавляет собой шаблон для создания блока типа Ore, с соответсвующими цветами.
      */
     [Serializable]
-    internal class Ore : Sprites
+    public class Ore : Sprites
     {
         private static readonly List<SolidBrush> OreBrushList = new List<SolidBrush>() 
         { 

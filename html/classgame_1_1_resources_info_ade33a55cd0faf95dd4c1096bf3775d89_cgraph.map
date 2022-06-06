@@ -1,0 +1,4 @@
+<map id="game.ResourcesInfo.DrawResourceInfo" name="game.ResourcesInfo.DrawResourceInfo">
+<area shape="rect" id="node1" title="Вывод кол&#45;ва ресурсов на графику формы." alt="" coords="5,13,253,39"/>
+<area shape="rect" id="node2" href="$classgame_1_1_player_1_1_player.html#ac611a3bcfc5f2e198c059ce0d4c1f48a" title="Метод возращающий кол&#45;во ресурса." alt="" coords="301,5,508,47"/>
+</map>

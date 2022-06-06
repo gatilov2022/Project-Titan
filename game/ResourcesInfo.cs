@@ -7,7 +7,7 @@ namespace game
      * \brief Класс для вывода информации по ресурсам.
      * Выводит кол-во ресурсов, их увеличение или уменьшение.
      */
-    internal class ResourcesInfo
+    public class ResourcesInfo
     {
         private static Player.Player _playerObject;
         private readonly string _resourceName;

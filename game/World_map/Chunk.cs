@@ -10,7 +10,7 @@ namespace game.World_map
      * Так же хранит в себе типы блоков.
      */
     [Serializable]
-    internal class Chunk
+    public class Chunk
     {
         private const int ChunkSize = 16;
         private static readonly int SpritesSize = Sprites.GetSpritesSize();

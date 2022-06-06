@@ -1,0 +1,184 @@
+\hypertarget{a00108}{}\doxysection{Класс game.\+World\+\_\+map.\+Sprites}
+\label{a00108}\index{game.World\_map.Sprites@{game.World\_map.Sprites}}
+
+
+Класс \mbox{\hyperlink{a00108}{Sprites}} хранит в себе параметры изображения. Он задаёт размер блоков, зданий, кол-\/во пикселей в блоке.  
+
+
+
+
+Граф наследования\+:game.\+World\+\_\+map.\+Sprites\+:
+% FIG 0
+\doxysubsection*{Открытые статические члены}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{a00108_ae173cd4c8ee50cee0737f749ddae0f45}{Set\+Sprites\+Min\+Size}} (int min\+Size)
+\item 
+static int \mbox{\hyperlink{a00108_aba01e4c6ed309773f486bb0acb918c44}{Get\+Sprites\+Min\+Size}} ()
+\item 
+static void \mbox{\hyperlink{a00108_a660ba3ad0a11d66e2ad4ed449292ffe6}{Set\+Sprites\+Max\+Size}} (int max\+Size)
+\item 
+static int \mbox{\hyperlink{a00108_a0de7e60c51f16feb4199280b4695bfd2}{Get\+Sprites\+Max\+Size}} ()
+\item 
+static int \mbox{\hyperlink{a00108_ac46ebf6517a557506785b26fe61066cf}{Get\+Pixel\+Count}} ()
+\item 
+static int \mbox{\hyperlink{a00108_ab0e556518af360593bba87f55368448a}{Get\+Sprites\+Size}} ()
+\item 
+\mbox{\Hypertarget{a00108_a5d8b3dca368e3dcebec26068e99352b4}\label{a00108_a5d8b3dca368e3dcebec26068e99352b4}} 
+static void {\bfseries Increase\+Size} (int value)
+\begin{DoxyCompactList}\small\item\em Меняет размер спрайта(увеличивает). Если увеличить спрайт получится, то размер спрайта увеличивается. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{a00108_a7859e08bdc7f5c525c8d0ec173043637}\label{a00108_a7859e08bdc7f5c525c8d0ec173043637}} 
+static void {\bfseries Decrease\+Size} (int value)
+\begin{DoxyCompactList}\small\item\em Меняет размер спрайта(уменьшает). Если уменьшит спрайт получится, то размер спрайта увеличивается. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Защищенные члены}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{a00108_a7692115e7be47e39a43dd4e516f29e60}{Sprites}} (Point chunk\+Point, List$<$ Solid\+Brush $>$ brush\+List, Graphics chunk\+Graphics)
+\begin{DoxyCompactList}\small\item\em Создаёт блоки карты. Генерирует цвета блока и отрисовывает блок на чанке. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Защищенные статические члены}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{a00108_a571810d6ef4bc4b695c9391964a4aba0}{Draw\+\_\+sprite}} (Point chunk\+Point, List$<$ Solid\+Brush $>$ texture, Graphics chunk\+Graphics)
+\begin{DoxyCompactList}\small\item\em Отрисовывет блок на карте. \end{DoxyCompactList}\item 
+static List$<$ Solid\+Brush $>$ \mbox{\hyperlink{a00108_a0b71ffbbd9fbbcc39a3e1be7d0c43165}{Generate\+\_\+texture}} (List$<$ Solid\+Brush $>$ brush\+\_\+list)
+\begin{DoxyCompactList}\small\item\em Генерируемые цвета блоков. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Класс \mbox{\hyperlink{a00108}{Sprites}} хранит в себе параметры изображения. Он задаёт размер блоков, зданий, кол-\/во пикселей в блоке. 
+
+\doxysubsection{Конструктор(ы)}
+\mbox{\Hypertarget{a00108_a7692115e7be47e39a43dd4e516f29e60}\label{a00108_a7692115e7be47e39a43dd4e516f29e60}} 
+\index{game.World\_map.Sprites@{game.World\_map.Sprites}!Sprites@{Sprites}}
+\index{Sprites@{Sprites}!game.World\_map.Sprites@{game.World\_map.Sprites}}
+\doxysubsubsection{\texorpdfstring{Sprites()}{Sprites()}}
+{\footnotesize\ttfamily game.\+World\+\_\+map.\+Sprites.\+Sprites (\begin{DoxyParamCaption}\item[{Point}]{chunk\+Point,  }\item[{List$<$ Solid\+Brush $>$}]{brush\+List,  }\item[{Graphics}]{chunk\+Graphics }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Создаёт блоки карты. Генерирует цвета блока и отрисовывает блок на чанке. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em inX} & Координата Х у блока \\
+\hline
+{\em inY} & Координата Y у блока \\
+\hline
+{\em brush\+List} & Массив цветов блока. \\
+\hline
+{\em chunk\+Graphics} & Графика чанка на которой отрисовываются блоки. \\
+\hline
+\end{DoxyParams}
+Граф вызовов\+:
+% FIG 1
+
+
+\doxysubsection{Методы}
+\mbox{\Hypertarget{a00108_a571810d6ef4bc4b695c9391964a4aba0}\label{a00108_a571810d6ef4bc4b695c9391964a4aba0}} 
+\index{game.World\_map.Sprites@{game.World\_map.Sprites}!Draw\_sprite@{Draw\_sprite}}
+\index{Draw\_sprite@{Draw\_sprite}!game.World\_map.Sprites@{game.World\_map.Sprites}}
+\doxysubsubsection{\texorpdfstring{Draw\_sprite()}{Draw\_sprite()}}
+{\footnotesize\ttfamily static void game.\+World\+\_\+map.\+Sprites.\+Draw\+\_\+sprite (\begin{DoxyParamCaption}\item[{Point}]{chunk\+Point,  }\item[{List$<$ Solid\+Brush $>$}]{texture,  }\item[{Graphics}]{chunk\+Graphics }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+Отрисовывет блок на карте. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em x} & Координата Х у блока \\
+\hline
+{\em y} & Координата Y у блока \\
+\hline
+{\em texture} & Массив цветов каждого пикселя блока. \\
+\hline
+{\em chunk\+Graphics} & Графика чанка на которой отрисовываются блоки. \\
+\hline
+\end{DoxyParams}
+Граф вызова функции\+:
+% FIG 2
+\mbox{\Hypertarget{a00108_a0b71ffbbd9fbbcc39a3e1be7d0c43165}\label{a00108_a0b71ffbbd9fbbcc39a3e1be7d0c43165}} 
+\index{game.World\_map.Sprites@{game.World\_map.Sprites}!Generate\_texture@{Generate\_texture}}
+\index{Generate\_texture@{Generate\_texture}!game.World\_map.Sprites@{game.World\_map.Sprites}}
+\doxysubsubsection{\texorpdfstring{Generate\_texture()}{Generate\_texture()}}
+{\footnotesize\ttfamily static List$<$ Solid\+Brush $>$ game.\+World\+\_\+map.\+Sprites.\+Generate\+\_\+texture (\begin{DoxyParamCaption}\item[{List$<$ Solid\+Brush $>$}]{brush\+\_\+list }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+Генерируемые цвета блоков. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em brush\+\_\+list} & Цвета из которых будет сгенерирован новый массив. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+texture\+Block Новый массив из цветов блока. 
+\end{DoxyReturn}
+Граф вызова функции\+:
+% FIG 3
+\mbox{\Hypertarget{a00108_ac46ebf6517a557506785b26fe61066cf}\label{a00108_ac46ebf6517a557506785b26fe61066cf}} 
+\index{game.World\_map.Sprites@{game.World\_map.Sprites}!GetPixelCount@{GetPixelCount}}
+\index{GetPixelCount@{GetPixelCount}!game.World\_map.Sprites@{game.World\_map.Sprites}}
+\doxysubsubsection{\texorpdfstring{GetPixelCount()}{GetPixelCount()}}
+{\footnotesize\ttfamily static int game.\+World\+\_\+map.\+Sprites.\+Get\+Pixel\+Count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\begin{DoxyReturn}{Возвращает}
+Pixel\+Count Кол-\/во пискелей в спрайте. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{a00108_a0de7e60c51f16feb4199280b4695bfd2}\label{a00108_a0de7e60c51f16feb4199280b4695bfd2}} 
+\index{game.World\_map.Sprites@{game.World\_map.Sprites}!GetSpritesMaxSize@{GetSpritesMaxSize}}
+\index{GetSpritesMaxSize@{GetSpritesMaxSize}!game.World\_map.Sprites@{game.World\_map.Sprites}}
+\doxysubsubsection{\texorpdfstring{GetSpritesMaxSize()}{GetSpritesMaxSize()}}
+{\footnotesize\ttfamily static int game.\+World\+\_\+map.\+Sprites.\+Get\+Sprites\+Max\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\begin{DoxyReturn}{Возвращает}
+\+\_\+max\+Sprite\+Size Максимальный размер спрайта. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{a00108_aba01e4c6ed309773f486bb0acb918c44}\label{a00108_aba01e4c6ed309773f486bb0acb918c44}} 
+\index{game.World\_map.Sprites@{game.World\_map.Sprites}!GetSpritesMinSize@{GetSpritesMinSize}}
+\index{GetSpritesMinSize@{GetSpritesMinSize}!game.World\_map.Sprites@{game.World\_map.Sprites}}
+\doxysubsubsection{\texorpdfstring{GetSpritesMinSize()}{GetSpritesMinSize()}}
+{\footnotesize\ttfamily static int game.\+World\+\_\+map.\+Sprites.\+Get\+Sprites\+Min\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\begin{DoxyReturn}{Возвращает}
+\+\_\+min\+Sprite\+Size Минимальный размер спрайта. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{a00108_ab0e556518af360593bba87f55368448a}\label{a00108_ab0e556518af360593bba87f55368448a}} 
+\index{game.World\_map.Sprites@{game.World\_map.Sprites}!GetSpritesSize@{GetSpritesSize}}
+\index{GetSpritesSize@{GetSpritesSize}!game.World\_map.Sprites@{game.World\_map.Sprites}}
+\doxysubsubsection{\texorpdfstring{GetSpritesSize()}{GetSpritesSize()}}
+{\footnotesize\ttfamily static int game.\+World\+\_\+map.\+Sprites.\+Get\+Sprites\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\begin{DoxyReturn}{Возвращает}
+\+\_\+size Размер спрайта 
+\end{DoxyReturn}
+Граф вызова функции\+:
+% FIG 4
+\mbox{\Hypertarget{a00108_a660ba3ad0a11d66e2ad4ed449292ffe6}\label{a00108_a660ba3ad0a11d66e2ad4ed449292ffe6}} 
+\index{game.World\_map.Sprites@{game.World\_map.Sprites}!SetSpritesMaxSize@{SetSpritesMaxSize}}
+\index{SetSpritesMaxSize@{SetSpritesMaxSize}!game.World\_map.Sprites@{game.World\_map.Sprites}}
+\doxysubsubsection{\texorpdfstring{SetSpritesMaxSize()}{SetSpritesMaxSize()}}
+{\footnotesize\ttfamily static void game.\+World\+\_\+map.\+Sprites.\+Set\+Sprites\+Max\+Size (\begin{DoxyParamCaption}\item[{int}]{max\+Size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+\begin{DoxyParams}{Аргументы}
+{\em max\+Size} & Максимальный размер спрайта. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{a00108_ae173cd4c8ee50cee0737f749ddae0f45}\label{a00108_ae173cd4c8ee50cee0737f749ddae0f45}} 
+\index{game.World\_map.Sprites@{game.World\_map.Sprites}!SetSpritesMinSize@{SetSpritesMinSize}}
+\index{SetSpritesMinSize@{SetSpritesMinSize}!game.World\_map.Sprites@{game.World\_map.Sprites}}
+\doxysubsubsection{\texorpdfstring{SetSpritesMinSize()}{SetSpritesMinSize()}}
+{\footnotesize\ttfamily static void game.\+World\+\_\+map.\+Sprites.\+Set\+Sprites\+Min\+Size (\begin{DoxyParamCaption}\item[{int}]{min\+Size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+\begin{DoxyParams}{Аргументы}
+{\em min\+Size} & Минимальный размер спрайта. \\
+\hline
+\end{DoxyParams}
+
+
+Объявления и описания членов класса находятся в файле\+:\begin{DoxyCompactItemize}
+\item 
+World\+\_\+map/Sprites.\+cs\end{DoxyCompactItemize}

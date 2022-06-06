@@ -1,0 +1,34 @@
+digraph "game.Player.Player.DecreaseAmountOfResources"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="game.Player.Player.Decrease\lAmountOfResources",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Метод уменьшает кол-во ресурса."];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="game.Player.Buildings.Drill.\lTakeResourcesForBuild",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00120.html#af50f573ada498a027ce9af50bcec063d",tooltip="Метод забирает ресурсу у игрока. В замен игрок получает добычу железа."];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="game.Player.Building.Create\lBuilding",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00116.html#a628d8c6d11231b2f9d0839d781605b15",tooltip="Создаёт экземпляр одного из классов: Factory, Pump, Drill, Gamegoal, Warehouse, SandQuarry,..."];
+  Node3 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="game.Player.Building.Place\lBuilding",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00116.html#ac7ab27e3ad701936e85fd6964ac23d04",tooltip="Размещает здание на игровой карте param mouseCoordinates - Координаты указателя мыши param pressedBut..."];
+  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node5 [label="game.Player.Buildings.Factory.\lTakeResourcesForBuild",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00124.html#afbbbc6a93a279f0f42b299815e53eafb",tooltip="Метод забирает ресурсу у игрока. В замен строится здание и начинается производство компонентов."];
+  Node5 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node6 [label="game.Player.Buildings.Gamegoal.\lTakeResourcesForBuild",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00128.html#a362f79affecb51110b764e3072ff0a7a",tooltip="Метод забирает ресурсу у игрока. В замен строится здание и начинается производство компонентов."];
+  Node6 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node1 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node7 [label="game.Player.Pump.TakeResources\lForBuild",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00132.html#a517598394f9c3cd8f196345cc98c7add",tooltip="Метод забирает ресурсу у игрока. В замен строится здание и начинается добыча воды взамен на энергию."];
+  Node7 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node1 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node8 [label="game.Player.Buildings.Sand\lQuarry.TakeResourcesForBuild",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00136.html#a4c57f0efa036b81b4c20fd998c0dd810",tooltip="Метод забирает ресурсу у игрока. В замен строится здание и начинается добыча песка взамен на энергию."];
+  Node8 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node1 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node9 [label="game.Player.Buildings.Steam\lEngine.TakeResourcesForBuild",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00140.html#af565e0a56980a375648f675e34b3a065",tooltip="Метод забирает ресурсу у игрока. В замен строится здание и начинается переработка ресурсов."];
+  Node9 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node1 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node10 [label="game.Player.Buildings.Warehouse.\lTakeResourcesForBuild",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00144.html#aac156d025d68449a3663869adb412607",tooltip="Метод забирает ресурсу у игрока. В замен строится здание и увеличивает вместимость ресурсов."];
+  Node10 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node1 -> Node11 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node11 [label="game.Player.Building.Update\lResources",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$a00116.html#aaeebbb9fe21dea89f39493bd43dcb7b5",tooltip="Обновляет ресурсы игрока"];
+}

@@ -1,0 +1,67 @@
+\hypertarget{a00128}{}\doxysection{Класс game.\+Player.\+Buildings.\+Gamegoal}
+\label{a00128}\index{game.Player.Buildings.Gamegoal@{game.Player.Buildings.Gamegoal}}
+
+
+Класс \mbox{\hyperlink{a00128}{Gamegoal}} служит целью для игрока. После постройки, игра считается пройденной.  
+
+
+
+
+Граф наследования\+:game.\+Player.\+Buildings.\+Gamegoal\+:
+% FIG 0
+
+
+Граф связей класса game.\+Player.\+Buildings.\+Gamegoal\+:
+% FIG 1
+\doxysubsection*{Открытые статические члены}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{a00128_a362f79affecb51110b764e3072ff0a7a}\label{a00128_a362f79affecb51110b764e3072ff0a7a}} 
+static void {\bfseries Take\+Resources\+For\+Build} ()
+\begin{DoxyCompactList}\small\item\em Метод забирает ресурсу у игрока. В замен строится здание и начинается производство компонентов. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{a00128_af6b332c41127a8623d989e9e558f9bcf}{Is\+Resources\+Enough}} ()
+\begin{DoxyCompactList}\small\item\em Проверка, хватает ли ресурсов для постройки. \end{DoxyCompactList}\item 
+static string \mbox{\hyperlink{a00128_afc102523527316139811089ac9fe9931}{Get\+Suitable\+Block}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Дополнительные унаследованные члены}
+
+
+\doxysubsection{Подробное описание}
+Класс \mbox{\hyperlink{a00128}{Gamegoal}} служит целью для игрока. После постройки, игра считается пройденной. 
+
+\doxysubsection{Методы}
+\mbox{\Hypertarget{a00128_afc102523527316139811089ac9fe9931}\label{a00128_afc102523527316139811089ac9fe9931}} 
+\index{game.Player.Buildings.Gamegoal@{game.Player.Buildings.Gamegoal}!GetSuitableBlock@{GetSuitableBlock}}
+\index{GetSuitableBlock@{GetSuitableBlock}!game.Player.Buildings.Gamegoal@{game.Player.Buildings.Gamegoal}}
+\doxysubsubsection{\texorpdfstring{GetSuitableBlock()}{GetSuitableBlock()}}
+{\footnotesize\ttfamily static string game.\+Player.\+Buildings.\+Gamegoal.\+Get\+Suitable\+Block (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\begin{DoxyReturn}{Возвращает}
+\+\_\+suitable\+Block Тип блока на котором может стоять здание. 
+\end{DoxyReturn}
+Граф вызова функции\+:
+% FIG 2
+\mbox{\Hypertarget{a00128_af6b332c41127a8623d989e9e558f9bcf}\label{a00128_af6b332c41127a8623d989e9e558f9bcf}} 
+\index{game.Player.Buildings.Gamegoal@{game.Player.Buildings.Gamegoal}!IsResourcesEnough@{IsResourcesEnough}}
+\index{IsResourcesEnough@{IsResourcesEnough}!game.Player.Buildings.Gamegoal@{game.Player.Buildings.Gamegoal}}
+\doxysubsubsection{\texorpdfstring{IsResourcesEnough()}{IsResourcesEnough()}}
+{\footnotesize\ttfamily static bool game.\+Player.\+Buildings.\+Gamegoal.\+Is\+Resources\+Enough (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Проверка, хватает ли ресурсов для постройки. 
+
+\begin{DoxyReturn}{Возвращает}
+false Если не хватает ресурсов. 
+
+true Если хватает ресурсов. 
+\end{DoxyReturn}
+Граф вызовов\+:
+% FIG 3
+Граф вызова функции\+:
+% FIG 4
+
+
+Объявления и описания членов класса находятся в файле\+:\begin{DoxyCompactItemize}
+\item 
+Player/\+Buildings/Gamegoal.\+cs\end{DoxyCompactItemize}

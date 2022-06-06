@@ -1,0 +1,4 @@
+<map id="game.Player.Buildings.SandQuarry.TakeResourcesForBuild" name="game.Player.Buildings.SandQuarry.TakeResourcesForBuild">
+<area shape="rect" id="node1" title="Метод забирает ресурсу у игрока. В замен строится здание и начинается добыча песка взамен на энергию." alt="" coords="5,5,208,47"/>
+<area shape="rect" id="node2" href="$classgame_1_1_player_1_1_player.html#a65011c997084f3db5d0bdf48c21beeaa" title="Метод уменьшает кол&#45;во ресурса." alt="" coords="256,5,451,47"/>
+</map>
