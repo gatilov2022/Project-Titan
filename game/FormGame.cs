@@ -38,7 +38,7 @@ namespace game
 
             _playerObject = loadingPlayer ?? new Player.Player();
             _startMenu = startMenu;
-            _buttons = new[] {factory_but ,pump_but ,drill_but ,base_but ,wareh_but ,house_but ,steam_but};
+            _buttons = new[] {factory_but, pump_but, drill_but, base_but, wareh_but, house_but, steam_but };
             _spritesSize = Sprites.GetSpritesSize();
 
             MouseWheel += GameWindowMouseWheel;

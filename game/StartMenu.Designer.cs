@@ -92,6 +92,8 @@
             this.loadButton.TabIndex = 4;
             this.loadButton.UseVisualStyleBackColor = true;
             this.loadButton.Click += new System.EventHandler(this.LoadButton_Click);
+            this.loadButton.MouseDown += new System.Windows.Forms.MouseEventHandler(this.buttonsMouseDown);
+            this.loadButton.MouseLeave += new System.EventHandler(this.buttonsMouseLeave);
             this.loadButton.MouseMove += new System.Windows.Forms.MouseEventHandler(this.buttonsMouseMove);
             // 
             // folderBrowserDialog1
