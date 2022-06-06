@@ -20,7 +20,7 @@ namespace game
         private int _mouseX, _mouseY, _lastX, _lastY, _spritesSize, _scrollToX, _scrollToY;
 
         private const int SpriteSizeChangeOnScroll = 7;
-        private const double MaxMultiplier = 6, MinMultiplier = 0.25;
+        private const double MaxMultiplier = 6, MinMultiplier = 1.5;
 
         private readonly ResourcesInfo[] _resourcesInfoList =
         {

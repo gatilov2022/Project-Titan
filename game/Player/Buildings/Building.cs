@@ -77,7 +77,9 @@ namespace game.Player
 
         protected int BuildingLevel = 0, BuildingMaxLevel;
         private static List<Building> _listOfBuildings = new List<Building>();
-
+        /*!
+         * \brief Cock
+         */
         public virtual Dictionary<string, int> AmountResourcesForUpgrade()
         {
             return new Dictionary<string, int>();
@@ -304,15 +306,15 @@ namespace game.Player
             }
         }
 
-        public void PlaceBuilding(Point p, Button pressedButton, Point Drag)
+        public void PlaceBuilding(Point mouseCoordinates, Button pressedButton, Point dragCoordinates)
         {
             var blockSize = Sprites.GetSpritesSize();
 
             if (CreateBuilding(pressedButton))
             {
                 _listOfBuildings[_listOfBuildings.Count - 1]._buildingCoordinates = new Point(
-                    (p.X - Drag.X) / blockSize,
-                    (p.Y - Drag.Y) / blockSize);
+                    (mouseCoordinates.X - dragCoordinates.X) / blockSize,
+                    (mouseCoordinates.Y - dragCoordinates.Y) / blockSize);
                 _listOfBuildings[_listOfBuildings.Count - 1]._buildingImage = _bitmapsDictionary[pressedButton.Name];
             }
         }
@@ -323,7 +325,6 @@ namespace game.Player
             var spritesSize = Sprites.GetSpritesSize();
             var rec = new Rectangle(dragCoordinates.X % spritesSize + xCoordinate,
                 dragCoordinates.Y % spritesSize + yCoordinate, spritesSize + 1, spritesSize + 1);
-
 
             graphicsForm.DrawImage(_bitmapsDictionary[pressedButton.Name], rec);
             if (!buildPlaceable)

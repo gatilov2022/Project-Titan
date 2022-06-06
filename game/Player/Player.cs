@@ -12,19 +12,25 @@ namespace game.Player
     [Serializable]
     public class Player
     {
-        private Dictionary<string, int[]> _playerResources;
+        private Dictionary<string, Dictionary<string, int>> _playerResources;
         public Player()
         {
-            _playerResources = new Dictionary<string, int[]>
+            _playerResources = new Dictionary<string, Dictionary<string,int>>
             {
-                {"Iron",  new[]{500, 0, 1000}}, {"Sand",  new[]{400, 0, 600}}, {"Energy", new[]{400, 0, 600}}, {"Water",  new[]{300, 0, 400}}, {"ComponentsT1" ,  new[]{0, 0, 100}}, {"ComponentsT2",  new[]{0, 0, 100}}, {"ComponentsT3",  new[]{0, 0, 100}}
+                {"Iron",  new Dictionary<string, int>{{"AmountOfResource", 500}, {"ResourceShift",0}, {"ResourceCapacity",1000}}},
+                {"Sand", new Dictionary<string, int>{{"AmountOfResource", 400}, {"ResourceShift",0}, {"ResourceCapacity",600}}},
+                {"Energy", new Dictionary<string, int>{{"AmountOfResource", 400}, {"ResourceShift",0}, {"ResourceCapacity",600}}},
+                {"Water",  new Dictionary<string, int>{{"AmountOfResource", 300}, {"ResourceShift",0}, {"ResourceCapacity",400}}}, 
+                {"ComponentsT1" ,  new Dictionary<string, int>{{"AmountOfResource", 0}, {"ResourceShift",0}, {"ResourceCapacity",100}}},
+                {"ComponentsT2",  new Dictionary<string, int>{{"AmountOfResource", 0}, {"ResourceShift",0}, {"ResourceCapacity",100}}},
+                {"ComponentsT3",  new Dictionary<string, int>{{"AmountOfResource", 0}, {"ResourceShift",0}, {"ResourceCapacity",100}}}
             };
         }
         /*!
          * \brief Метод возращаёт информацию по всем ресурсам.
          * \return _playerResources Все ресурсы.
          */
-        public Dictionary<string, int[]> GetPlayerResourcesDict()
+        public Dictionary<string, Dictionary<string, int>> GetPlayerResourcesDict()
         {
             return _playerResources;
         }
@@ -32,7 +38,7 @@ namespace game.Player
          * \brief Метод для загрузки сохранённых данных
          * \param loadResources Загружаеммые данные.
          */
-        public void loadResourecesDict(Dictionary<string, int[]> loadResources)
+        public void loadResourecesDict(Dictionary<string, Dictionary<string, int>> loadResources)
         {
             _playerResources = loadResources;
         }
@@ -44,7 +50,7 @@ namespace game.Player
          */
         public int GetAmountOfResources(string resource)
         {
-            return _playerResources[resource][0];
+            return _playerResources[resource]["AmountOfResource"];
         }
 
         /*!
@@ -54,7 +60,7 @@ namespace game.Player
          */
         public void DecreaseAmountOfResources(string resource, int amount)
         {
-            _playerResources[resource][0] -= amount;
+            _playerResources[resource]["AmountOfResource"] -= amount;
         }
 
         /*!
@@ -64,7 +70,7 @@ namespace game.Player
          */
         public void IncreaseAmountOfResources(string resource, int amount)
         {
-            _playerResources[resource][0] += amount;
+            _playerResources[resource]["AmountOfResource"] += amount;
         }
 
         /*!
@@ -74,7 +80,7 @@ namespace game.Player
          */
         public void IncrShiftRes(string resource, int amount)
         {
-            _playerResources[resource][1] += amount;
+            _playerResources[resource]["ResourceShift"] += amount;
         }
 
         /*!
@@ -83,7 +89,7 @@ namespace game.Player
          */
         public int GetShiftRes(string resource)
         {
-            return _playerResources[resource][1];
+            return _playerResources[resource]["ResourceShift"];
         }
 
         /*!
@@ -93,7 +99,7 @@ namespace game.Player
          */
         public void DecreaseShiftRes(string resource, int amount)
         {
-            _playerResources[resource][1] -= amount;
+            _playerResources[resource]["ResourceShift"] -= amount;
         }
 
         /*!
@@ -103,7 +109,7 @@ namespace game.Player
         {
             foreach (var key in _playerResources.Keys.ToArray())
             {
-                _playerResources[key][1] = 0;
+                _playerResources[key]["ResourceShift"] = 0;
             }
         }
 
@@ -113,7 +119,7 @@ namespace game.Player
          */
         public int GetResourceCapacity(string resource)
         {
-            return _playerResources[resource][2];
+            return _playerResources[resource]["ResourceCapacity"];
         }
 
         /*!
@@ -123,7 +129,7 @@ namespace game.Player
         {
             foreach (var key in _playerResources.Keys.ToArray())
             {
-                _playerResources[key][2] += amount;
+                _playerResources[key]["ResourceCapacity"] += amount;
             }
         }
     }
