@@ -7,6 +7,10 @@ using game.World_map;
 
 namespace game
 {
+    /*!
+     * \brief Основное окно игры.
+     * Служит для отображения игрового поля, зданий, ресурсов.
+     */
     public partial class FormGame : Form
     {
         private readonly StartMenu _startMenu;
@@ -117,6 +121,7 @@ namespace game
                 binaryFormatter.Serialize(stream, objectToWrite);
             }
         }
+
         private void SaveGameButtonClick(object sender, EventArgs e)
         {
             var mapObjects = Map.GetChunks();

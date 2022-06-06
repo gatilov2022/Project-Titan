@@ -9,7 +9,7 @@ namespace game.Player.Buildings
      * После постройки, игра считается пройденной.
      */
     [Serializable]
-    internal class Gamegoal : Building
+    public class Gamegoal : Building
     {
         private static string _suitableBlock = typeof(Grass).ToString();
         private static Dictionary<string, Dictionary<string, int>> _buildingCostsDictionary = new Dictionary<string, Dictionary<string, int>>

@@ -1,0 +1,86 @@
+\hypertarget{a00156}{}\doxysection{Класс game.\+Resources\+Info}
+\label{a00156}\index{game.ResourcesInfo@{game.ResourcesInfo}}
+
+
+Класс для вывода информации по ресурсам. Выводит кол-\/во ресурсов, их увеличение или уменьшение.  
+
+
+\doxysubsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{a00156_ad2d666f6283b1208355d770de4fe304c}\label{a00156_ad2d666f6283b1208355d770de4fe304c}} 
+{\bfseries Resources\+Info} (string resource\+Name, Point in\+Amount\+Coordinates, Point in\+Shift\+Coordinates)
+\item 
+void \mbox{\hyperlink{a00156_ade33a55cd0faf95dd4c1096bf3775d89}{Draw\+Resource\+Info}} (Graphics form\+Graphics, int resources\+Info\+XCoordinate)
+\begin{DoxyCompactList}\small\item\em Вывод кол-\/ва ресурсов на графику формы. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{a00156_abe668272a4e992e78f6e858d680abe2d}{Draw\+Resource\+Shift}} (Graphics form\+Graphics, int resources\+Info\+XCoordinate)
+\begin{DoxyCompactList}\small\item\em Вывод убытка или прироста ресурсов. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Открытые статические члены}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{a00156_a57a51b1de9057409924e7b5cbd643279}{Set\+Player\+Object}} (\mbox{\hyperlink{a00112}{Player.\+Player}} in\+Player)
+\begin{DoxyCompactList}\small\item\em Задает пользователя при старте игры. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Класс для вывода информации по ресурсам. Выводит кол-\/во ресурсов, их увеличение или уменьшение. 
+
+\doxysubsection{Методы}
+\mbox{\Hypertarget{a00156_ade33a55cd0faf95dd4c1096bf3775d89}\label{a00156_ade33a55cd0faf95dd4c1096bf3775d89}} 
+\index{game.ResourcesInfo@{game.ResourcesInfo}!DrawResourceInfo@{DrawResourceInfo}}
+\index{DrawResourceInfo@{DrawResourceInfo}!game.ResourcesInfo@{game.ResourcesInfo}}
+\doxysubsubsection{\texorpdfstring{DrawResourceInfo()}{DrawResourceInfo()}}
+{\footnotesize\ttfamily void game.\+Resources\+Info.\+Draw\+Resource\+Info (\begin{DoxyParamCaption}\item[{Graphics}]{form\+Graphics,  }\item[{int}]{resources\+Info\+XCoordinate }\end{DoxyParamCaption})}
+
+
+
+Вывод кол-\/ва ресурсов на графику формы. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em form\+Graphics} & Графика формы на которой будет отображено кол-\/во ресурсов \\
+\hline
+{\em resources\+Info\+XCoordinate} & Координата Х для размещения информации. \\
+\hline
+\end{DoxyParams}
+Граф вызовов\+:
+% FIG 0
+\mbox{\Hypertarget{a00156_abe668272a4e992e78f6e858d680abe2d}\label{a00156_abe668272a4e992e78f6e858d680abe2d}} 
+\index{game.ResourcesInfo@{game.ResourcesInfo}!DrawResourceShift@{DrawResourceShift}}
+\index{DrawResourceShift@{DrawResourceShift}!game.ResourcesInfo@{game.ResourcesInfo}}
+\doxysubsubsection{\texorpdfstring{DrawResourceShift()}{DrawResourceShift()}}
+{\footnotesize\ttfamily void game.\+Resources\+Info.\+Draw\+Resource\+Shift (\begin{DoxyParamCaption}\item[{Graphics}]{form\+Graphics,  }\item[{int}]{resources\+Info\+XCoordinate }\end{DoxyParamCaption})}
+
+
+
+Вывод убытка или прироста ресурсов. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em form\+Graphics} & Графика формы на которой будут отображены убыток или прирост ресурсов. \\
+\hline
+{\em resources\+Info\+XCoordinate} & Координата Х для размещения информации. \\
+\hline
+\end{DoxyParams}
+Граф вызовов\+:
+% FIG 1
+\mbox{\Hypertarget{a00156_a57a51b1de9057409924e7b5cbd643279}\label{a00156_a57a51b1de9057409924e7b5cbd643279}} 
+\index{game.ResourcesInfo@{game.ResourcesInfo}!SetPlayerObject@{SetPlayerObject}}
+\index{SetPlayerObject@{SetPlayerObject}!game.ResourcesInfo@{game.ResourcesInfo}}
+\doxysubsubsection{\texorpdfstring{SetPlayerObject()}{SetPlayerObject()}}
+{\footnotesize\ttfamily static void game.\+Resources\+Info.\+Set\+Player\+Object (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{a00112}{Player.\+Player}}}]{in\+Player }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Задает пользователя при старте игры. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em in\+Player} & Игрок, у которого берётся информация об ресурсах. \\
+\hline
+\end{DoxyParams}
+
+
+Объявления и описания членов класса находятся в файле\+:\begin{DoxyCompactItemize}
+\item 
+Resources\+Info.\+cs\end{DoxyCompactItemize}

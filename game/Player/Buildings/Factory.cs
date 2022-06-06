@@ -8,7 +8,7 @@ namespace game.Player.Buildings
      * \brief Класс Factory служит для производства компонентов разного уровня в замен на железо и энергию
      */
     [Serializable]
-    internal class Factory : Building
+    public class Factory : Building
     {
         private static Dictionary<string, int> _buildingCostsDictionary = new Dictionary<string, int>{{"Sand", 100}, {"Iron", 50}};
         private static Dictionary<string, int> _t1Cost = new Dictionary<string, int>{{"Iron", 100}, {"ComponentsT1", 50}};

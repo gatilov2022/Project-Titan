@@ -8,7 +8,7 @@ namespace game.Player.Buildings
      * \brief Класс SandQuarry служит для добычи песка в замен на энергию.
      */
     [Serializable]
-    internal class SandQuarry : Building
+    public class SandQuarry : Building
     {
         private static string _suitableBlock = typeof(Sand).ToString();
         private static Dictionary<string, Dictionary<string, int>> _buildingCostsDictionary = new Dictionary<string, Dictionary<string, int>>

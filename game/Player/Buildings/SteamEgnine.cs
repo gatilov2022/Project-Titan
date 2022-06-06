@@ -8,7 +8,7 @@ namespace game.Player.Buildings
      * \brief Класс SteamEngine служит для переработки воды в энергию. 
      */
     [Serializable]
-    internal class SteamEngine : Building
+    public class SteamEngine : Building
     {
         private static string _suitableBlock = typeof(Grass).ToString();
         private static Dictionary<string, Dictionary<string, int>> _buildingCostsDictionary = new Dictionary<string, Dictionary<string, int>>

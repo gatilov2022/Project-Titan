@@ -8,6 +8,10 @@ using game.World_map;
 
 namespace game.Player
 {
+    /*!
+     * \brief Класс Building даёт возможность строительства игроку.
+     * Так же предоставляет возможность улучшать здания.
+     */
     [Serializable]
     public class Building
     {
@@ -85,7 +89,6 @@ namespace game.Player
         public virtual Dictionary<string, int> AmountResourcesForUpgrade()
         {
             return new Dictionary<string, int>();
-
         }
 
         /*!

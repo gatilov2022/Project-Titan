@@ -1,0 +1,176 @@
+\hypertarget{classgame_1_1_player_1_1_building}{}\doxysection{Класс game.\+Player.\+Building}
+\label{classgame_1_1_player_1_1_building}\index{game.Player.Building@{game.Player.Building}}
+
+
+Класс \mbox{\hyperlink{classgame_1_1_player_1_1_building}{Building}} даёт возможность строительства игроку. Так же предоставляет возможность улучшать здания.  
+
+
+Граф наследования\+:game.\+Player.\+Building\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=0.717489cm]{classgame_1_1_player_1_1_building}
+\end{center}
+\end{figure}
+\doxysubsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+virtual Dictionary$<$ string, int $>$ \mbox{\hyperlink{classgame_1_1_player_1_1_building_a08bdbd0d010bb589b0409b105e49aca6}{Amount\+Resources\+For\+Upgrade}} ()
+\begin{DoxyCompactList}\small\item\em Виртуальный метод, возвращающий количество ресурсов, необходимое для повышения уровня обьекта класса \mbox{\hyperlink{classgame_1_1_player_1_1_building}{Building}} return Dictionary$<$string, int$>$ \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgame_1_1_player_1_1_building_adb85b26038a831a018ce0c9a3542cd7c}\label{classgame_1_1_player_1_1_building_adb85b26038a831a018ce0c9a3542cd7c}} 
+bool {\bfseries Is\+Max\+Level} ()
+\begin{DoxyCompactList}\small\item\em Проверяет, является ли обьект класса \mbox{\hyperlink{classgame_1_1_player_1_1_building}{Building}} максимальным уровнем return bool. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classgame_1_1_player_1_1_building_a6307afe93f5f7a54fca9e03e74f13a7f}{Upgrade\+Building}} ()
+\begin{DoxyCompactList}\small\item\em Виртуальный класс, повышающий уровень обьекта класса \mbox{\hyperlink{classgame_1_1_player_1_1_building}{Building}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgame_1_1_player_1_1_building_ac7ab27e3ad701936e85fd6964ac23d04}\label{classgame_1_1_player_1_1_building_ac7ab27e3ad701936e85fd6964ac23d04}} 
+void {\bfseries Place\+Building} (Point mouse\+Coordinates, Button pressed\+Button, Point drag\+Coordinates)
+\begin{DoxyCompactList}\small\item\em Размещает здание на игровой карте param mouse\+Coordinates -\/ Координаты указателя мыши param pressed\+Button -\/ Выбранное здание, которое нужно разместить param drag\+Coordinates -\/ Координаты сдвига карты \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Открытые статические члены}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classgame_1_1_player_1_1_building_aad7a0e7240bc42e7f7bd68ce68a9c0f4}\label{classgame_1_1_player_1_1_building_aad7a0e7240bc42e7f7bd68ce68a9c0f4}} 
+static void {\bfseries Set\+Player\+Obj} (\mbox{\hyperlink{classgame_1_1_player_1_1_player}{Player}} in\+Player\+Object)
+\begin{DoxyCompactList}\small\item\em Устанавливает оьект класса \mbox{\hyperlink{classgame_1_1_player_1_1_player}{Player}} для последющего взаимодейтсвия с ним param in\+Player\+Object -\/ Объект класса Palayer. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgame_1_1_player_1_1_building_ab8766f2eeb16aa2ed0c976f4852612c8}\label{classgame_1_1_player_1_1_building_ab8766f2eeb16aa2ed0c976f4852612c8}} 
+static void {\bfseries Load\+Buildings} (List$<$ \mbox{\hyperlink{classgame_1_1_player_1_1_building}{Building}} $>$ buildings)
+\begin{DoxyCompactList}\small\item\em Записывает в память обьект класса \mbox{\hyperlink{classgame_1_1_player_1_1_building}{Building}} из сохраненного состояния игры param buildings -\/ Сохраненный обьект класса \mbox{\hyperlink{classgame_1_1_player_1_1_building}{Building}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgame_1_1_player_1_1_building_a7e3f1e0f907b0c27fabdc78bfa05ee15}\label{classgame_1_1_player_1_1_building_a7e3f1e0f907b0c27fabdc78bfa05ee15}} 
+static List$<$ \mbox{\hyperlink{classgame_1_1_player_1_1_building}{Building}} $>$ {\bfseries Get\+Buildings} ()
+\begin{DoxyCompactList}\small\item\em Возвращает все созданные экземпляры класса \mbox{\hyperlink{classgame_1_1_player_1_1_building}{Building}} для их последующего сохранения return List$<$\+Building$>$ \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgame_1_1_player_1_1_building_a717f69c9402af2b0b1497fa17e97cb35}\label{classgame_1_1_player_1_1_building_a717f69c9402af2b0b1497fa17e97cb35}} 
+static bool {\bfseries Has\+Building\+On\+The\+Block} (Point mouse\+Coordinates, Point map\+Drag\+Coordinates)
+\begin{DoxyCompactList}\small\item\em Проверяет, занята ли позиция на введённых координатах обьектом класса \mbox{\hyperlink{classgame_1_1_player_1_1_building}{Building}} param mouse\+Coordinates -\/ Координаты указателя мыши param map\+Drag\+Coordinates -\/ Координаты сдвига карты return bool. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgame_1_1_player_1_1_building_a74c37eb217e47bdcf9f4f12e2fbc09cf}\label{classgame_1_1_player_1_1_building_a74c37eb217e47bdcf9f4f12e2fbc09cf}} 
+static \mbox{\hyperlink{classgame_1_1_player_1_1_building}{Building}} {\bfseries Get\+Building} (Point mouse\+Coordinates, Point map\+Drag\+Coordinates)
+\begin{DoxyCompactList}\small\item\em Возвращает обьект класса \mbox{\hyperlink{classgame_1_1_player_1_1_building}{Building}} по заданным координатам или null param mouse\+Coordinates -\/ Координаты указателя мыши param map\+Drag\+Coordinates -\/ Координаты сдвига карты return \mbox{\hyperlink{classgame_1_1_player_1_1_building}{Building}} return null. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgame_1_1_player_1_1_building_abe6f874c0d6db9c96d10ffa751970e83}\label{classgame_1_1_player_1_1_building_abe6f874c0d6db9c96d10ffa751970e83}} 
+static bool {\bfseries Building\+Is\+Able\+To\+Place} (Point mouse\+Coordinates, Point map\+Drag, Button pressed\+Button)
+\begin{DoxyCompactList}\small\item\em Проверяет, соблюдены ли условия для размещения обьекта класса \mbox{\hyperlink{classgame_1_1_player_1_1_building}{Building}} на игровой карте param mouse\+Coordinates -\/ Координаты указателя мыши param map\+Drag -\/ Координаты сдвига карты pressed\+Button -\/ Текущее выбранное здание, условия раазмещения которого нужно проверить return bool. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgame_1_1_player_1_1_building_a628d8c6d11231b2f9d0839d781605b15}\label{classgame_1_1_player_1_1_building_a628d8c6d11231b2f9d0839d781605b15}} 
+static bool {\bfseries Create\+Building} (Button pressed\+Button)
+\begin{DoxyCompactList}\small\item\em Создаёт экземпляр одного из классов\+: Factory, \mbox{\hyperlink{classgame_1_1_player_1_1_pump}{Pump}}, Drill, Gamegoal, Warehouse, Sand\+Quarry, Steam\+Engine param pressed\+Button -\/ текущее выбранное здание, которое нужно разместить return bool. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgame_1_1_player_1_1_building_aaeebbb9fe21dea89f39493bd43dcb7b5}\label{classgame_1_1_player_1_1_building_aaeebbb9fe21dea89f39493bd43dcb7b5}} 
+static void {\bfseries Update\+Resources} ()
+\begin{DoxyCompactList}\small\item\em Обновляет ресурсы игрока \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgame_1_1_player_1_1_building_a06addfe5d7774cbd48fa569459418ecb}\label{classgame_1_1_player_1_1_building_a06addfe5d7774cbd48fa569459418ecb}} 
+static void {\bfseries Draw\+Created\+Buildings} (Graphics graphics\+Form, Point map\+Drag)
+\begin{DoxyCompactList}\small\item\em Отрисовывает все созданные здания param graphics\+Form -\/ графика формы \mbox{\hyperlink{classgame_1_1_form_game}{Form\+Game}} param map\+Drag -\/ координаты сдвига карты \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgame_1_1_player_1_1_building_a01a05d3af2e018a6014644381e73f2bc}\label{classgame_1_1_player_1_1_building_a01a05d3af2e018a6014644381e73f2bc}} 
+static void {\bfseries Draw\+Prebuilding\+Image} (Graphics graphics\+Form, Button pressed\+Button, Point drag\+Coordinates, Point mouse\+Coordinates, bool building\+Placeable)
+\begin{DoxyCompactList}\small\item\em Рисует полупрозрачное здание на координатах указателя мыши в соответсвии с соблюдением условий размещения некоторого здания param graphics\+Form -\/ Графика форы \mbox{\hyperlink{classgame_1_1_form_game}{Form\+Game}} param pressed\+Button -\/ Текущее выбранное здание, которое нужно отрисовать param drag\+Coordinates -\/ Координаты сдвига карты param mouse\+Coordinates -\/ Координаты указателя мыши param building\+Placeable -\/ Соблюдены ли условия размещения выбранного здания \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Защищенные члены}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classgame_1_1_player_1_1_building_aec5eb60a2c6220192aad644052ae2050}\label{classgame_1_1_player_1_1_building_aec5eb60a2c6220192aad644052ae2050}} 
+void {\bfseries Add\+Building} (\mbox{\hyperlink{classgame_1_1_player_1_1_building}{Building}} in\+Building)
+\end{DoxyCompactItemize}
+\doxysubsection*{Защищенные данные}
+\begin{DoxyCompactItemize}
+\item 
+Dictionary$<$ string, int $>$ \mbox{\hyperlink{classgame_1_1_player_1_1_building_a04882bff70fa247013bbaad5f3157781}{Using\+Resources\+Dictionary}}
+\item 
+Dictionary$<$ string, int $>$ \mbox{\hyperlink{classgame_1_1_player_1_1_building_a9ed2cb5fdb70139370fea0a8cf923593}{Producing\+Resources\+Dictionary}}
+\item 
+\mbox{\Hypertarget{classgame_1_1_player_1_1_building_a240e4fee3871a4c75b5204f3f0aeb5ea}\label{classgame_1_1_player_1_1_building_a240e4fee3871a4c75b5204f3f0aeb5ea}} 
+int {\bfseries Building\+Level} = 0
+\item 
+\mbox{\Hypertarget{classgame_1_1_player_1_1_building_abe0fb6bcf4a86ef79ecb16f6a7208a40}\label{classgame_1_1_player_1_1_building_abe0fb6bcf4a86ef79ecb16f6a7208a40}} 
+int {\bfseries Building\+Max\+Level}
+\end{DoxyCompactItemize}
+\doxysubsection*{Статические защищенные данные}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classgame_1_1_player_1_1_building_acf093c2a88bb9a6b5d28629a59586a9e}\label{classgame_1_1_player_1_1_building_acf093c2a88bb9a6b5d28629a59586a9e}} 
+static \mbox{\hyperlink{classgame_1_1_player_1_1_player}{Player}} {\bfseries Player\+Object}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Класс \mbox{\hyperlink{classgame_1_1_player_1_1_building}{Building}} даёт возможность строительства игроку. Так же предоставляет возможность улучшать здания. 
+
+\doxysubsection{Методы}
+\mbox{\Hypertarget{classgame_1_1_player_1_1_building_a08bdbd0d010bb589b0409b105e49aca6}\label{classgame_1_1_player_1_1_building_a08bdbd0d010bb589b0409b105e49aca6}} 
+\index{game.Player.Building@{game.Player.Building}!AmountResourcesForUpgrade@{AmountResourcesForUpgrade}}
+\index{AmountResourcesForUpgrade@{AmountResourcesForUpgrade}!game.Player.Building@{game.Player.Building}}
+\doxysubsubsection{\texorpdfstring{AmountResourcesForUpgrade()}{AmountResourcesForUpgrade()}}
+{\footnotesize\ttfamily virtual Dictionary$<$ string, int $>$ game.\+Player.\+Building.\+Amount\+Resources\+For\+Upgrade (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Виртуальный метод, возвращающий количество ресурсов, необходимое для повышения уровня обьекта класса \mbox{\hyperlink{classgame_1_1_player_1_1_building}{Building}} return Dictionary$<$string, int$>$ 
+
+
+
+Переопределяется в \mbox{\hyperlink{classgame_1_1_player_1_1_buildings_1_1_drill_adedc1682e347ca02e012aa79bdbf6d78}{game.\+Player.\+Buildings.\+Drill}}, \mbox{\hyperlink{classgame_1_1_player_1_1_buildings_1_1_factory_aef932360d7d3d187d3ccd25ff5b1176a}{game.\+Player.\+Buildings.\+Factory}}, \mbox{\hyperlink{classgame_1_1_player_1_1_pump_a96b41558cd5d1984d93d93bca908fc48}{game.\+Player.\+Pump}}, \mbox{\hyperlink{classgame_1_1_player_1_1_buildings_1_1_sand_quarry_a8da85da76d171263b084b51fac883604}{game.\+Player.\+Buildings.\+Sand\+Quarry}}, \mbox{\hyperlink{classgame_1_1_player_1_1_buildings_1_1_steam_engine_ac1f530cad9c7965c0ce999f98fcae131}{game.\+Player.\+Buildings.\+Steam\+Engine}} и \mbox{\hyperlink{classgame_1_1_player_1_1_buildings_1_1_warehouse_a0f59f73d7048f97c770c203df4e0dc24}{game.\+Player.\+Buildings.\+Warehouse}}.
+
+\mbox{\Hypertarget{classgame_1_1_player_1_1_building_a6307afe93f5f7a54fca9e03e74f13a7f}\label{classgame_1_1_player_1_1_building_a6307afe93f5f7a54fca9e03e74f13a7f}} 
+\index{game.Player.Building@{game.Player.Building}!UpgradeBuilding@{UpgradeBuilding}}
+\index{UpgradeBuilding@{UpgradeBuilding}!game.Player.Building@{game.Player.Building}}
+\doxysubsubsection{\texorpdfstring{UpgradeBuilding()}{UpgradeBuilding()}}
+{\footnotesize\ttfamily virtual void game.\+Player.\+Building.\+Upgrade\+Building (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Виртуальный класс, повышающий уровень обьекта класса \mbox{\hyperlink{classgame_1_1_player_1_1_building}{Building}}. 
+
+
+
+Переопределяется в \mbox{\hyperlink{classgame_1_1_player_1_1_buildings_1_1_drill_a5df145bbb02fe1ef2db7a12d77e86542}{game.\+Player.\+Buildings.\+Drill}}, \mbox{\hyperlink{classgame_1_1_player_1_1_buildings_1_1_factory_a1e4e2ed3af2a76f3cb7e691da9783662}{game.\+Player.\+Buildings.\+Factory}}, \mbox{\hyperlink{classgame_1_1_player_1_1_pump_af75a7133662b48d8eba2ee4dccb7c7dc}{game.\+Player.\+Pump}}, \mbox{\hyperlink{classgame_1_1_player_1_1_buildings_1_1_sand_quarry_aad51103bba68eae47653b34922c138e2}{game.\+Player.\+Buildings.\+Sand\+Quarry}}, \mbox{\hyperlink{classgame_1_1_player_1_1_buildings_1_1_steam_engine_a0bf932f82fedb5d670b3ebe8d32c6b98}{game.\+Player.\+Buildings.\+Steam\+Engine}} и \mbox{\hyperlink{classgame_1_1_player_1_1_buildings_1_1_warehouse_a01c45a4c28ed4aab512e4fe67c0b5676}{game.\+Player.\+Buildings.\+Warehouse}}.
+
+
+
+\doxysubsection{Поля}
+\mbox{\Hypertarget{classgame_1_1_player_1_1_building_a9ed2cb5fdb70139370fea0a8cf923593}\label{classgame_1_1_player_1_1_building_a9ed2cb5fdb70139370fea0a8cf923593}} 
+\index{game.Player.Building@{game.Player.Building}!ProducingResourcesDictionary@{ProducingResourcesDictionary}}
+\index{ProducingResourcesDictionary@{ProducingResourcesDictionary}!game.Player.Building@{game.Player.Building}}
+\doxysubsubsection{\texorpdfstring{ProducingResourcesDictionary}{ProducingResourcesDictionary}}
+{\footnotesize\ttfamily Dictionary$<$string, int$>$ game.\+Player.\+Building.\+Producing\+Resources\+Dictionary\hspace{0.3cm}{\ttfamily [protected]}}
+
+{\bfseries Инициализатор}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \textcolor{keyword}{new} Dictionary<string, int>}
+\DoxyCodeLine{        \{}
+\DoxyCodeLine{            \{}
+\DoxyCodeLine{                \textcolor{stringliteral}{"{}Energy"{}}, 0}
+\DoxyCodeLine{            \},}
+\DoxyCodeLine{            \{}
+\DoxyCodeLine{                \textcolor{stringliteral}{"{}Water"{}}, 0}
+\DoxyCodeLine{            \},}
+\DoxyCodeLine{            \{}
+\DoxyCodeLine{                \textcolor{stringliteral}{"{}Iron"{}}, 0}
+\DoxyCodeLine{            \},}
+\DoxyCodeLine{            \{}
+\DoxyCodeLine{                \textcolor{stringliteral}{"{}Sand"{}}, 0}
+\DoxyCodeLine{            \}}
+\DoxyCodeLine{        \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classgame_1_1_player_1_1_building_a04882bff70fa247013bbaad5f3157781}\label{classgame_1_1_player_1_1_building_a04882bff70fa247013bbaad5f3157781}} 
+\index{game.Player.Building@{game.Player.Building}!UsingResourcesDictionary@{UsingResourcesDictionary}}
+\index{UsingResourcesDictionary@{UsingResourcesDictionary}!game.Player.Building@{game.Player.Building}}
+\doxysubsubsection{\texorpdfstring{UsingResourcesDictionary}{UsingResourcesDictionary}}
+{\footnotesize\ttfamily Dictionary$<$string, int$>$ game.\+Player.\+Building.\+Using\+Resources\+Dictionary\hspace{0.3cm}{\ttfamily [protected]}}
+
+{\bfseries Инициализатор}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \textcolor{keyword}{new} Dictionary<string, int>}
+\DoxyCodeLine{        \{}
+\DoxyCodeLine{            \{}
+\DoxyCodeLine{                \textcolor{stringliteral}{"{}Energy"{}}, 0}
+\DoxyCodeLine{            \},}
+\DoxyCodeLine{            \{}
+\DoxyCodeLine{                \textcolor{stringliteral}{"{}Water"{}}, 0}
+\DoxyCodeLine{            \},}
+\DoxyCodeLine{            \{}
+\DoxyCodeLine{                \textcolor{stringliteral}{"{}Sand"{}}, 0}
+\DoxyCodeLine{            \},}
+\DoxyCodeLine{            \{}
+\DoxyCodeLine{                \textcolor{stringliteral}{"{}Iron"{}}, 0}
+\DoxyCodeLine{            \}}
+\DoxyCodeLine{        \}}
+
+\end{DoxyCode}
+
+
+Объявления и описания членов класса находятся в файле\+:\begin{DoxyCompactItemize}
+\item 
+Player/\+Buildings/Building.\+cs\end{DoxyCompactItemize}

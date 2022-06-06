@@ -9,7 +9,7 @@ namespace game.Player.Buildings
      * \brief Класс Drill служит для добычи железа в замен на энергию.
      */
     [Serializable]
-    internal class Drill : Building
+    public class Drill : Building
     {
         private static string _suitableBlock = typeof(Ore).ToString();
         private static Dictionary<string, Dictionary<string, int>> _buildingCostsDictionary = new Dictionary<string, Dictionary<string, int>>

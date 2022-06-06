@@ -9,7 +9,7 @@ namespace game.Player.Buildings
      * Его постройка и улучшения увеличивают вместимость ресурсов.
      */
     [Serializable]
-    internal class Warehouse : Building
+    public class Warehouse : Building
     {
         private static string _suitableBlock = typeof(Grass).ToString();
         private static Dictionary<string, Dictionary<string, int>> _buildingCostsDictionary = new Dictionary<string, Dictionary<string, int>>

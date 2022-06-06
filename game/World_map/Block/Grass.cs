@@ -9,7 +9,7 @@ namespace game.World_map.Block
      * Пресдавляет собой шаблон для создания блока типа Grass, с соответсвующими цветами.
      */
     [Serializable]
-    internal class Grass : Sprites
+    public class Grass : Sprites
     {
         private static readonly List<SolidBrush> GreenBrushList = new List<SolidBrush>() 
         { 

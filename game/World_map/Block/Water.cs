@@ -9,7 +9,7 @@ namespace game.World_map.Block
      * Пресдавляет собой шаблон для создания блока типа Water, с соответсвующими цветами.
      */
     [Serializable]
-    internal class Water : Sprites
+    public class Water : Sprites
     {
         private static readonly List<SolidBrush> BlueBrushList = new List<SolidBrush>() 
         {

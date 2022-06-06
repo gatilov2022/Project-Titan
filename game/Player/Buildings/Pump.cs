@@ -8,7 +8,7 @@ namespace game.Player
      * \brief Класс Pump служит для добычи воды в замен на энергию.
      */
     [Serializable]
-    internal class Pump : Building
+    public class Pump : Building
     {
         private static string _suitableBlock = typeof(Water).ToString();
         private static Dictionary<string, Dictionary<string, int>> _buildingCostsDictionary = new Dictionary<string, Dictionary<string, int>>
