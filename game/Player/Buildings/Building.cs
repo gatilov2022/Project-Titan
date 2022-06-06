@@ -77,8 +77,10 @@ namespace game.Player
 
         protected int BuildingLevel = 0, BuildingMaxLevel;
         private static List<Building> _listOfBuildings = new List<Building>();
+        
         /*!
-         * \brief Cock
+         * \brief Виртуальный метод, возвращающий количество ресурсов, необходимое для повышения уровня обьекта класса Building
+         * return Dictionary<string, int>
          */
         public virtual Dictionary<string, int> AmountResourcesForUpgrade()
         {
@@ -86,21 +88,37 @@ namespace game.Player
 
         }
 
+        /*!
+         * \brief Устанавливает оьект класса Player для последющего взаимодейтсвия с ним
+         * param inPlayerObject - Объект класса Palayer
+         */
         public static void SetPlayerObj(Player inPlayerObject)
         {
             PlayerObject = inPlayerObject;
         }
 
+        /*!
+         * \brief Записывает в память обьект класса Building из сохраненного состояния игры
+         * param buildings - Сохраненный обьект класса Building
+         */
         public static void LoadBuildings(List<Building> buildings)
         {
             _listOfBuildings = buildings;
         }
 
+        /*!
+         * \brief Возвращает все созданные экземпляры класса Building для их последующего сохранения
+         * return List<Building>
+         */
         public static List<Building> GetBuildings()
         {
             return _listOfBuildings;
         }
 
+        /*!
+         * \brief Проверяет, является ли обьект класса Building максимальным уровнем
+         * return bool
+         */
         public bool IsMaxLevel()
         {
             return BuildingLevel == BuildingMaxLevel;
@@ -111,17 +129,29 @@ namespace game.Player
             _listOfBuildings.Add(inBuilding);
         }
 
-        public static bool HasBuildingOnTheBlock(Point toCheckPoint, Point mapDragCoordinates)
+        /*!
+         * \brief Проверяет, занята ли позиция на введённых координатах обьектом класса Building
+         * param mouseCoordinates - Координаты указателя мыши
+         * param mapDragCoordinates - Координаты сдвига карты
+         * return bool
+         */
+        public static bool HasBuildingOnTheBlock(Point mouseCoordinates, Point mapDragCoordinates)
         {
             var blockSize = Sprites.GetSpritesSize();
 
             return (from someBuilding in _listOfBuildings
-                let point = new Point((toCheckPoint.X - mapDragCoordinates.X) / blockSize,
-                    (toCheckPoint.Y - mapDragCoordinates.Y) / blockSize)
+                let point = new Point((mouseCoordinates.X - mapDragCoordinates.X) / blockSize,
+                    (mouseCoordinates.Y - mapDragCoordinates.Y) / blockSize)
                 where point == someBuilding._buildingCoordinates
                 select someBuilding).Any();
         }
-
+        /*!
+         * \brief Возвращает обьект класса Building по заданным координатам или null
+         * param mouseCoordinates - Координаты указателя мыши
+         * param mapDragCoordinates - Координаты сдвига карты
+         * return Building
+         * return null
+         */
         public static Building GetBuilding(Point mouseCoordinates, Point mapDragCoordinates)
         {
             var blockSize = Sprites.GetSpritesSize();
@@ -140,10 +170,20 @@ namespace game.Player
             return null;
         }
 
+        /*!
+         * \brief Виртуальный класс, повышающий уровень обьекта класса Building
+         */
         public virtual void UpgradeBuilding()
         {
         }
 
+        /*!
+         * \brief Проверяет, соблюдены ли условия для размещения обьекта класса Building на игровой карте
+         * param mouseCoordinates - Координаты указателя мыши
+         * param mapDrag - Координаты сдвига карты
+         * pressedButton - Текущее выбранное здание, условия раазмещения которого нужно проверить
+         * return bool
+         */
         public static bool BuildingIsAbleToPlace(Point mouseCoordinates, Point mapDrag, Button pressedButton)
         {
             if (HasBuildingOnTheBlock(mouseCoordinates, mapDrag))
@@ -174,6 +214,11 @@ namespace game.Player
             return true;
         }
 
+        /*!
+         * \brief Создаёт экземпляр одного из классов: Factory, Pump, Drill, Gamegoal, Warehouse, SandQuarry, SteamEngine
+         * param pressedButton - текущее выбранное здание, которое нужно разместить
+         * return bool
+         */
         public static bool CreateBuilding(Button pressedButton)
         {
             switch (pressedButton.Name)
@@ -252,6 +297,9 @@ namespace game.Player
             }
         }
 
+        /*!
+         * \brief Обновляет ресурсы игрока
+         */
         public static void UpdateResources()
         {
             var buildingActive = true;
@@ -288,13 +336,18 @@ namespace game.Player
             }
         }
 
-        public static void DrawCreatedBuildings(Graphics graphicsForm, Point Drag)
+        /*!
+         * \brief Отрисовывает все созданные здания
+         * param graphicsForm - графика формы FormGame
+         * param mapDrag - координаты сдвига карты 
+         */
+        public static void DrawCreatedBuildings(Graphics graphicsForm, Point mapDrag)
         {
             foreach (var someBuilding in _listOfBuildings)
             {
                 var blockSize = Sprites.GetSpritesSize();
-                int actualX = someBuilding._buildingCoordinates.X * blockSize + Drag.X,
-                    actualY = someBuilding._buildingCoordinates.Y * blockSize + Drag.Y;
+                int actualX = someBuilding._buildingCoordinates.X * blockSize + mapDrag.X,
+                    actualY = someBuilding._buildingCoordinates.Y * blockSize + mapDrag.Y;
                 var rec = new Rectangle(actualX, actualY, blockSize + 1, blockSize + 1);
 
                 graphicsForm.DrawImage(someBuilding._buildingImage, rec);
@@ -306,6 +359,12 @@ namespace game.Player
             }
         }
 
+        /*!
+         * \brief Размещает здание на игровой карте
+         * param mouseCoordinates - Координаты указателя мыши
+         * param pressedButton - Выбранное здание, которое нужно разместить
+         * param dragCoordinates - Координаты сдвига карты
+         */
         public void PlaceBuilding(Point mouseCoordinates, Button pressedButton, Point dragCoordinates)
         {
             var blockSize = Sprites.GetSpritesSize();
@@ -319,15 +378,23 @@ namespace game.Player
             }
         }
 
-        public static void DrawBuilding(Graphics graphicsForm, Button pressedButton, Point dragCoordinates,
-            int xCoordinate, int yCoordinate, bool buildPlaceable)
+        /*!
+         * \brief Рисует полупрозрачное здание на координатах указателя мыши в соответсвии с соблюдением условий размещения некоторого здания
+         * param graphicsForm - Графика форы FormGame
+         * param pressedButton - Текущее выбранное здание, которое нужно отрисовать
+         * param dragCoordinates - Координаты сдвига карты
+         * param mouseCoordinates - Координаты указателя мыши
+         * param buildingPlaceable - Соблюдены ли условия размещения выбранного здания
+         */
+        public static void DrawPrebuildingImage(Graphics graphicsForm, Button pressedButton, Point dragCoordinates,
+            Point mouseCoordinates, bool buildingPlaceable)
         {
             var spritesSize = Sprites.GetSpritesSize();
-            var rec = new Rectangle(dragCoordinates.X % spritesSize + xCoordinate,
-                dragCoordinates.Y % spritesSize + yCoordinate, spritesSize + 1, spritesSize + 1);
+            var rec = new Rectangle(dragCoordinates.X % spritesSize + mouseCoordinates.X,
+                dragCoordinates.Y % spritesSize + mouseCoordinates.Y, spritesSize + 1, spritesSize + 1);
 
             graphicsForm.DrawImage(_bitmapsDictionary[pressedButton.Name], rec);
-            if (!buildPlaceable)
+            if (!buildingPlaceable)
                 graphicsForm.FillRectangle(new SolidBrush(Color.FromArgb(60, Color.Red)), rec);
             else
                 graphicsForm.FillRectangle(new SolidBrush(Color.FromArgb(60, Color.Green)), rec);

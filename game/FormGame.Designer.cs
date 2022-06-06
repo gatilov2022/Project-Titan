@@ -225,7 +225,7 @@
             this.Name = "FormGame";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.GameWindowClosed);
-            this.Paint += new System.Windows.Forms.PaintEventHandler(this.DrawForm);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.DrawGraphics);
             this.DoubleClick += new System.EventHandler(this.GameWindowDoubleClick);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.GameFieldMouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.GameFieldMouseMoveEvent);
