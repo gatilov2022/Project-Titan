@@ -4,33 +4,18 @@ using game.World_map.Block;
 
 namespace game.Player.Buildings
 {
+    /*!
+     * \brief Класс SandQuarry служит для добычи песка в замен на энергию.
+     */
     [Serializable]
     internal class SandQuarry : Building
     {
         private static string _suitableBlock = typeof(Sand).ToString();
-        private static Dictionary<string, Dictionary<string, int>> _buildingCostsDictionary =
-            new Dictionary<string, Dictionary<string, int>>
-            {
-                {
-                    "Build", new Dictionary<string, int>
-                    {
-                        {
-                            "Sand", 50
-                        },
-                        {
-                            "Iron", 50
-                        }
-                    }
-                },
-                {
-                    "Upgrade", new Dictionary<string, int>
-                    {
-                        {
-                            "Iron", 40
-                        }
-                    }
-                }
-            };
+        private static Dictionary<string, Dictionary<string, int>> _buildingCostsDictionary = new Dictionary<string, Dictionary<string, int>>
+        {
+            {"Build", new Dictionary<string, int>{{"Sand", 50}, {"Iron", 50}}},
+            {"Upgrade", new Dictionary<string, int>{{"Iron", 40}}}
+        };
 
         public SandQuarry()
         {
@@ -41,6 +26,10 @@ namespace game.Player.Buildings
             AddBuilding(this);
         }
 
+        /*!
+         * \brief Метод забирает ресурсу у игрока.
+         * В замен строится здание и начинается добыча песка взамен на энергию.
+         */
         public static void TakeResourcesForBuild()
         {
             foreach (var dictVal in _buildingCostsDictionary["Build"])
@@ -49,6 +38,11 @@ namespace game.Player.Buildings
             }
         }
 
+        /*!
+         * \brief Проверка, хватает ли ресурсов для постройки.
+         * \return false Если не хватает ресурсов.
+         * \return true Если хватает ресурсов.
+         */
         public static bool IsResourcesEnough()
         {
             foreach (var dictValue in _buildingCostsDictionary["Build"])
@@ -58,20 +52,9 @@ namespace game.Player.Buildings
                     return false;
                 }
             }
+
             return true;
         }
-
-        public override Dictionary<string, int> AmountResourcesForUpgrade()
-        {
-            var retDictionary = new Dictionary<string, int>();
-
-            foreach (var dictValue in _buildingCostsDictionary["Upgrade"])
-            {
-                retDictionary[dictValue.Key] = (int)(dictValue.Value * Math.Pow(Math.E / 2, BuildingLevel));
-            }
-            return retDictionary;
-        }
-
         private bool IsResourcesEnough(Dictionary<string, int> checkDictionary)
         {
             foreach (var dictValue in checkDictionary)
@@ -81,7 +64,24 @@ namespace game.Player.Buildings
                     return false;
                 }
             }
+
             return true;
+        }
+
+        /*!
+         * \brief Метод улучшает показатели здания.
+         * \return retDictionary Новые показатели здания при улучшении.
+         */
+        public override Dictionary<string, int> AmountResourcesForUpgrade()
+        {
+            var retDictionary = new Dictionary<string, int>();
+
+            foreach (var dictValue in _buildingCostsDictionary["Upgrade"])
+            {
+                retDictionary[dictValue.Key] = (int)(dictValue.Value * Math.Pow(Math.E / 2, BuildingLevel));
+            }
+
+            return retDictionary;
         }
 
         private void TakeResourcesForUpgrade()
@@ -92,6 +92,10 @@ namespace game.Player.Buildings
             }
         }
 
+        /*!
+         * \brief Метод для проверки возможности улучшения здания.
+         * Если уровень максимальный или ресурсов не хватает, ничего не улучшится.
+         */
         public override void UpgradeBuilding()
         {
             if (!IsMaxLevel())
@@ -107,7 +111,9 @@ namespace game.Player.Buildings
                 }
             }
         }
-
+        /*!
+         * \return _suitableBlock Тип блока на котором может стоять здание.
+         */
         public static string GetSuitableBlock()
         {
             return _suitableBlock;

@@ -4,33 +4,18 @@ using game.World_map.Block;
 
 namespace game.Player
 {
+    /*!
+     * \brief Класс Pump служит для добычи воды в замен на энергию.
+     */
     [Serializable]
     internal class Pump : Building
     {
         private static string _suitableBlock = typeof(Water).ToString();
-        private static Dictionary<string, Dictionary<string, int>> _buildingCostsDictionary =
-            new Dictionary<string, Dictionary<string, int>>
-            {
-                {
-                    "Build", new Dictionary<string, int>
-                    {
-                        {
-                            "Sand", 50
-                        },
-                        {
-                            "Iron", 50
-                        }
-                    }
-                },
-                {
-                    "Upgrade", new Dictionary<string, int>
-                    {
-                        {
-                            "Iron", 40
-                        }
-                    }
-                }
-            };
+        private static Dictionary<string, Dictionary<string, int>> _buildingCostsDictionary = new Dictionary<string, Dictionary<string, int>>
+        {
+            {"Build", new Dictionary<string, int>{{"Sand", 50}, {"Iron", 50}}},
+            {"Upgrade", new Dictionary<string, int>{{"Iron", 40}}}
+        };
 
         public Pump()
         {
@@ -41,6 +26,10 @@ namespace game.Player
             AddBuilding(this);
         }
 
+        /*!
+         * \brief Метод забирает ресурсу у игрока.
+         * В замен строится здание и начинается добыча воды взамен на энергию.
+         */
         public static void TakeResourcesForBuild()
         {
             foreach (var dictVal in _buildingCostsDictionary["Build"])
@@ -49,6 +38,11 @@ namespace game.Player
             }
         }
 
+        /*!
+         * \brief Проверка, хватает ли ресурсов для постройки.
+         * \return false Если не хватает ресурсов.
+         * \return true Если хватает ресурсов.
+         */
         public static bool IsResourcesEnough()
         {
             foreach (var dictValue in _buildingCostsDictionary["Build"])
@@ -58,9 +52,14 @@ namespace game.Player
                     return false;
                 }
             }
+
             return true;
         }
 
+        /*!
+         * \brief Метод улучшает показатели здания.
+         * \return retDictionary Новые показатели здания при улучшении.
+         */
         public override Dictionary<string, int> AmountResourcesForUpgrade()
         {
             var retDictionary = new Dictionary<string, int>();
@@ -69,6 +68,7 @@ namespace game.Player
             {
                 retDictionary[dictValue.Key] = (int)(dictValue.Value * Math.Pow(Math.E / 2, BuildingLevel));
             }
+
             return retDictionary;
         }
 
@@ -81,6 +81,7 @@ namespace game.Player
                     return false;
                 }
             }
+
             return true;
         }
 
@@ -92,6 +93,10 @@ namespace game.Player
             }
         }
 
+        /*!
+         * \brief Метод для проверки возможности улучшения здания.
+         * Если уровень максимальный или ресурсов не хватает, ничего не улучшится.
+         */
         public override void UpgradeBuilding()
         {
             if (!IsMaxLevel())
@@ -108,6 +113,9 @@ namespace game.Player
             }
         }
 
+        /*!
+         * \return _suitableBlock Тип блока на котором может стоять здание.
+         */
         public static string GetSuitableBlock()
         {
             return _suitableBlock;

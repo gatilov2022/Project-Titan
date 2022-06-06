@@ -15,15 +15,15 @@ namespace game.Player
         private Dictionary<string, Dictionary<string, int>> _playerResources;
         public Player()
         {
-            _playerResources = new Dictionary<string, Dictionary<string,int>>
+            _playerResources = new Dictionary<string, Dictionary<string, int>>
             {
-                {"Iron",  new Dictionary<string, int>{{"AmountOfResource", 500}, {"ResourceShift",0}, {"ResourceCapacity",1000}}},
-                {"Sand", new Dictionary<string, int>{{"AmountOfResource", 400}, {"ResourceShift",0}, {"ResourceCapacity",600}}},
-                {"Energy", new Dictionary<string, int>{{"AmountOfResource", 400}, {"ResourceShift",0}, {"ResourceCapacity",600}}},
-                {"Water",  new Dictionary<string, int>{{"AmountOfResource", 300}, {"ResourceShift",0}, {"ResourceCapacity",400}}}, 
-                {"ComponentsT1" ,  new Dictionary<string, int>{{"AmountOfResource", 0}, {"ResourceShift",0}, {"ResourceCapacity",100}}},
-                {"ComponentsT2",  new Dictionary<string, int>{{"AmountOfResource", 0}, {"ResourceShift",0}, {"ResourceCapacity",100}}},
-                {"ComponentsT3",  new Dictionary<string, int>{{"AmountOfResource", 0}, {"ResourceShift",0}, {"ResourceCapacity",100}}}
+                {"Iron",  new Dictionary<string, int>{{"AmountOfResource", 500}, {"ResourceShift", 0}, {"ResourceCapacity", 1000}}},
+                {"Sand", new Dictionary<string, int>{{"AmountOfResource", 400}, {"ResourceShift", 0}, {"ResourceCapacity", 600}}},
+                {"Energy", new Dictionary<string, int>{{"AmountOfResource", 400}, {"ResourceShift", 0}, {"ResourceCapacity", 600}}},
+                {"Water",  new Dictionary<string, int>{{"AmountOfResource", 300}, {"ResourceShift", 0}, {"ResourceCapacity", 400}}},
+                {"ComponentsT1" ,  new Dictionary<string, int>{{"AmountOfResource", 0}, {"ResourceShift", 0}, {"ResourceCapacity", 100}}},
+                {"ComponentsT2",  new Dictionary<string, int>{{"AmountOfResource", 0}, {"ResourceShift", 0}, {"ResourceCapacity", 100}}},
+                {"ComponentsT3",  new Dictionary<string, int>{{"AmountOfResource", 0}, {"ResourceShift", 0}, {"ResourceCapacity", 100}}}
             };
         }
         /*!
