@@ -361,3 +361,9 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/Project-Titan.rar
+
+/html
+/latex
+/Doxyfile
+/ClassDiagram1.cd

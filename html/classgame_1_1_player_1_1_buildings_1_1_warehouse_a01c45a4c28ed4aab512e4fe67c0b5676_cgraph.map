@@ -1,7 +1,7 @@
 <map id="game.Player.Buildings.Warehouse.UpgradeBuilding" name="game.Player.Buildings.Warehouse.UpgradeBuilding">
 <area shape="rect" id="node1" title="Метод для проверки возможности улучшения здания. Если уровень максимальный или ресурсов не хватает,..." alt="" coords="5,71,232,112"/>
 <area shape="rect" id="node2" href="$classgame_1_1_player_1_1_player.html#ab2e5fe9a02e1b25921189942cb890335" title="Метод увеличивающий максимальное кол&#45;во ресурсов у игрока." alt="" coords="299,5,488,47"/>
-<area shape="rect" id="node3" href="$classgame_1_1_player_1_1_building.html#adb85b26038a831a018ce0c9a3542cd7c" title="Проверяет, является ли обьект класса Building максимальным уровнем return bool." alt="" coords="301,71,485,112"/>
+<area shape="rect" id="node3" href="$classgame_1_1_player_1_1_building.html#adb85b26038a831a018ce0c9a3542cd7c" title="Проверяет, является ли обьект класса Building максимальным уровнем" alt="" coords="301,71,485,112"/>
 <area shape="rect" id="node4" href="$classgame_1_1_player_1_1_buildings_1_1_warehouse.html#a0720100305c67525163b02ac739481dd" title="Проверка, хватает ли ресурсов для постройки." alt="" coords="280,136,507,177"/>
 <area shape="rect" id="node5" href="$classgame_1_1_player_1_1_player.html#ac611a3bcfc5f2e198c059ce0d4c1f48a" title="Метод возращающий кол&#45;во ресурса." alt="" coords="555,136,761,177"/>
 </map>

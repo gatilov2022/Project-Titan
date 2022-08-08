@@ -1,7 +1,7 @@
 <map id="game.Player.Buildings.Warehouse.IsResourcesEnough" name="game.Player.Buildings.Warehouse.IsResourcesEnough">
 <area shape="rect" id="node1" title="Проверка, хватает ли ресурсов для постройки." alt="" coords="511,71,737,112"/>
-<area shape="rect" id="node2" href="$classgame_1_1_player_1_1_building.html#abe6f874c0d6db9c96d10ffa751970e83" title="Проверяет, соблюдены ли условия для размещения обьекта класса Building на игровой карте param mouseCo..." alt="" coords="252,5,447,47"/>
+<area shape="rect" id="node2" href="$classgame_1_1_player_1_1_building.html#abe6f874c0d6db9c96d10ffa751970e83" title="Проверяет, соблюдены ли условия для размещения обьекта класса Building на игровой карте" alt="" coords="252,5,447,47"/>
 <area shape="rect" id="node3" href="$classgame_1_1_player_1_1_building.html#a628d8c6d11231b2f9d0839d781605b15" title="Создаёт экземпляр одного из классов: Factory, Pump, Drill, Gamegoal, Warehouse, SandQuarry,..." alt="" coords="256,71,443,112"/>
 <area shape="rect" id="node5" href="$classgame_1_1_player_1_1_buildings_1_1_warehouse.html#a01c45a4c28ed4aab512e4fe67c0b5676" title="Метод для проверки возможности улучшения здания. Если уровень максимальный или ресурсов не хватает,..." alt="" coords="236,136,463,177"/>
-<area shape="rect" id="node4" href="$classgame_1_1_player_1_1_building.html#ac7ab27e3ad701936e85fd6964ac23d04" title="Размещает здание на игровой карте param mouseCoordinates &#45; Координаты указателя мыши param pressedBut..." alt="" coords="5,71,188,112"/>
+<area shape="rect" id="node4" href="$classgame_1_1_player_1_1_building.html#ac7ab27e3ad701936e85fd6964ac23d04" title="Размещает здание на игровой карте" alt="" coords="5,71,188,112"/>
 </map>

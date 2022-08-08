@@ -1,4 +1,4 @@
 <map id="game.Player.Building.GetBuilding" name="game.Player.Building.GetBuilding">
-<area shape="rect" id="node1" title="Возвращает обьект класса Building по заданным координатам или null param mouseCoordinates &#45; Координат..." alt="" coords="5,5,176,47"/>
+<area shape="rect" id="node1" title="Возвращает обьект класса Building по заданным координатам или null." alt="" coords="5,5,176,47"/>
 <area shape="rect" id="node2" href="$classgame_1_1_world__map_1_1_sprites.html#ab0e556518af360593bba87f55368448a" title=" " alt="" coords="224,5,419,47"/>
 </map>

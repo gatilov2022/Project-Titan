@@ -1,6 +1,6 @@
 <map id="game.Player.Buildings.SteamEngine.UpgradeBuilding" name="game.Player.Buildings.SteamEngine.UpgradeBuilding">
 <area shape="rect" id="node1" title="Метод для проверки возможности улучшения здания. Если уровень максимальный или ресурсов не хватает,..." alt="" coords="5,39,200,80"/>
-<area shape="rect" id="node2" href="$classgame_1_1_player_1_1_building.html#adb85b26038a831a018ce0c9a3542cd7c" title="Проверяет, является ли обьект класса Building максимальным уровнем return bool." alt="" coords="253,5,437,47"/>
+<area shape="rect" id="node2" href="$classgame_1_1_player_1_1_building.html#adb85b26038a831a018ce0c9a3542cd7c" title="Проверяет, является ли обьект класса Building максимальным уровнем" alt="" coords="253,5,437,47"/>
 <area shape="rect" id="node3" href="$classgame_1_1_player_1_1_buildings_1_1_steam_engine.html#a1dff6a0cf5b95a5ee8162c6fdc354de9" title="Класс SteamEngine служит для переработки воды в энергию." alt="" coords="248,71,443,112"/>
 <area shape="rect" id="node4" href="$classgame_1_1_player_1_1_player.html#ac611a3bcfc5f2e198c059ce0d4c1f48a" title="Метод возращающий кол&#45;во ресурса." alt="" coords="491,71,697,112"/>
 </map>

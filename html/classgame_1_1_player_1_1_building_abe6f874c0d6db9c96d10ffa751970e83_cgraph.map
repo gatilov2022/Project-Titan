@@ -1,5 +1,5 @@
 <map id="game.Player.Building.BuildingIsAbleToPlace" name="game.Player.Building.BuildingIsAbleToPlace">
-<area shape="rect" id="node1" title="Проверяет, соблюдены ли условия для размещения обьекта класса Building на игровой карте param mouseCo..." alt="" coords="5,485,200,527"/>
+<area shape="rect" id="node1" title="Проверяет, соблюдены ли условия для размещения обьекта класса Building на игровой карте" alt="" coords="5,485,200,527"/>
 <area shape="rect" id="node2" href="$classgame_1_1_world__map_1_1_map.html#a22f87e7f0bceeec0d3bf548191b507aa" title="Метод для возращения типа блока. Ищет тип блока от координат курсора." alt="" coords="248,42,487,69"/>
 <area shape="rect" id="node6" href="$classgame_1_1_player_1_1_buildings_1_1_drill.html#a1a2d8ddb4ed6a901f0683cabb262cad4" title=" " alt="" coords="276,93,459,135"/>
 <area shape="rect" id="node7" href="$classgame_1_1_player_1_1_buildings_1_1_factory.html#afc304fdd5b57985923a4da4a492a9077" title=" " alt="" coords="265,159,469,200"/>
@@ -8,7 +8,7 @@
 <area shape="rect" id="node10" href="$classgame_1_1_player_1_1_buildings_1_1_sand_quarry.html#a96009eca188cc71515d4df687421fff2" title=" " alt="" coords="274,355,461,396"/>
 <area shape="rect" id="node11" href="$classgame_1_1_player_1_1_buildings_1_1_steam_engine.html#ab7cf67d160d2ee51177ab45676b7f029" title=" " alt="" coords="270,420,465,461"/>
 <area shape="rect" id="node12" href="$classgame_1_1_player_1_1_buildings_1_1_warehouse.html#a1786d7e7b23c09552f84dd2429ff9e55" title=" " alt="" coords="254,485,481,527"/>
-<area shape="rect" id="node13" href="$classgame_1_1_player_1_1_building.html#a717f69c9402af2b0b1497fa17e97cb35" title="Проверяет, занята ли позиция на введённых координатах обьектом класса Building param mouseCoordinates..." alt="" coords="281,551,453,592"/>
+<area shape="rect" id="node13" href="$classgame_1_1_player_1_1_building.html#a717f69c9402af2b0b1497fa17e97cb35" title="Проверяет, занята ли позиция на введённых координатах обьектом класса Building." alt="" coords="281,551,453,592"/>
 <area shape="rect" id="node14" href="$classgame_1_1_player_1_1_buildings_1_1_drill.html#ab73a7b72cb441e5dbb576b699eda2a43" title="Проверка, хватает ли ресурсов для постройки." alt="" coords="276,616,459,657"/>
 <area shape="rect" id="node16" href="$classgame_1_1_player_1_1_buildings_1_1_gamegoal.html#af6b332c41127a8623d989e9e558f9bcf" title="Проверка, хватает ли ресурсов для постройки." alt="" coords="258,681,477,723"/>
 <area shape="rect" id="node17" href="$classgame_1_1_player_1_1_pump.html#ab1be344f4641520069037280f0b74906" title="Проверка, хватает ли ресурсов для постройки." alt="" coords="263,747,472,788"/>

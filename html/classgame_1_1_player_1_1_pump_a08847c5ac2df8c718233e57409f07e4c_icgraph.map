@@ -1,4 +1,4 @@
 <map id="game.Player.Pump.GetSuitableBlock" name="game.Player.Pump.GetSuitableBlock">
 <area shape="rect" id="node1" title=" " alt="" coords="248,5,453,47"/>
-<area shape="rect" id="node2" href="$classgame_1_1_player_1_1_building.html#abe6f874c0d6db9c96d10ffa751970e83" title="Проверяет, соблюдены ли условия для размещения обьекта класса Building на игровой карте param mouseCo..." alt="" coords="5,5,200,47"/>
+<area shape="rect" id="node2" href="$classgame_1_1_player_1_1_building.html#abe6f874c0d6db9c96d10ffa751970e83" title="Проверяет, соблюдены ли условия для размещения обьекта класса Building на игровой карте" alt="" coords="5,5,200,47"/>
 </map>

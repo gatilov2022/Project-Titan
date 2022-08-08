@@ -9,5 +9,5 @@
 <area shape="rect" id="node10" href="$classgame_1_1_player_1_1_buildings_1_1_warehouse.html#aac156d025d68449a3663869adb412607" title="Метод забирает ресурсу у игрока. В замен строится здание и увеличивает вместимость ресурсов." alt="" coords="471,397,697,439"/>
 <area shape="rect" id="node11" href="$classgame_1_1_player_1_1_building.html#aaeebbb9fe21dea89f39493bd43dcb7b5" title="Обновляет ресурсы игрока" alt="" coords="489,463,679,504"/>
 <area shape="rect" id="node3" href="$classgame_1_1_player_1_1_building.html#a628d8c6d11231b2f9d0839d781605b15" title="Создаёт экземпляр одного из классов: Factory, Pump, Drill, Gamegoal, Warehouse, SandQuarry,..." alt="" coords="236,201,423,243"/>
-<area shape="rect" id="node4" href="$classgame_1_1_player_1_1_building.html#ac7ab27e3ad701936e85fd6964ac23d04" title="Размещает здание на игровой карте param mouseCoordinates &#45; Координаты указателя мыши param pressedBut..." alt="" coords="5,201,188,243"/>
+<area shape="rect" id="node4" href="$classgame_1_1_player_1_1_building.html#ac7ab27e3ad701936e85fd6964ac23d04" title="Размещает здание на игровой карте" alt="" coords="5,201,188,243"/>
 </map>

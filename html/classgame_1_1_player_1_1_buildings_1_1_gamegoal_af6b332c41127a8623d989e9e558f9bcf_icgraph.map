@@ -1,6 +1,6 @@
 <map id="game.Player.Buildings.Gamegoal.IsResourcesEnough" name="game.Player.Buildings.Gamegoal.IsResourcesEnough">
 <area shape="rect" id="node1" title="Проверка, хватает ли ресурсов для постройки." alt="" coords="479,39,697,80"/>
-<area shape="rect" id="node2" href="$classgame_1_1_player_1_1_building.html#abe6f874c0d6db9c96d10ffa751970e83" title="Проверяет, соблюдены ли условия для размещения обьекта класса Building на игровой карте param mouseCo..." alt="" coords="236,5,431,47"/>
+<area shape="rect" id="node2" href="$classgame_1_1_player_1_1_building.html#abe6f874c0d6db9c96d10ffa751970e83" title="Проверяет, соблюдены ли условия для размещения обьекта класса Building на игровой карте" alt="" coords="236,5,431,47"/>
 <area shape="rect" id="node3" href="$classgame_1_1_player_1_1_building.html#a628d8c6d11231b2f9d0839d781605b15" title="Создаёт экземпляр одного из классов: Factory, Pump, Drill, Gamegoal, Warehouse, SandQuarry,..." alt="" coords="240,71,427,112"/>
-<area shape="rect" id="node4" href="$classgame_1_1_player_1_1_building.html#ac7ab27e3ad701936e85fd6964ac23d04" title="Размещает здание на игровой карте param mouseCoordinates &#45; Координаты указателя мыши param pressedBut..." alt="" coords="5,71,188,112"/>
+<area shape="rect" id="node4" href="$classgame_1_1_player_1_1_building.html#ac7ab27e3ad701936e85fd6964ac23d04" title="Размещает здание на игровой карте" alt="" coords="5,71,188,112"/>
 </map>
