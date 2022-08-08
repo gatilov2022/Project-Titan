@@ -1,4 +1,0 @@
-<map id="game.Player.Buildings.Factory.IsResourcesEnough" name="game.Player.Buildings.Factory.IsResourcesEnough">
-<area shape="rect" id="node1" title="Проверка, хватает ли ресурсов для постройки." alt="" coords="257,5,461,47"/>
-<area shape="rect" id="node2" href="$classgame_1_1_player_1_1_buildings_1_1_factory.html#a1e4e2ed3af2a76f3cb7e691da9783662" title="Метод для проверки возможности улучшения здания. Если уровень максимальный или ресурсов не хватает,..." alt="" coords="5,5,209,47"/>
-</map>

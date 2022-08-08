@@ -1,4 +1,0 @@
-<map id="game.Player.Building.DrawCreatedBuildings" name="game.Player.Building.DrawCreatedBuildings">
-<area shape="rect" id="node1" title="Отрисовывает все созданные здания" alt="" coords="5,5,184,47"/>
-<area shape="rect" id="node2" href="$classgame_1_1_world__map_1_1_sprites.html#ab0e556518af360593bba87f55368448a" title=" " alt="" coords="232,5,427,47"/>
-</map>

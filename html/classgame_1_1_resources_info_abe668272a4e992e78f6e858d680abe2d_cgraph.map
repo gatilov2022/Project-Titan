@@ -1,4 +1,0 @@
-<map id="game.ResourcesInfo.DrawResourceShift" name="game.ResourcesInfo.DrawResourceShift">
-<area shape="rect" id="node1" title="Вывод убытка или прироста ресурсов." alt="" coords="5,5,233,47"/>
-<area shape="rect" id="node2" href="$classgame_1_1_player_1_1_player.html#ad49ddcdd57ae21a64ae3ff5280eb9fb7" title="Возращает кол&#45;во ресурса в секунду." alt="" coords="281,13,492,39"/>
-</map>

@@ -1,4 +1,0 @@
-<map id="game.Player.Building.CreateBuilding" name="game.Player.Building.CreateBuilding">
-<area shape="rect" id="node1" title="Создаёт экземпляр одного из классов: Factory, Pump, Drill, Gamegoal, Warehouse, SandQuarry,..." alt="" coords="236,5,423,47"/>
-<area shape="rect" id="node2" href="$classgame_1_1_player_1_1_building.html#ac7ab27e3ad701936e85fd6964ac23d04" title="Размещает здание на игровой карте" alt="" coords="5,5,188,47"/>
-</map>

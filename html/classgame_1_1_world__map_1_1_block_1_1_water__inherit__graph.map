@@ -1,4 +1,0 @@
-<map id="game.World_map.Block.Water" name="game.World_map.Block.Water">
-<area shape="rect" id="node1" title="Класс Water Пресдавляет собой шаблон для создания блока типа Water, с соответсвующими цветами." alt="" coords="5,80,205,107"/>
-<area shape="rect" id="node2" href="$classgame_1_1_world__map_1_1_sprites.html" title="Класс Sprites хранит в себе параметры изображения. Он задаёт размер блоков, зданий,..." alt="" coords="74,5,137,32"/>
-</map>

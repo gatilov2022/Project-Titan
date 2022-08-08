@@ -1,4 +1,0 @@
-<map id="game.Player.Buildings.Drill.TakeResourcesForBuild" name="game.Player.Buildings.Drill.TakeResourcesForBuild">
-<area shape="rect" id="node1" title="Метод забирает ресурсу у игрока. В замен игрок получает добычу железа." alt="" coords="5,5,188,47"/>
-<area shape="rect" id="node2" href="$classgame_1_1_player_1_1_player.html#a65011c997084f3db5d0bdf48c21beeaa" title="Метод уменьшает кол&#45;во ресурса." alt="" coords="236,5,431,47"/>
-</map>

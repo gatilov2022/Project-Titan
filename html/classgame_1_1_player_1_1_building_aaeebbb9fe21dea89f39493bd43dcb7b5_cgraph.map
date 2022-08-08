@@ -1,9 +1,0 @@
-<map id="game.Player.Building.UpdateResources" name="game.Player.Building.UpdateResources">
-<area shape="rect" id="node1" title="Обновляет ресурсы игрока" alt="" coords="5,169,196,211"/>
-<area shape="rect" id="node2" href="$classgame_1_1_player_1_1_player.html#a65011c997084f3db5d0bdf48c21beeaa" title="Метод уменьшает кол&#45;во ресурса." alt="" coords="255,5,449,47"/>
-<area shape="rect" id="node3" href="$classgame_1_1_player_1_1_player.html#af39c25af01ee446986b79308a23a7f0a" title="Метод ууменьшающий добывание ресурса." alt="" coords="255,71,449,112"/>
-<area shape="rect" id="node4" href="$classgame_1_1_player_1_1_player.html#ac611a3bcfc5f2e198c059ce0d4c1f48a" title="Метод возращающий кол&#45;во ресурса." alt="" coords="249,136,455,177"/>
-<area shape="rect" id="node5" href="$classgame_1_1_player_1_1_player.html#acd309bfb23d0c5a7f0ee0c25a022e308" title="Меотод возращает максимальное кол&#45;во ресурсов у игрока." alt="" coords="244,201,460,243"/>
-<area shape="rect" id="node6" href="$classgame_1_1_player_1_1_player.html#a9781e45e92b42d3b19afce6d6afb8210" title="Метод увеличивающий кол&#45;во ресурса." alt="" coords="257,267,447,308"/>
-<area shape="rect" id="node7" href="$classgame_1_1_player_1_1_player.html#a49f702d21fffb7ed49d11647a624e1f4" title="Метод увеличивающий добывание ресурса." alt="" coords="247,333,457,359"/>
-</map>

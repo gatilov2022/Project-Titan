@@ -1,4 +1,0 @@
-<map id="game.Player.Buildings.Drill" name="game.Player.Buildings.Drill">
-<area shape="rect" id="node1" title="Класс Drill служит для добычи железа в замен на энергию." alt="" coords="5,80,184,107"/>
-<area shape="rect" id="node2" href="$classgame_1_1_player_1_1_building.html" title="Класс Building даёт возможность строительства игроку. Так же предоставляет возможность улучшать здани..." alt="" coords="61,5,129,32"/>
-</map>

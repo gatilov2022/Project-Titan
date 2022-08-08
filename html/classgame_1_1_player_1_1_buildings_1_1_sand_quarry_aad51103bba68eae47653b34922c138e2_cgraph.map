@@ -1,6 +1,0 @@
-<map id="game.Player.Buildings.SandQuarry.UpgradeBuilding" name="game.Player.Buildings.SandQuarry.UpgradeBuilding">
-<area shape="rect" id="node1" title="Метод для проверки возможности улучшения здания. Если уровень максимальный или ресурсов не хватает,..." alt="" coords="5,39,192,80"/>
-<area shape="rect" id="node2" href="$classgame_1_1_player_1_1_building.html#adb85b26038a831a018ce0c9a3542cd7c" title="Проверяет, является ли обьект класса Building максимальным уровнем" alt="" coords="241,5,425,47"/>
-<area shape="rect" id="node3" href="$classgame_1_1_player_1_1_buildings_1_1_sand_quarry.html#ab463ebcfb4027d9d2cd4f7ff51a99583" title="Проверка, хватает ли ресурсов для постройки." alt="" coords="240,71,427,112"/>
-<area shape="rect" id="node4" href="$classgame_1_1_player_1_1_player.html#ac611a3bcfc5f2e198c059ce0d4c1f48a" title="Метод возращающий кол&#45;во ресурса." alt="" coords="475,71,681,112"/>
-</map>

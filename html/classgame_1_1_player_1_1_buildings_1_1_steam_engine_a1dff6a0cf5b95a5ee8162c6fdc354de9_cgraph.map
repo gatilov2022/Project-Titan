@@ -1,4 +1,0 @@
-<map id="game.Player.Buildings.SteamEngine.IsResourcesEnough" name="game.Player.Buildings.SteamEngine.IsResourcesEnough">
-<area shape="rect" id="node1" title="Класс SteamEngine служит для переработки воды в энергию." alt="" coords="5,5,200,47"/>
-<area shape="rect" id="node2" href="$classgame_1_1_player_1_1_player.html#ac611a3bcfc5f2e198c059ce0d4c1f48a" title="Метод возращающий кол&#45;во ресурса." alt="" coords="248,5,455,47"/>
-</map>

@@ -1,4 +1,0 @@
-<map id="game.Player.Building.HasBuildingOnTheBlock" name="game.Player.Building.HasBuildingOnTheBlock">
-<area shape="rect" id="node1" title="Проверяет, занята ли позиция на введённых координатах обьектом класса Building." alt="" coords="5,5,177,47"/>
-<area shape="rect" id="node2" href="$classgame_1_1_world__map_1_1_sprites.html#ab0e556518af360593bba87f55368448a" title=" " alt="" coords="225,5,420,47"/>
-</map>

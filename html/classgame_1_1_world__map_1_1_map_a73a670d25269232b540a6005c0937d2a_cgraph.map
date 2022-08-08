@@ -1,5 +1,0 @@
-<map id="game.World_map.Map.DrawMap" name="game.World_map.Map.DrawMap">
-<area shape="rect" id="node1" title="Отрисовка всех блоков на карте." alt="" coords="5,46,216,73"/>
-<area shape="rect" id="node2" href="$classgame_1_1_world__map_1_1_chunk.html#a9c04242d02892d827281dbbc229c5d5c" title=" " alt="" coords="266,5,457,47"/>
-<area shape="rect" id="node3" href="$classgame_1_1_world__map_1_1_sprites.html#ab0e556518af360593bba87f55368448a" title=" " alt="" coords="264,71,459,112"/>
-</map>

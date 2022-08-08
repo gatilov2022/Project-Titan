@@ -1,4 +1,0 @@
-<map id="game.Player.Building.DrawPrebuildingImage" name="game.Player.Building.DrawPrebuildingImage">
-<area shape="rect" id="node1" title="Рисует полупрозрачное здание на координатах указателя мыши в соответсвии с соблюдением условий размещ..." alt="" coords="5,5,184,47"/>
-<area shape="rect" id="node2" href="$classgame_1_1_world__map_1_1_sprites.html#ab0e556518af360593bba87f55368448a" title=" " alt="" coords="232,5,427,47"/>
-</map>

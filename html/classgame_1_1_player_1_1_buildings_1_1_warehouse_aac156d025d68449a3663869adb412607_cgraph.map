@@ -1,4 +1,0 @@
-<map id="game.Player.Buildings.Warehouse.TakeResourcesForBuild" name="game.Player.Buildings.Warehouse.TakeResourcesForBuild">
-<area shape="rect" id="node1" title="Метод забирает ресурсу у игрока. В замен строится здание и увеличивает вместимость ресурсов." alt="" coords="5,5,232,47"/>
-<area shape="rect" id="node2" href="$classgame_1_1_player_1_1_player.html#a65011c997084f3db5d0bdf48c21beeaa" title="Метод уменьшает кол&#45;во ресурса." alt="" coords="280,5,475,47"/>
-</map>

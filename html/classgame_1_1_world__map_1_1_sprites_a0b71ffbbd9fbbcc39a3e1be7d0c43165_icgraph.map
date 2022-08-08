@@ -1,4 +1,0 @@
-<map id="game.World_map.Sprites.Generate_texture" name="game.World_map.Sprites.Generate_texture">
-<area shape="rect" id="node1" title="Генерируемые цвета блоков." alt="" coords="268,5,495,47"/>
-<area shape="rect" id="node2" href="$classgame_1_1_world__map_1_1_sprites.html#a7692115e7be47e39a43dd4e516f29e60" title="Создаёт блоки карты. Генерирует цвета блока и отрисовывает блок на чанке." alt="" coords="5,13,220,39"/>
-</map>

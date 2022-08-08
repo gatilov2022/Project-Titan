@@ -1,4 +1,0 @@
-<map id="game.Player.Player.GetShiftRes" name="game.Player.Player.GetShiftRes">
-<area shape="rect" id="node1" title="Возращает кол&#45;во ресурса в секунду." alt="" coords="281,13,492,39"/>
-<area shape="rect" id="node2" href="$classgame_1_1_resources_info.html#abe668272a4e992e78f6e858d680abe2d" title="Вывод убытка или прироста ресурсов." alt="" coords="5,5,233,47"/>
-</map>

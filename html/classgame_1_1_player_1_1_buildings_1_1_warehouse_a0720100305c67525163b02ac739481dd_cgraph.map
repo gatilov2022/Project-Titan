@@ -1,4 +1,0 @@
-<map id="game.Player.Buildings.Warehouse.IsResourcesEnough" name="game.Player.Buildings.Warehouse.IsResourcesEnough">
-<area shape="rect" id="node1" title="Проверка, хватает ли ресурсов для постройки." alt="" coords="5,5,232,47"/>
-<area shape="rect" id="node2" href="$classgame_1_1_player_1_1_player.html#ac611a3bcfc5f2e198c059ce0d4c1f48a" title="Метод возращающий кол&#45;во ресурса." alt="" coords="280,5,487,47"/>
-</map>
