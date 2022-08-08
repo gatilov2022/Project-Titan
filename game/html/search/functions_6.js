@@ -1,9 +1,0 @@
-var searchData=
-[
-  ['increaseamountofresources_0',['IncreaseAmountOfResources',['../classgame_1_1_player_1_1_player.html#a9781e45e92b42d3b19afce6d6afb8210',1,'game::Player::Player']]],
-  ['increaseresourcecapacity_1',['IncreaseResourceCapacity',['../classgame_1_1_player_1_1_player.html#ab2e5fe9a02e1b25921189942cb890335',1,'game::Player::Player']]],
-  ['increasesize_2',['IncreaseSize',['../classgame_1_1_world__map_1_1_sprites.html#a5d8b3dca368e3dcebec26068e99352b4',1,'game::World_map::Sprites']]],
-  ['incrshiftres_3',['IncrShiftRes',['../classgame_1_1_player_1_1_player.html#a49f702d21fffb7ed49d11647a624e1f4',1,'game::Player::Player']]],
-  ['ismaxlevel_4',['IsMaxLevel',['../classgame_1_1_player_1_1_building.html#adb85b26038a831a018ce0c9a3542cd7c',1,'game::Player::Building']]],
-  ['isresourcesenough_5',['IsResourcesEnough',['../classgame_1_1_player_1_1_buildings_1_1_drill.html#ab73a7b72cb441e5dbb576b699eda2a43',1,'game.Player.Buildings.Drill.IsResourcesEnough()'],['../classgame_1_1_player_1_1_buildings_1_1_factory.html#af7f42a39401dc11f5d68966db1a746d3',1,'game.Player.Buildings.Factory.IsResourcesEnough()'],['../classgame_1_1_player_1_1_buildings_1_1_gamegoal.html#af6b332c41127a8623d989e9e558f9bcf',1,'game.Player.Buildings.Gamegoal.IsResourcesEnough()'],['../classgame_1_1_player_1_1_pump.html#ab1be344f4641520069037280f0b74906',1,'game.Player.Pump.IsResourcesEnough()'],['../classgame_1_1_player_1_1_buildings_1_1_sand_quarry.html#ab463ebcfb4027d9d2cd4f7ff51a99583',1,'game.Player.Buildings.SandQuarry.IsResourcesEnough()'],['../classgame_1_1_player_1_1_buildings_1_1_steam_engine.html#a1dff6a0cf5b95a5ee8162c6fdc354de9',1,'game.Player.Buildings.SteamEngine.IsResourcesEnough()'],['../classgame_1_1_player_1_1_buildings_1_1_warehouse.html#a0720100305c67525163b02ac739481dd',1,'game.Player.Buildings.Warehouse.IsResourcesEnough()']]]
-];
